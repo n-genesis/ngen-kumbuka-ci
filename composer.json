@@ -1,0 +1,51 @@
+{
+    "name": "n-genesis/ngen-kumbuka-ci",
+    "description": "A simple web-based shared notebook application built with CodeIgniter 4.",
+    "version": "1.0.0-a",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Adrian Garber",
+            "email": "ngendesign@email.com",
+            "homepage": "https://www.ngendesign.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://kumuka.ngendesign.com",
+    "support": {
+        "source": "https://github.com/n-genesis/ngen-kumbuka-ci"
+    },
+    "readme": "./README.md",
+    "require": {
+        "php": "^8.1",
+        "codeigniter4/framework": "^4.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^10.5.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Config\\": "app/Config/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Support\\": "tests/_support"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
