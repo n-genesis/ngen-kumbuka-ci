@@ -21,11 +21,11 @@ Run `composer install` whenever there is a new release of the framework.
 to your `app` folder. The affected files can be copied or merged from `vendor/codeigniter4/framework/app`.
 
 
-### Setup
+### Setup Localhost
 
 1. Download or clone the repo to your `localhost` folder.
 2. Change directory to `cd ngen-kumbuka-ci` folder.
-3. Install dependencies by running: `composer install`.
+3. Import `ngen-bootsnippets-ci/database.sql` to your MySQL or MariaDB Server, create a user and grant all rights to the imported `DB`
 4. Rename `env` to `.env`
 5. (Optional) Change the App URL to `app.baseURL = 'http://localhost/ngen-kumbuka-ci/public/'` if nedded.
 6. Update database config, change the lines where `database.default.database =`, `database.default.username =`, `database.default.password =`, and `database.default.hostname =` in .env file to match your database credentials.
