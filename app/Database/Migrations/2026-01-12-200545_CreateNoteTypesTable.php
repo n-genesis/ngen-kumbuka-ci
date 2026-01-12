@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateNoteTypeTable extends Migration
+class CreateNoteTypesTable extends Migration
 {
     public function up()
     {

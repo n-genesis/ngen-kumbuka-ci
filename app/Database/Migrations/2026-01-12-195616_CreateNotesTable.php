@@ -31,15 +31,11 @@ class CreateNotesTable extends Migration
                 'default'    => 'draft',
                 'null'       => false,
             ],
-            'marker' => [
-                'type'       => 'ENUM',
-                'constraint' => ['active','marked','warning','deleted','approved'], // Define the ENUM values here
-                'default'    => 'active',
-                'null'       => false,
-            ],
+            'type_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE'); // Link to Shield's users table
+        $this->forge->addForeignKey('type_id', 'note_types', 'id', 'CASCADE', 'CASCADE'); // Link to to Note Type table
         $this->forge->createTable('notes');
     }
 
