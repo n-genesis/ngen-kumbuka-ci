@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class CreateNotesTable extends Migration
+{
+    public function up()
+    {
+        $this->forge->addField([
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
+            'slug' => ['type' => 'VARCHAR', 'constraint' => 128],
+            'title' => ['type' => 'VARCHAR', 'constraint' => 128],
+            'priority' => [
+                'type'       => 'ENUM',
+                'constraint' => ['primary','secondary','success','danger','warning','info'], // Define the ENUM values here
+                'default'    => 'primary',
+                'null'       => false,
+            ],
+            'body' => ['type' => 'TEXT', null => false],
+            'published_at' => ['type' => 'DATETIME', 'null' => true],
+            'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
+            'deleted_at' => ['type' => 'DATETIME', 'null' => true],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['draft','published','archived'], // Define the ENUM values here
+                'default'    => 'draft',
+                'null'       => false,
+            ],
+            'marker' => [
+                'type'       => 'ENUM',
+                'constraint' => ['active','marked','warning','deleted','approved'], // Define the ENUM values here
+                'default'    => 'active',
+                'null'       => false,
+            ],
+        ]);
+        $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE'); // Link to Shield's users table
+        $this->forge->createTable('notes');
+    }
+
+    public function down()
+    {
+        $this->forge->dropTable('notes');
+    }
+}
