@@ -15,19 +15,29 @@ class App extends BaseConfig
      * Applications administrator email
      * @var string
      */
-    public string $appEmail = 'andrewnite@localhost';
+    public string $appEmail = 'admin@localhost.com';
     /**
      * Name of the application owner
      * @var string
      */
-    public string $appAuthor = 'N-Gen Design';
-    public string $appAuthWebsite = 'https://ngendesign.com';
+    public string $appAuthor = 'Developer Persom';
+    public string $appAuthWebsite = 'https://appwebsite.com';
     public string $appDesc = 'A web-based shared notebook application built with CodeIgniter 4.';
     /**
      * Applications copyright
      * @var string
      */
     public string $appCopyright = '';
+    /**
+     * An array of application note types
+     * @var list<string>
+     */
+    public array $noteTypes = [
+        'General',
+        'Essay',
+        'Daily Reflection',
+        'Reminder',
+    ];
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
