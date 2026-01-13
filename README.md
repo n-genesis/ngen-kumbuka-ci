@@ -10,6 +10,14 @@ CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and 
 
 You can read the [user guide](https://codeigniter.com/user_guide/) corresponding to the latest version of the framework.
 
+### Included Packages & Libraries
+- CodeIgniter 4 User Guide: https://codeigniter.com/user_guide/index.html
+- Shield Documentation: https://shield.codeigniter.com
+- Starter CI4 App: https://github.com/ilhamlutfi/starter-ci4
+- CI4 Shield Starter: https://github.com/SdVVentures/ci4-shield-starter
+- Tatter\Preferences: https://github.com/tattersoftware/codeigniter4-preferences
+
+
 ## Getting started
 
 ***Required***: This repository holds a composer-installable app starter.
