@@ -10,6 +10,7 @@ class CreatePagesTable extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'title' => [],
             'slug' => ['type' => 'VARCHAR', 'constraint' => 128],
             'type' => [
                 'type'       => 'ENUM',
@@ -19,6 +20,7 @@ class CreatePagesTable extends Migration
             ],
             'author_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'content' => ['type' => 'TEXT', 'null' => false],
+            'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'status' => [
                 'type'       => 'ENUM',
                 'constraint' => ['draft','published','archived'], // Define the ENUM values here
