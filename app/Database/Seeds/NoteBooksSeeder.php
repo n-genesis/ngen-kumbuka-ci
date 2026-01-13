@@ -25,6 +25,7 @@ class NoteBooksSeeder extends Seeder
                'entity_id' => $faker->sentence(3),
                'user_id'=> 1,
                'is_folder' => true,
+               'pinned' => true,
                'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
             ],
             [
@@ -41,6 +42,7 @@ class NoteBooksSeeder extends Seeder
                'entity_id' => $faker->sentence(3),
                'user_id'=> 2,
                'is_folder' => true,
+               'pinned' => true,
                'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
             ],
         ];

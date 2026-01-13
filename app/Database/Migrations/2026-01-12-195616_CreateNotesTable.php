@@ -21,6 +21,7 @@ class CreateNotesTable extends Migration
             ],
             'body' => ['type' => 'TEXT', null => false],
             'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
+            'pinned' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],

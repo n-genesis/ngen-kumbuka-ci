@@ -20,11 +20,11 @@ class CreateRemindersTable extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'NO ACTION'); // Link to Shield's users table
         $this->forge->addForeignKey('note_id','notes','id', true); // Link to note table
-        $this->forge->createTable('reminder');
+        $this->forge->createTable('reminders');
     }
 
     public function down()
     {
-        $this->forge->dropTable('reminder');
+        $this->forge->dropTable('reminders');
     }
 }
