@@ -5,6 +5,10 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a web-based shared noteboo
 
 ***Check Out:*** The project's [TODO.md list](./TODO.md) and [dev-notes file](./dev-notes.md) to see changelogs and planned updates and additions. [Here's a Google Doc]( https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing) with some applications development plans. 
 
+
+![Dashboard](https://lh3.googleusercontent.com/d/1TsIHuLjOead--_CsQHjvznmpfXXXXUe9)
+
+
 ## Build w/ CodeIgniter 4
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure. More information can be found at the [official site](https://codeigniter.com).
 
