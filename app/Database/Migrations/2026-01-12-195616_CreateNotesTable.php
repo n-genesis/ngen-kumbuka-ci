@@ -20,15 +20,14 @@ class CreateNotesTable extends Migration
                 'null'       => false,
             ],
             'body' => ['type' => 'TEXT', null => false],
-            'published_at' => ['type' => 'DATETIME', 'null' => true],
             'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['draft','published','archived'], // Define the ENUM values here
-                'default'    => 'draft',
+                'constraint' => ['private','public','archived'], // Define the ENUM values here
+                'default'    => 'private',
                 'null'       => false,
             ],
             'type_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
