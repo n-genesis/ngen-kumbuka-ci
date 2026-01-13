@@ -18,8 +18,8 @@ class CreateRemindersTable extends Migration
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'NO ACTION'); // Link to Shield's users table
-        $this->forge->addForeignKey('note_id','notes','id', true); // Link to note table
+        $this->forge->addForeignKey('author_id', 'users', 'id', 'NO ACTION', 'CASCADE'); // Link to Shield's users table
+        $this->forge->addForeignKey('note_id','notes','id', 'NO ACTION', 'CASCADE'); // Link to note table
         $this->forge->createTable('reminders');
     }
 

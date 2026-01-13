@@ -10,7 +10,7 @@ class CreateNoteBooksTable extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'parent_id' => ['type' => 'INT', 'constraint' => 11, 'default' => null, 'null' => true],
+            'parent_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'default' => null, 'null' => true],
             'name' => ['type' => 'VARCHAR', 'constraint' => 145, 'null' => false],
             'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'is_folder' => ['type' => 'BOOLEAN', 'default' => 1, 'null' => true],
@@ -21,7 +21,7 @@ class CreateNoteBooksTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'NO ACTION'); // Link to Shield's users table
-        $this->forge->addForeignKey('parent__id', 'notebooks', 'id', 'NO ACTION', 'CASCADE'); // Link to snippets table
+        $this->forge->addForeignKey('parent_id', 'notebooks', 'id', 'NO ACTION', 'CASCADE'); // Link to snippets table
         $this->forge->createTable('notebooks');
     }
 

@@ -10,7 +10,7 @@ class CreateNotesTable extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
+            'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'slug' => ['type' => 'VARCHAR', 'constraint' => 128],
             'title' => ['type' => 'VARCHAR', 'constraint' => 128],
             'priority' => [

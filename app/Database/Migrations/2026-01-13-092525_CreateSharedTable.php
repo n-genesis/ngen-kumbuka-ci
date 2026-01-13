@@ -10,15 +10,15 @@ class CreateSharedTable extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'notebook_id' => ['type' => 'INT', 'constraint' => 11, 'default' => null, 'null' => true],
-            'owner_id' => ['type' => 'INT', 'constraint' => 11, 'default' => null, 'null' => true],
+            'notebook_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
+            'owner_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'shared_user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
-        $this->forge->addPrimaryKey(['id', 'notebook_id', 'owner_id', 'shared_user_id']);
-        $this->forge->addForeignKey('notebook_id', 'notebook', 'id', 'NO ACTION', 'CASCADE'); // Link to Shield's users table
+        $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('notebook_id', 'notebooks', 'id', 'NO ACTION', 'CASCADE'); // Link to Shield's users table
         $this->forge->addForeignKey('owner_id', 'users', 'id', 'NO ACTION', 'CASCADE'); // Link to Shield's users table
         $this->forge->addForeignKey('shared_user_id', 'users', 'id', 'NO ACTION', 'CASCADE'); // Link to snippets table
         $this->forge->createTable('shared');
