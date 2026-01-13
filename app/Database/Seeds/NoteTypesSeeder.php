@@ -17,32 +17,32 @@ class NoteTypesSeeder extends Seeder
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
             [
-                'id' => 1,
+                'id' => 2,
                 'name' => $type = strtolower($appConfig->noteTypes[1]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
             [
-                'id' => 1,
+                'id' => 3,
                 'name' => $type = strtolower($appConfig->noteTypes[2]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
             [
-                'id' => 1,
+                'id' => 4,
                 'name' => $type = strtolower($appConfig->noteTypes[3]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
             [
-                'id' => 1,
+                'id' => 5,
                 'name' => $type = strtolower($appConfig->noteTypes[2]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
             [
-                'id' => 1,
+                'id' => 6,
                 'name' => $type = strtolower($appConfig->noteTypes[1]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
             [
-                'id' => 1,
+                'id' => 6,
                 'name' => $type = strtolower($appConfig->noteTypes[0]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ]
