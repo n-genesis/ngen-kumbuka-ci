@@ -20,7 +20,7 @@ class App extends BaseConfig
      * Name of the application owner
      * @var string
      */
-    public string $appAuthor = 'Developer Persom';
+    public string $appAuthor = 'Owner Name';
     public string $appAuthWebsite = 'https://appwebsite.com';
     public string $appDesc = 'A web-based shared notebook application built with CodeIgniter 4.';
     /**

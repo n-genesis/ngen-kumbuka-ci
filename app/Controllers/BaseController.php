@@ -28,18 +28,60 @@ abstract class BaseController extends Controller
     // protected $session;
 
     /**
+     * Varable to store global data to be shared accross views
+     * @var list<mixed>
+     */
+    protected object $globalData;
+
+    /**
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Load here all helpers you want to be available in your controllers that extend BaseController.
-        // Caution: Do not put the this below the parent::initController() call below.
-        // $this->helpers = ['form', 'url'];
-
-        // Caution: Do not edit this line.
+        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-        // $this->session = service('session');
+
+        // E.g.: $this->session = service('session');
+
+        // Get Config values or store settings
+        $this->globalData = (object) [
+            'appName' => service('settings')->get('App.appName'),
+            'appEmail' => service('settings')->get('App.appEmail'),
+            'appAuthor' => service('settings')->get('App.appAuthor'),
+            'appAuthWebsite' => service('settings')->get('App.appAuthWebsite'),
+            'appDesc' => service('settings')->get('App.appDesc'),
+        ];
+
+        // Build sidebar links
+        // $sidebarConfig = config('Sidebar');
+        // $this->globalData['userSidebarOpts'] = $sidebarConfig->userSidebarOpts;
+
+        // Check if the USer is logged in
+        // if (auth()->loggedIn()) {
+        //     $userId = auth()->id();// Get User ID
+        //     $this->globalData['username'] = auth()->user()->username;
+
+        //     $userDetailsModel = new UserDetailsModel(); // User Details Model
+        //     // Use Default avatart image in User Config file is sser's not set
+        //     $userAvatar = $userDetailsModel->getUserAvatarById($userId);
+        //     $userConfig = config(User::class);
+        //     $this->globalData['userAvatar'] = $userAvatar->avatar ?? $userConfig->defaultAvatar;
+
+        // } else {
+        //     $this->globalData['username'] = 'Guest';
+        // }
+    }
+
+    public function renderView(string $viewName, array $data = [])
+    {
+        // Convert the globalData object to an array to merge with array $data parameter
+        return view($viewName, array_merge((array) $this->globalData, $data));
+    }
+
+    public function getOjbData()
+    {
+        return $this->globalData;
     }
 }
