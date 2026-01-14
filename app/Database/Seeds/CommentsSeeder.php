@@ -19,19 +19,19 @@ class CommentsSeeder extends Seeder
             $values = [];
             switch ($rangeIndex) {
                 case 0:
-                    $values = $this->looper(3,'articles',1,null);
+                    $values = $this->looper(3,'note',1,null);
                     break;
                 case 1:
-                    $values = $this->looper(4,'articles',2,null);
+                    $values = $this->looper(4,'note',2,null);
                     break;
                 case 2:
-                    $values = $this->looper(1,'snippets',1,null);
+                    $values = $this->looper(1,'note',1,null);
                     break;
                 case 3:
-                    $values = $this->looper(1,'snippets',2,5);
+                    $values = $this->looper(1,'note',2,5);
                     break;
                 case 4:
-                    $values = $this->looper(null,null,null,null);
+                    $values = $this->looper(null,'note',null,null);
                     break;
             }
 

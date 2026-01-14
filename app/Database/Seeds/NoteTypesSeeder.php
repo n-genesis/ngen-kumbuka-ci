@@ -31,21 +31,6 @@ class NoteTypesSeeder extends Seeder
                 'name' => $type = strtolower($appConfig->noteTypes[3]),
                 'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
             ],
-            [
-                'id' => 5,
-                'name' => $type = strtolower($appConfig->noteTypes[2]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
-            ],
-            [
-                'id' => 6,
-                'name' => $type = strtolower($appConfig->noteTypes[1]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
-            ],
-            [
-                'id' => 6,
-                'name' => $type = strtolower($appConfig->noteTypes[0]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
-            ]
         ];
 
         $this->db->table('note_types')->insertBatch($noteTypes);

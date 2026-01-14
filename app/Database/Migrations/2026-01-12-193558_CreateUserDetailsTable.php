@@ -32,6 +32,13 @@ class CreateUserDetailsTable extends Migration
 
     public function down()
     {
+        $this->db->disableForeignKeyChecks();
+
+        $this->db->table('users')->truncate();
+        $this->db->table('auth_identities')->truncate();
+
+        $this->db->enableForeignKeyChecks();
+
         $this->forge->dropTable('user_details');
     }
 }

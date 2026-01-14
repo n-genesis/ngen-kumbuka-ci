@@ -23,7 +23,7 @@ class NotesSeeder extends Seeder
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'public',
-                'type' => 1,
+                'type_id' => 1,
             ],
             [
                 'id' => 2,
@@ -33,10 +33,10 @@ class NotesSeeder extends Seeder
                 'priority' => 'success', 
                 'body' => $faker->text(125),
                 'allow_comments' => true,
-                $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+                'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'private',
-                'type' => 2,
+                'type_id' => 2,
             ],
             [
                 'id' => 3,
@@ -46,10 +46,10 @@ class NotesSeeder extends Seeder
                 'priority' => 'success', 
                 'body' => $faker->text(125),
                 'allow_comments' => true,
-                $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+                'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'archived',
-                'type' => 3,
+                'type_id' => 3,
             ],
             [
                 'id' => 4,
@@ -59,10 +59,10 @@ class NotesSeeder extends Seeder
                 'priority' => 'success', 
                 'body' => $faker->text(125),
                 'allow_comments' => true,
-                $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+                'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'public',
-                'type' => 4
+                'type_id' => 4
             ],
         ];
 

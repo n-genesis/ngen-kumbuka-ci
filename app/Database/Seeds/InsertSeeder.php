@@ -8,8 +8,18 @@ class InsertSeeder extends Seeder
 {
     public function run()
     {
+        // Users Inserts
+        $this->call('UsersSeeder');
+        // Auth Identities Inserts
+        $this->call('AuthIdentitiesSeeder');
         // User Details Inserts
         $this->call('UserDetailsSeeder');
+        // Notebook Types Inserts
+        $this->call('NoteTypesSeeder');
+        // Notes Inserts
+        $this->call('NotesSeeder');
+        // Notebooks Inserts
+        $this->call('NotebooksSeeder');
         // User Likes Inserts
         $this->call('LikesSeeder');
         // Followers Inserts
@@ -18,12 +28,7 @@ class InsertSeeder extends Seeder
         $this->call('SharedSeeder');
         // Note Comments Inserts
         $this->call('CommentsSeeder');
-        // Notes Inserts
-        $this->call('NotesSeeder');
-        // Notebooks Inserts
-        $this->call('NotebooksSeeder');
-        // Notebook Types Inserts
-        $this->call('NoteBookTypesSeeder');
+        
         // Pages Inserts
         $this->call('PagesSeeder');
     }

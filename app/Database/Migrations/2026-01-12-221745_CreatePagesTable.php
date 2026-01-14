@@ -10,7 +10,7 @@ class CreatePagesTable extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'title' => [],
+            'title' => ['type' => 'VARCHAR', 'constraint' => 128, 'null' => false],
             'slug' => ['type' => 'VARCHAR', 'constraint' => 128],
             'type' => [
                 'type'       => 'ENUM',
