@@ -44,6 +44,7 @@ return [
     // Buttons
     'confirm' => 'Confirm',
     'send'    => 'Send',
+    'loginButton'   => 'Sign In',
 
     // Registration
     'register'         => 'Register',
@@ -52,9 +53,10 @@ return [
 
     // Login
     'login'              => 'Sign In',
-    'headline'           => 'Login to share your notes.',
-    'loginButton'        => 'Sign In',
+    'loginHeadline'      => 'Login to share your notes.',
     'needAccount'        => 'Need an account?',
+    'needAccountLinkText'=> 'Sign up here',
+    'needAccountText'    => 'to register and get started sharing your own notes.',
     'rememberMe'         => 'Remember me?',
     'forgotPassword'     => 'Forgot your password?',
     'useMagicLink'       => 'Use a Login Link',

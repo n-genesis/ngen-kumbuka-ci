@@ -27,6 +27,9 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
 
+    <!-- Sweetalert2 -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Include page specific scripts --> 
     <?= $this->renderSection('js') ?>
     

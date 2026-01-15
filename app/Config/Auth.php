@@ -47,7 +47,7 @@ class Auth extends ShieldAuth
      */
     public array $views = [
         'login'                       => '\App\login',
-        'register'                    => '\CodeIgniter\Shield\Views\register',
+        'register'                    => '\App\register',
         'layout'                      => '\CodeIgniter\Shield\Views\layout',
         'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
         'action_email_2fa_verify'     => '\CodeIgniter\Shield\Views\email_2fa_verify',
@@ -103,7 +103,7 @@ class Auth extends ShieldAuth
      * @var array<string, class-string<ActionInterface>|null>
      */
     public array $actions = [
-        'register' => null,
+        'register' => CodeIgniter\Shield\Authentication\Actions\EmailActivator::class,
         'login'    => null,
     ];
 
@@ -157,7 +157,7 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      * Determines whether users can register for the site.
      */
-    public bool $allowRegistration = true;
+    public bool $allowRegistration = false;
 
     /**
      * --------------------------------------------------------------------

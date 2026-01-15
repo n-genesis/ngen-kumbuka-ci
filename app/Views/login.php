@@ -8,32 +8,10 @@
             <div class="row justify-content-center align-items-center height-self-center">
 
                 <div class="col-md-5 col-sm-12 col-12 align-self-center">
-                    <!-- ALERTS -->
+
                     <div class="mt-5">
-                        <?php if (session('error') !== null): ?>
-                            <div class="alert bg-white alert-danger" role="alert">
-                                <div class="iq-alert-icon">
-                                    <i class="bi bi-exclamation-circle"></i>
-                                </div>
-                                <div class="iq-alert-text"><?= esc(session('error')) ?></div>
-                            </div>
-                        <?php elseif (session('errors') !== null): ?>
-                            <div class="alert bg-white alert-danger" role="alert">
-                                <div class="iq-alert-icon">
-                                    <i class="bi bi-exclamation-circle"></i>
-                                </div>
-                                <div class="iq-alert-text">
-                                    <?php if (is_array(session('errors'))): ?>
-                                        <?php foreach (session('errors') as $error): ?>
-                                            <?= esc($error) ?>
-                                            <br>
-                                        <?php endforeach ?>
-                                    <?php else: ?>
-                                        <?= esc(session('errors')) ?>
-                                    <?php endif ?>
-                                </div>
-                            </div>
-                        <?php endif ?>
+                        <!-- Alerts -->
+                        <?= $this->include('blocks/alerts') ?>
 
                         <?php if (session('message') !== null): ?>
                             <div class="alert bg-white alert-success" role="alert">
@@ -53,8 +31,10 @@
                                 <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
                             </div>
                         </div>
+
                         <h3 class="mb-2"><?= lang('Auth.login') ?></h3>
-                        <p><?= lang('Auth.headline') ?></p>
+                        <p><?= lang('Auth.loginHeadline') ?></p>
+
                         <form action="<?= url_to('login') ?>" method="post">
                             <?= csrf_field() ?>
 

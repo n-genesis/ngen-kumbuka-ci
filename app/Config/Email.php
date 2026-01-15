@@ -13,7 +13,7 @@ class Email extends BaseConfig
     /**
      * The "user agent"
      */
-    public string $userAgent = 'CodeIgniter';
+    public string $userAgent = 'Kumbuka';
 
     /**
      * The mail sending protocol: mail, sendmail, smtp

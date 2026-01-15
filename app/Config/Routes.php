@@ -25,9 +25,20 @@ $routes->group('/', function ($routes) {
 });
 
 /**
+ * User Account Routes
+ */
+$routes->group('user',['filter' => ['userfilter']], function ($routes) {
+
+    // User Dashboard
+    $routes->get('', [User::class, 'index']);
+
+
+});
+
+/**
  * Admin Account Routes
  */
-$routes->group('user',['filter' => ['adminfilter']], function ($routes) {
+$routes->group('admin',['filter' => ['adminfilter']], function ($routes) {
 
     // User Account Routes
     $routes->group('account', static function ($routes) {
