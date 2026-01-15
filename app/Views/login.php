@@ -43,19 +43,17 @@
                                 <!-- Email -->
                                 <div class="col-lg-12">
                                     <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="email" name="email"
-                                            inputmode="email" autocomplete="email"
-                                            placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>"
-                                            required>
+                                        <input id="floatingEmailInput" class="floating-input form-control" type="email" name="email"
+                                            inputmode="email" autocomplete="email" placeholder=" " value="<?= old('email') ?>"required>
+                                            <label for="floatingEmailInput"><?= lang('Auth.email') ?></label>
                                     </div>
                                 </div>
 
                                 <!-- Password -->
                                 <div class="col-lg-12">
                                     <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="password" name="password"
-                                            inputmode="text" autocomplete="current-password"
-                                            placeholder="<?= lang('Auth.password') ?>" required>
+                                        <input id="floatingPasswordInput" class="floating-input form-control" type="password" name="password" inputmode="text" autocomplete="current-password" placeholder=" " required>
+                                            <label for="floatingPasswordInput"><?= lang('Auth.password') ?></label>
                                     </div>
                                 </div>
                                 

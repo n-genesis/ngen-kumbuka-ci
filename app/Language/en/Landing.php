@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 return [
     // Title
-    'pageHeading'   => 'Hey, Welcome to Kumbuka.',
+    'pageHeading'   => 'Welcome to Kumbuka',
     'pageSubHeading' => 'Ready to share some inspiring and memorable notes?',
     // Cards
     'cardOneTitle'      => 'It\'s Just That',

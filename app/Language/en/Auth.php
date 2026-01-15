@@ -34,6 +34,8 @@ return [
     'expiredJWT'     => 'The token has expired.',
     'beforeValidJWT' => 'The token is not yet available.',
 
+    'firstName'     => 'First Name',
+    'lastName'      => 'Last Name',
     'email'           => 'Email Address',
     'username'        => 'Username',
     'password'        => 'Password',
@@ -48,8 +50,11 @@ return [
 
     // Registration
     'register'         => 'Register',
+    'registerSubHeader' => 'Create your account and share your notes.',
     'registerDisabled' => 'Registration is not currently allowed.',
     'registerSuccess'  => 'Welcome aboard!',
+    'iAgreeWithTerms' => 'I agree with the',
+    'termsOfService'   => 'Terms of Service',
 
     // Login
     'login'              => 'Sign In',
