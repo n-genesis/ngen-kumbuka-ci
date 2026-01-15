@@ -67,7 +67,6 @@
                                             inputmode="email" autocomplete="email"
                                             placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>"
                                             required>
-                                        <label><?= lang('Auth.email') ?></label>
                                     </div>
                                 </div>
 
@@ -77,7 +76,6 @@
                                         <input class="floating-input form-control" type="password" name="password"
                                             inputmode="text" autocomplete="current-password"
                                             placeholder="<?= lang('Auth.password') ?>" required>
-                                        <label><?= lang('Auth.password') ?></label>
                                     </div>
                                 </div>
                                 

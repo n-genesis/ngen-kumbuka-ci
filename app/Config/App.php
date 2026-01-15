@@ -12,6 +12,11 @@ class App extends BaseConfig
      */
     public string $appName = 'Kumbuka';
     /**
+     * Document description (Can be changed in the controller)
+     * @var string
+     */
+    public string $appTitle = 'Welcom to Kubmuka';
+    /**
      * Applications administrator email
      * @var string
      */
@@ -72,7 +77,7 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------

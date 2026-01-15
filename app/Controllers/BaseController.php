@@ -48,11 +48,17 @@ abstract class BaseController extends Controller
         // Get Config values or store settings
         $this->globalData = (object) [
             'appName' => service('settings')->get('App.appName'),
+            'appTitle' => service('settings')->get('App.appTitle'),
             'appEmail' => service('settings')->get('App.appEmail'),
             'appAuthor' => service('settings')->get('App.appAuthor'),
             'appAuthWebsite' => service('settings')->get('App.appAuthWebsite'),
             'appDesc' => service('settings')->get('App.appDesc'),
         ];
+
+        $view = service('renderer');
+        // Add Global Data to View $data array
+        $view->setData((array) $this->globalData);
+
 
         // Build sidebar links
         // $sidebarConfig = config('Sidebar');
@@ -76,8 +82,8 @@ abstract class BaseController extends Controller
 
     public function renderView(string $viewName, array $data = [])
     {
-        // Convert the globalData object to an array to merge with array $data parameter
-        return view($viewName, array_merge((array) $this->globalData, $data));
+        // Add data array values
+        return view($viewName, $data);
     }
 
     public function getOjbData()

@@ -5,17 +5,17 @@
 <?= $this->include('partials/head') ?>
 
 <body class="Kumbuka-layout">
-    <!-- loader Start -->
+
+    <!-- Page loader Start -->
     <div id="loading">
         <div id="loading-center">
         </div>
     </div>
     
-    <!-- Render Most View Content through controller -->
+    <!-- Main Document body content -->
     <?= $this->renderSection('main'); ?>
 
-
-
+    <!-- Bottom Of Page Content -->
 
     <!-- jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

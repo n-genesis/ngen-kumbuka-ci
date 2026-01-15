@@ -23,3 +23,16 @@ $routes->group('/', function ($routes) {
     // Sucessful Logout
     $routes->get('logged_out', [Pages::class, 'logged_out']);
 });
+
+/**
+ * Admin Account Routes
+ */
+$routes->group('user',['filter' => ['adminfilter']], function ($routes) {
+
+    // User Account Routes
+    $routes->group('account', static function ($routes) {
+        
+    });
+
+
+});

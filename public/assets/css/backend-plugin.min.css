@@ -21301,7 +21301,7 @@ fieldset[disabled] .btn {
 }
 
 #loading-center {
-    background: url(images/loader.gif) no-repeat scroll 50%;
+    background: url(../images/loader.gif) no-repeat scroll 50%;
     background-size: 20%;
     width: 100%;
     height: 100%;

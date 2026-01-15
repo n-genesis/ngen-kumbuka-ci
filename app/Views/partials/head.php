@@ -3,9 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="<?= esc($appDesc); ?>" />
     <meta name="author" content="<?= esc($appAuthor); ?>" />
-    <title><?= esc($pageTitle); ?></title>
+    <title><?= esc($appTitle); ?></title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?= base_url('assets/favicon.ico'); ?>">
+    <link rel="shortcut icon" href="<?= base_url('favicon.ico'); ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/backend-plugin.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/backend.css'); ?>">
