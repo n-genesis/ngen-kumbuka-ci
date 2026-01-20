@@ -65,28 +65,29 @@ if (dataBlocks !== null) {
 
 const checkboxTermsOfUse = document.getElementById('checkboxTermsOfUse');
 
-const myForm = document.getElementById('user-register-form');
+const registerForm = document.getElementById('user-register-form');
+if (registerForm !== null) {
+    registerForm.addEventListener('submit', function (event) {
+        // 1. Prevent the default form submission
+        event.preventDefault();
+        const form = event.target;
 
-myForm.addEventListener('submit', function (event) {
-    // 1. Prevent the default form submission
-    event.preventDefault();
-    const form = event.target;
-
-    if (!checkboxTermsOfUse.checked) {
-        Swal.fire({
-            title: 'Accept Terms',
-            input: 'checkbox',
-            inputValue: 1, // default checked
-            inputPlaceholder: 'I agree to the terms and conditions',
-            inputValidator: (result) => {
-                return !result && 'You need to agree with T&C'
-            }
-        }).then((result) => {
-            if (result.value) {
-                form.submit();
-            }
-        });
-    } else {
-        form.submit();
-    }
-});
+        if (!checkboxTermsOfUse.checked) {
+            Swal.fire({
+                title: 'Accept Terms',
+                input: 'checkbox',
+                inputValue: 1, // default checked
+                inputPlaceholder: 'I agree to the terms and conditions',
+                inputValidator: (result) => {
+                    return !result && 'You need to agree with T&C'
+                }
+            }).then((result) => {
+                if (result.value) {
+                    form.submit();
+                }
+            });
+        } else {
+            form.submit();
+        }
+    });
+}

@@ -2,6 +2,8 @@
 
 use App\Controllers\Home;
 use CodeIgniter\Router\RouteCollection;
+use App\Controllers\CustomErrors;
+
 
 /**
  * @var RouteCollection $routes
@@ -9,6 +11,8 @@ use CodeIgniter\Router\RouteCollection;
 
 
 service('auth')->routes($routes);
+
+//$routes->set404Override('App\Controllers\CustomErrors::error404');
 
 /**
  * Main Routes
