@@ -14,7 +14,7 @@
                     <div class="sign-user_card">
                         <!-- Logo -->
                         <div class="logo-detail mb-0">
-                            <div class="d-flex align-items-center"><img src="../assets/images/logo.png"
+                            <div class="d-flex align-items-center"><img src="<?= base_url('assets/images/logo.png') ?>"
                                     class="img-fluid rounded-normal light-logo logo" alt="logo">
                                 <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
                             </div>
