@@ -1,4 +1,5 @@
 <div class="desktop-header">
+<!-- Topnav Left -->
 <div class="card card-block topnav-left">
     <div class="card-body write-card">
         <div class="d-flex align-items-center justify-content-between">
@@ -34,10 +35,12 @@
         </div>
     </div>
 </div>
+
 <!-- Topnav Right -->
 <div class="card topnav-right">
     <div class="card-body card-content-right">
         <ul class="list-inline m-0 p-0 d-flex align-items-center justify-content-around">
+            <!-- Messages -->
             <li class="nav-item nav-icon dropdown">
                 <a href="#" class="text-dark search-toggle dropdown-toggle nav-icon-1" id="dropdownMenuButton1"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +56,7 @@
                                 <a href="#" class="iq-sub-card">
                                     <div class="media align-items-center cust-card pb-3 border-bottom">
                                         <div class="">
-                                            <img class="avatar-50 rounded-small" src="assets/images/user/01.jpg"
+                                            <img class="avatar-50 rounded-small" src="/assets/images/user/01.jpg"
                                                 alt="01">
                                         </div>
                                         <div class="media-body ml-3">
@@ -68,7 +71,7 @@
                                 <a href="#" class="iq-sub-card">
                                     <div class="media align-items-center cust-card py-3 border-bottom">
                                         <div class="">
-                                            <img class="avatar-50 rounded-small" src="assets/images/user/02.jpg"
+                                            <img class="avatar-50 rounded-small" src="/assets/images/user/02.jpg"
                                                 alt="02">
                                         </div>
                                         <div class="media-body ml-3">
@@ -83,7 +86,7 @@
                                 <a href="#" class="iq-sub-card">
                                     <div class="media align-items-center cust-card pt-3">
                                         <div class="">
-                                            <img class="avatar-50 rounded-small" src="assets/images/user/03.jpg"
+                                            <img class="avatar-50 rounded-small" src="/assets/images/user/03.jpg"
                                                 alt="03">
                                         </div>
                                         <div class="media-body ml-3">
@@ -103,6 +106,7 @@
                     </div>
                 </div>
             </li>
+            <!-- Notifications -->
             <li class="nav-item nav-icon dropdown pl-3">
                 <a href="#" class="text-dark search-toggle dropdown-toggle nav-icon-1" id="dropdownMenuButton2"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -118,7 +122,7 @@
                                 <a href="#" class="iq-sub-card">
                                     <div class="media align-items-center cust-card pb-3 border-bottom">
                                         <div class="">
-                                            <img class="avatar-50 rounded-small" src="assets/images/user/01.jpg"
+                                            <img class="avatar-50 rounded-small" src="/assets/images/user/01.jpg"
                                                 alt="01">
                                         </div>
                                         <div class="media-body ml-3">
@@ -133,7 +137,7 @@
                                 <a href="#" class="iq-sub-card">
                                     <div class="media align-items-center cust-card py-3 border-bottom">
                                         <div class="">
-                                            <img class="avatar-50 rounded-small" src="assets/images/user/02.jpg"
+                                            <img class="avatar-50 rounded-small" src="/assets/images/user/02.jpg"
                                                 alt="02">
                                         </div>
                                         <div class="media-body ml-3">
@@ -148,7 +152,7 @@
                                 <a href="#" class="iq-sub-card">
                                     <div class="media align-items-center cust-card pt-3">
                                         <div class="">
-                                            <img class="avatar-50 rounded-small" src="assets/images/user/03.jpg"
+                                            <img class="avatar-50 rounded-small" src="/assets/images/user/03.jpg"
                                                 alt="03">
                                         </div>
                                         <div class="media-body ml-3">
@@ -171,4 +175,5 @@
         </ul>
     </div>
 </div>
+
 </div>

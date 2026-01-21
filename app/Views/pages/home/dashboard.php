@@ -34,9 +34,10 @@
     </div>
 </div>
 <!-- Wrapper End-->
+ 
+<!-- Include footer tag -->
+<?= $this->include('partials/footer') ?>
 
 <!-- END Main -->
 <?= $this->endSection(); ?>
 
-<!-- Include footer tag -->
-<?= $this->include('partials/footer') ?>

@@ -26,9 +26,7 @@ class UserController extends BaseController
         // Get User Configs
         $this->userConfig = config(UserConfig::class);
         // Get User Deatils
-        $this->userDetails = $this->userDetailsModel->getUserAvatarById($this->userId);
-        // Get User Avatar NOT USED
-        $this->userAvatar = $this->userDetails->avatar ?? $this->userConfig->defaultAvatar;
+        $this->userDetails = $this->userDetailsModel->getDetailsByUserId($this->userId);
 
     }
 }

@@ -7,8 +7,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Pages extends BaseController
 {
-    public function index()
+    public function support()
     {
-        //
+        //echo
+        echo 'Hello World';
     }
 }

@@ -2,8 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Controllers\UserController;
 
 class Dashboard extends UserController
 {
@@ -13,7 +12,10 @@ class Dashboard extends UserController
             return setting('Auth.redirects')['admin_login'];;
         } else {
             // Default view for regular users
-            return $this->renderView('pages/home/dashboard');
+            return $this->renderView('pages/home/dashboard',[
+                'appTitle' => setting('App.appName').' | Dashbord',
+                'userFullName' => $this->userDetails->FullName,
+            ]);
         }
         
     }

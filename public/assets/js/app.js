@@ -199,28 +199,6 @@ Index Of Script
         jQuery("#my-table tr td:nth-child(" + parseInt(col + 1) + ")").addClass('active');
       });
 
-        /*---------------------------------------------------------------------
-        Scrollbar
-        -----------------------------------------------------------------------*/
-
-        jQuery(window).on("resize", function () {
-            if (jQuery(this).width() <= 1299) {
-                jQuery('#salon-scrollbar').addClass('data-scrollbar');
-            } else {
-                jQuery('#salon-scrollbar').removeClass('data-scrollbar');
-            }
-        }).trigger('resize');
-
-        jQuery('.data-scrollbar').each(function () {
-            var attr = $(this).attr('data-scroll');
-            if (typeof attr !== typeof undefined && attr !== false){
-            let Scrollbar = window.Scrollbar;
-            var a = jQuery(this).data('scroll');
-            Scrollbar.init(document.querySelector('div[data-scroll= "' + a + '"]'));
-            }
-        });
-
-
          /*---------------------------------------------------------------------
            Datatables
         -----------------------------------------------------------------------*/

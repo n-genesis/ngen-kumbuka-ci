@@ -3,14 +3,14 @@
 namespace App\Models\User;
 
 use CodeIgniter\Model;
-use App\Entities\UserDetails as UserDetailsEntity;
+use App\Entities\UserDetail as UserDetailEntity;
 
 class UserDetailsModel extends Model
 {
     protected $table = 'user_details';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType = UserDetailsEntity::class;
+    protected $returnType = UserDetailEntity::class;
     protected $useSoftDeletes = true;
     protected $protectFields = true;
     protected $allowedFields = [

@@ -4,6 +4,8 @@ use App\Controllers\Home;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
 use App\Controllers\Dashboard;
+use App\Controllers\Notes;
+use App\Controllers\Pages;
 
 /**
  * @var RouteCollection $routes
@@ -31,11 +33,20 @@ $routes->group('/', function ($routes) {
 /**
  * User Account Routes
  */
-$routes->group('user',['filter' => ['userfilter']], function ($routes) {
+$routes->group('',['filter' => ['userfilter']], function ($routes) {
 
     // User Dashboard
     $routes->get('dashboard', [Dashboard::class, 'index']);
 
+    //Note Routes
+    $routes->resource('notes');
+    //$routes->get('notes/(:segment)', [[Notes::class, 'newNote'], '$1']);
+    // $routes->get('notes', [Notes::class, 'index']);
+    // $routes->get('notes/update_notes/(:segment)', [[Notes::class, 'update_notes'], '$1']);
+    // $routes->post('notes/update_notes/(:segment)', [[Notes::class, 'update_notes'], '$1']);
+    // $routes->get('notes/add_notes', [Notes::class, 'add_notes']);
+    // $routes->post('notes/add_notes', [Notes::class, 'add_notes']);
+    // $routes->post('notes/delete_notes/(:segment)', [[Notes::class, 'delete_notes'], '$1']);
 
 });
 
