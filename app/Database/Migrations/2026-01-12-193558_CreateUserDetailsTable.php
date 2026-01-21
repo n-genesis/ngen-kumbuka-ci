@@ -36,6 +36,8 @@ class CreateUserDetailsTable extends Migration
 
         $this->db->table('users')->truncate();
         $this->db->table('auth_identities')->truncate();
+        $this->db->table('auth_groups_users')->truncate();
+        $this->db->table('auth_logins')->truncate();
 
         $this->db->enableForeignKeyChecks();
 
