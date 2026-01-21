@@ -3,7 +3,7 @@
 use App\Controllers\Home;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
-
+use App\Controllers\Dashboard;
 
 /**
  * @var RouteCollection $routes
@@ -34,7 +34,7 @@ $routes->group('/', function ($routes) {
 $routes->group('user',['filter' => ['userfilter']], function ($routes) {
 
     // User Dashboard
-    $routes->get('', [User::class, 'index']);
+    $routes->get('dashboard', [Dashboard::class, 'index']);
 
 
 });

@@ -83,6 +83,7 @@ if (registerForm !== null) {
                 }
             }).then((result) => {
                 if (result.value) {
+                    checkboxTermsOfUse.checked = true;
                     form.submit();
                 }
             });

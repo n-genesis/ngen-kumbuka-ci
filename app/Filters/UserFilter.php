@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class AdminFilter implements FilterInterface
+class UserFilter implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -26,8 +26,8 @@ class AdminFilter implements FilterInterface
         }
 
         // Check if user is in admin group
-        if (!auth()->user()->inGroup('admin')) {
-            return redirect()->to('/')->with('error', 'You must have Admin permission to access that page.');
+        if (!auth()->user()->inGroup('user')) {
+            return redirect()->to('/')->with('error', 'You do not have permission to access that page.');
         }
     }
 

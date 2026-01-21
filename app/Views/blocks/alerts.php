@@ -24,3 +24,14 @@
         </div>
     </div>
 <?php endif ?>
+
+<?php if (session('message') !== null): ?>
+    <div class="alert bg-white alert-success" role="alert">
+        <div class="iq-alert-icon">
+            <i class="bi bi-exclamation-square-fill"></i>
+        </div>
+        <div class="iq-alert-text">
+            <?= esc(session('message')) ?>
+        </div>
+    </div>
+<?php endif ?>

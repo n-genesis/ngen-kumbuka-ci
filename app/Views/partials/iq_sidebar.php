@@ -2,53 +2,27 @@
     <!-- Kumbuka LOGO-->
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
         <a href="index.html" class="header-logo">
-            <img src="assets/images/logo.png" class="img-fluid rounded-normal light-logo" alt="logo">
-            <h4 class="logo-title ml-3">Kumbuka</h4>
+            <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
+            <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
         </a>
         <div class="iq-menu-bt-sidebar">
             <i class="bi bi-x-lg wrapper-menu"></i>
         </div>
     </div>
-    <div class="sidebar-caption dropdown">
-        <a href="#" class="iq-user-toggle d-flex align-items-center justify-content-between" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="assets/images/user/1.jpg" class="img-fluid rounded avatar-50 mr-3" alt="user">
-            <div class="caption">
-                <h6 class="mb-0 line-height">Andrew Nite</h6>
-            </div>
-            <i class="bi bi-chevron-down"></i>
-        </a>
-        <div class="dropdown-menu w-100 border-0 my-2" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item mb-2" href="../app/user-profile.html">
-                <i class="bi bi-person-circle font-size-20 mr-1"></i>
-                <span class="mt-2">My Profile</span>
-            </a>
-            <a class="dropdown-item mb-2" href="../app/user-profile-edit.html">
-                <i class="bi bi-file-person font-size-20 mr-1"></i>
-                <span>Edit Profile</span>
-            </a>
-            <a class="dropdown-item mb-2" href="../app/user-account-setting.html">
-                <i class="bi bi-person-gear font-size-20 mr-1"></i>
-                <span>Account Settings</span>
-            </a>
-            <a class="dropdown-item mb-3" href="../app/user-privacy-setting.html">
-                <i class="bi bi-person-lock font-size-20 mr-1"></i>
-                <span>Privacy Settings</span>
-            </a>
-            <hr class="my-2">
-            <a class="dropdown-item" href="auth-sign-in.html">
-                <i class="bi bi-box-arrow-right font-size-20 mr-1"></i>
-                <span>Logout</span>
-            </a>
-        </div>
-    </div>
+    
+    <!-- User Options -->
+    <?= $this->include('partials/sidebar_caption') ?>
+    <!-- END User Options -->
+
     <div class="data-scrollbar" data-scroll="1">
+        <!-- SEARCH BAR -->
         <div class="iq-search-bar device-search mb-3">
             <form action="#" class="searchbox">
                 <a class="search-link" href="#"><i class="bi bi-search"></i></a>
                 <input type="text" class="text search-input" placeholder="Search">
             </form>
         </div>
+        <!-- Add Notes Dropdown -->
         <div class="sidebar-btn dropdown mb-3">
             <a href="#" id="dropdownMenuButton01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                 class="btn btn-primary pr-5 position-relative iq-user-toggle d-flex align-items-center justify-content-between"
@@ -75,6 +49,7 @@
                 </a>
             </div>
         </div>
+        <!-- Menu Options -->
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li class="active">
@@ -747,10 +722,11 @@
             <div class="card rounded shadow-none">
                 <div class="card-body">
                     <div class="sidebarbottom-content">
-                        <div class="image"><img src="assets/images/layouts/side-bkg.png" class="img-fluid"
-                                alt="side-bkg"></div>
-                        <p class="mb-0">Set Buisness Account To Explore Premiun Features</p>
-                        <button type="button" class="btn bg-primary mt-3">Upgrade</button>
+                        <div class="image">
+                            <img src="<?= base_url('assets/images/layouts/side-bkg.png') ?>" class="img-fluid" alt="side-bkg">
+                        </div>
+                        <p class="mb-0"><?= lang('Menus.iqSideBarBusAccount') ?></p>
+                        <button type="button" class="btn bg-primary mt-3"><?= lang('Menus.iqSideupgradeButton') ?></button>
                     </div>
                 </div>
             </div>

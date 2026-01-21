@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- head tag include -->
+<!-- Include head Tag -->
 <?= $this->include('partials/head') ?>
 
 <body class="Kumbuka-layout">

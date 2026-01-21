@@ -1,3 +1,5 @@
+<?php $this->setVar('appTitle', lang(line: 'Auth.login')); ?>
+
 <?= $this->extend('layouts/main'); ?>
 
 <?= $this->section('main'); ?>
@@ -9,20 +11,9 @@
 
                 <div class="col-md-5 col-sm-12 col-12 align-self-center">
 
-                    <div class="mt-5">
-                        <!-- Alerts -->
-                        <?= $this->include('blocks/alerts') ?>
+                    <!-- Alerts -->
+                    <?= $this->include('blocks/alerts') ?>
 
-                        <?php if (session('message') !== null): ?>
-                            <div class="alert bg-white alert-success" role="alert">
-                                <div class="iq-alert-icon">
-                                    <i class="bi bi-exclamation-square-fill"></i>
-                                </div>
-                                <div class="iq-alert-text"><?= esc(session('message')) ?></div>
-                                <?= esc(session('message')) ?>
-                            </div>
-                        <?php endif ?>
-                    </div>
                     <!-- SignIn User Card -->
                     <div class="sign-user_card">
                         <div class="logo-detail">

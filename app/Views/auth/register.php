@@ -1,3 +1,5 @@
+<?php $this->setVar('appTitle', lang(line: 'Auth.register')); ?>
+
 <?= $this->extend('layouts/main'); ?>
 
 <?= $this->section('main'); ?>
@@ -6,6 +8,7 @@
     <section class="login-content">
         <div class="container h-100">
             <div class="row justify-content-center align-items-center height-self-center">
+                
                 <div class="col-md-5 col-sm-12 col-12 align-self-center">
 
                     <!-- Alerts -->
