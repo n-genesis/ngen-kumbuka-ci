@@ -1,7 +1,7 @@
 <aside class="iq-sidebar sidebar-default">
     <!-- Kumbuka LOGO-->
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
-        <a href="index.html" class="header-logo">
+        <a href="<?= base_url('/') ?>" class="header-logo">
             <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
             <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
         </a>

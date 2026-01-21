@@ -3,16 +3,32 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\Shield\Models\UserModel;
+use Psr\Log\LoggerInterface;
+use App\Models\User\UserDetailsModel;
+use Config\AppConfig\User as userConfig;
 
 
 class UserController extends BaseController
 {
-    protected $userModel;
+    protected $userConfig;
 
-    public function __construct()
+    protected $userDetails;
+
+    protected $userAvatar;
+    
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        $this->userModel = new UserModel();
+        // Do Not Edit This Line
+        parent::initController($request, $response, $logger);
+
+        // Get User Configs
+        $this->userConfig = config(UserConfig::class);
+        // Get User Deatils
+        $this->userDetails = $this->userDetailsModel->getUserAvatarById($this->userId);
+        // Get User Avatar NOT USED
+        $this->userAvatar = $this->userDetails->avatar ?? $this->userConfig->defaultAvatar;
+
     }
 }

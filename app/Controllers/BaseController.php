@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\User\UserDetailsModel;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -24,9 +25,12 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-
-    // protected $session;
-
+    protected $session;
+    protected $userId;
+    protected $username;
+    protected $userModel;
+    protected $userDetailsModel;
+    protected $helpers = ['preferences_helper'];
     /**
      * Varable to store global data to be shared accross views
      * @var list<mixed>
@@ -59,25 +63,16 @@ abstract class BaseController extends Controller
         // Add Global Data to View $data array
         $view->setData((array) $this->globalData);
 
+        // Set Sessions
+        $this->session = session();
 
-        // Build sidebar links
-        // $sidebarConfig = config('Sidebar');
-        // $this->globalData['userSidebarOpts'] = $sidebarConfig->userSidebarOpts;
-
-        // Check if the USer is logged in
-        // if (auth()->loggedIn()) {
-        //     $userId = auth()->id();// Get User ID
-        //     $this->globalData['username'] = auth()->user()->username;
-
-        //     $userDetailsModel = new UserDetailsModel(); // User Details Model
-        //     // Use Default avatart image in User Config file is sser's not set
-        //     $userAvatar = $userDetailsModel->getUserAvatarById($userId);
-        //     $userConfig = config(User::class);
-        //     $this->globalData['userAvatar'] = $userAvatar->avatar ?? $userConfig->defaultAvatar;
-
-        // } else {
-        //     $this->globalData['username'] = 'Guest';
-        // }
+        // Check if the User is logged in & get credentials
+        if (auth()->loggedIn()) {
+            $this->userModel = auth()->user(); // User Entity
+            $this->userId = auth()->id();// Get User ID
+            $this->username = auth()->user()->username;
+            $this->userDetailsModel = new UserDetailsModel(); //TODO User Detail Model
+        }
     }
 
     public function renderView(string $viewName, array $data = [])

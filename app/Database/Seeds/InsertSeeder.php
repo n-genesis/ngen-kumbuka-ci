@@ -9,9 +9,9 @@ class InsertSeeder extends Seeder
     public function run()
     {
         // Users Inserts
-        $this->call('UsersSeeder');
+        //$this->call('UsersSeeder');
         // Auth Identities Inserts
-        $this->call('AuthIdentitiesSeeder');
+        //$this->call('AuthIdentitiesSeeder');
         // User Details Inserts
         $this->call('UserDetailsSeeder');
         // Notebook Types Inserts

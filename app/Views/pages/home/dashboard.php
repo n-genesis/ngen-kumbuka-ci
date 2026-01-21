@@ -14,6 +14,7 @@
     <!-- END Main Sidebar-->
 
     <div class="content-page">
+        
         <div class="container-fluid note-details">
 
             <!-- Desktop Header -->

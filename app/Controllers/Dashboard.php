@@ -9,6 +9,12 @@ class Dashboard extends UserController
 {
     public function index()
     {
-        return $this->renderView('pages/home/dashboard');
+        if ($this->userModel->inGroup('admin')) {
+            return setting('Auth.redirects')['admin_login'];;
+        } else {
+            // Default view for regular users
+            return $this->renderView('pages/home/dashboard');
+        }
+        
     }
 }

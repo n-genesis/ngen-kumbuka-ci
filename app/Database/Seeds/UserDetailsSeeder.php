@@ -24,23 +24,24 @@ class UserDetailsSeeder extends Seeder
                 'avatar' => '1759452960_4089d9940012885b223c.jpg'
                 // ... other fields from your user_details table
             ],
-            [
-                'user_id' => 2,
-                'first_name' => 'Adrian',
-                'last_name' => 'Garber',
-                'phone' => '(717) 367-2573',
-                'organization' => 'Silver Cafe',
-                'address1' => '505 East Park Street',
-                'address2' => null,
-                'city' => 'Elizabethtown',
-                'state' => 'Pennsylvania',
-                'zip' => 17022,
-                'avatar' => null
-                // ... other fields from your user_details table
-            ],
+            // [
+            //     'user_id' => 2,
+            //     'first_name' => 'Adrian',
+            //     'last_name' => 'Garber',
+            //     'phone' => '(717) 367-2573',
+            //     'organization' => 'Silver Cafe',
+            //     'address1' => '505 East Park Street',
+            //     'address2' => null,
+            //     'city' => 'Elizabethtown',
+            //     'state' => 'Pennsylvania',
+            //     'zip' => 17022,
+            //     'avatar' => null
+            //     // ... other fields from your user_details table
+            // ],
         ];
-
+        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
         // Use Query Builder if no dedicated model exists for user_details
         $this->db->table('user_details')->insertBatch($detailData);
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
