@@ -15,14 +15,14 @@
 
     <div class="content-page">
 
-        <div class="container-fluid note-details">
+        <div class="container-fluid">
 
             <div class="desktop-header">
                 <!-- Top Left Nav -->
                 <div class="card card-block topnav-left">
                     <div class="card-body d-flex align-items-center">
                         <div class="d-flex justify-content-between">
-                            <h4 class="text-capitalize">Technical Support</h4>
+                            <h4 class="text-capitalize"><?= esc($pageHeader) ?></h4>
                         </div>
                     </div>
                 </div>
@@ -32,13 +32,21 @@
 
         </div>
 
+        <!-- Main Section -->
         <main class="container-fluid">
-            <div class="row">
+
+            <div id="backend-content" class="row">
+                <!-- Alerts -->
                 <div class="col-lg-12">
-                    Here Add Your HTML Content.....
+                    <?= $this->include('blocks/alerts') ?>
                 </div>
+                
+                <!--Render Section backend -->
+                <?= $this->renderSection('backend'); ?>
             </div>
+
         </main>
+        <!-- Main end  -->
 
     </div>
 </div>

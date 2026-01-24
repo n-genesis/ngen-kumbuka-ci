@@ -2,10 +2,10 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\BaseController;
+use App\Controllers\AdminController;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Settings extends BaseController
+class Settings extends AdminController
 {
     public function index()
     {

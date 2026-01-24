@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                 <i class="ri-menu-line wrapper-menu"></i>
-                <a href="<?= base_url('/') ?>" class="header-logo">
+                <a href="<?= $dashboardLink ?>" class="header-logo">
                     <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
                     <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
                 </a>
@@ -171,7 +171,7 @@
                             <a href="#" class="iq-user-toggle d-flex align-items-center justify-content-between mt-1"
                                 id="h-dropdownMenuButton001" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <img src="assets/images/user/1.jpg" class="img-fluid rounded avatar-50" alt="user">
+                                <img src="<?= base_url($userAvatar) ?>" class="img-fluid rounded avatar-50" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right w-100 border-0 py-2" aria-labelledby="h-dropdownMenuButton001">
                                 <a class="dropdown-item mb-2" href="#">

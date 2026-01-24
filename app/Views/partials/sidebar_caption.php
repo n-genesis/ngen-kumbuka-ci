@@ -2,7 +2,7 @@
 <div class="sidebar-caption dropdown">
     <a href="#" class="iq-user-toggle d-flex align-items-center justify-content-between" id="dropdownMenuButton"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="<?= base_url('assets/images/user/1.jpg') ?>" class="img-fluid rounded avatar-50 mr-3" alt="user">
+        <img src="<?= base_url($userAvatar) ?>" class="img-fluid rounded avatar-50 mr-3" alt="user">
         <div class="caption">
             <h6 class="mb-0 line-height"><?= esc($userFullName) ?></h6>
         </div>

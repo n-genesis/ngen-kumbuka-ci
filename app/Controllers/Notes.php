@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
+use App\Controllers\UserController;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Notes extends BaseController
+class Notes extends UserController
 {
     public function index(string $type = 'blank')
     {

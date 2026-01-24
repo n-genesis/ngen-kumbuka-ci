@@ -33,7 +33,7 @@
         </div>
 
         <!-- Terms Of Service -->
-        <div id="faqAccordion" class="container-fluid">
+        <main id="faqAccordion" class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="iq-accordion career-style faq-style">
@@ -207,7 +207,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
 
     </div>
 </div>

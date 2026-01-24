@@ -1,46 +1,27 @@
-<?= $this->extend('layouts/main'); ?>
+<!-- User Backend Dashboard -->
+<?= $this->extend('layouts/backend'); ?>
 
-<?= $this->section('main'); ?>
+<?= $this->section('backend'); ?>
 
-<!-- Wrapper Start -->
-<div class="wrapper">
-
-    <!-- Navbar Mobile-->
-    <?= $this->include('partials/iq_top_navbar') ?>
-    <!-- END Navbar -->
-
-    <!-- Main Sidebar -->
-    <?= $this->include('partials/iq_sidebar') ?>
-    <!-- END Main Sidebar-->
-
-    <div class="content-page">
-        
-        <div class="container-fluid note-details">
-
-            <div class="desktop-header">
-                <!-- Top Left Nav -->
-                <?= $this->include('partials/topnav_left') ?>
-                <!-- Top Right Nav -->
-                <?= $this->include('partials/topnav_right') ?>
+<!-- Backend Content -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+                <h4 class="card-title">Dashboard</h4>
             </div>
-
         </div>
-
-        <div class="container-fluid">
-            <div class="row">
+        <div class="card-body">
+            <div class="container">
+                <!-- Page Content -->
                 <div class="col-lg-12">
                     Here Add Your HTML Content.....
                 </div>
+                <!-- END Page Content -->
             </div>
         </div>
-
     </div>
 </div>
-<!-- Wrapper End-->
+<!-- END Backend Content-->
  
-<!-- Include footer tag -->
-<?= $this->include('partials/footer') ?>
-
-<!-- END Main -->
 <?= $this->endSection(); ?>
-

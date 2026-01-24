@@ -33,7 +33,7 @@
         </div>
 
         <!-- Privacy Policy -->
-        <div class="container-fluid">
+        <main class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -235,7 +235,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
 
     </div>
 </div>

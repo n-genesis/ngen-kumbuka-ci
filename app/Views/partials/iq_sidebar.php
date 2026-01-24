@@ -2,7 +2,7 @@
 <aside class="iq-sidebar sidebar-default">
     <!-- Kumbuka LOGO-->
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
-        <a href="<?= base_url('/') ?>" class="header-logo">
+        <a href="<?= $dashboardLink ?>" class="header-logo">
             <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
             <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
         </a>
@@ -56,6 +56,47 @@
         <!-- Menu Options -->
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
+                <!-- ADMIN Options -->
+                 <?php if (auth()->user()->inGroup('admin')): ?>
+                <li class="">
+                    <a href="#otherpage" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                        <i class="bi bi-person-vcard"></i>
+                        <span><?= lang('Menus.admin') ?></span>
+                        <i class="bi bi-chevron-right iq-arrow-right arrow-active"></i>
+                        <i class="bi bi-chevron-down iq-arrow-right arrow-hover"></i>
+                    </a>
+                    <ul id="otherpage" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li class="">
+                            <a href="#user" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                                <i class="bi bi-person"></i>
+                                <span>User Details</span>
+                                <i class="bi bi-chevron-right iq-arrow-right arrow-active"></i>
+                                <i class="bi bi-chevron-down iq-arrow-right arrow-hover"></i>
+                            </a>
+                            <ul id="user" class="iq-submenu collapse" data-parent="#otherpage">
+                                <li class="">
+                                    <a href="#" class="svg-icon">
+                                        <i class="bi bi-person-circle"></i>
+                                        <span class="">User Profile</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="svg-icon">
+                                        <i class="bi bi-person-plus"></i>
+                                        <span class="">User Add</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="svg-icon">
+                                        <i class="bi bi-clipboard2"></i>
+                                        <span class="">User List</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <?php endif ?>
                 <!-- User Notes/Dashboard -->
                 <li class="active">
                     <a href="/" class="svg-icon">
@@ -101,45 +142,6 @@
                         <span><?= lang('Menus.reminder') ?></span>
                     </a>
                 </li>   
-                <!-- ADMIN Options -->
-                <li class="">
-                    <a href="#otherpage" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
-                        <i class="bi bi-person-vcard"></i>
-                        <span><?= lang('Menus.admin') ?></span>
-                        <i class="bi bi-chevron-right iq-arrow-right arrow-active"></i>
-                        <i class="bi bi-chevron-down iq-arrow-right arrow-hover"></i>
-                    </a>
-                    <ul id="otherpage" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class="">
-                            <a href="#user" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
-                                <i class="bi bi-person"></i>
-                                <span>User Details</span>
-                                <i class="bi bi-chevron-right iq-arrow-right arrow-active"></i>
-                                <i class="bi bi-chevron-down iq-arrow-right arrow-hover"></i>
-                            </a>
-                            <ul id="user" class="iq-submenu collapse" data-parent="#otherpage">
-                                <li class="">
-                                    <a href="#" class="svg-icon">
-                                        <i class="bi bi-person-circle"></i>
-                                        <span class="">User Profile</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="svg-icon">
-                                        <i class="bi bi-person-plus"></i>
-                                        <span class="">User Add</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="svg-icon">
-                                        <i class="bi bi-clipboard2"></i>
-                                        <span class="">User List</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <!--Trash Bin -->
                 <li class="">
                     <a href="#" class="svg-icon">
@@ -147,6 +149,7 @@
                         <span><?= lang('Menus.trash') ?></span>
                     </a>
                 </li>
+
             </ul>
         </nav>
         <!-- Sidebar Bottom -->

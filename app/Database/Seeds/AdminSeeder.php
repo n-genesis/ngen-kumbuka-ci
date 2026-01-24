@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         // Get admin details from .env or fallback values
         $email    = getenv('app.adminEmail') ?: 'andrewnite@localhost.com';
         $username = getenv('app.adminUsername') ?: 'admin';
-        $password = getenv('app.adminPassword') ?: '583255';
+        $password = getenv('app.adminPassword') ?: '5832552911';
 
         // Check if admin user already exists
         $existingUser = $users->where('username', $username)->first();
@@ -64,7 +64,7 @@ class AdminSeeder extends Seeder
         // Get admin details from .env or fallback values
         $email    = getenv('app.adminEmail') ?: 'adriangarber@localhost.com';
         $username = getenv('app.adminUsername') ?: 'user';
-        $password = getenv('app.adminPassword') ?: '583255';
+        $password = getenv('app.adminPassword') ?: '5832552911';
 
         // Check if admin user already exists
         $existingUser = $users->where('username', $username)->first();

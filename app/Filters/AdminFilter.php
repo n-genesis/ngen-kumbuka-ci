@@ -27,7 +27,10 @@ class AdminFilter implements FilterInterface
 
         // Check if user is in admin group
         if (!auth()->user()->inGroup('admin')) {
-            return redirect()->to('/')->with('error', 'You must have Admin permission to access that page.');
+            // Retrieve a custom 'group_denied' from settings
+            $destination = setting('Auth.redirects')['group_denied'];
+            
+            return redirect()->to($destination)->with('error', 'You must have Admin permission to access that page.');
         }
     }
 

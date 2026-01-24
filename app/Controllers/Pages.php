@@ -2,27 +2,27 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
+use App\Controllers\UserController;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Pages extends BaseController
+class Pages extends UserController
 {
     public function support()
     {
         return $this->renderView('pages/support',[
-            'appTitle' => 'Technical Support',
+            'appTitle' => setting('App.appName').' | Technical Support',
         ]);
     }
 
     public function privacy_policy() {
         return $this->renderView('pages/privacy_policy',[
-            'appTitle' => 'Privacy Policy',
+            'appTitle' => setting('App.appName').' | Privacy Policy',
         ]);
     }
 
     public function terms_of_use() {
         return $this->renderView('pages/terms_of_use',[
-            'appTitle' => 'Terms Of Use',
+            'appTitle' => setting('App.appName').' | Terms Of Use',
         ]);
     }
 }

@@ -28,7 +28,7 @@ abstract class BaseController extends Controller
     protected $session;
     protected $userId;
     protected $username;
-    protected $userModel;
+    protected $userEntity;
     protected $userDetailsModel;
     protected $userDetails;
     protected $helpers = ['preferences_helper'];
@@ -69,7 +69,7 @@ abstract class BaseController extends Controller
 
         // Check if the User is logged in & get credentials
         if (auth()->loggedIn()) {
-            $this->userModel = auth()->user(); // User Entity
+            $this->userEntity = auth()->user(); // User Entity
             $this->userId = auth()->id();// Get User ID
             $this->username = auth()->user()->username;
             $this->userDetailsModel = new UserDetailsModel(); //TODO User Detail Model
@@ -78,7 +78,7 @@ abstract class BaseController extends Controller
             
         }
         
-        $userFullName = $this->userDetails->FullName ?? 'Gues User';
+        $userFullName = $this->userDetails->FullName ?? 'New User';
         // Add user Full name to view data
         $view->setVar('userFullName',$userFullName);
             
