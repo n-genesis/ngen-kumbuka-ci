@@ -13,7 +13,7 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] 
 
 ## Medium Priority
-- [ ] 
+- [ ] Edit Admin Seeder file to remove redundant code
 
 ### Completed (Medium Priority)
 - [ ] 
