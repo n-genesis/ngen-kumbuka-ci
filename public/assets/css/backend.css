@@ -12590,13 +12590,6 @@ body.right-sidebar-close footer {
   color: #131313;
 }
 
-.table span,
-.table p,
-.tbl-server-info span,
-.tbl-server-info p {
-  color: #768492;
-}
-
 .table .ligth th,
 .tbl-server-info .ligth th {
   padding: .50rem 1.5rem;
@@ -16530,7 +16523,7 @@ button.bg-secondary:focus {
 }
 
 .badge-secondary {
-  color: #fff;
+  color: #fff !important;
   background-color: #6c757d;
 }
 

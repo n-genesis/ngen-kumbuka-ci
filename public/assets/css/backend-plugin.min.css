@@ -11953,13 +11953,6 @@ body.right-sidebar-close footer {
     color: #131313
 }
 
-.table p,
-.table span,
-.tbl-server-info p,
-.tbl-server-info span {
-    color: #768492
-}
-
 .table .ligth th,
 .tbl-server-info .ligth th {
     padding: .5rem 1.5rem;
@@ -21301,7 +21294,7 @@ fieldset[disabled] .btn {
 }
 
 #loading-center {
-    background: url(../images/loader.gif) no-repeat scroll 50%;
+    background: url(images/loader.gif) no-repeat scroll 50%;
     background-size: 20%;
     width: 100%;
     height: 100%;
