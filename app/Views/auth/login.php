@@ -17,9 +17,11 @@
                     <!-- SignIn User Card -->
                     <div class="sign-user_card">
                         <div class="logo-detail">
-                            <div class="d-flex align-items-center"><img src="<?= base_url('assets/images/logo.png') ?>"
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/images/logo.png') ?>"
                                     class="img-fluid rounded-normal light-logo logo" alt="logo">
-                                <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
+                                <a href="<?= site_url('/') ?>"><h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
+                                </a>
                             </div>
                         </div>
 

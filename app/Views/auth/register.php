@@ -19,7 +19,8 @@
                         <div class="logo-detail mb-0">
                             <div class="d-flex align-items-center"><img src="<?= base_url('assets/images/logo.png') ?>"
                                     class="img-fluid rounded-normal light-logo logo" alt="logo">
-                                <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
+                                    <a href="<?= url_to('login') ?>">
+                                <h4 class="logo-title ml-3"><?= esc($appName) ?></h4></a>
                             </div>
                         </div>
 
@@ -85,7 +86,7 @@
                                     <div class="custom-control custom-checkbox mb-3 text-left">
                                         <input type="checkbox" class="custom-control-input" id="checkboxTermsOfUse">
                                         <label class="custom-control-label" for="checkboxTermsOfUse"><?= lang('Auth.iAgreeWithTerms') ?></label> <a
-                                                href="<?= site_url('terms-of-service') ?>"> <?= lang('Auth.termsOfService') ?></a>
+                                                href="<?= site_url('terms_of_use') ?>" target="_blank"> <?= lang('Auth.termsOfService') ?></a>
                                     </div>
                                 </div>
                             </div>

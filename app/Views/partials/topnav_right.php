@@ -1,5 +1,5 @@
 <!-- Topnav Right -->
-<div class="card topnav-right">
+<div class="card topnav-right mb-0">
     <div class="card-body card-content-right">
         <ul class="list-inline m-0 p-0 d-flex align-items-center justify-content-around">
             <!-- Messages -->

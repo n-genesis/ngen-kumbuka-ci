@@ -14,7 +14,7 @@ class Users extends AdminController
 
         return $this->renderView('pages/admin/users/index',[
             'appTitle' => setting('App.appName').' | User Managment',
-            'pageHeader' => 'Admin Dashboard',
+            'pageHeader' => 'User Managment',
             'users' => $users,
         ]);
     }

@@ -17,6 +17,9 @@
 
     <div class="data-scrollbar" data-scroll="1">
 
+        <!-- SHOW IF USER IS SIGHNED IN -->
+        <?php if (auth()->loggedIn()): ?>
+        
         <!-- SEARCH BAR -->
         <div class="iq-search-bar device-search mb-3">
             <form action="#" class="searchbox">
@@ -56,7 +59,7 @@
         <!-- Menu Options -->
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
-                <!-- ADMIN Options -->
+                <!-- ADMINISTRATOR Options -->
                  <?php if (auth()->user()->inGroup('admin')): ?>
                 <li class="">
                     <a href="#otherpage" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
@@ -76,20 +79,14 @@
                             <ul id="user" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="#" class="svg-icon">
-                                        <i class="bi bi-person-circle"></i>
-                                        <span class="">User Profile</span>
+                                        <i class="bi bi-people-fill"></i>
+                                        <span class="">User Management</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="#" class="svg-icon">
                                         <i class="bi bi-person-plus"></i>
                                         <span class="">User Add</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="svg-icon">
-                                        <i class="bi bi-clipboard2"></i>
-                                        <span class="">User List</span>
                                     </a>
                                 </li>
                             </ul>
@@ -141,7 +138,15 @@
                         <i class="bi bi-clock"></i>
                         <span><?= lang('Menus.reminder') ?></span>
                     </a>
-                </li>   
+                </li>
+                <li class="">
+                    <a href="#" class="svg-icon">
+                        <i class="bi bi-broadcast"></i>
+                        <!-- <i class="bi bi-journal-bookmark-fill"></i>
+                         <i class="bi bi-rss"></i> -->
+                        Following &amp; Activity
+                    </a>
+                </li>  
                 <!--Trash Bin -->
                 <li class="">
                     <a href="#" class="svg-icon">
@@ -152,6 +157,9 @@
 
             </ul>
         </nav>
+
+        <?php endif ?>
+        
         <!-- Sidebar Bottom -->
         <div id="sidebar-bottom" class="position-relative sidebar-bottom">
             <div class="card rounded shadow-none">
@@ -160,8 +168,16 @@
                         <div class="image">
                             <img src="<?= base_url('assets/images/layouts/side-bkg.png') ?>" class="img-fluid" alt="side-bkg">
                         </div>
-                        <p class="mb-0"><?= lang('Menus.iqSideBarBusAccount') ?></p>
-                        <button type="button" class="btn bg-primary mt-3"><?= lang('Menus.iqSideupgradeButton') ?></button>
+                        <!-- Registration Link -->
+                        <?php if (setting('Auth.allowRegistration')): ?>
+                            <a href="<?= url_to('register') ?>" class="btn bg-primary mt-3 mb-1">
+                                <?= lang('Auth.needAccountLinkText') ?>
+                            </a>
+                            <p class="mb-0"><?= lang('Auth.needAccountText') ?></p>
+                        <?php else: ?>
+                            <p class="mb-1 mt-3"><?= lang('Landing.cardThreeBody') ?></p>
+                            <a href="<?= site_url('support') ?>" class="btn bg-primary mt-3"><?= lang('Landing.cardThreeLink') ?></a>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

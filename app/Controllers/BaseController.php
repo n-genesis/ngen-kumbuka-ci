@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\User\UserDetailsModel;
+use Config\AppConfig\User as userConfig;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -26,11 +27,13 @@ abstract class BaseController extends Controller
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
     protected $session;
+    protected $userConfig;
     protected $userId;
     protected $username;
     protected $userEntity;
     protected $userDetailsModel;
     protected $userDetails;
+    protected $userAvatar;
     protected $helpers = ['preferences_helper'];
     /**
      * Varable to store global data to be shared accross views
@@ -64,6 +67,9 @@ abstract class BaseController extends Controller
         // Add Global Data to View $data array
         $view->setData((array) $this->globalData);
 
+        // Get Default User Configs
+        $this->userConfig = config(UserConfig::class);
+
         // Set Sessions
         $this->session = session();
 
@@ -74,7 +80,8 @@ abstract class BaseController extends Controller
             $this->username = auth()->user()->username;
             $this->userDetailsModel = new UserDetailsModel(); //TODO User Detail Model
             // Get User Deatils
-            $this->userDetails = $this->userDetailsModel->getDetailsByUserId($this->userId);      
+            $this->userDetails = $this->userDetailsModel->getDetailsByUserId($this->userId);
+            $this->userAvatar = $this->userDetailsModel->getUserAvatarById($this->userId);     
             
         }
         

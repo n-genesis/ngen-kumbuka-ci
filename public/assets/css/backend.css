@@ -11404,14 +11404,6 @@ body.sidebar-main .iq-top-navbar {
   margin-top: 5px;
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
-  content: "\ea5f";
-  font-family: 'remixicon';
-  font-size: 14px;
-  vertical-align: sub;
-  color: #768492;
-}
-
 .navbar-list {
   margin: 0;
   padding: 0;

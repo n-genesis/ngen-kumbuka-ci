@@ -8,6 +8,8 @@
         </div>
         <i class="bi bi-chevron-down"></i>
     </a>
+    <!-- SHOW IF USER IS SIGHNED IN -->
+    <?php if (auth()->loggedIn()): ?>
     <div class="dropdown-menu w-100 border-0 my-2" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item mb-2" href="#">
             <i class="bi bi-person-circle font-size-20 mr-1"></i>
@@ -31,4 +33,6 @@
             <span><?= lang('Menus.logout') ?></span>
         </a>
     </div>
+    <?php endif ?>
+    
 </div>

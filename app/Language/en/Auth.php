@@ -54,7 +54,7 @@ return [
     'registerDisabled' => 'Registration is not currently allowed.',
     'registerSuccess'  => 'Welcome aboard!',
     'iAgreeWithTerms' => 'I agree with the',
-    'termsOfService'   => 'Terms of Service',
+    'termsOfService'   => 'Terms of Use',
 
     // Login
     'login'              => 'Sign In',

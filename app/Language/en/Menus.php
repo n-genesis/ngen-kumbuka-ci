@@ -8,9 +8,6 @@ return [
     'accntSettings' => 'Account Settings',
     'prvySettings'  => 'Privacy Settings',
     'logout'        => 'Logout',
-    // Bottom Content
-    'iqSideBarBusAccount'   => 'Setup A Buisness Account To Explore Premiun Features',
-    'iqSideupgradeButton' => 'Upgrade Account',
 
     // Notes Dropdown
     'addNewNote'    => 'Add New',

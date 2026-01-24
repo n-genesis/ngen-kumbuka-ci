@@ -10,9 +10,8 @@ use Config\AppConfig\Admin as adminConfig;
 
 class AdminController extends BaseController
 {
-    protected $adminConfig;
 
-    protected $adminAvatar;
+    protected $userAvatar;
     
     protected $userModel;
 
@@ -24,12 +23,11 @@ class AdminController extends BaseController
         $view = service('renderer');
         
         // Get User Configs
-        $this->adminConfig = config(AdminConfig::class);
+        $this->userConfig = config(AdminConfig::class);
 
         // Use Default avatart image in User Config file is sser's not set
-        $userAvatar = $this->userDetailsModel->getUserAvatarById($this->userId);
-        $userAvatar = $userAvatar->avatar ?? $this->adminConfig->defaultAvatar;
-        $view->setVar('userAvatar', $userAvatar);
+        $this->userAvatar = $userAvatar->avatar ?? $this->userConfig->defaultAvatar;
+        $view->setVar('userAvatar', $this->userAvatar);
         
         // Create Admin dashboard link
         $view->setVar('dashboardLink',site_url('admin/dashboard'));

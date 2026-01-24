@@ -12,6 +12,6 @@ return [
     'cardTwoTitle'      => 'Getting Started',
     'cardTwoLink'     => 'Click Here to Login',
     'cardThreeTitle'    => 'Do you need Support?',
-    'cardThreeBody'     => 'Contact an administrator for any technical issues. For more detail information and support.',
+    'cardThreeBody'     => 'Contact an administrator for any technical issues. For more detail steps and support.',
     'cardThreeLink'     => 'Click Here',
 ];
