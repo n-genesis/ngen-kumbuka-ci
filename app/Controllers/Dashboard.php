@@ -14,7 +14,6 @@ class Dashboard extends UserController
             // Default view for regular users
             return $this->renderView('pages/home/dashboard',[
                 'appTitle' => setting('App.appName').' | Dashbord',
-                'userFullName' => $this->userDetails->FullName,
             ]);
         }
         

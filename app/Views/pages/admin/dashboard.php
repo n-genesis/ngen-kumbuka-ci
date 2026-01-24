@@ -19,7 +19,13 @@
 
             <div class="desktop-header">
                 <!-- Top Left Nav -->
-                <?= $this->include('partials/topnav_left') ?>
+                <div class="card card-block topnav-left">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-capitalize">Admin Dashboard</h4>
+                        </div>
+                    </div>
+                </div>
                 <!-- Top Right Nav -->
                 <?= $this->include('partials/topnav_right') ?>
             </div>

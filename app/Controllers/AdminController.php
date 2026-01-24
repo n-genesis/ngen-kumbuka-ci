@@ -6,14 +6,13 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use Config\AppConfig\User as userConfig;
+use Config\AppConfig\Admin as adminConfig;
 
-
-class UserController extends BaseController
+class AdminController extends BaseController
 {
-    protected $userConfig;
+    protected $adminConfig;
 
-    protected $userAvatar;
+    protected $adminAvatar;
     
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
@@ -21,7 +20,7 @@ class UserController extends BaseController
         parent::initController($request, $response, $logger);
 
         // Get User Configs
-        $this->userConfig = config(UserConfig::class);
+        $this->adminConfig = config(AdminConfig::class);
 
     }
 }

@@ -26269,8 +26269,8 @@ fieldset[disabled] .btn {
 .iq-accordion.career-style.faq-style .accordion-title:before {
   display: inline-block;
   cursor: pointer;
-  content: "";
-  font-family: remixicon;
+  content: "\F4FD";
+  font-family: "bootstrap-icons" !important;
   position: absolute;
   top: -8px;
   right: 15px;

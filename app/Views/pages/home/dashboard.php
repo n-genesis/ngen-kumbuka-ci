@@ -17,9 +17,12 @@
         
         <div class="container-fluid note-details">
 
-            <!-- Desktop Header -->
-             <?= $this->include('partials/desktop_header') ?>
-            <!-- END Desktop Header  -->
+            <div class="desktop-header">
+                <!-- Top Left Nav -->
+                <?= $this->include('partials/topnav_left') ?>
+                <!-- Top Right Nav -->
+                <?= $this->include('partials/topnav_right') ?>
+            </div>
 
         </div>
 

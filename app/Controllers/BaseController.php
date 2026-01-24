@@ -30,6 +30,7 @@ abstract class BaseController extends Controller
     protected $username;
     protected $userModel;
     protected $userDetailsModel;
+    protected $userDetails;
     protected $helpers = ['preferences_helper'];
     /**
      * Varable to store global data to be shared accross views
@@ -72,7 +73,15 @@ abstract class BaseController extends Controller
             $this->userId = auth()->id();// Get User ID
             $this->username = auth()->user()->username;
             $this->userDetailsModel = new UserDetailsModel(); //TODO User Detail Model
+            // Get User Deatils
+            $this->userDetails = $this->userDetailsModel->getDetailsByUserId($this->userId);      
+            
         }
+        
+        $userFullName = $this->userDetails->FullName ?? 'Gues User';
+        // Add user Full name to view data
+        $view->setVar('userFullName',$userFullName);
+            
     }
 
     public function renderView(string $viewName, array $data = [])
