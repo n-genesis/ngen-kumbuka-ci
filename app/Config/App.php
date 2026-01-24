@@ -25,9 +25,9 @@ class App extends BaseConfig
      * Name of the application owner
      * @var string
      */
-    public string $appAuthor = 'Site Owner';
-    public string $appAuthWebsite = 'https://appwebsite.com';
-    public string $appDesc = 'A web-based shared notebook application built with CodeIgniter 4.';
+    public string $appAuthor = '</N-Gen>';
+    public string $appAuthWebsite = 'https://ngendesign.com';
+    public string $appDesc = 'A simple notebook application built with CodeIgniter 4.';
     /**
      * Applications copyright
      * @var string
