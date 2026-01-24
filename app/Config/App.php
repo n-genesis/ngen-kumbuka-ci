@@ -15,7 +15,7 @@ class App extends BaseConfig
      * Document description (Can be changed in the controller)
      * @var string
      */
-    public string $appTitle = 'Welcom to Kubmuka';
+    public string $appTitle = 'Welcome to Kubmuka';
     /**
      * Applications administrator email
      * @var string
