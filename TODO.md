@@ -14,6 +14,8 @@ This document jsut lists current tasks and planned features for the project. A m
 
 ## Medium Priority
 - [ ] Edit Admin Seeder file to remove redundant code
+- [ ] Create `Cell` Views for sidebar menus
+- [ ] Create `Cell` views for User Dashboard page
 
 ### Completed (Medium Priority)
 - [ ] 
