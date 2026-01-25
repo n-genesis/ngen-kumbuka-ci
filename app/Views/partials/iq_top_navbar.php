@@ -2,7 +2,7 @@
     <div class="iq-navbar-custom">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
-                <i class="ri-menu-line wrapper-menu"></i>
+                <i class="bi bi-list wrapper-menu"></i>
                 <a href="<?= $dashboardLink ?>" class="header-logo">
                     <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
                     <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
@@ -12,7 +12,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-label="Toggle navigation">
-                    <i class="bi bi-list"></i>
+                    <i class="bi bi-three-dots-vertical"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-list align-items-center">

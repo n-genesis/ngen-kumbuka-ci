@@ -169,7 +169,10 @@
                             <img src="<?= base_url('assets/images/layouts/side-bkg.png') ?>" class="img-fluid" alt="side-bkg">
                         </div>
                         <!-- Registration Link -->
-                        <?php if (setting('Auth.allowRegistration')): ?>
+                         <?php if (auth()->loggedIn()): ?>
+                            <p class="mb-0"><?= lang('Menus.iqSideBarBusAccount') ?></p>
+                            <a href="#" class="btn bg-primary mt-3"><?= lang('Menus.iqSideupgradeButton') ?></a>
+                        <?php elseif (setting('Auth.allowRegistration')): ?>
                             <a href="<?= url_to('register') ?>" class="btn bg-primary mt-3 mb-1">
                                 <?= lang('Auth.needAccountLinkText') ?>
                             </a>

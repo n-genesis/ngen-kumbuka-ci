@@ -17,6 +17,11 @@ class App extends BaseConfig
      */
     public string $appTitle = 'Welcome to Kubmuka';
     /**
+     * Default image for user profiles
+     * @var string
+     */
+    public string $appDefaultImage = 'assets/images/user/i1.jpg';
+    /**
      * Applications administrator email
      * @var string
      */

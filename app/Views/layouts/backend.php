@@ -39,14 +39,7 @@
 
             <!-- Breadcrumbs -->
                 <div class="col-12 mb-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb bg-primary mb-0">
-                            <li class="breadcrumb-item"><a href="#" class="text-white">
-                                <i class="bi bi-house-door-fill"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="text-white">Library</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">Data</li>
-                        </ol>
-                    </nav>
+                    <?= $this->include('blocks/breadcrumbs',$breadcrumbLinks) ?>
                 </div>
 
                 <!-- Alerts -->

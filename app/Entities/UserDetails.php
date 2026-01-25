@@ -6,24 +6,17 @@ use CodeIgniter\Entity\Entity;
 use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
 use Config\AppConfig\User;
 
-class UserDetail extends Entity
+class UserDetails extends Entity
 {
 
     protected $attributes = [
         'user_id' => null,
         'avatar' => null,
-        'organization' => '',
     ];
     protected $datamap = [];
     protected $dates   = ['created_at', 'updated_at', 'deleted_at'];
     protected $casts   = [];
 
-    public function getFullName() {
-        $firstName = $this->attributes['first_name'] ?? 'New';
-        $lastName = $this->attributes['last_name'] ?? 'User';
-        
-        return "$firstName $lastName";
-    }
     public function getBirthday(): string
     {
         // Access the raw datetime string from the database row

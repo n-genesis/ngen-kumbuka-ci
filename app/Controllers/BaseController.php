@@ -78,17 +78,11 @@ abstract class BaseController extends Controller
             $this->userEntity = auth()->user(); // User Entity
             $this->userId = auth()->id();// Get User ID
             $this->username = auth()->user()->username;
-            $this->userDetailsModel = new UserDetailsModel(); //TODO User Detail Model
-            // Get User Deatils
-            $this->userDetails = $this->userDetailsModel->getDetailsByUserId($this->userId);
-            $this->userAvatar = $this->userDetailsModel->getUserAvatarById($this->userId);     
+            $this->userfullName = $this->userEntity->full_name; //TODO User Detail Model 
             
         }
-        
-        $userFullName = $this->userDetails->FullName ?? 'New User';
-        // Add user Full name to view data
-        $view->setVar('userFullName',$userFullName);
-            
+        // Add User's full name to View $data array
+        $view->setVar('userFullName',$this->userfullName);
     }
 
     public function renderView(string $viewName, array $data = [])

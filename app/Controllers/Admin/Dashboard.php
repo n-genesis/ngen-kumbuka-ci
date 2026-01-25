@@ -29,6 +29,10 @@ class Dashboard extends AdminController
         return $this->renderView('pages/admin/dashboard',[
             'appTitle' => setting('App.appName').' | Admin Dashboard',
             'pageHeader' => 'Admin Dashboard',
+            'breadcrumbLinks' => [
+                ['label' => 'Home', 'url' => site_url('admin/dashboard')],
+                ['label' => 'Dashboard', 'url' => ''],
+            ],
             'totalUsers' => $totalUsers,
             'activeUsers' => $activeUsers,
             'inactiveUsers' => $inactiveUsers,
