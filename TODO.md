@@ -5,6 +5,7 @@ This document jsut lists current tasks and planned features for the project. A m
 
 ## High Priority
 - [ ] Update template for Bootstrap 5 (legacy 4.x used)
+- [ ] Add emptey `user_details` for email activated Users
 
 ### Currently Completing
 - [ ] Admin Section for User managment

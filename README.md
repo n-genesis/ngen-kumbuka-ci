@@ -1,10 +1,10 @@
 # Kumbuka: Notebook Application
 Kumbuka (Swahili: 'to take note' or 'to remember') is a web-based shared notebook application built with CodeIgniter 4.
 
-**Version:** 1.0.0 alpha
+~~**Version:** 1.0.0 alpha~~
 
+![Version](https://img.shields.io/badge/release-v2.0.0--alpa-red)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-563d7c.svg)](https://getbootstrap.com)
 
 ### [Kumbuka](https://ngendesign.com/templates/ngen-admin-dashboard/) is a open-source project built with love by [N-Gen Design](https://ngendesign.com).
 
