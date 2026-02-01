@@ -6,7 +6,7 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a web-based notebook appli
 ![Version](https://img.shields.io/badge/release-v2.0.0--alpa-red)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-### [Kumbuka](https://ngendesign.com/templates/ngen-admin-dashboard/) is a open-source project built with love by [N-Gen Design](https://ngendesign.com).
+### [Kumbuka](https://kumbuka.ngendesign.com) is a open-source project built with love by [N-Gen Design](https://ngendesign.com).
 
 
 ![Dashboard](https://lh3.googleusercontent.com/d/1TsIHuLjOead--_CsQHjvznmpfXXXXUe9)
