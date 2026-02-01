@@ -1,22 +1,28 @@
 <?php
 declare(strict_types=1);
+
+namespace App\Models;
+
+use CodeIgniter\Shield\Models\UserModel as ShieldUserModel;
+use App\Entities\User as UserEntity;
 /**
- * User Model extending CodeIgniter Shield's UserModel
+ * Admin User Model extending CodeIgniter Shield's UserModel 
+ * in additional to returning an extended User Entity.
  * 
  * This model customizes the default user model provided by CodeIgniter Shield
  * to include additional fields and functionalities as needed by the application.
  * 
  * @package    App\Models
- * @author     Andrew Nite <ngendesign@email.com>
+ * @author     Andrew Nite <ngendesgin@email.com>
+ * @copyright  2026 N-Gen Design <https://ngendesign.com>
+ * @license    https://opensource.org MIT License
+ * @link       https://n-genesis/github.com/ngen-bootsnippets-ci
  */
-namespace App\Models;
-
-use CodeIgniter\Shield\Models\UserModel as ShieldUserModel;
-use App\Entities\User as UserEntity;
-
+ 
 class UserModel extends ShieldUserModel
 {
     protected $returnType  = UserEntity::class;
+    protected bool $updateOnlyChanged = true;
     
     protected function initialize(): void
     {

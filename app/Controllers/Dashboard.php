@@ -30,6 +30,10 @@ class Dashboard extends UserController
             return $this->renderView('pages/home/dashboard',[
                 'appTitle' => setting('App.appName').' | Dashbord',
                 'pageHeader' => 'Dashboard',
+                'breadcrumbLinks' => [
+                    ['label' => 'Home', 'url' => site_url('dashboard')],
+                    ['label' => 'Dashboard', 'url' => ''],
+                ],
             ]);
         }
         

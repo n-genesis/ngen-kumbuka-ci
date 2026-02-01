@@ -12,6 +12,11 @@ class App extends BaseConfig
      */
     public string $appName = 'Kumbuka';
     /**
+     * Application Logo Path
+     * @var string
+     */
+    public string $appLogo = 'assets/images/logo/logo.png'; 
+    /**
      * Document description (Can be changed in the controller)
      * @var string
      */
@@ -48,6 +53,15 @@ class App extends BaseConfig
         'Daily Reflection',
         'Reminder',
     ];
+    /**
+     * Default User credentials to use as placeholder values for representation
+     * or until the user set/updates them.
+     *  
+     */
+    public string $appDefaultUsername = 'newuser';
+    public string $appDefaultuserFullName = 'New User';
+    public string $appDefaultUserEmail = 'newuser@email.com';
+    public string $appDefaultPassword = 'password123';
     /**
      * --------------------------------------------------------------------------
      * Base Site URL

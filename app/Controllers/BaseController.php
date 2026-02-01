@@ -30,6 +30,7 @@ abstract class BaseController extends Controller
     protected $userConfig;
     protected $userId;
     protected $username;
+    protected $userfullName;
     protected $userEntity;
     protected $userDetailsModel;
     protected $userDetails;
@@ -56,11 +57,16 @@ abstract class BaseController extends Controller
         // Get Config values or store settings
         $this->globalData = (object) [
             'appName' => service('settings')->get('App.appName'),
+            'appLogo' => service('settings')->get('App.appLogo'),
             'appTitle' => service('settings')->get('App.appTitle'),
             'appEmail' => service('settings')->get('App.appEmail'),
             'appAuthor' => service('settings')->get('App.appAuthor'),
             'appAuthWebsite' => service('settings')->get('App.appAuthWebsite'),
+            // TODO Rethink where the configs for Deafault User valuse should be stored
             'appDesc' => service('settings')->get('App.appDesc'),
+            'appDefaultuserFullName' => service('settings')->get('App.appDefaultuserFullName'),
+            'appDefaultUserEmail' => service('settings')->get('App.appDefaultUserEmail'),
+            
         ];
 
         $view = service('renderer');
@@ -81,6 +87,11 @@ abstract class BaseController extends Controller
             $this->userfullName = $this->userEntity->full_name; //TODO User Detail Model 
             
         }
+
+        // Set if user's full name to user_details first_name & last_name values is
+        // use is logged in else use default value from config
+        $this->userfullName = $this->userfullName ?? $this->globalData->appDefaultuserFullName;
+
         // Add User's full name to View $data array
         $view->setVar('userFullName',$this->userfullName);
     }

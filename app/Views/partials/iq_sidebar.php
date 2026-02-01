@@ -95,7 +95,7 @@
                 </li>
                 <?php endif ?>
                 <!-- User Notes/Dashboard -->
-                <li class="active">
+                <li>
                     <a href="/" class="svg-icon">
                         <i class="bi bi-journal-text"></i>
                         <span><?= lang('Menus.yourNotes') ?></span>

@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Entities;
+
+use CodeIgniter\Shield\Entities\User as ShieldUserEntity;
+
 /**
  * User Entity extending CodeIgniter Shield's User Entity
  * 
@@ -12,12 +17,7 @@
  * @link       https://github.com/n-genesis/ngen-bootsnippets-ci
  * 
  */
-
-namespace App\Entities;
-
-use CodeIgniter\Shield\Entities\User as ShieldUser;
-
-class User extends ShieldUser
+class User extends ShieldUserEntity
 {
     protected $datamap = [];
     protected $dates   = ['created_at', 'updated_at', 'deleted_at'];

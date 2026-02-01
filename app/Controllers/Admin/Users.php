@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Controllers\Admin;
+
+use App\Controllers\AdminController;
+use CodeIgniter\HTTP\ResponseInterface;
+
 /**
  * Admin User Managment Controller
  * 
@@ -11,16 +17,11 @@
  * @license    https://opensource.org MIT License
  * @link       https://github.com/n-genesis/ngen-bootsnippets-ci
  */
-namespace App\Controllers\Admin;
-
-use App\Controllers\AdminController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class Users extends AdminController
 {
     public function index()
     {
-        // Get all users
+        // Get all Users w/ User Details information
         $users = $this->userModel->findAllWithDetails();
 
         return $this->renderView('pages/admin/users/index',[

@@ -17,9 +17,9 @@
 
         <div class="container-fluid note-details">
 
-            <div class="desktop-header">
+            <div class="desktop-header mb-3">
                 <!-- Top Left Nav -->
-                <div class="card card-block topnav-left">
+                <div class="card card-block topnav-left mb-0">
                     <div class="card-body d-flex align-items-center">
                         <div class="d-flex justify-content-between">
                             <h4 class="text-capitalize">Terms Of Use</h4>
