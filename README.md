@@ -1,5 +1,5 @@
 # Kumbuka: Notebook Application
-Kumbuka (Swahili: 'to take note' or 'to remember') is a web-based shared notebook application built with CodeIgniter 4.
+Kumbuka (Swahili: 'to take note' or 'to remember') is a web-based notebook application built with CodeIgniter 4.
 
 ~~**Version:** 1.0.0 alpha~~
 
