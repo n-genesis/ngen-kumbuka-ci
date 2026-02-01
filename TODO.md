@@ -19,6 +19,7 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Edit Admin Seeder file to remove redundant code
 - [ ] Create `Cell` Views for sidebar menus
 - [ ] Create `Cell` views for User Dashboard page
+- [ ] Add Admin opts for editing website settings (Admin Section)
 
 ### Completed (Medium Priority)
 - [ ] 
