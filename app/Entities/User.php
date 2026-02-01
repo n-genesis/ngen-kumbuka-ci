@@ -3,6 +3,8 @@
 namespace App\Entities;
 
 use CodeIgniter\Shield\Entities\User as ShieldUserEntity;
+use Config\AppConfig\User as userConfig;
+use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
 
 /**
  * User Entity extending CodeIgniter Shield's User Entity
@@ -24,13 +26,15 @@ class User extends ShieldUserEntity
     protected $casts   = [
         'first_name' => 'string',
         'last_name'  => 'string',
+        'avatar'     => 'string',
     ];
 
     /**
-     * Example: Custom logic to get a full name.
+     * Custom logic to get a full name.
      * Assumes 'first_name' and 'last_name' are added to the users table.
+     * is first and last name are empty, returns the username instead.
      */
-    protected function getFullName()
+    protected function getFullName(): string
     {
         $first = $this->attributes['first_name'] ?? '';
         $last  = $this->attributes['last_name'] ?? '';
@@ -44,12 +48,32 @@ class User extends ShieldUserEntity
         }
 
     }
+    public function getUserLastActive(): string
+    {
+        // Access the raw datetime string from the database row
+        $rawDate = $this->attributes['last_active'];
 
+        if (empty($rawDate)) {
+            return 'Not Published Yet';
+        }
+
+        $time = Time::parse($rawDate);
+        return $time->toLocalizedString('MMM d, yyyy'); // e.g., "Oct 27, 2025"
+    }
     /**
-     * Example: Custom logic to check if a user is an admin.
+     * Custom logic to check if a user is an admin.
      */
     public function isSuperAdmin(): bool
     {
         return $this->inGroup('superadmin');
+    }
+
+    public function getAvatar(): string{
+        // Use Default avatart image in User Config file User's not set
+        $userConfig = config(userConfig::class);
+
+        $avatar = $this->attributes['avatar'];
+
+        return $avatar ?? $userConfig->defaultAvatar;
     }
 }

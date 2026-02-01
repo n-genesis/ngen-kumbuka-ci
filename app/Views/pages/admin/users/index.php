@@ -69,7 +69,7 @@
                                     <td class="text-center">
                                         <a href="<?= $user->id ?>" title="View <?= esc($user->username) ?>'s Profile">
                                             <img class="rounded img-fluid avatar-40"
-                                                src="<?= base_url('assets/images/user/i1.jpg') ?>" alt="profile image">
+                                                src="<?= base_url($user->avatar) ?>" alt="profile image">
                                         </a>
                                     </td>
                                     <td><?= esc($user->full_name) ?></td>
@@ -87,7 +87,8 @@
                                         <?php endif; ?>
                                     </td>
                                     <td>
-                                        <?= $user->last_active ? date('Y-m-d H:i', strtotime($user->last_active)) : 'Never' ?>
+                                        <!-- Formated in User Entity class -->
+                                        <?= $user->user_last_active ?>
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm" role="group">

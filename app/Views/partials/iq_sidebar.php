@@ -90,6 +90,12 @@
                                         <span class="">User Add</span>
                                     </a>
                                 </li>
+                                <li class="">
+                                    <a href="<?= site_url('admin/settings') ?>" class="svg-icon">
+                                        <i class="bi bi-gear"></i>
+                                        <span class="">Site Settings</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

@@ -6,7 +6,7 @@
             <?php else: ?>
                 <li class="breadcrumb-item">
                     <a href="<?= esc($link['url']) ?>" class="text-white">
-                        <i class="bi bi-house-door-fill"></i> <?= esc($link['label']) ?>
+                        <?= esc($link['label']) ?>
                     </a>
                 </li>
             <?php endif; ?>

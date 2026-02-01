@@ -41,7 +41,7 @@ class UserModel extends ShieldUserModel
      */
     public function findById( $id = null): ?UserEntity
     {
-        return $this->select('users.*, ud.first_name, ud.last_name')
+        return $this->select('users.*, ud.first_name, ud.last_name, ud.avatar')
                     ->join('user_details ud', 'ud.user_id = users.id', 'left')
                     ->find($id);
     }
