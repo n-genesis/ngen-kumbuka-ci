@@ -59,8 +59,9 @@
         <!-- Menu Options -->
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
+
                 <!-- ADMINISTRATOR Options -->
-                 <?php if (auth()->user()->inGroup('admin')): ?>
+                <?php if (auth()->user()->inGroup('admin')): ?>
                 <li class="">
                     <a href="#otherpage" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                         <i class="bi bi-person-vcard"></i>
@@ -78,13 +79,13 @@
                             </a>
                             <ul id="user" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
-                                    <a href="#" class="svg-icon">
+                                    <a href="<?= site_url('admin/users') ?>" class="svg-icon">
                                         <i class="bi bi-people-fill"></i>
                                         <span class="">User Management</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="#" class="svg-icon">
+                                    <a href="<?= site_url('admin/users/create') ?>" class="svg-icon">
                                         <i class="bi bi-person-plus"></i>
                                         <span class="">User Add</span>
                                     </a>

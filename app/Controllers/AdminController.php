@@ -25,8 +25,8 @@ class AdminController extends BaseController
         // Get User Configs
         $this->userConfig = config(AdminConfig::class);
 
-        // Use Default avatart image in User Config file is sser's not set
-        $this->userAvatar = $userAvatar->avatar ?? $this->userConfig->defaultAvatar;
+        // Use Default avatar image in Admin Config file is avatar's not set
+        $this->userAvatar = $this->userAvatar ?? $this->userConfig->defaultAvatar;
         $view->setVar('userAvatar', $this->userAvatar);
         
         // Create Admin dashboard link

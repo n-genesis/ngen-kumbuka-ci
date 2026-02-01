@@ -10,5 +10,5 @@ class Admin extends BaseConfig
      * Default avart iamge
      * @var string
      */
-    public string $defaultAvatar = '/uploads/default-avatar.jpg';
+    public string $defaultAvatar = '/uploads/user-avatar.png';
 }
