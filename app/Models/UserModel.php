@@ -52,4 +52,27 @@ class UserModel extends ShieldUserModel
             ->join('user_details', 'user_details.user_id = users.id','left')
             ->findAll(); // Returns an array of User Entity objects
     }
+
+    /**
+     * Override findAll to include custom logic or joins.
+     */
+    public function findAll($limit = null, int $offset = 0): array
+    {
+        // Example: Join with the groups table to get group names
+        $this->select('users.*, ud.first_name, ud.last_name, ud.avatar')
+            ->join('user_details ud', 'ud.user_id = users.id','left');
+
+        // Call the parent findAll method to execute the query
+        return parent::findAll($limit, $offset);
+    }
+    
+    // TODO You can also add other custom methods here
+    public function findUsersInGroup(string $groupName): array
+    {
+        return $this->select('users.*')
+                    ->join('auth_groups_users agu', 'agu.user_id = users.id')
+                    ->join('auth_groups ag', 'ag.id = agu.group_id')
+                    ->where('ag.name', $groupName)
+                    ->findAll();
+    }
 }

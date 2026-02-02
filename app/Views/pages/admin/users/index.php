@@ -47,7 +47,7 @@
                     <thead>
                         <tr>
                             <th>Profile</th>
-                            <th>Username</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Groups</th>
                             <th>Status</th>
@@ -118,30 +118,10 @@
 
         <!-- Card Footer & Pagination -->
         <div class="card-footer text-muted">
-
-            <div class="row justify-content-between">
-                <div id="user-list-page-info" class="col-md-6">
-                    <span>Showing 1 to 5 of 5 entries</span>
-                </div>
-                <div class="col-md-6">
-                    <!-- Pagination -->
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
+            <!-- Pagination -->
+            <?= $pager->links() ?>
         </div>
+        
     </div>
 </div>
 

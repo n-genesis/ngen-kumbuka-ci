@@ -41,7 +41,7 @@ class AdminSeeder extends Seeder
                     'username' => $faker->userName . $faker->randomNumber(3, true),
                     'email'    => $faker->unique()->safeEmail,
                     'password' => 'Password123!', // Default password for fake admins
-                    'active'   => true,
+                    'active'   => $faker->boolean(),
                 ];
             }
 
@@ -61,7 +61,7 @@ class AdminSeeder extends Seeder
             }
 
             // (Optional) Activate the user (usually redundant if 'active' is set)
-            $savedUser->activate();
+            //$savedUser->activate();
 
             echo "User created successfully.\n";
 

@@ -24,6 +24,10 @@ class Users extends AdminController
         // Get all Users w/ User Details information
         $users = $this->userModel->findAllWithDetails();
 
+        // Pagination results
+        $users = $this->userModel->paginate();
+        $pager = $this->userModel->pager;
+
         return $this->renderView('pages/admin/users/index',[
             'appTitle' => setting('App.appName').' | User Managment',
             'pageHeader' => 'User Managment',
@@ -32,6 +36,7 @@ class Users extends AdminController
                 ['label' => 'User Managment', 'url' => ''],
             ],
             'users' => $users,
+            'pager' => $pager,
         ]);
     }
     /**

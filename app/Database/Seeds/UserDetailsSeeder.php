@@ -11,10 +11,11 @@ class UserDetailsSeeder extends Seeder
     {
         $faker = Factory::create();
         for ($i = 0; $i < 10; $i++) {
-
+            $avatar = null;
             if($i === 0) {
                 $firstName = 'Andrew';
                 $lastName = 'Nite';
+                $avatar = 'uploads/default-avatar.jpg';
             } else {
                 $firstName = $faker->firstName;
                 $lastName = $faker->lastName;
@@ -31,7 +32,7 @@ class UserDetailsSeeder extends Seeder
                 'city' => $faker->city,
                 'state' => $faker->state,
                 'zip' => $faker->postcode,
-                'avatar' => null
+                'avatar' => $avatar
                 // ... other fields from your user_details table
             ];
             // Use Query Builder if no dedicated model exists for user_details
