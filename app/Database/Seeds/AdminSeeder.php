@@ -5,13 +5,13 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Models\UserModel;
+use Faker\Factory;
 
 class AdminSeeder extends Seeder
 {
     public function run()
     {
-        // Get the User Provider
-        $users = new UserModel();
+        $faker = Factory::create();
 
         // Get admin details from .env or fallback values
         $email    = getenv('app.adminEmail') ?: 'andrewnite@localhost.com';
@@ -19,90 +19,67 @@ class AdminSeeder extends Seeder
         $password = getenv('app.adminPassword') ?: '5832552911';
 
         // Check if admin user already exists
-        $existingUser = $users->where('username', $username)->first();
+        // $existingUser = $users->where('username', $username)->first();
 
-        if ($existingUser) {
-            echo "Admin user already exists. Skipping creation.\n";
-            return;
+        // if ($existingUser) {
+        //     echo "Admin user already exists. Skipping creation.\n";
+        //     return;
+        // }
+
+        for ($i = 0; $i < 10; $i++) {
+            if($i === 0){
+                // Create the specified admin user
+                $userData = [
+                    'username' => $username,
+                    'email'    => $email,
+                    'password' => $password,
+                    'active'   => true,
+                ];
+            } else {
+                // Create additional admin users with fake data
+                $userData = [
+                    'username' => $faker->userName . $faker->randomNumber(3, true),
+                    'email'    => $faker->unique()->safeEmail,
+                    'password' => 'Password123!', // Default password for fake admins
+                    'active'   => true,
+                ];
+            }
+
+            // Retrieve the user back from DB to ensure ID is set
+            $savedUser = $this->createUser($userData);
+
+            if (!$savedUser) {
+                echo "Failed to retrieve newly created user.\n";
+                return;
+            }
+
+            // Assign groups
+            if($i === 0){
+                $savedUser->addGroup('admin');
+            }else{
+                $savedUser->addGroup('user');
+            }
+
+            // (Optional) Activate the user (usually redundant if 'active' is set)
+            $savedUser->activate();
+
+            echo "User created successfully.\n";
+
         }
+    }
 
-        // Create the admin user entity
-        $user = new User([
-            'username' => $username,
-            'email'    => $email,
-            'password' => $password,
-            'active'   => 1,
-        ]);
+    protected function createUser(array $data)
+    {
+        $users = new UserModel();
 
-        // Save the user and get the inserted ID
+        $user = new User($data);
+
         if (!$users->save($user)) {
-            echo "Failed to create admin user.\n";
+            echo "Failed to create user: " . $data['username'] . "\n";
             print_r($users->errors());
-            return;
+            return null;
         }
 
-        // Retrieve the user back from DB to ensure ID is set
-        $savedUser = $users->find($users->getInsertID());
-
-        if (!$savedUser) {
-            echo "Failed to retrieve newly created admin user.\n";
-            return;
-        }
-
-        // Assign groups
-        $savedUser->addGroup('admin');
-        $savedUser->addGroup('user');
-
-        // (Optional) Activate the user (usually redundant if 'active' is set)
-        $savedUser->activate();
-
-        echo "Admin user created successfully.\n";
-
-
-        // Basic User
-
-        // Get admin details from .env or fallback values
-        $email    = getenv('app.adminEmail') ?: 'adriangarber@localhost.com';
-        $username = getenv('app.adminUsername') ?: 'user';
-        $password = getenv('app.adminPassword') ?: '5832552911';
-
-        // Check if admin user already exists
-        $existingUser = $users->where('username', $username)->first();
-
-        if ($existingUser) {
-            echo "User already exists. Skipping creation.\n";
-            return;
-        }
-
-        // Create the admin user entity
-        $user = new User([
-            'username' => $username,
-            'email'    => $email,
-            'password' => $password,
-            'active'   => 1,
-        ]);
-
-        // Save the user and get the inserted ID
-        if (!$users->save($user)) {
-            echo "Failed to create user.\n";
-            print_r($users->errors());
-            return;
-        }
-
-        // Retrieve the user back from DB to ensure ID is set
-        $savedUser = $users->find($users->getInsertID());
-
-        if (!$savedUser) {
-            echo "Failed to retrieve newly created user.\n";
-            return;
-        }
-
-        // Assign groups
-        $savedUser->addGroup('user');
-
-        // (Optional) Activate the user (usually redundant if 'active' is set)
-        $savedUser->activate();
-
-        echo "User created successfully.\n";
+        return $users->find($users->getInsertID());
     }
 }

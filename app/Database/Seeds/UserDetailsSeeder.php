@@ -3,45 +3,42 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use Faker\Factory;
 
 class UserDetailsSeeder extends Seeder
 {
     public function run()
     {
-        // 2. Insert the additional details into the 'user_details' table
-        $detailData = [
-            [
-                'user_id' => 1,
-                'first_name' => 'Andrew',
-                'last_name' => 'Nite',
-                'phone' => '(904) 479-5460',
-                'organization' => 'N-Gen Design',
-                'address1' => '1456 Chestnut Dr',
-                'address2' => null,
-                'city' => 'Centralia',
-                'state' => 'Pennsylvania',
-                'zip' => 17920,
+        $faker = Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+
+            if($i === 0) {
+                $firstName = 'Andrew';
+                $lastName = 'Nite';
+            } else {
+                $firstName = $faker->firstName;
+                $lastName = $faker->lastName;
+            }
+
+            $detailData = [
+                'user_id' => $i + 1,
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'phone' => $faker->phoneNumber,
+                'organization' => $faker->company,
+                'address1' => $faker->streetAddress,
+                'address2' => $faker->secondaryAddress,
+                'city' => $faker->city,
+                'state' => $faker->state,
+                'zip' => $faker->postcode,
                 'avatar' => null
                 // ... other fields from your user_details table
-            ],
-            [
-                'user_id' => 2,
-                'first_name' => 'Adrian',
-                'last_name' => 'Garber',
-                'phone' => '(717) 367-2573',
-                'organization' => 'Silver Cafe',
-                'address1' => '505 East Park Street',
-                'address2' => null,
-                'city' => 'Elizabethtown',
-                'state' => 'Pennsylvania',
-                'zip' => 17022,
-                'avatar' => null
-                // ... other fields from your user_details table
-            ],
-        ];
-        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
-        // Use Query Builder if no dedicated model exists for user_details
-        $this->db->table('user_details')->insertBatch($detailData);
-        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+            ];
+            // Use Query Builder if no dedicated model exists for user_details
+            $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
+            // Use Query Builder if no dedicated model exists for user_details
+            $this->db->table('user_details')->insertBatch($detailData);
+            $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        }
     }
 }
