@@ -29,6 +29,7 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Update tabple to use Bootstrap 5
     - *Might just redesignthe template from scratch using Bootstrap 5*
 - [ ] Create simple email templates for user actions (registration, password reset, etc.)
+- [ ] Add Pagination/Pager language file
 
 ### Completed (Low Priority)
 - [ ]
