@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Models;
+namespace App\Models\User;
 
 use CodeIgniter\Shield\Models\UserModel as ShieldUserModel;
 use App\Entities\User as UserEntity;
@@ -23,6 +23,8 @@ class UserModel extends ShieldUserModel
 {
     protected $returnType  = UserEntity::class;
     protected bool $updateOnlyChanged = true;
+    // Dates
+    protected $useTimestamps = true;
     
     protected function initialize(): void
     {

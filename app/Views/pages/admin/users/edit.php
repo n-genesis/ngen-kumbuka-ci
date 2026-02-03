@@ -1,23 +1,74 @@
-<!-- ADMIN Backend User List -->
+<!-- app/Views/pages/admin/users/edit.php -->
+
 <?= $this->extend('layouts/backend'); ?>
 
 <?= $this->section('backend'); ?>
 
 <div class="col-sm-12">
-    <div class="card">
-        <div class="card-header d-flex justify-content-between">
-            <div class="header-title">
-                <h4 class="card-title">Edit User</h4>
+
+    <!-- Banned User Alert -->
+    <?php if ($user->status !== null): ?>
+        <div class="alert  bg-danger" role="alert">
+            <div class="iq-alert-icon">
+                <i class="bi bi-bookmark-x flex-shrink-0 me-2"></i>
             </div>
-            <a href="<?= site_url('admin/users') ?>" class="btn btn-primary">
-                <i class="bi bi-box-arrow-left"></i> Cancel
-            </a>
+            <div class="iq-alert-text">This user is currently banned. They will not be able to log in or access their
+                account until unbanned.</div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="ri-close-line"></i>
+            </button>
         </div>
-        <!-- Card Body -->
-        <div class="card-body">
-            <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" class="needs-validation"
-                novalidate>
-                <?= csrf_field() ?>
+    <?php endif; ?>
+
+    <div class="card">
+        <!-- Edit User Form -->
+        <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" class="needs-validation" novalidate>
+
+            <?= csrf_field() ?>
+
+            <!-- Card Header -->
+            <div class="card-header d-flex justify-content-between">
+                <div class="header-title flex-fill">
+                    <h4 class="card-title">
+                        User
+                        <?php if (!$user->active): ?>
+                            <span class="badge badge-danger">Inactive</span>
+                        <?php else: ?>
+                            <span class="badge badge-success">Active</span>
+                        <?php endif; ?>
+                    </h4>
+                </div>
+                <!-- User active status checkbox -->
+                 <div class="custom-control custom-checkbox mr-3">
+                    <input type="checkbox" name="active" class="custom-control-input" id="activeCheckbox" <?= $user->active ? 'checked' : '' ?>>
+                    <label class="custom-control-label" for="activeCheckbox">Active</label>
+                </div>
+                <!-- Ban User -->
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-success active">
+                        <input type="radio" name="status" id="activeBtn" value="active"> Unbanned
+                    </label>
+                    <label class="btn btn-danger">
+                        <input type="radio" name="status" id="bannedBtn" value="banned" <?= $user->status !== null ? 'checked' : '' ?>> Banned
+                    </label>
+                </div>
+                <!-- Return to User List -->
+                <a href="<?= site_url('admin/users') ?>" class="btn btn-primary ml-2">
+                    <i class="bi bi-box-arrow-left"></i> Cancel
+                </a>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <!-- Banned Status Message / Show if User status is NOT null -->
+                <div class="collapse <?= $user->status !== null ? 'show' : '' ?>" id="collapseStatusMsg">
+                    <div class="mb-3">
+                        <label for="userStatus" class="form-lable">Status Message</label>
+                        <textarea class="form-control is-invalid" name="status_message" id="userStatusMsg" rows="3"><?= old('status_message', $user->status_message) ?></textarea>
+                        <div class="invalid-feedback">A message to add to users account.</div>
+                    </div>
+                </div>
 
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -72,8 +123,9 @@
                     <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">Update User</button>
                 </div>
-            </form>
-        </div>
+
+            </div>
+        </form>
     </div>
 </div>
 
@@ -120,5 +172,27 @@
             }, false);
         });
     })();
+</script>
+<script>
+    // Show/hide banned message
+    $('#bannedBtn').on('change', function () {
+        if ($(this).is(':checked')) {
+            $('#collapseStatusMsg').collapse('show');
+        }
+    });
+
+    $('#collapseStatusMsg').on('shown.bs.collapse', function () {
+        $('#userStatusMsg').attr('disabled', false);
+    });
+
+    // When Closed
+    $('#activeBtn').on('change', function () {
+        if ($(this).is(':checked')) {
+            $('#collapseStatusMsg').collapse('hide');
+        }
+    });
+    $('#collapseStatusMsg').on('hidden.bs.collapse', function () {
+        $('#userStatusMsg').attr('disabled', true);
+    });
 </script>
 <?= $this->endSection() ?>

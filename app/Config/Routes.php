@@ -68,7 +68,8 @@ $routes->group('admin',['filter' => ['adminfilter']], function ($routes) {
     $routes->post('users/store', [Admin\Users::class, 'store']);
     $routes->get('users/edit/(:num)', [[Admin\Users::class, 'edit'], '$1']);
     $routes->post('users/update/(:num)', [[Admin\Users::class, 'update'], '$1']);
-    $routes->get('users/delete/(:num)', [[Admin\Users::class, 'delete'],'$1']);
+    // Delete User
+    $routes->delete('users/delete/(:num)', [[Admin\Users::class, 'delete'], '$1']);
     
     // Settings
     $routes->get('settings', [Admin\Settings::class, 'index']);

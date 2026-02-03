@@ -24,11 +24,11 @@ class Settings extends AdminController
         ];
 
         return $this->renderView('pages/admin/settings',[
-            'appTitle' => setting('App.appName').' | System Settings',
-            'pageHeader' => 'System Settings',
+            'appTitle' => setting('App.appName').' | Site Settings',
+            'pageHeader' => 'Site Settings',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('admin/dashboard')],
-                ['label' => 'System Settings', 'url' => ''],
+                ['label' => 'Site Settings', 'url' => ''],
             ],
             'siteSettings'=> $siteSettings,
             'siteSettingsOpts'=> $this->siteSettingsOpts,

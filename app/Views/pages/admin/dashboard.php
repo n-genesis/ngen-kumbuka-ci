@@ -1,4 +1,4 @@
-<!-- ADMIN Backend Dashboard -->
+<!-- app/Views/pages/admin/dashboard.php -->
 <?= $this->extend('layouts/backend'); ?>
 
 <?= $this->section('backend'); ?>

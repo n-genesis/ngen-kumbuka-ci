@@ -1,9 +1,9 @@
 <!-- Main Sidebar -->
-<aside class="iq-sidebar sidebar-default">
+<aside id="iq-sidebar" class="iq-sidebar sidebar-default">
     <!-- Kumbuka LOGO-->
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
         <a href="<?= $dashboardLink ?>" class="header-logo">
-            <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
+            <img id="sidebar-avatar" src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
             <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
         </a>
         <div class="iq-menu-bt-sidebar">
@@ -90,14 +90,14 @@
                                         <span class="">User Add</span>
                                     </a>
                                 </li>
-                                <li class="">
+                            </ul>
+                        </li>
+                        <li class="">
                                     <a href="<?= site_url('admin/settings') ?>" class="svg-icon">
                                         <i class="bi bi-gear"></i>
                                         <span class="">Site Settings</span>
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
                     </ul>
                 </li>
                 <?php endif ?>

@@ -1,4 +1,4 @@
-<!-- ADMIN Backend User List -->
+<!-- app/Views/pages/admin/users/edit.php -->
 <?= $this->extend('layouts/backend'); ?>
 
 <?= $this->section('backend'); ?>
@@ -18,10 +18,16 @@
                 <div class="row justify-content-between">
                     <div class="col-sm-6 col-md-6">
                         <div id="user_list_datatable_info" class="dataTables_filter">
-                            <form class="mr-3 position-relative">
-                                <div class="form-group mb-0">
-                                    <input type="search" class="form-control" id="exampleInputSearch"
-                                        placeholder="Search" aria-controls="user-list-table">
+                            <!--  Search Form  -->
+                            <form class="mr-3 position-relative" action="<?= base_url('admin/users') ?>" method="get">
+                                <div class="form-row d-flex align-items-center">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="search" value="<?= esc($search ?? '') ?>">
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-outline-primary" type="submit">
+                                            <i class="bi bi-search"></i>Search </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -47,7 +53,7 @@
                     <thead>
                         <tr>
                             <th>Profile</th>
-                            <th>Name</th>
+                            <th>username</th>
                             <th>Email</th>
                             <th>Groups</th>
                             <th>Status</th>
@@ -64,7 +70,15 @@
                         <?php else: ?>
                             <!-- User Row -->
                             <?php foreach ($users as $user): ?>
-                                <tr>
+                                <!-- User form -->
+                                <form action="<?= base_url('admin/users/delete/' . $user->id) ?>" data-km="form"  data-km-username="<?= esc($user->username) ?>" method="post">
+
+                                <!-- CSRF Protection is mandatory for destructive actions -->
+                                <?= csrf_field() ?>
+                                <!-- This "spoofs" the POST request as a DELETE request -->
+                                <input type="hidden" name="_method" value="DELETE">
+
+                                <tr class="user_row <?= !isset($user->status) ? '' : 'table-danger' ?> ">
                                     <!-- Profile Image -->
                                     <td class="text-center">
                                         <a href="<?= $user->id ?>" title="View <?= esc($user->username) ?>'s Profile">
@@ -72,7 +86,7 @@
                                                 src="<?= base_url($user->avatar) ?>" alt="profile image">
                                         </a>
                                     </td>
-                                    <td><?= esc($user->full_name) ?></td>
+                                    <td><?= esc($user->username) ?></td>
                                     <td><?= esc($user->email) ?></td>
                                     <td>
                                         <?php foreach ($user->getGroups() as $group): ?>
@@ -97,17 +111,17 @@
                                                 <i class="bi bi-pencil"></i> Edit
                                             </a>
                                             <?php if ($user->id !== auth()->id()): ?>
-                                                <button type="button" class="btn btn-danger"
-                                                    onclick="confirmDelete(<?= $user->id ?>)" data-bs-toggle="tooltip"
-                                                    title="Delete User">
+                                                <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" title="Delete User">
                                                     <i class="bi bi-trash"></i> Delete
                                                 </button>
                                             <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>
-                                </tr>
+                                </form>
                             <?php endforeach; ?>
+
+
                         <?php endif; ?>
 
                     </tbody>
@@ -136,11 +150,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this user? This action cannot be undone.
+                Are you sure you want to delete <b>(<span id="modalUsername" class="text-danger"></span>)</b>? This action cannot be undone.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="#" id="deleteUserBtn" class="btn btn-danger">Delete</a>
+                <button type="button" class="btn btn-secondary" id="closeModalBtn" data-dismiss="modal">Cancel</button>
+                <buttom type="button" id="deleteUserBtn" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
@@ -152,10 +166,24 @@
 <!-- Show delete confirmation modal script -->
 <?= $this->section('scripts') ?>
 <script>
-    function confirmDelete(userId) {
-        document.getElementById('deleteUserBtn').href = '<?= site_url('admin/users/delete/') ?>' + userId;
-        var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-        deleteModal.show();
-    }
+const deleteForms = document.querySelectorAll('form[data-km="form"]');
+deleteForms.forEach(form => {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();// Prevent form submission
+        $('#deleteModal').modal({// Show the modal
+            backdrop: 'static',
+            keyboard: false
+        });
+        const username = form.dataset.kmUsername;// Get form
+        document.getElementById('modalUsername').textContent = username;
+        $('#deleteModal').on('click','#deleteUserBtn', function(event) {
+            const deleteUserBtn = document.getElementById('deleteUserBtn');
+            deleteUserBtn.innerHTML = 'Loading...';
+            document.getElementById('closeModalBtn').disabled = true;// Disable close button
+            deleteUserBtn.disabled = true;// Confirm button
+            form.submit();// Submit form
+        })
+    });
+});
 </script>
 <?= $this->endSection() ?>

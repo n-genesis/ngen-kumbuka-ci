@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
         //     return;
         // }
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 35; $i++) {
             if($i === 0){
                 // Create the specified admin user
                 $userData = [

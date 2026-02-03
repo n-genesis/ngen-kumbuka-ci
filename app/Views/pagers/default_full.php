@@ -1,9 +1,12 @@
 <div class="row justify-content-between">
+
     <div id="user-list-page-info" class="col-md-6">
         <span>Showing <?= $pager->getPerPageStart() ?>
             to <?= $pager->getPerPageEnd() ?>
-            of <?= $pager->getTotal() ?></span> entries</span>
+            of <?= $pager->getTotal() ?> entries
+        </span>
     </div>
+
     <div class="col-md-6">
 
         <nav aria-label="nagivation">

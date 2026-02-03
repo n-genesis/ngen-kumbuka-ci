@@ -1,5 +1,10 @@
 <?= $this->extend('layouts/main'); ?>
 
+<!-- Head stylesheets -->
+<?= $this->section('styles') ?>
+    
+<?= $this->endSection(); ?>
+
 <?= $this->section('main'); ?>
 
 <!-- Wrapper Start -->
@@ -61,5 +66,14 @@
 <!-- Include footer tag -->
 <?= $this->include('partials/footer') ?>
 
+
 <!-- END Main -->
+<?= $this->endSection(); ?>
+
+<!-- Additional  JS Scripts -->
+<?= $this->section('js') ?>
+
+    <!-- Kumbuka Tour Script -->
+    <script src="<?= base_url('assets/js/kumbuka-tour.js'); ?>"></script>
+
 <?= $this->endSection(); ?>
