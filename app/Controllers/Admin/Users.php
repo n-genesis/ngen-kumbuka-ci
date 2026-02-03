@@ -34,7 +34,8 @@ class Users extends AdminController
     public function index()
     {   
         // Get search query
-        $searchTerm = $this->request->getGet('search');
+        $search = $this->request->getGet('search');
+        $active = $this->request->getGet('active') ?? 'true';
 
         // 1. Get the builder for the model
         $builder = $this->userModel->builder();
@@ -45,21 +46,26 @@ class Users extends AdminController
                 ->join('user_details', 'user_details.user_id = users.id', 'left')
                 ->where('auth_identities.type', 'email_password');
 
-        // 3. Apply search filter if search term is provided
-        if(!empty($searchTerm)){
+        // 3. Apply status filter if provided
+        $userActiveStatus = $active === 'false' ? false : true;
+        $builder->where('users.active', $userActiveStatus);
+
+        // 4. Apply search filter if search term is provided
+        if(!empty($search)){
+
             $this->userModel->withIdentities()
             ->groupStart() // Groups OR logic so it doesn't break other WHERE clauses
-                ->like('users.username', $searchTerm)
-                ->orLike('auth_identities.secret', $searchTerm)
-                ->orLike('user_details.first_name', $searchTerm)
-                ->orLike('user_details.last_name', $searchTerm)
+                ->like('users.username', $search)
+                ->orLike('auth_identities.secret', $search)
+                ->orLike('user_details.first_name', $search)
+                ->orLike('user_details.last_name', $search)
             ->groupEnd();
         }
+        
+        // 5. Order by created_at asc
+        //$builder->orderBy('created_at','asc');
 
-        // 4. Order by created_at descending
-        $builder->orderBy('created_at','desc');
-
-        // 5. Get user result list
+        // 6. Get user result list
         $users = $this->userModel->paginate();
         $pager = $this->userModel->pager;
 
@@ -73,7 +79,8 @@ class Users extends AdminController
             ],
             'users' => $users,
             'pager' => $pager,
-            'search' => $searchTerm,
+            'search' => $search,
+            'active'=> $active,
         ]);
     }
     /**
@@ -235,6 +242,9 @@ class Users extends AdminController
         if ($active) {
             $user->activate();
         } else {
+            if( $user->id === auth()->id()){
+                return redirect()->to('admin/users')->with('error', 'You cannot deactivate your own account. What!? Lol.');
+            }
             $user->deactivate();
         }
 

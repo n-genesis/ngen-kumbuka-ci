@@ -34,14 +34,17 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="user-list-files d-flex">
-                            <a class="bg-primary" href="javascript:void();">
-                                Print
+                            <a class="bg-primary" href="<?= site_url('admin/users') . '?' . http_build_query([
+                                 'active' => 'true',
+                                 'search' => $search ?? ''
+                                 ]) ?>">
+                                <i class="bi bi-person-fill-check"></i> Active Users
                             </a>
-                            <a class="bg-primary" href="javascript:void();">
-                                Excel
-                            </a>
-                            <a class="bg-primary" href="javascript:void();">
-                                Pdf
+                            <a class="bg-primary" href="<?= site_url('admin/users') . '?' . http_build_query([
+                                 'active' => 'false',
+                                 'search' => $search ?? ''
+                                 ]) ?>">
+                                <i class="bi bi-person-x-fill"></i> InActive Users
                             </a>
                         </div>
                     </div>
