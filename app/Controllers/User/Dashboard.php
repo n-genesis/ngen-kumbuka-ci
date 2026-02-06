@@ -11,7 +11,7 @@
  * @license    https://opensource.org MIT License
  * @link       https://github.com/n-genesis/ngen-bootsnippets-ci
  */
-namespace App\Controllers;
+namespace App\Controllers\User;
 
 use App\Controllers\UserController;
 

@@ -25,6 +25,7 @@ class UserDetailsSeeder extends Seeder
                 'user_id' => $i + 1,
                 'first_name' => $firstName,
                 'last_name' => $lastName,
+                'bio'        => $faker->text(200), 
                 'phone' => $faker->phoneNumber,
                 'organization' => $faker->company,
                 'address1' => $faker->streetAddress,

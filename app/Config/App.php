@@ -49,9 +49,9 @@ class App extends BaseConfig
      */
     public array $noteTypes = [
         'General',
-        'Essay',
-        'Daily Reflection',
         'Reminder',
+        'Essay',
+        'Reflection',
     ];
     /**
      * Default User credentials to use as placeholder values for representation

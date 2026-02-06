@@ -47,6 +47,13 @@ class UserModel extends ShieldUserModel
                     ->join('user_details ud', 'ud.user_id = users.id', 'left')
                     ->find($id);
     }
+
+    public function findByIdWithDetails($id = null): ?UserEntity
+    {
+        return $this->select('users.*, user_details.*')
+            ->join('user_details', 'user_details.user_id = users.id','left')
+            ->find($id); // Returns a User Entity object
+    }
     
     public function findAllWithDetails()
     {

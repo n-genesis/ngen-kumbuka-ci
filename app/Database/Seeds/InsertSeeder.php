@@ -14,12 +14,14 @@ class InsertSeeder extends Seeder
         //$this->call('AuthIdentitiesSeeder');
         // User Details Inserts
         $this->call('UserDetailsSeeder');
+        // User Social Links Inserts
+        $this->call('UserSocialLinksSeeder');
         // Notebook Types Inserts
         $this->call('NoteTypesSeeder');
-        // Notes Inserts
-        $this->call('NotesSeeder');
         // Notebooks Inserts
         $this->call('NotebooksSeeder');
+        // Notes Inserts
+        $this->call('NotesSeeder');
         // User Likes Inserts
         $this->call('LikesSeeder');
         // Followers Inserts

@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Models\User\UserSocialLinksModel;
 use CodeIgniter\Shield\Entities\User as ShieldUserEntity;
 use Config\AppConfig\User as userConfig;
 use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
@@ -22,11 +23,11 @@ use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
 class User extends ShieldUserEntity
 {
     protected $datamap = [];
-    protected $dates   = ['created_at', 'updated_at', 'deleted_at'];
-    protected $casts   = [
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $casts = [
         'first_name' => 'string',
-        'last_name'  => 'string',
-        'avatar'     => 'string',
+        'last_name' => 'string',
+        'avatar' => 'string',
     ];
 
     /**
@@ -37,14 +38,14 @@ class User extends ShieldUserEntity
     protected function getFullName(): string
     {
         $first = $this->attributes['first_name'];
-        $last  = $this->attributes['last_name'];
-        $fullname =  $first .' '. $last;
+        $last = $this->attributes['last_name'];
+        $fullname = $first . ' ' . $last;
 
-        $fullname  = $fullname ?? $this->attributes['username'].'sdrfgdkgndlkmndkmdlmkdfm';
+        $fullname = $fullname ?? $this->attributes['username'];
 
         return $fullname;
-            
-        
+
+
 
     }
     public function getUserLastActive(): string
@@ -67,12 +68,24 @@ class User extends ShieldUserEntity
         return $this->inGroup('superadmin');
     }
 
-    public function getAvatar(): string{
+    public function getAvatar(): string
+    {
         // Use Default avatart image in User Config file User's not set
         $userConfig = config(userConfig::class);
 
         $avatar = $this->attributes['avatar'];
 
         return $avatar ?? $userConfig->defaultAvatar;
+    }
+
+    public function getUserSocialLinks(string $title = null)
+    {
+        $link = '';
+
+        // Caches the detail record so it only queries once per instance
+        if (!isset($this->attributes['user_social_links'])) {
+            $link = model(UserSocialLinksModel::class)->where(['user_id' => $this->id, 'title' => $title])->first();
+        }
+        return $link;
     }
 }

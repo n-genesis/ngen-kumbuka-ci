@@ -41,16 +41,16 @@
                     </span>
                 </a>
             <div class="dropdown-menu w-100 border-0 py-3" aria-labelledby="dropdownMenuButton01">
-                <a class="dropdown-item mb-2" href="<?= site_url('notes') ?>">
+                <a class="dropdown-item mb-2" href="<?= site_url('notes/new?type=general') ?>">
                     <span><i class="bi bi-journal-plus"></i> <?= lang('Menus.blankNote') ?></span>
                 </a>
-                <a class="dropdown-item mb-2" href="<?= site_url(['notes', 'todo']) ?>">
-                    <span><i class="bi bi-check2-square"></i> <?= lang('Menus.todoNote') ?></span>
+                <a class="dropdown-item mb-2" href="<?= site_url('notes/new?type=reminder') ?>">
+                    <span><i class="bi bi-check2-square"></i> <?= lang('Menus.reminder') ?></span>
                 </a>
-                <a class="dropdown-item mb-2" href="<?= site_url(['notes', 'essay']) ?>">
+                <a class="dropdown-item mb-2" href="<?= site_url('notes/new?type=essay') ?>">
                     <span><i class="bi bi-journal-bookmark"></i> <?= lang('Menus.essayNote') ?></span>
                 </a>
-                <a class="dropdown-item" href="<?= site_url(['notes', 'daily']) ?>">
+                <a class="dropdown-item" href="<?= site_url('notes/new?type=reflection') ?>">
                     <span><i class="bi bi-calendar2-heart"></i> <?= lang('Menus.dailyReflct') ?></span>
                 </a>
             </div>

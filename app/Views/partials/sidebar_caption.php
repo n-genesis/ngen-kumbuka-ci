@@ -15,15 +15,15 @@
             <i class="bi bi-person-circle font-size-20 mr-1"></i>
             <span class="mt-2"><?= lang('Menus.myProfile') ?></span>
         </a>
-        <a class="dropdown-item mb-2" href="#">
+        <a class="dropdown-item mb-2" href="<?= site_url('account') ?>">
             <i class="bi bi-file-person font-size-20 mr-1"></i>
             <span><?= lang('Menus.editProfile') ?></span>
         </a>
-        <a class="dropdown-item mb-2" href="#">
+        <a class="dropdown-item mb-2" href="<?= site_url('account/settings') ?>">
             <i class="bi bi-person-gear font-size-20 mr-1"></i>
             <span><?= lang('Menus.accntSettings') ?></span>
         </a>
-        <a class="dropdown-item mb-3" href="#">
+        <a class="dropdown-item mb-3" href="<?= site_url('account/privacy') ?>">
             <i class="bi bi-person-lock font-size-20 mr-1"></i>
             <span><?= lang('Menus.prvySettings') ?></span>
         </a>

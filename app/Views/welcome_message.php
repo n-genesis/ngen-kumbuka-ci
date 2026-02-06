@@ -8,7 +8,7 @@
             <div class="row no-gutters">
                 <div class="col-sm-12 text-center">
                     <div class="iq-maintenance mb-4">
-                        <img src="<?= base_url('assets/images/kuma-avatar.png') ?>" class="img-fluid" alt="">
+                        <img src="<?= base_url('assets/images/kuma-avatar.png') ?>" class="img-fluid" style="width:420px;" alt="">
                         <h1 class="mt-0 mb-1"><?= lang('Landing.pageHeading') ?></h1>
                         <h3><?= lang('Landing.pageSubHeading') ?></h3>
                     </div>

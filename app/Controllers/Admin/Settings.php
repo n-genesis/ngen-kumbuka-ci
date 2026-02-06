@@ -14,6 +14,7 @@ class Settings extends AdminController
             'allowRegistration' => service('settings')->get('Auth.allowRegistration') ? 'checked' : '',
         ];
     }
+    
     public function index()
     {
         // Get site settings
@@ -35,7 +36,7 @@ class Settings extends AdminController
         ]);
     }
     /**
-     * Update settings
+     * Update site settings
      */
     public function update()
     {

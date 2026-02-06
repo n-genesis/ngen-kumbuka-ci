@@ -15,7 +15,6 @@ return [
     // Notes Dropdown
     'addNewNote'    => 'Add New',
     'blankNote'     => 'Blank Note',
-    'todoNote'      => 'To-Do',
     'essayNote'     => 'Essay Note',
     'dailyReflct'   => 'Daily Reflection',
 
