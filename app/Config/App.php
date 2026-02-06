@@ -61,7 +61,7 @@ class App extends BaseConfig
     public string $appDefaultUsername = 'newuser';
     public string $appDefaultuserFullName = 'New User';
     public string $appDefaultUserEmail = 'newuser@email.com';
-    public string $appDefaultPassword = 'password123';
+    public string $appDefaultPassword = 'password123!';
     /**
      * --------------------------------------------------------------------------
      * Base Site URL

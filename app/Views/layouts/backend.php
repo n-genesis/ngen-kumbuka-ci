@@ -27,7 +27,7 @@
                 <div class="card card-block topnav-left mb-0">
                     <div class="card-body d-flex align-items-center">
                         <div class="d-flex justify-content-between">
-                            <h4 class="text-capitalize"><?= esc($pageHeader) ?></h4>
+                            <h4><?= esc($pageHeader) ?></h4>
                         </div>
                     </div>
                 </div>

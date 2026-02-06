@@ -85,6 +85,8 @@ abstract class BaseController extends Controller
             $this->username = auth()->user()->username;
             $this->userfullName = $this->userEntity->full_name; //TODO User Detail Model 
             $this->userAvatar = $this->userEntity->avatar;// Set User avatart path if not NULL in the User details table
+            // Add Username to View $data array
+            $view->setVar('username',$this->username);
             
         }
 

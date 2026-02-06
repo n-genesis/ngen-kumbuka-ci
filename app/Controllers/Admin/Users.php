@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\AdminController;
 use App\Entities\User;
 use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\Shield\Models\UserIdentityModel;
 
 /**
  * Admin User Managment Controller
@@ -33,27 +34,27 @@ class Users extends AdminController
      */
     public function index()
     {   
-        // Get search query
+        // 1. Get search query
         $search = $this->request->getGet('search');
         $active = $this->request->getGet('active') ?? 'true';
 
-        // 1. Get the builder for the model
+        // 2. Get the Query Builder for the model
         $builder = $this->userModel->builder();
 
-        // 2. Explicitly join the identities table
-        // This ensures the join persists for BOTH queries run by paginate()
+        // 3. Explicitly join the auth_identities table with the users table.
+        // This ensures the join stays persists for BOTH queries run by the paginate() method.
         $builder->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
                 ->join('user_details', 'user_details.user_id = users.id', 'left')
                 ->where('auth_identities.type', 'email_password');
 
-        // 3. Apply status filter if provided
+        // 4. Apply active filter if provided (check if the user is active or inactive)
         $userActiveStatus = $active === 'false' ? false : true;
         $builder->where('users.active', $userActiveStatus);
 
-        // 4. Apply search filter if search term is provided
+        // 5. Apply search filter if search terms
         if(!empty($search)){
-
-            $this->userModel->withIdentities()
+            // Basic search across username, email, first_name, last_name
+            $this->userModel
             ->groupStart() // Groups OR logic so it doesn't break other WHERE clauses
                 ->like('users.username', $search)
                 ->orLike('auth_identities.secret', $search)
@@ -62,12 +63,12 @@ class Users extends AdminController
             ->groupEnd();
         }
         
-        // 5. Order by created_at asc
+        // 6. Order by created_at asc
         //$builder->orderBy('created_at','asc');
 
-        // 6. Get user result list
+        // 7. Get user results for pagination
         $users = $this->userModel->paginate();
-        $pager = $this->userModel->pager;
+        $pager = $this->userModel->pager;// Pager links
 
         // Render view with users data
         return $this->renderView('pages/admin/users/index',[
@@ -75,8 +76,10 @@ class Users extends AdminController
             'pageHeader' => 'User Managment',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('admin/dashboard')],
-                ['label' => 'User Managment', 'url' => ''],
+                ['label' => 'User Managment', 'url' => site_url('admin/users')],
+                ['label'=> 'User List','url'=> ''],
             ],
+            // Query parameters
             'users' => $users,
             'pager' => $pager,
             'search' => $search,
@@ -155,11 +158,20 @@ class Users extends AdminController
     public function edit($id = null)
     {
         // Get User by ID
-        $user = $this->userModel->find($id);
+        $user = $this->userModel->findById($id);
 
         if (!$user) {
             return redirect()->to(site_url('admin/users'))->with('error', 'User not found.');
         }
+
+        // Returns the identity record if it exists, or null
+        $identityModel = model(UserIdentityModel::class);
+        // Returns the identity record if it exists, or null
+        $identity = $identityModel->getIdentityByType($user, 'email_activate');
+
+        // if ($identity !== null) {
+        //     // User still has a pending email activation record
+        // }
 
         // Get unique groups from the auth_groups_users table
         $db = \Config\Database::connect();
@@ -174,7 +186,7 @@ class Users extends AdminController
 
         return $this->renderView('pages/admin/users/edit',[
             'appTitle' => setting('App.appName').' | Edit User',
-            'pageHeader' => 'Edit User: '.esc($user->full_name),
+            'pageHeader' => 'Edit User: '.$user->full_name,
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('admin/dashboard')],
                 ['label' => 'User Managment', 'url' => site_url('admin/users')],
@@ -183,6 +195,7 @@ class Users extends AdminController
             'user' => $user,
             'groups' => $groups,
             'userGroups' => $userGroups,
+            'pendingActivation' => $identity !== null,
         ]);
     }
     /**
@@ -225,10 +238,8 @@ class Users extends AdminController
                 return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
             }
 
-            // Deactivate and ban user
-            $user->deactivate();
             $status_message = $this->request->getPost('status_message');// Get submitted message
-            $user->ban($status_message);
+            $user->ban($status_message);// Ban user with message
             // Redirect to user list with success message
             return redirect()->to('admin/users')->with('message', 'User has been banned');
 
@@ -239,9 +250,14 @@ class Users extends AdminController
 
         // Check to activate user
         $active = $this->request->getPost('active');
+        
         if ($active) {
             $user->activate();
+            //Remove the forced activation screen identity
+            $identityModel = model(UserIdentityModel::class);
+            $identityModel->deleteIdentitiesByType($user, 'email_activate');
         } else {
+            // Prevent admin from deactivating their own account
             if( $user->id === auth()->id()){
                 return redirect()->to('admin/users')->with('error', 'You cannot deactivate your own account. What!? Lol.');
             }
@@ -327,5 +343,29 @@ class Users extends AdminController
         }else{
             return redirect()->to('admin/users')->with('error', 'User could not be deleted.');
         }
+    }
+
+    /**
+     * Activate a User Account
+     * 
+     * @param mixed $id
+     * @return \CodeIgniter\HTTP\RedirectResponse
+     */
+    public function activate($id = null){
+        // Get user
+        $user = $this->userModel->find($id);
+
+        // Check if user exists
+        if (!$user) {
+            return redirect()->to('admin/users')->with('error', 'User not found.');
+        }
+
+        // Activate user
+        $user->activate();
+        //Remove the forced activation screen identity
+        $identityModel = model(UserIdentityModel::class);
+        $identityModel->deleteIdentitiesByType($user, 'email_activate');
+
+        return redirect()->to('admin/users')->with('message', 'User has been activated.');
     }
 }

@@ -56,9 +56,9 @@ class AdminSeeder extends Seeder
             // Assign groups
             if($i === 0){
                 $savedUser->addGroup('admin');
-            }else{
-                $savedUser->addGroup('user');
             }
+
+            $savedUser->addGroup('user');
 
             // (Optional) Activate the user (usually redundant if 'active' is set)
             //$savedUser->activate();

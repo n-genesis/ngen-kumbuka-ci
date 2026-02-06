@@ -34,13 +34,13 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="user-list-files d-flex">
-                            <a class="bg-primary" href="<?= site_url('admin/users') . '?' . http_build_query([
+                            <a class="btn btn-success" href="<?= site_url('admin/users') . '?' . http_build_query([
                                  'active' => 'true',
                                  'search' => $search ?? ''
                                  ]) ?>">
                                 <i class="bi bi-person-fill-check"></i> Active Users
                             </a>
-                            <a class="bg-primary" href="<?= site_url('admin/users') . '?' . http_build_query([
+                            <a class="btn btn-secondary" href="<?= site_url('admin/users') . '?' . http_build_query([
                                  'active' => 'false',
                                  'search' => $search ?? ''
                                  ]) ?>">

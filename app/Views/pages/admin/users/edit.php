@@ -15,14 +15,39 @@
             <div class="iq-alert-text">This user is currently banned. They will not be able to log in or access their
                 account until unbanned.</div>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="ri-close-line"></i>
+                <i class="bi bi-x-circle"></i>
             </button>
         </div>
     <?php endif; ?>
 
+    <!-- Email Activation ALERT -->
+    <?php if ($pendingActivation): ?>
+        <form action="<?= site_url('admin/users/activate/' . $user->id) ?>" method="post">
+            <?= csrf_field() ?>
+            <!-- Alert Box -->
+            <div class="alert bg-white alert-danger" role="alert">
+                <div class="iq-alert-icon">
+                    <i class="bi bi-envelope-exclamation"></i>
+                </div>
+                <!-- Alert Text -->
+                <div class="iq-alert-text">
+                    <h4 class="alert-heading mb-1">Not Activated</h4>
+                    <p class="mb-0">This user <b class="text-danger">HAS NOT</b> activated their account via Email. Do you
+                        want
+                        to force activate this user?
+                    </p>
+                </div>
+                <!-- Custom Action Button -->
+                <button type="submit" class="btn btn-ms btn-outline-success">
+                    <i class="bi bi-envelope-exclamation"></i> Activate</button>
+            </div>
+        </form>
+    <?php endif; ?>
+
     <div class="card">
         <!-- Edit User Form -->
-        <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" class="needs-validation" novalidate>
+        <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" class="needs-validation"
+            novalidate>
 
             <?= csrf_field() ?>
 
@@ -39,8 +64,9 @@
                     </h4>
                 </div>
                 <!-- User active status checkbox -->
-                 <div class="custom-control custom-checkbox mr-3">
-                    <input type="checkbox" name="active" class="custom-control-input" id="activeCheckbox" <?= $user->active ? 'checked' : '' ?>>
+                <div class="custom-control custom-checkbox mr-3">
+                    <input type="checkbox" name="active" class="custom-control-input" id="activeCheckbox"
+                        <?= $user->active ? 'checked' : '' ?>>
                     <label class="custom-control-label" for="activeCheckbox">Active</label>
                 </div>
                 <!-- Ban User -->
@@ -65,7 +91,8 @@
                 <div class="collapse <?= $user->status !== null ? 'show' : '' ?>" id="collapseStatusMsg">
                     <div class="mb-3">
                         <label for="userStatus" class="form-lable">Status Message</label>
-                        <textarea class="form-control is-invalid" name="status_message" id="userStatusMsg" rows="3"><?= old('status_message', $user->status_message) ?></textarea>
+                        <textarea class="form-control is-invalid" name="status_message" id="userStatusMsg"
+                            rows="3"><?= old('status_message', $user->status_message) ?></textarea>
                         <div class="invalid-feedback">A message to add to users account.</div>
                     </div>
                 </div>

@@ -36,16 +36,15 @@ class User extends ShieldUserEntity
      */
     protected function getFullName(): string
     {
-        $first = $this->attributes['first_name'] ?? '';
-        $last  = $this->attributes['last_name'] ?? '';
-        $full  = trim($first . ' ' . $last);    
+        $first = $this->attributes['first_name'];
+        $last  = $this->attributes['last_name'];
+        $fullname =  $first .' '. $last;
 
-        if(!empty($first) && !empty($last)) {
-            return $full;
+        $fullname  = $fullname ?? $this->attributes['username'].'sdrfgdkgndlkmndkmdlmkdfm';
+
+        return $fullname;
             
-        } else {
-            return $this->attributes['username'] ;
-        }
+        
 
     }
     public function getUserLastActive(): string
