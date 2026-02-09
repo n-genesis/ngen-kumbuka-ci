@@ -3,14 +3,34 @@
 namespace App\Controllers\User;
 
 use App\Controllers\UserController;
+use App\Models\NoteModel;
+use App\Models\NoteTypesModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Notes extends UserController
 {
-    public function index(string $type = 'blank')
+    public function index(string $type = '')
     {
-        // echo
-        echo "Note Type: $type";
+        $noteModel = new NoteModel();    
+
+        $noteTypesModel = new NoteTypesModel();
+        $noteTypes = $noteTypesModel->getForDropdown();
+
+        // echo '<pre>';
+        // print_r($noteModel->getNotesByUser($this->userId, $type));
+        // echo '</pre>';
+        // exit;
+
+        return $this->renderView('pages/notes/index',[
+            'appTitle' => setting('App.appName').' | Your Notes',
+                'pageHeader' => 'Your Notes',
+                'breadcrumbLinks' => [
+                    ['label' => 'Home', 'url' => site_url('dashboard')],
+                    ['label' => 'User Notes', 'url' => ''],
+                ],
+                'userNotes' => $noteModel->getNotesByUser($this->userId, $type),
+                'noteTypeDropDown' => $noteTypesModel->getForDropdown(),
+            ]);
     }
 
     public function new(){
@@ -23,16 +43,17 @@ class Notes extends UserController
             'type' => $noteType,
         ];
 
-        $appConfig = config('App');
+        $appConfig = config('App');// Get the array of allow note types from the App config file
         $allowedTypes = strtolower(implode(',', $appConfig->noteTypes));
 
-        // 3. Define rules
+        // 3. Define rules (Check if the note types are allowed)
         $rules = [
             'type' => "required|in_list[$allowedTypes]",
         ];
 
+        $noteTypesModel = model(NoteTypesModel::class);
         // echo '<pre>';
-        // print_r($rules['type']);
+        // print_r($noteTypesModel->getForDropdown());
         // echo'</pre>';
         // exit;
 
@@ -50,6 +71,7 @@ class Notes extends UserController
                     ['label' => 'New Note', 'url' => ''],
                 ],
                 'selectedType' => $noteType,
+                'noteTypeDropDown' => $noteTypesModel->getForDropdown(),
             ]);
     }
 }

@@ -21,7 +21,7 @@ use Config\AppConfig\User;
 
 class UserDetails extends Entity
 {
-
+    protected $allowedFields = ['user_id', 'bio', 'phone', 'address']; 
     protected $attributes = [
         'user_id' => null,
         'avatar' => null,

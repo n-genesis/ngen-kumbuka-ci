@@ -61,10 +61,12 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     // Account Routes
     $routes->group('account', function ($routes) {
         $routes->get('', [Account::class, 'index']);
+
+        $routes->post('update', [Account::class,'update']);
+
         $routes->get('settings', [Account::class, 'settings']);
         $routes->get('privacy', [Account::class,'privacy']);
-        $routes->post('update-profile', [Account::class, 'updateProfile']);
-        $routes->post('change-password', [Account::class, 'changePassword']);
+
     });
 
 });

@@ -10,12 +10,17 @@ class UserDetailsSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        for ($i = 0; $i < 35; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             $avatar = null;
             if($i === 0) {
                 $firstName = 'Andrew';
                 $lastName = 'Nite';
                 $avatar = 'uploads/default-avatar.jpg';
+                
+            } elseif ($i === 1) {
+                $firstName = 'Adrian';
+                $lastName = 'Garber';
+                $avatar = 'uploads/user-avatar.png';
             } else {
                 $firstName = $faker->firstName;
                 $lastName = $faker->lastName;

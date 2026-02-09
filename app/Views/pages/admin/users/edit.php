@@ -46,7 +46,7 @@
 
     <div class="card">
         <!-- Edit User Form -->
-        <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" class="needs-validation"
+        <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" data-km="form" class="needs-validation"
             novalidate>
 
             <?= csrf_field() ?>
@@ -148,7 +148,7 @@
 
                 <div class="d-flex justify-content-between">
                     <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Update User</button>
+                    <button type="submit" class="btn btn-primary" data-km="submit">Update User</button>
                 </div>
 
             </div>

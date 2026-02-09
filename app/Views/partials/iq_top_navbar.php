@@ -39,8 +39,8 @@
                             <a href="#" class="search-toggle dropdown-toggle nav-icon-1" id="h1-dropdownMenuButton004"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-envelope"></i>
-                                <span class="badge badge-primary count-mail rounded-circle">2</span>
-                                <span class="bg-primary "></span>
+                                <span class="badge badge-success count-mail rounded-circle">1</span>
+                                <span class="bg-success"></span>
                             </a>
                             <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="h1-dropdownMenuButton004">
                                 <div class="card shadow-none m-0">
@@ -50,42 +50,12 @@
                                                 <div class="media align-items-center cust-card py-3 border-bottom">
                                                     <div class="">
                                                         <img class="avatar-50 rounded-small"
-                                                            src="assets/images/user/01.jpg" alt="01">
+                                                            src="<?= base_url('assets/images/user/i1.jpg') ?>" alt="01">
                                                     </div>
                                                     <div class="media-body ml-3">
                                                         <div class="d-flex align-items-center justify-content-between">
-                                                            <h5 class="mb-0">Emma Watson</h5>
+                                                            <h5 class="mb-0">That Guy</h5>
                                                             <small class="text-dark"><b>12 : 47 pm</b></small>
-                                                        </div>
-                                                        <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="media align-items-center cust-card py-3 border-bottom">
-                                                    <div class="">
-                                                        <img class="avatar-50 rounded-small"
-                                                            src="assets/images/user/02.jpg" alt="02">
-                                                    </div>
-                                                    <div class="media-body ml-3">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <h5 class="mb-0">Ashlynn Franci</h5>
-                                                            <small class="text-dark"><b>11 : 30 pm</b></small>
-                                                        </div>
-                                                        <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="media align-items-center cust-card py-3">
-                                                    <div class="">
-                                                        <img class="avatar-50 rounded-small"
-                                                            src="assets/images/user/03.jpg" alt="03">
-                                                    </div>
-                                                    <div class="media-body ml-3">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <h5 class="mb-0">Kianna Carder</h5>
-                                                            <small class="text-dark"><b>11 : 21 pm</b></small>
                                                         </div>
                                                         <small class="mb-0">Lorem ipsum dolor sit amet</small>
                                                     </div>
@@ -105,8 +75,8 @@
                             <a href="#" class="search-toggle dropdown-toggle nav-icon-1" id="h1-dropdownMenuButton2"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-bell"></i>
-                                <span class="badge badge-primary count-mail mail rounded-circle">2</span>
-                                <span class="bg-primary"></span>
+                                <span class="badge badge-danger count-mail mail rounded-circle">1</span>
+                                <span class="bg-danger"></span>
                             </a>
                             <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="h1-dropdownMenuButton2">
                                 <div class="card shadow-none m-0">
@@ -116,42 +86,12 @@
                                                 <div class="media align-items-center cust-card py-3 border-bottom">
                                                     <div class="">
                                                         <img class="avatar-50 rounded-small"
-                                                            src="assets/images/user/01.jpg" alt="01">
+                                                            src="<?= base_url('assets/images/user/i1.jpg') ?>" alt="01">
                                                     </div>
                                                     <div class="media-body ml-3">
                                                         <div class="d-flex align-items-center justify-content-between">
-                                                            <h5 class="mb-0">Emma Watson</h5>
+                                                            <h5 class="mb-0">That Girl</h5>
                                                             <small class="text-dark"><b>12 : 47 pm</b></small>
-                                                        </div>
-                                                        <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="media align-items-center cust-card py-3 border-bottom">
-                                                    <div class="">
-                                                        <img class="avatar-50 rounded-small"
-                                                            src="assets/images/user/02.jpg" alt="02">
-                                                    </div>
-                                                    <div class="media-body ml-3">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <h5 class="mb-0">Ashlynn Franci</h5>
-                                                            <small class="text-dark"><b>11 : 30 pm</b></small>
-                                                        </div>
-                                                        <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="media align-items-center cust-card py-3">
-                                                    <div class="">
-                                                        <img class="avatar-50 rounded-small"
-                                                            src="assets/images/user/03.jpg" alt="03">
-                                                    </div>
-                                                    <div class="media-body ml-3">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <h5 class="mb-0">Kianna Carder</h5>
-                                                            <small class="text-dark"><b>11 : 21 pm</b></small>
                                                         </div>
                                                         <small class="mb-0">Lorem ipsum dolor sit amet</small>
                                                     </div>

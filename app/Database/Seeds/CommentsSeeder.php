@@ -14,7 +14,7 @@ class CommentsSeeder extends Seeder
         $comments = [];
 
         // Generate 10 fake users
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $rangeIndex = intdiv($i, 2);
             $values = [];
             switch ($rangeIndex) {

@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
         //     return;
         // }
 
-        for ($i = 0; $i < 35; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             if($i === 0){
                 // Create the specified admin user
                 $userData = [
@@ -34,6 +34,13 @@ class AdminSeeder extends Seeder
                     'email'    => $email,
                     'password' => $password,
                     'active'   => true,
+                ];
+            } elseif ($i === 1) {
+                $userData = [
+                    'username'=> 'adriangarber',
+                    'email'=> 'adriangarber@localhost.com',
+                    'password'=> '5832552911',
+                    'active'=> true,
                 ];
             } else {
                 // Create additional admin users with fake data

@@ -9,14 +9,15 @@ class UserDetailsModel extends Model
 {
     protected $table = 'user_details';
     protected $primaryKey = 'id';
-    protected $useAutoIncrement = true;
+    protected $useAutoIncrement = false;
     protected $returnType = UserDetailEntity::class;
     protected $useSoftDeletes = true;
     protected $protectFields = true;
     protected $allowedFields = [
         'user_id', 
         'first_name',
-        'last_name',  
+        'last_name',
+        'bio',
         'organization',
         'address1', 
         'address2',

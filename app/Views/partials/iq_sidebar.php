@@ -103,7 +103,7 @@
                 <?php endif ?>
                 <!-- User Notes/Dashboard -->
                 <li>
-                    <a href="/" class="svg-icon">
+                    <a href="<?= site_url('notes') ?>" class="svg-icon">
                         <i class="bi bi-journal-text"></i>
                         <span><?= lang('Menus.yourNotes') ?></span>
                     </a>

@@ -1,4 +1,3 @@
-
 /**
  * @file This file contains the main script for the Kumbuka NoteBook application.
  * @author Andrew Nite
@@ -60,7 +59,7 @@ if (dataBlocks !== null) {
 }
 
 /**
- * Registration Agree to Terms Or Service
+ * Registration Agree to Terms Of Service
  */
 
 const checkboxTermsOfUse = document.getElementById('checkboxTermsOfUse');
@@ -68,7 +67,7 @@ const checkboxTermsOfUse = document.getElementById('checkboxTermsOfUse');
 const registerForm = document.getElementById('user-register-form');
 if (registerForm !== null) {
     registerForm.addEventListener('submit', function (event) {
-        // 1. Prevent the default form submission
+        // Prevent the default form submission
         event.preventDefault();
         const form = event.target;
 
@@ -90,5 +89,31 @@ if (registerForm !== null) {
         } else {
             form.submit();
         }
+    });
+}
+
+// Disable Submit button after click
+const kmForms = document.querySelectorAll('[data-km="form"]');
+
+if (kmForms !== null) {
+    kmForms.forEach(element => {
+        
+        element.addEventListener('submit', (event) => {
+            const form = event.target;
+            const kmSubmitBtn = form.querySelector('[data-km="submit"]');
+            const btnText = kmSubmitBtn.textContent;
+
+            // Disable the button to prevent further clicks
+            kmSubmitBtn.disabled = true;
+
+            // Change the button text
+            kmSubmitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...`;
+
+            setTimeout(() => {
+                // Reset state if needed
+                kmSubmitBtn.disabled = false;
+                kmSubmitBtn.innerHTML = btnText;
+            }, 3000);
+        });
     });
 }

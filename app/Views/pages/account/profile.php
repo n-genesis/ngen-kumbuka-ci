@@ -37,12 +37,14 @@
         <div class="tab-content">
 
             <!-- General Profile Information FORM -->
-            <form action="#" method="post" class="needs-validation" novalidate>
+            <form action="<?= site_url('account/update') ?>" method="post" class="needs-validation" data-km="form" novalidate>
+                <?= csrf_field() ?>
 
                 <!-- Edit Personal Information -->
                 <section class="tab-pane fade active show" id="personal-information" role="tabpanel">
 
                     <div class="row">
+
                         <!-- User Avatar & Social Links -->
                         <aside class="col-md-4">
                             <div class="card">
@@ -120,17 +122,18 @@
                                             <div class="form-group col-md-6">
                                                 <label for="fname">First Name:</label>
                                                 <input type="text" class="form-control" name="first_name" id="fname" value="<?= old('first_name', $user->first_name) ?>"
-                                                    placeholder="First Name">
+                                                    placeholder="First Name" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="lname">Last Name:</label>
                                                 <input type="text" class="form-control" name="last_name" id="lname" value="<?= old('last_name', $user->last_name) ?>"
-                                                    placeholder="Last Name">
+                                                    placeholder="Last Name" required>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="bio" class="form-lable">Profile Bio</label>
                                                 <textarea class="form-control" name="bio" id="bio" placehoder="A message to add to users account." rows="5"><?= old('bio', $user->bio) ?></textarea>
                                             </div>
+                                            <input type="hidden" name="user_id" value="<?= $user->id ?>">
 
                                             <!-- Optional Information  -->
                                             <div class="col-md-12">
@@ -183,7 +186,7 @@
                                 </div>
                                 <!-- Card Footer -->
                                 <div class="card-footer text-right">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary" data-km="submit">Save</button>
                                     <a href="<?= site_url('dashboard') ?>" class="btn btn-outline-secondary">
                                         <i class="bi bi-box-arrow-left"></i> Cancel
                                     </a>
@@ -215,25 +218,7 @@
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms).forEach(function (form) {
             form.addEventListener('submit', function (event) {
-                // Check if at least one group is selected
-                var groupCheckboxes = form.querySelectorAll('input[name="groups[]"]:checked');
-                if (groupCheckboxes.length === 0) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    form.querySelector('.invalid-feedback').style.display = 'block';
-                }
-
-                // Check if password and confirm password match
-                var password = document.getElementById('password');
-                var passwordConfirm = document.getElementById('password_confirm');
-                if (password.value !== '' && password.value !== passwordConfirm.value) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    passwordConfirm.setCustomValidity('Passwords do not match');
-                } else {
-                    passwordConfirm.setCustomValidity('');
-                }
-
+                
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();

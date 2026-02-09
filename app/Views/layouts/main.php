@@ -43,21 +43,8 @@
     <!-- Picker jQuery Library -->
     <script src="https://cdn.jsdelivr.net/npm/select-picker@0.3.2/dist/picker.min.js"></script>
 
-    <!-- Flextree Javascript-->
-    <script src="<?= base_url('assets/js/flex-tree.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/tree.js'); ?>"></script>
-
-    <!-- Table Treeview JavaScript -->
-    <script src="<?= base_url('assets/js/table-treeview.js'); ?>"></script>
-
     <!-- SweetAlert JavaScript -->
     <script src="<?= base_url('assets/js/sweetalert.js'); ?>"></script>
-
-    <!-- Chart Custom JavaScript -->
-    <script src="<?= base_url('assets/js/chart-custom.js'); ?>"></script>
-
-    <!-- slider JavaScript -->
-    <script src="<?= base_url('assets/js/slider.js'); ?>"></script>
 
     <!-- app JavaScript -->
     <script src="<?= base_url('assets/js/app.js'); ?>"></script>

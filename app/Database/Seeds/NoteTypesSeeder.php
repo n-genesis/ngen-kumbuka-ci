@@ -13,23 +13,27 @@ class NoteTypesSeeder extends Seeder
         $noteTypes = [
             [
                 'id' => 1,
-                'name' => $type = strtolower($appConfig->noteTypes[0]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
+                'name' => $type = $appConfig->noteTypes[0],
+                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($type)),
+                'btn_icon' => 'bi bi-journal-plus',
             ],
             [
                 'id' => 2,
-                'name' => $type = strtolower($appConfig->noteTypes[1]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
+                'name' => $type = $appConfig->noteTypes[1],
+                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($type)),
+                'btn_icon' => 'bi bi-check2-square',
             ],
             [
                 'id' => 3,
-                'name' => $type = strtolower($appConfig->noteTypes[2]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
+                'name' => $type = $appConfig->noteTypes[2],
+                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($type)),
+                'btn_icon' => 'bi bi-journal-bookmark',
             ],
             [
                 'id' => 4,
-                'name' => $type = strtolower($appConfig->noteTypes[3]),
-                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', $type),
+                'name' => $type = $appConfig->noteTypes[3],
+                'slug' => preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($type)),
+                'btn_icon' => 'bi bi-calendar2-heart',
             ],
         ];
 
