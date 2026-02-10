@@ -5,7 +5,7 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use Faker\Factory;
 
-class SharedSeeder extends Seeder
+class SharedNotebooksSeeder extends Seeder
 {
     public function run()
     {
@@ -40,6 +40,6 @@ class SharedSeeder extends Seeder
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
             ],
         ];
-        $this->db->table('shared')->insertBatch($notebooks);
+        $this->db->table('shared_notebooks')->insertBatch($notebooks);
     }
 }

@@ -27,7 +27,7 @@ class InsertSeeder extends Seeder
         // Followers Inserts
         $this->call('FollowersSeeder');
         // User share Inserts
-        $this->call('SharedSeeder');
+        $this->call('SharedNotebooksSeeder');
         // Note Comments Inserts
         $this->call('CommentsSeeder');
         

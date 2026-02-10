@@ -2,7 +2,7 @@
 
 <!-- Head stylesheets -->
 <?= $this->section('styles') ?>
-    
+    <link rel="stylesheet" href="<?= base_url('assets/vender/toast/toast.min.css'); ?>">
 <?= $this->endSection(); ?>
 
 <?= $this->section('main'); ?>
@@ -27,7 +27,7 @@
                 <div class="card card-block topnav-left mb-0">
                     <div class="card-body d-flex align-items-center">
                         <div class="d-flex justify-content-between">
-                            <h4><?= esc($pageHeader) ?></h4>
+                            <h4><?= $pageHeader ?></h4>
                         </div>
                     </div>
                 </div>
@@ -72,6 +72,9 @@
 
 <!-- Additional  JS Scripts -->
 <?= $this->section('js') ?>
+
+    <!-- Bootstrap 4 Toast Plugin -->
+    <script src="<?= base_url('assets/vender/toast/toast.min.js'); ?>"></script>
 
     <!-- Kumbuka Tour Script -->
     <script src="<?= base_url('assets/js/kumbuka-tour.js'); ?>"></script>

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateSharedTable extends Migration
+class CreateSharedNotebooksTable extends Migration
 {
     public function up()
     {
@@ -21,11 +21,11 @@ class CreateSharedTable extends Migration
         $this->forge->addForeignKey('notebook_id', 'notebooks', 'id', 'NO ACTION', 'CASCADE'); // Link to Shield's users table
         $this->forge->addForeignKey('owner_id', 'users', 'id', 'NO ACTION', 'CASCADE'); // Link to Shield's users table
         $this->forge->addForeignKey('shared_user_id', 'users', 'id', 'NO ACTION', 'CASCADE'); // Link to snippets table
-        $this->forge->createTable('shared');
+        $this->forge->createTable('shared_notebooks');
     }
 
     public function down()
     {
-        $this->forge->dropTable('shared');
+        $this->forge->dropTable('shared_notebooks');
     }
 }

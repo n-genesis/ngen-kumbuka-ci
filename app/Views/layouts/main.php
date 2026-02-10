@@ -43,8 +43,6 @@
     <!-- Picker jQuery Library -->
     <script src="https://cdn.jsdelivr.net/npm/select-picker@0.3.2/dist/picker.min.js"></script>
 
-    <!-- SweetAlert JavaScript -->
-    <script src="<?= base_url('assets/js/sweetalert.js'); ?>"></script>
 
     <!-- app JavaScript -->
     <script src="<?= base_url('assets/js/app.js'); ?>"></script>

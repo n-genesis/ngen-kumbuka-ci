@@ -450,14 +450,22 @@ Index Of Script
         /*---------------------------------------------------------------------
             On Input change card update
         -----------------------------------------------------------------------*/
-
+        // Change button Icon 
+        /**
+         * Change Button Icon in Example Note Card
+         * Also, update URL type query parameter 
+         */
         $(document).on('click', '[data-change="click"]', function (e) {
             const group = $(this).closest('#icon-button')
             group.find('.active').removeClass('active')
             $(this).addClass('active')
             const value = $(this).html()
-            const target = $(this).attr('data-custom-target')
+            const target = $(this).attr('data-custom-target')            
             $(target).html(value)
+            const type = $(this).attr('data-type')
+            $('[data-note="type"]').html(type)
+            // Custom function using URLSearchParams to update URL query parameter
+            updateUrlQueryParam('type', type.toLowerCase());
         })
 
         $(document).on('change', '[data-change="radio"]', function (e) {

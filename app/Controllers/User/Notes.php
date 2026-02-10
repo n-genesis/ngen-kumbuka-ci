@@ -16,11 +16,6 @@ class Notes extends UserController
         $noteTypesModel = new NoteTypesModel();
         $noteTypes = $noteTypesModel->getForDropdown();
 
-        // echo '<pre>';
-        // print_r($noteModel->getNotesByUser($this->userId, $type));
-        // echo '</pre>';
-        // exit;
-
         return $this->renderView('pages/notes/index',[
             'appTitle' => setting('App.appName').' | Your Notes',
                 'pageHeader' => 'Your Notes',
@@ -28,7 +23,8 @@ class Notes extends UserController
                     ['label' => 'Home', 'url' => site_url('dashboard')],
                     ['label' => 'User Notes', 'url' => ''],
                 ],
-                'userNotes' => $noteModel->getNotesByUser($this->userId, $type),
+                'userId' => $this->userId,
+                'userNotes' => $noteModel->getNotesByUserId($this->userId, $type),
                 'noteTypeDropDown' => $noteTypesModel->getForDropdown(),
             ]);
     }
@@ -52,10 +48,6 @@ class Notes extends UserController
         ];
 
         $noteTypesModel = model(NoteTypesModel::class);
-        // echo '<pre>';
-        // print_r($noteTypesModel->getForDropdown());
-        // echo'</pre>';
-        // exit;
 
         // 4. Run validation
         if (! $this->validateData($data, $rules)) {
@@ -65,7 +57,7 @@ class Notes extends UserController
 
         return $this->renderView('pages/notes/new',[
             'appTitle' => setting('App.appName').' | New Note',
-                'pageHeader' => 'New '. ucfirst($noteType) . ' Note',
+                'pageHeader' => 'New <span data-note="type">'. ucfirst($noteType) . '</span> Note',
                 'breadcrumbLinks' => [
                     ['label' => 'Home', 'url' => site_url('dashboard')],
                     ['label' => 'New Note', 'url' => ''],

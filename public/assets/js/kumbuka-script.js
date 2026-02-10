@@ -97,7 +97,7 @@ const kmForms = document.querySelectorAll('[data-km="form"]');
 
 if (kmForms !== null) {
     kmForms.forEach(element => {
-        
+
         element.addEventListener('submit', (event) => {
             const form = event.target;
             const kmSubmitBtn = form.querySelector('[data-km="submit"]');
@@ -117,3 +117,118 @@ if (kmForms !== null) {
         });
     });
 }
+
+
+/**
+ * Change a URL query value using the URLSearchParams interface 
+ * along with the history.pushState() and history.replaceState() methods.
+ */
+function updateUrlQueryParam(key, value) {
+    // 1. Create a URL object based on the current window location
+    const url = new URL(window.location.href);
+
+    // 2. Access the searchParams property, which is a URLSearchParams object
+    const searchParams = url.searchParams;
+
+    // 3. Set the new value for the specified key
+    // This method overwrites an existing parameter or adds a new one
+    searchParams.set(key, value);
+
+    // 4. Update the browser's history and URL without reloading the page
+    // The first two arguments of replaceState are 'state' (can be null) and 'title' (ignored by modern browsers, can be empty string)
+    // The third argument is the new URL
+    window.history.replaceState(null, '', url.toString());
+}
+
+/**
+ * A simple AJAX function for the Share feature
+ */
+const kmAjaxForms = document.querySelectorAll('[data-km-form="ajax"]');
+
+if (kmAjaxForms !== null) {
+    kmAjaxForms.forEach(form => {
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Stop page refresh
+            const submitBtn = this.querySelector('[data-km="button"]');
+            submitBtn.disabled = true;
+            // Change the button text
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`;
+
+            const formData = new FormData(this);
+            const fomrAction = this.action;
+
+            fetch(fomrAction, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest' // Helps CI4 detect AJAX
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    $.toast({
+                        title: 'Toast',
+                        subtitle: '11 mins ago',
+                        content: data.message,
+                        type: data.status,
+                        delay: 3000
+                    });
+                    
+                    if (data.status === 'success') {
+                        // Update the CSRF token for the next submission
+                        if (data.token) {
+                            const csrfTokenInputs = document.querySelectorAll("input[name='csrf_kumbuka_key']");
+                            csrfTokenInputs.forEach(input => {
+                                input.value = data.token;
+                            });
+                        }
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+                .finally(() => {
+                    submitBtn.innerHTML = `<i class="bi bi-bookmark-check-fill mr-0"></i>`;
+                });
+        });
+    });
+}
+
+
+// Initialize the EventSource pointing to the CI4 route
+// const eventSource = new EventSource('/notifications/stream');
+
+// eventSource.onmessage = function (event) {
+//     const data = JSON.parse(event.data);
+
+//     // Display the notification to the user
+//     // You can replace this with a Bootstrap toast or custom alert
+//     //alert("New note shared with you!");
+//     $.snack('info', 'New note shared with you!', 300)
+
+//     // Logic to increment a notification badge if applicable
+//     if (typeof updateNotificationBadge === 'function') {
+//         updateNotificationBadge();
+//     }
+// };
+
+// eventSource.onerror = function (e) {
+//     console.error("SSE connection lost. Reconnecting...");
+// };
+
+// const eventSource = new EventSource("/notifications/stream");
+
+// eventSource.onmessage = function(event) {
+//     const notification = JSON.parse(event.data);
+    
+//     // 1. Update a UI Badge
+//     // const badge = document.getElementById('notification-count');
+//     // badge.innerText = parseInt(badge.innerText) + 1;
+
+//     // 2. Show a Toast or Browser Notification
+//     if (Notification.permission === "granted") {
+//         new Notification(notification.title, {
+//             body: notification.message,
+//             icon: '/assets/img/icon.png'
+//         });
+//     }
+// };

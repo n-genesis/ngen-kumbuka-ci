@@ -29,9 +29,13 @@
             </div>
         </div>
 
-        <div class="card-footer text-right">
+        <footer class="card-footer d-flex align-items-center justify-content-between">
+            <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary mr-auto">
+                <i class="bi bi-box-arrow-left"></i> Cancel
+            </a>
             <button type="submit" class="btn btn-primary">Save</button>
-        </div>
+        </footer>
+
     </div>
 </div>
 
@@ -64,9 +68,13 @@
             </form>
         </div>
 
-        <div class="card-footer text-right">
-            <button type="submit" class="btn btn-primary mr-2">Save</button>
-        </div>
+        <footer class="card-footer d-flex align-items-center justify-content-between">
+            <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary mr-auto">
+                <i class="bi bi-box-arrow-left"></i> Cancel
+            </a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </footer>
+        
     </div>
 </div>
 

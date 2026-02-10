@@ -39,7 +39,7 @@
       <div class="col-lg-2 col-md-4 col-sm-12">
          <div class="card card-block card-stretch card-height">
             <div class="card-body text-center">
-               <h2 class="mb-2 mt-3">424+</h2>
+               <h2 class="mb-2 mt-3">2+</h2>
                <h4>Followers</h4>
             </div>
          </div>
@@ -140,6 +140,12 @@
             </div>
 
             <div class="card-body">
+               <!-- User Notes Cell  -->
+               <div class="notes-container">
+                  <div class="row">
+                     <?= view_cell('UserNoteCell', ['userId' => $user->id]) ?>
+                  </div>
+               </div>
 
             </div>
 

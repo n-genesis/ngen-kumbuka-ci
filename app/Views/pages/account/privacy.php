@@ -84,12 +84,16 @@
             </div>
         </div>
 
-        <div class="card-footer d-flex align-items-center text-right justify-content-end">
-            <button type="submit" class="btn btn-primary mr-2">Save</button>
-            <a href="<?= site_url('dashboard') ?>" class="btn btn-outline-secondary">
+        <footer class="card-footer d-flex align-items-center justify-content-between">
+            <a href="<?= site_url('dashboard') ?>" class="btn btn-secondary mr-auto">
                 <i class="bi bi-box-arrow-left"></i> Cancel
             </a>
-        </div>
+            <button type="submit" class="btn btn-primary mr-2">
+                <i class="bi bi-save2" id="new-note-save"></i>
+                Save
+            </button>
+        </footer>
+
     </div>
 </div>
 

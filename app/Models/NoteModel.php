@@ -7,13 +7,13 @@ use App\Entities\Note as NoteEntity;
 
 class NoteModel extends Model
 {
-    protected $table            = 'notes';
-    protected $primaryKey       = 'id';
+    protected $table = 'notes';
+    protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = NoteEntity::class;
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [
+    protected $returnType = NoteEntity::class;
+    protected $useSoftDeletes = false;
+    protected $protectFields = true;
+    protected $allowedFields = [
         'user_id',
         'slug',
         'title',
@@ -34,27 +34,27 @@ class NoteModel extends Model
 
     // Dates
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
+    protected $validationRules = [];
+    protected $validationMessages = [];
+    protected $skipValidation = false;
     protected $cleanValidationRules = true;
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $beforeInsert = [];
+    protected $afterInsert = [];
+    protected $beforeUpdate = [];
+    protected $afterUpdate = [];
+    protected $beforeFind = [];
+    protected $afterFind = [];
+    protected $beforeDelete = [];
+    protected $afterDelete = [];
 
     /**
      * Get a list of User Notes using user_id, $typeSlug, and or supplying a $limit
@@ -63,22 +63,33 @@ class NoteModel extends Model
      * @param mixed $limit
      * @return array
      */
-    public function getNotesByUser(int $userId, string $typeSlug, ?int $limit = null) {
+    public function getNotesByUserId(int $userId, string $typeSlug = null, ?int $limit = null)
+    {
 
         $builder = $this->select('notes.*, note_types.name as type_name, note_types.slug as type_slug, note_types.btn_icon')
-                    ->join('note_types', 'note_types.id = notes.type_id')
-                    ->where('notes.user_id', $userId);
-        
-        if($typeSlug) {
+            ->join('note_types', 'note_types.id = notes.type_id')
+            ->where('notes.user_id', $userId);
+
+        if ($typeSlug) {
             $builder->where('note_types.slug', $typeSlug);
         }
 
         $builder->orderBy('notes.created_at', 'DESC');
 
-        if($limit !== null) {
+        if ($limit !== null) {
             $builder->limit($limit);
         }
 
         return $builder->findAll();
     }
+
+    public function getNoteSharesCount(int $noteId)
+    {
+        return $this->db->table('shares')
+            ->select('users.username, shares.created_at')
+            ->where('note_id', $noteId)
+            ->countAllResults();
+    }
+    
+
 }

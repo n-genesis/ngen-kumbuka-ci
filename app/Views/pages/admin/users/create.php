@@ -67,13 +67,14 @@
                 </div>
                 <div class="invalid-feedback">Please select at least one group.</div>
             </div>
-            
-            <div class="d-flex justify-content-between">
-                <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary">Cancel</a>
-                <button type="submit" class="btn btn-primary">Create User</button>
             </div>
 
-            </div>
+            <footer class="card-footer d-flex align-items-center justify-content-between">
+                <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary mr-auto">
+                    <i class="bi bi-box-arrow-left"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">Create User</button>
+            </footer>
         </form>
     </div>
 </div>

@@ -575,7 +575,6 @@ mark,
 }
 
 .figure-caption {
-  font-size: 90%;
   color: #6c757d;
 }
 
@@ -13608,6 +13607,17 @@ fieldset:disabled a.btn {
 .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
 .show>.btn-outline-secondary.dropdown-toggle:focus {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+
+.btn-outline-white {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.note-detail:hover .card-header
+.btn-outline-white {
+  color: #FFF;
+  border-color: #FFF;
 }
 
 .btn-outline-success {

@@ -39,6 +39,7 @@
                                             'class' => 'btn btn-outline-primary ' . (strcasecmp($selectedType, $type->name) == 0 ? 'active' : '') . ' ml-1',
                                             'data-change' => 'click',
                                             'data-custom-target' => '#note-icon',
+                                            'data-type' => $type->name,
                                             'content' => "<i class=\"$type->btn_icon ml-1 mr-1\"></i>",
                                         ]);
                                     }
@@ -110,12 +111,15 @@
                     <div class="card card-block card-stretch card-bottom-border-info note-detail basic-drop-shadow" id="update-note">
                         <div class="card-header d-flex justify-content-between pb-1">
                             <div class="icon iq-icon-box-2 icon-border-info rounded" id="note-icon">
-                                <svg width="23" class="svg-icon" id="iq-main-01" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewbox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                    </path>
-                                </svg>
+                                <!-- Note Types Buttons -->
+                                    <?php
+                                    foreach ($noteTypeDropDown as $type) {
+                                        // List Note Type Buttons
+                                        if (strcasecmp($selectedType, $type->name) == 0) {
+                                            echo "<i class=\"$type->btn_icon ml-1 mr-1\"></i>";
+                                        }
+                                    }
+                                    ?>
                             </div>
                             <div class="card-header-toolbar d-flex align-items-center">
                                 <div class="dropdown">
@@ -153,20 +157,21 @@
 
             </div>
         </div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
+        
+        <footer class="card-footer d-flex align-items-center justify-content-between">
             <a href="<?= site_url('dashboard') ?>" class="btn btn-secondary mr-auto">
                 <i class="bi bi-box-arrow-left"></i> Cancel
             </a>
-            <button type="submit" class="btn btn-primary mr-2">
-                <i class="bi bi-save2" id="new-note-save"></i>
-                Save
-            </button>
             <button type="reset" class="btn btn-outline-primary mr-2" data-reset="note-reset">
                 <i class="bi bi-rewind" id="new-note-reset"></i>
                 Reset
             </button>
-            
-        </div>
+            <button type="submit" class="btn btn-primary mr-2">
+                <i class="bi bi-save2" id="new-note-save"></i>
+                Save
+            </button>
+        </footer>
+
     </div>
 </div>
 
@@ -192,11 +197,6 @@
             $(target).html(text);
         } else {
             $(target).html(placeholderText);
-        }
-        if (source == 'api') {
-            console.log('An API call triggered this change.');
-        } else if (source == 'user') {
-            console.log('A user action triggered this change.');
         }
     });
 </script>

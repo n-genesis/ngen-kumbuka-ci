@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\Home;
+use App\Controllers\NotificationController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
 // Admin Controllers
@@ -11,6 +12,8 @@ use App\Controllers\User\Account;
 use App\Controllers\User\Dashboard;
 use App\Controllers\User\Notes;
 use App\Controllers\Pages;
+// Share Controller
+use App\Controllers\ShareController as Share;
 // Public Controllers
 use App\Controllers\Public as PublicController;
 
@@ -70,6 +73,17 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     });
 
 });
+
+// Share feature
+$routes->group('share',['filter' => ['userfilter']], function ($routes) {
+    $routes->post('note', [Share::class,'shareNote']);
+    $routes->post('ajax', [Share::class,'shareNoteAjax']);
+});
+
+// Notifications
+// $routes->group('notifications',['filter'=> ['userfilter']], function ($routes) {
+//     $routes->get('stream', [NotificationController::class,'stream_two']);
+// });
 
 // User Public Profile
 $routes->group('user/profile',function ($routes) {

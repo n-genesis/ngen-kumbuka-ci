@@ -185,11 +185,11 @@
                                     </div>
                                 </div>
                                 <!-- Card Footer -->
-                                <div class="card-footer text-right">
-                                    <button type="submit" class="btn btn-primary" data-km="submit">Save</button>
-                                    <a href="<?= site_url('dashboard') ?>" class="btn btn-outline-secondary">
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a href="<?= site_url('dashboard') ?>" class="btn btn-outline-secondary mr-auto">
                                         <i class="bi bi-box-arrow-left"></i> Cancel
                                     </a>
+                                    <button type="submit" class="btn btn-primary" data-km="submit">Save</button>
                                 </div>
                             </div>
                         </section>
