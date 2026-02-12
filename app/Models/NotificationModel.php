@@ -73,5 +73,11 @@ class NotificationModel extends Model
             'is_read' => 0
         ]);
     }
+
+    public function getUnreadCountbyUserId(int $userId) {
+        return $this->where('recipient_id', $userId)
+                    ->where('is_read', 0)
+                    ->countAllResults(); // Returns integer
+    }
     
 }

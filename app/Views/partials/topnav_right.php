@@ -43,7 +43,7 @@
                 <a href="#" class="text-dark search-toggle dropdown-toggle nav-icon-1" id="dropdownMenuButton2"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-bell"></i>
-                    <span class="badge badge-danger count-mail rounded-circle">1</span>
+                    <span class="badge badge-danger count-mail rounded-circle d-none" id="notif-badge">0</span>
                     <span class="bg-danger"></span>
                 </a>
                 <!-- Dropdown Menu -->

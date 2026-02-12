@@ -93,25 +93,40 @@
 <?= $this->section('scripts') ?>
 <!-- SSE Operations -->
 <script>
+
+    const badge = document.getElementById('notif-badge');
     // Use base_url() to point to the CI4 controller
     const eventSource = new EventSource('<?= base_url("notifications/stream") ?>');
 
     // Get SSE response/ Skip error checking for now
     eventSource.onmessage = function (event) {
         const data = JSON.parse(event.data);
-        const ele = document.getElementById('km-notice-' + data.id);
-        if(ele === null){
-        const title = data.source_type.charAt(0).toUpperCase() + data.source_type.slice(1) + ' notification';
-        $.BToasty({
-            title: title,
-            customID: 'km-notice-' + data.id,
-            body: '<p>' + data.message + '</p>' +
-                '<button class="btn btn-outline-primary btn-sm" data-km="dismiss" data-dismiss="toast">Dismiss</button>',
-            autoHide: false,
+        const count = parseInt(data.count);
+        
+        // Get Count for Notification badge// Update the badge text
+        badge.innerText = data.count;
+        
+        // Toggle badge visibility
+        if (count > 0) {
+            badge.classList.remove('d-none');
+        } else {
+            badge.classList.add('d-none');
+        }
 
-        });
-        markAsReadAndNotify(data.id,'<?= base_url("ajax/read") ?>')// Bind Event to dismiss notification and set is_read = 1 
-        ///$.BToasty(title, data.message, null, "top_right", false, 5000);
+        const ele = document.getElementById('km-notice-' + data.id);// Only append one element
+
+        if(ele === null){
+            const title = data.source_type.charAt(0).toUpperCase() + data.source_type.slice(1) + ' notification';
+            $.BToasty({
+                title: title,
+                customID: 'km-notice-' + data.id,
+                body: '<p>' + data.message + '</p>' +
+                    '<button class="btn btn-outline-primary btn-sm" data-km="dismiss" data-dismiss="toast">Dismiss</button>',
+                autoHide: false,
+
+            });
+            markAsReadAndNotify(data.id,'<?= base_url("ajax/read") ?>')// Bind Event to dismiss notification and set is_read = 1 
+            ///$.BToasty(title, data.message, null, "top_right", false, 5000);
         }
 
     };

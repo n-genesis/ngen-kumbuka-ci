@@ -39,6 +39,7 @@ class NotificationController extends UserController
         // Prevent script timeout for long connections
         set_time_limit(0);
 
+
         while (true) {
 
             // echo "data: " . json_encode([
@@ -51,9 +52,12 @@ class NotificationController extends UserController
             $notifications = $this->notificationModel->where('recipient_id', $this->userId)
                 ->where('is_read', 0)
                 ->findAll();
+            $count = $this->notificationModel->getUnreadCountbyUserId($this->userId);
+            $noticeCount = ['count' => $count];
 
             if (!empty($notifications)) {
                 foreach ($notifications as $note) {
+                    $note->count = $count;// Add count return data
                     echo "data: " . json_encode($note) . "\n\n";
                     // Mark as 'sent' or 'read' immediately to avoid duplicates in the next tick
                     // Or use a timestamp to only fetch notifications created AFTER the last loop

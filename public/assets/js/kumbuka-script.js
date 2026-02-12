@@ -206,47 +206,52 @@ if (kmAjaxForms !== null) {
  */
 const markAsReadAndNotify = async (noticeId, url) => {
 
+    const badge = document.getElementById('notif-badge');
     const toast = document.getElementById('km-notice-' + noticeId);
-    const noticeDismissBtn = toast.querySelector('[data-km="dismiss"]');
+    const noticeDismissBtn = toast.querySelectorAll('[data-dismiss="toast"]');
     
     if (noticeDismissBtn !== null) {
-        noticeDismissBtn.addEventListener('click', async () => {
+        noticeDismissBtn.forEach(button => {
+            button.addEventListener('click', async () => {
 
-            // Grab the token from the meta tag
-            const csrfMeta = document.querySelector('meta[name="X-CSRF-TOKEN"]');
-            let token = csrfMeta.getAttribute('content');
+                // Grab the token from the meta tag
+                const csrfMeta = document.querySelector('meta[name="X-CSRF-TOKEN"]');
+                let token = csrfMeta.getAttribute('content');
 
-            try {
-                // 1. Fire the AJAX request (using Fetch API)
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': token
-                    },
-                    body: JSON.stringify({
-                        id: noticeId,
-                        is_read: true,
-                    })
-                });
+                try {
+                    // Fire the AJAX request (using Fetch API)
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': token
+                        },
+                        body: JSON.stringify({
+                            id: noticeId,
+                            is_read: true,
+                        })
+                    });
 
-                const result = await response.json();
+                    const result = await response.json();
 
-                if (result.csrf_token) {
-                    csrfMeta .setAttribute('content', result.csrf_token);
+                    if (result.csrf_token) {
+                        csrfMeta .setAttribute('content', result.csrf_token);
+                    }
+
+                    // update button & hide badge
+                    if (result.success) {
+                        // noticeDismissBtn.classList.add('btn','btn-outline-danger');
+                        // noticeDismissBtn.innerText = 'Marked as Read';
+                        badge.innerText = 0;
+                        badge.classList.add('d-none');
+                    }
+                    
+                } catch (error) {
+                    console.error('AJAX Error:', error);
                 }
-
-                // update button
-                if (result.success) {
-                    noticeDismissBtn.classList.add('btn','btn-outline-danger');
-                    noticeDismissBtn.innerText = 'Marked as Read';
-                }
-                
-            } catch (error) {
-                console.error('AJAX Error:', error);
-            }
-        }, { once: true }); // Prevents stacking listeners
+            }, { once: true }); // Prevents stacking listeners
+        });
     }
 }
 
