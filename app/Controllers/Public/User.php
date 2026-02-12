@@ -16,10 +16,13 @@ class User extends UserController
         // Load user data based on username
             $userModel = model(UserModel::class);
 
+            //$userId = $userModel->findByCredentials(['username' => $username]);
+
             // TODO: Optimize query to include user details in one go
-            $user = $userModel
-                    ->join('user_details','users.id = user_details.user_id','left')
-                    ->where('username', $username)->first();
+            $user = $userModel->select('users.*, user_details.*')
+            ->join('user_details', 'user_details.user_id = users.id','left')
+            ->where('users.username', $username)
+            ->first(); // Returns an array of User Entity objects
 
             if(!$user){
                 throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("User not found");

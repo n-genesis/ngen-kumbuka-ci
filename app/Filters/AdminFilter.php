@@ -25,6 +25,12 @@ class AdminFilter implements FilterInterface
             return redirect()->to('login')->with('error', 'You must be logged in to access this page.');
         }
 
+        // IMPORTANT: Unlock the session so other pages can load
+        // This allows the SSE stream to run in the background without blocking
+        if (strpos($request->getUri()->getPath(), 'sse/stream') !== false) {
+            session_write_close(); 
+        }
+
         // Check if user is in admin group
         if (!auth()->user()->inGroup('admin')) {
             // Retrieve a custom 'group_denied' from settings

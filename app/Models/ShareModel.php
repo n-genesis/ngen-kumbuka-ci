@@ -79,7 +79,7 @@ class ShareModel extends Model
             $data['data']['note_id'],
             $data['data']['owner_id'],
             $data['data']['sharer_id'],
-            'shared a note with you.',
+            'Someone shared your note.',
             'share',
             
         );

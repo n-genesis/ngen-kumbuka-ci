@@ -12,11 +12,23 @@ use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
+use \CodeIgniter\Shield\Filters\SessionAuth;
 use App\Filters\AdminFilter;
 use App\Filters\UserFilter;
+use App\Filters\SseFilter;
 
 class Filters extends BaseFilters
 {
+    public function __construct()
+    {
+        // Check if the current URI matches your SSE endpoint
+    if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], 'notifications') !== false) {
+        // Find and remove 'toolbar' from the global after filters
+        if (($key = array_search('toolbar', $this->globals['after'])) !== false) {
+            unset($this->globals['after'][$key]);
+        }
+    }
+    }
     /**
      * Configures aliases for Filter classes to
      * make reading things nicer and simpler.
@@ -38,6 +50,8 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'adminfilter'   => AdminFilter::class,
         'userfilter'    => UserFilter::class,
+        'ssefilter'     => SseFilter::class,
+        'session'       => SessionAuth::class,
     ];
 
     /**
@@ -76,6 +90,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+            'csrf' => ['except' => ['notifications/*']],
              'session' => [
                 'except' => [
                     '',
@@ -86,7 +101,10 @@ class Filters extends BaseFilters
                     'login*', 
                     'register', 
                     'auth/a/*', 
-                    'logout'
+                    'logout',
+                    'notifications/*',// Excluding notifications
+                    'share/*',
+                    'ajax/read'
                 ]
             ],
             // 'honeypot',
@@ -94,6 +112,7 @@ class Filters extends BaseFilters
             // 'invalidchars',
         ],
         'after' => [
+            'toolbar' => ['except' => ['notifications/*', 'share/*' , 'ajax/read']], // Exclude specific URI(s)
             // 'honeypot',
             // 'secureheaders',
         ],

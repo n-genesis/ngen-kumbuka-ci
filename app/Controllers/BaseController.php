@@ -25,7 +25,6 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-    protected $session;
     protected $userConfig;
     protected $userId;
     protected $username;
@@ -74,9 +73,6 @@ abstract class BaseController extends Controller
 
         // Get Default User Configs
         $this->userConfig = config(UserConfig::class);
-
-        // Set Sessions
-        $this->session = session();
 
         // Check if the User is logged in & get credentials
         if (auth()->loggedIn()) {

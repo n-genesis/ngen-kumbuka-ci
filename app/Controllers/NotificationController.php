@@ -4,10 +4,11 @@ namespace App\Controllers;
 
 use App\Controllers\UserController;
 use App\Models\NotificationModel;
-use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\API\ResponseTrait;
 
 class NotificationController extends UserController
 {
+    use ResponseTrait; // Provides easy JSON response methods
 
     protected $notificationModel;
 
@@ -21,86 +22,6 @@ class NotificationController extends UserController
         //
     }
 
-    public function stream()
-    {
-        // Close the session to prevent session locking
-        session_write_close();
-
-        // Set necessary headers for SSE
-        header('Content-Type: text/event-stream');
-        header('Cache-Control: no-cache');
-        header('Connection: keep-alive');
-
-        // Get the current user ID from Parent (UserController)
-        $userId = $this->userId;
-
-        while (true) {
-            // Check for unread notifications in the database
-            $notification = $this->notificationModel
-                ->where('actor_id', $userId)
-                ->where('is_read', 0)
-                ->first();
-
-            if ($notification) {
-                // Send the notification data as a JSON string
-                echo "data: " . json_encode($notification) . "\n\n";
-
-                // Mark the notification as read to prevent duplicate alerts
-                //$this->notificationModel->update($notification->id, ['is_read' => 1]);
-            }
-
-            // Flush the output buffer
-            if (ob_get_level() > 0)
-                ob_flush();
-            flush();
-
-            // Wait 3 seconds before the next check to manage server load
-            sleep(3);
-        }
-    }
-
-    // app/Controllers/NotificationController.php
-
-public function stream_two()
-{
-    $userId = auth()->id(); // Get current logged-in user ID
-    if (!$userId) return;
-
-    set_time_limit(0); 
-    $this->response->setHeader('Content-Type', 'text/event-stream');
-    $this->response->setHeader('Cache-Control', 'no-cache');
-
-    $db = \Config\Database::connect();
-    
-    // Start checking from current time
-    $lastCheck = date('Y-m-d H:i:s');
-
-    while (true) {
-        // Query only new notifications for this user
-        $notifications = $db->table('notifications')
-            ->where('actor_id', $userId)
-            ->where('created_at >', $lastCheck)
-            ->get()
-            ->getResult();
-
-        if (!empty($notifications)) {
-            foreach ($notifications as $note) {
-                echo "data: " . json_encode($note) . "\n\n";
-            }
-            // Update the pointer to the latest notification's time
-            $lastCheck = date('Y-m-d H:i:s');
-        } else {
-            // Keep-alive: send an empty comment every 30s to prevent timeout
-            echo ": heartbeat\n\n";
-        }
-
-        ob_flush();
-        flush();
-        
-        sleep(5); // Wait 5 seconds before next DB poll
-    }
-}
-
 
     // app/Controllers/Notifications.php
     public function getUnreadCount()
@@ -111,5 +32,83 @@ public function stream_two()
 
         return $this->response->setJSON(['unread_count' => $count]);
     }
-    
+
+    public function stream()
+    {
+
+        // Prevent script timeout for long connections
+        set_time_limit(0);
+
+        while (true) {
+
+            // echo "data: " . json_encode([
+            //     'source_type' => 'Share',
+            //     'title' => 'Hello World',
+            //     'message' => 'From Kumbuka',
+            // ]) . "\n\n";
+
+            // Fetch unread notifications for the logged-in user
+            $notifications = $this->notificationModel->where('recipient_id', $this->userId)
+                ->where('is_read', 0)
+                ->findAll();
+
+            if (!empty($notifications)) {
+                foreach ($notifications as $note) {
+                    echo "data: " . json_encode($note) . "\n\n";
+                    // Mark as 'sent' or 'read' immediately to avoid duplicates in the next tick
+                    // Or use a timestamp to only fetch notifications created AFTER the last loop
+                    
+                    # MOVED THESE OPERATIONS To MarkAsRead method for AJAX requests 
+                    // Mark as read or handle state so it doesn't loop
+                    //$this->notificationModel->update($note->id, ['is_read' => 1]);
+                }
+            } else {
+                // Send a "ping" to keep the connection alive (prevents proxy timeouts)
+                echo ": ping\n\n";
+            }
+
+            // Pushes output buffer to the client immediately
+            if (ob_get_level() > 0) {
+                ob_flush();
+            }
+            flush();
+
+            // Check if client is still connected
+            if (connection_aborted())
+                break;
+            // Sleep to prevent 100% CPU usage
+            sleep(3); // Adjust polling interval
+        }
+        // This stops the script immediately, preventing any "After Filters" 
+        // (like the toolbar) from ever running for this specific request.
+        exit();
+    }
+
+
+
+    public function markAsRead()
+    {
+            // 1. Get JSON data as an associative array
+            $json = $this->request->getJSON(true);
+            $id = $json['id'] ?? null;
+
+            if (!$id) {
+                return $this->fail('Invalid notification ID', 400);
+            }
+
+            $model = $this->notificationModel;
+
+            // 2. Perform the update
+            $update = $model->where(['id' => $id, 'recipient_id'=> $this->userId])->set(['is_read' => 1])->update();
+            if ($update) {
+                return $this->respond([
+                    'success' => true,
+                    'message' => 'Notification marked as read',
+                    'csrf_token' => csrf_hash() // Send the new token back!
+                ]);
+            }
+
+        return $this->fail('Failed to update record', 500);
+    }
+
 }

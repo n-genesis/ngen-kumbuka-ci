@@ -10,7 +10,11 @@
          <div class="card car-transparent">
             <div class="card-body p-0">
                <div class="profile-image position-relative">
-                  <img src="/uploads/profile.jpg" class="img-fluid rounded w-100" alt="">
+                  <img src="<?= base_url('uploads/profile.jpg') ?>" class="img-fluid rounded w-100" alt="">
+                  <!-- User Avatar Image -->
+                  <div class="position-absolute" style="bottom: 10px; left: 10px;">
+                     <img class="avatar-100 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title="" title="">
+                  </div>
                </div>
                <div class="profile-overly">
                   <h3><?= $user->full_name ?></h3>

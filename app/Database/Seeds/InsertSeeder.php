@@ -30,7 +30,8 @@ class InsertSeeder extends Seeder
         $this->call('SharedNotebooksSeeder');
         // Note Comments Inserts
         $this->call('CommentsSeeder');
-        
+        // Note Comments Inserts
+        $this->call('NotificationsSeeder');
         // Pages Inserts
         $this->call('PagesSeeder');
     }

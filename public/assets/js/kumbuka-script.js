@@ -167,14 +167,20 @@ if (kmAjaxForms !== null) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    $.toast({
-                        title: 'Toast',
-                        subtitle: '11 mins ago',
-                        content: data.message,
-                        type: data.status,
-                        delay: 3000
+                    $.BToasty({
+                        title: "Shared",
+                        body: data.message,
+                        extra: data.status,
+                        autoHide: false,
+                        duration: 5000,
+                        xbutton: true, // shows close button
+                        position: "top_right",
+                        // img: { // custom image
+                        //     src: "/assets/images/logo.png", 
+                        //     alt: "Kumbuka"
+                        // }
                     });
-                    
+
                     if (data.status === 'success') {
                         // Update the CSRF token for the next submission
                         if (data.token) {
@@ -193,42 +199,55 @@ if (kmAjaxForms !== null) {
     });
 }
 
+/**
+ * Creating a function to add to Server-Sent Events (SSE) and then attach an EventListener.
+ * The ID arugument passed in is used to find the right Element's button. 
+ * 
+ */
+const markAsReadAndNotify = async (noticeId, url) => {
 
-// Initialize the EventSource pointing to the CI4 route
-// const eventSource = new EventSource('/notifications/stream');
-
-// eventSource.onmessage = function (event) {
-//     const data = JSON.parse(event.data);
-
-//     // Display the notification to the user
-//     // You can replace this with a Bootstrap toast or custom alert
-//     //alert("New note shared with you!");
-//     $.snack('info', 'New note shared with you!', 300)
-
-//     // Logic to increment a notification badge if applicable
-//     if (typeof updateNotificationBadge === 'function') {
-//         updateNotificationBadge();
-//     }
-// };
-
-// eventSource.onerror = function (e) {
-//     console.error("SSE connection lost. Reconnecting...");
-// };
-
-// const eventSource = new EventSource("/notifications/stream");
-
-// eventSource.onmessage = function(event) {
-//     const notification = JSON.parse(event.data);
+    const toast = document.getElementById('km-notice-' + noticeId);
+    const noticeDismissBtn = toast.querySelector('[data-km="dismiss"]');
     
-//     // 1. Update a UI Badge
-//     // const badge = document.getElementById('notification-count');
-//     // badge.innerText = parseInt(badge.innerText) + 1;
+    if (noticeDismissBtn !== null) {
+        noticeDismissBtn.addEventListener('click', async () => {
 
-//     // 2. Show a Toast or Browser Notification
-//     if (Notification.permission === "granted") {
-//         new Notification(notification.title, {
-//             body: notification.message,
-//             icon: '/assets/img/icon.png'
-//         });
-//     }
-// };
+            // Grab the token from the meta tag
+            const csrfMeta = document.querySelector('meta[name="X-CSRF-TOKEN"]');
+            let token = csrfMeta.getAttribute('content');
+
+            try {
+                // 1. Fire the AJAX request (using Fetch API)
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': token
+                    },
+                    body: JSON.stringify({
+                        id: noticeId,
+                        is_read: true,
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.csrf_token) {
+                    csrfMeta .setAttribute('content', result.csrf_token);
+                }
+
+                // update button
+                if (result.success) {
+                    noticeDismissBtn.classList.add('btn','btn-outline-danger');
+                    noticeDismissBtn.innerText = 'Marked as Read';
+                }
+                
+            } catch (error) {
+                console.error('AJAX Error:', error);
+            }
+        }, { once: true }); // Prevents stacking listeners
+    }
+}
+
+

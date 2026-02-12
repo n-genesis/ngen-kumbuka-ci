@@ -80,10 +80,20 @@ $routes->group('share',['filter' => ['userfilter']], function ($routes) {
     $routes->post('ajax', [Share::class,'shareNoteAjax']);
 });
 
-// Notifications
-// $routes->group('notifications',['filter'=> ['userfilter']], function ($routes) {
-//     $routes->get('stream', [NotificationController::class,'stream_two']);
-// });
+/**
+ * Notifications using Sever-Sent Events
+ * 
+ * Routes to NotificationController stream method
+ * to use with SSE
+ */
+$routes->group('notifications',['filter'=> ['ssefilter']], function($routes) {
+    $routes->get('stream', [NotificationController::class,'stream']);
+});
+
+// AJAX controller for moarking notifications as read
+$routes->group('ajax',['filter'=> ['userfilter']], function ($routes) {
+    $routes->post('read', [NotificationController::class,'markAsRead']);
+});
 
 // User Public Profile
 $routes->group('user/profile',function ($routes) {

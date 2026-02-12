@@ -14,7 +14,7 @@
                     <?php if ($user->id != auth()->user()->id): ?>
                         <form action="<?= site_url(['share/ajax']) ?>" method="post" data-km-form="ajax">
                             <input type="hidden" name="<?= csrf_token(); ?>" value="<?= csrf_hash(); ?>" id="<?= csrf_token(); ?>">
-                            <button type="submit" data-toggle="tooltip" data-placement="top" title="Share Note" class="btn btn-outline-white mr-2" data-km="button">
+                            <button type="submit" title="Share Note" class="btn btn-outline-white mr-2" data-km="button">
                                 <i class="bi bi-bookmark-heart mr-0"></i>
                             </button>
                             <input type="hidden" name="user_id" value="<?= $user->id ?>">

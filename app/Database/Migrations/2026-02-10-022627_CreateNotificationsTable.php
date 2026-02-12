@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateNotificationTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     public function up()
     {

@@ -152,7 +152,7 @@
                 <a href="<?= site_url('admin/users') ?>" class="btn btn-secondary mr-auto">
                     <i class="bi bi-box-arrow-left"></i> Cancel
                 </a>
-                <button type="submit" class="btn btn-primary">Create User</button>
+                <button type="submit" class="btn btn-primary">Update User</button>
             </footer>
             
         </form>
