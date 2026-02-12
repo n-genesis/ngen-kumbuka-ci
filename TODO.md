@@ -6,6 +6,7 @@ This document jsut lists current tasks and planned features for the project. A m
 ## High Priority
 - [ ] Update template for Bootstrap 5 (legacy 4.x used)
 - [ ] Add emptey `user_details` for email activated Users
+- [ ] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
 
 ### Currently Completing
 - [ ] Admin Section for User managment
