@@ -6,13 +6,18 @@ This document jsut lists current tasks and planned features for the project. A m
 ## High Priority
 - [ ] Update template for Bootstrap 5 (legacy 4.x used)
 - [ ] Add emptey `user_details` for email activated Users
-- [ ] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
+- [ ] Pinpoint why AJAX Reuqest are sooooo slow.
+- [ ] FIX forced email activation on Admin Created or modify user accounts.
+
+
 
 ### Currently Completing
 - [ ] Admin Section for User managment
+- [x] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
+- [x] **Add Native browser notification windows and User permission**
 
 ### Completed (High Priority)
-- [ ] Exten shield's User Model to include more user details (first_name, last_name, full_name)
+- [x] Exten shield's User Model to include more user details (first_name, last_name, full_name)
 - [ ] Update User Registration to include more user details and store them in `user_details` table
 - [ ] Update User Login to fetch more user details from `user_details` table
 
@@ -20,7 +25,10 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Edit Admin Seeder file to remove redundant code
 - [ ] Create `Cell` Views for sidebar menus
 - [ ] Create `Cell` views for User Dashboard page
+- [ ] Create `Cell` views for User Notifications and Messages
 - [ ] Add Admin opts for editing website settings (Admin Section)
+    - **Action Items:**
+        - [ ] Create User Avatar and cover images uploads
 
 ### Completed (Medium Priority)
 - [ ] 
@@ -31,6 +39,9 @@ This document jsut lists current tasks and planned features for the project. A m
     - *Might just redesignthe template from scratch using Bootstrap 5*
 - [ ] Create simple email templates for user actions (registration, password reset, etc.)
 - [ ] Add Pagination/Pager language file
+    - **Action Items:**
+        - [ ] 
+
 
 ### Completed (Low Priority)
 - [ ]
