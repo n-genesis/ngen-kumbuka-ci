@@ -68,19 +68,13 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
 
 
+## Credits
+
+Got the be grateful for these projects and creators that shared them. They've help in The Bootsnippets.com projects development. Much thanks.
+
+#### Tatter\Preferences:
+Persistent user-specific settings for CodeIgniter 4
+https://github.com/tattersoftware/codeigniter4-preferences
+
 ## License
-This project is licensed under the **MIT License** - see the [LICENSE.md](LICENSE.md) file for details.
-
-```
-Copyright (c) 2026 N-Gen Design
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
+"Copyright (c) 2026 N-Gen Design. All rights reserved. No license is granted for use, modification, or distribution".
