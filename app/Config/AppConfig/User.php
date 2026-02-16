@@ -11,4 +11,6 @@ class User extends BaseConfig
      * @var string
      */
     public string $defaultAvatar = '/uploads/default-avatar.png';
+
+    
 }

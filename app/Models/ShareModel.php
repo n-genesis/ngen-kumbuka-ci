@@ -7,7 +7,7 @@ use CodeIgniter\Events\Events;
 use App\Models\NotificationModel;
 
 class ShareModel extends Model
-{
+{    
     protected $table = 'shares';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
@@ -43,7 +43,7 @@ class ShareModel extends Model
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert = [];
-    protected $afterInsert = ['createNotification'];
+    protected $afterInsert = ['createNotification','createUserActivity'];
     protected $beforeUpdate = [];
     protected $afterUpdate = [];
     protected $beforeFind = [];
@@ -86,6 +86,12 @@ class ShareModel extends Model
         return $data;
     }
 
+    public function createUserActivity(array $data){
+        $users = auth()->getProvider();
+        $username = $users->findById($data['data']['owner_id'])->username;
+        log_activity(" You Shared $username's note",'content','info'); 
+    }
+
     /**
      * Records a share, creates a notification, and triggers an event.
      */
@@ -115,6 +121,7 @@ class ShareModel extends Model
 
         return false;
     }
+    
     /**
      * Check to see if the User already shared the note
      * 
@@ -122,7 +129,7 @@ class ShareModel extends Model
      * @param int $actorId
      * @return bool
      */
-    public function isShared(int $sharerId, int $noteId)
+    public function hasShared(int $sharerId, int $noteId)
     {
         return $this->select('note_id')
             ->where(['sharer_id' => $sharerId, 'note_id' => $noteId])->countAllResults() > 0;

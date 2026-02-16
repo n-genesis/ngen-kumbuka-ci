@@ -1,14 +1,12 @@
 <?= $this->extend('layouts/main'); ?>
 
-
-
 <!-- Head stylesheets -->
 <?= $this->section('styles') ?>
-<link rel="stylesheet" href="<?= base_url('assets/vender/toasty/bootstrap-toasty.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vender/toasty/bootstrap-toasty.min.css'); ?>">
 <?= $this->endSection(); ?>
 
 <?= $this->section('csrf') ?>
-<?= csrf_meta()."\n\n" ?>
+    <?= csrf_meta()."\n\n" ?>
 <?= $this->endSection() ?>
 
 
@@ -54,9 +52,19 @@
                     <?= $this->include('blocks/breadcrumbs', $breadcrumbLinks) ?>
                 </div>
 
+
                 <!-- Alerts -->
                 <div class="col-lg-12">
                     <?= $this->include('blocks/alerts') ?>
+
+                    <!-- Notifications Permission Alert -->
+                    <div id="notif-banner" class="alert bg-white alert-success" role="alert">
+                        <div class="iq-alert-text d-flex justify-content-between align-items-center">
+                            <p class="m-0">Want to stay updated on your accounts activity when logged in?</p>
+                            <button class="btn btn-outline-primary" onclick="enableNotifications()">Enable Browser Notifications</button>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!--Render Section backend -->
@@ -91,17 +99,16 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('scripts') ?>
-<!-- SSE Operations -->
 <script>
-
+    // Get notification badge
     const badge = document.getElementById('notif-badge');
     // Use base_url() to point to the CI4 controller
     const eventSource = new EventSource('<?= base_url("notifications/stream") ?>');
 
     // Get SSE response/ Skip error checking for now
     eventSource.onmessage = function (event) {
-        const data = JSON.parse(event.data);
-        const count = parseInt(data.count);
+        const data = JSON.parse(event.data);// Get returned datas
+        const count = parseInt(data.count);// Get counts for Notification badges
         
         // Get Count for Notification badge// Update the badge text
         badge.innerText = data.count;
@@ -117,23 +124,27 @@
 
         if(ele === null){
             const title = data.source_type.charAt(0).toUpperCase() + data.source_type.slice(1) + ' notification';
+            
+            // Show native browser notifications
+            showNativeNotification(title, data.message, data.id );
+
+            //Show Toasty Alerts for in-window notifications
             $.BToasty({
                 title: title,
+                extra: data.created_at,
                 customID: 'km-notice-' + data.id,
                 body: '<p>' + data.message + '</p>' +
                     '<button class="btn btn-outline-primary btn-sm" data-km="dismiss" data-dismiss="toast">Dismiss</button>',
                 autoHide: false,
-
             });
-            markAsReadAndNotify(data.id,'<?= base_url("ajax/read") ?>')// Bind Event to dismiss notification and set is_read = 1 
-            ///$.BToasty(title, data.message, null, "top_right", false, 5000);
+            // Bind Event to dismiss notification and set is_read = 1 (using base_url for AJAX URL)
+            markNoticeAsRead(data.id,'<?= base_url("ajax/read") ?>')
         }
-
     };
 
     // Add an event listener for the 'beforeunload' event
     window.addEventListener('beforeunload', function (event) {
-        // Close the SSE connection
+        // Close the SSE connection I guess a lil more gracefully
         if (eventSource) {
             eventSource.close();
         }

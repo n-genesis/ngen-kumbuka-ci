@@ -8,6 +8,7 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Add emptey `user_details` for email activated Users
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
+- [ ] Finish UserActivitySeeder Script
 
 
 

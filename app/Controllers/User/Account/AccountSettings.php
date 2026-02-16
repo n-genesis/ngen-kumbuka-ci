@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\User;
+namespace App\Controllers\User\Account;
 
 use App\Controllers\UserController;
 use App\Models\User\UserDetailsModel;
@@ -8,26 +8,22 @@ use App\Models\User\UserModel;
 
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Account extends UserController
+class AccountSettings extends UserController
 {
     public function index()
     {
         $userModel = model(UserModel::class);
         $user = $userModel->findByIdWithDetails($this->userId);
         
-        return $this->renderView('pages/account/profile',[
-            'appTitle' => setting('App.appName').' | User Profile',
-                'pageHeader' => 'Edit Profile',
+        return $this->renderView('pages/account/account_settings',[
+            'appTitle' => setting('App.appName').' | Account Settings',
+                'pageHeader' => 'Account Settings',
                 'breadcrumbLinks' => [
                     ['label' => 'Home', 'url' => site_url('dashboard')],
-                    ['label' => 'Edit Profile', 'url' => ''],
+                    ['label'=> 'Edit Profile','url'=> site_url('account')],
+                    ['label' => 'Account Settings', 'url' => ''],
                 ],
-                'user' => $user,
-                // TODO: THIS IS BAD!!!
-                'facebook' => $user->getUserSocialLinks('facebook')->link ?? '',
-                'twitter'=> $user->getUserSocialLinks('twitter')->link ?? '',
-                'instagram'=> $user->getUserSocialLinks('instagram')->link ?? '',
-                'snapchat'=> $user->getUserSocialLinks('snapchat')->link ?? '',
+                'user' => $this->userEntity,
             ]);
     }
 
@@ -117,17 +113,6 @@ class Account extends UserController
         }
     }
 
-    public function settings(){
-        return $this->renderView('pages/account/settings',[
-            'appTitle' => setting('App.appName').' | Account Settings',
-                'pageHeader' => 'Account Settings',
-                'breadcrumbLinks' => [
-                    ['label' => 'Home', 'url' => site_url('dashboard')],
-                    ['label' => 'Account Settings', 'url' => ''],
-                ],
-                'user' => $this->userEntity
-            ]);
-    }
 
     public function privacy(){
         return $this->renderView('pages/account/privacy',[

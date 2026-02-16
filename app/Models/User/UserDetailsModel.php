@@ -3,7 +3,7 @@
 namespace App\Models\User;
 
 use CodeIgniter\Model;
-use App\Entities\UserDetails as UserDetailEntity;
+use App\Entities\User\UserDetails as UserDetailEntity;
 
 class UserDetailsModel extends Model
 {

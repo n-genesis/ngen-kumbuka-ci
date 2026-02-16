@@ -1,26 +1,29 @@
-<!-- app/Views/public/user/profile.php -->
+<!-- app/Views/public/user/profile_information.php -->
 <?= $this->extend('layouts/backend'); ?>
 
 <?= $this->section('backend'); ?>
 
-<!-- Tab Content Navigation (display:none)-->
-<nav class="col-lg-12 d-none">
+<!-- Tab Content Navigation -->
+<nav class="col-lg-12">
     <div class="card">
         <div class="card-body p-0">
             <div class="iq-edit-list usr-edit">
-                <ul class="iq-edit-profile d-flex nav nav-pills">
+                <ul class="iq-edit-profile d-flex justify-content-between nav nav-pills">
                     <li class="col-md-3 p-0">
-                        <a class="nav-link active" data-toggle="pill" href="#personal-information">
-                            Personal Information
-                        </a>
+                        <a class="nav-link active" href="<?= base_url('account') ?>">Edit Profile</a>
                     </li>
                     <li class="col-md-3 p-0">
-                        <a class="nav-link" data-toggle="pill" href="#">
+                        <a class="nav-link" href="<?= base_url('account/settings') ?>">
                             Account Settings
                         </a>
                     </li>
                     <li class="col-md-3 p-0">
-                        <a class="nav-link" data-toggle="pill" href="#">
+                        <a class="nav-link" href="<?= base_url('account/settings') ?>#emailnotifications">
+                            Email Notifications
+                        </a>
+                    </li>
+                    <li class="col-md-3 p-0">
+                        <a class="nav-link" href="<?= base_url('account/privacy') ?>">
                             Privacy Settings
                         </a>
                     </li>

@@ -41,16 +41,16 @@
                     </span>
                 </a>
             <div class="dropdown-menu w-100 border-0 py-3" aria-labelledby="dropdownMenuButton01">
-                <a class="dropdown-item mb-2" href="<?= site_url('notes/new?type=general') ?>">
+                <a class="dropdown-item mb-2" href="<?= site_url('note/new?type=general') ?>">
                     <span><i class="bi bi-journal-plus"></i> <?= lang('Menus.blankNote') ?></span>
                 </a>
-                <a class="dropdown-item mb-2" href="<?= site_url('notes/new?type=reminder') ?>">
+                <a class="dropdown-item mb-2" href="<?= site_url('note/new?type=reminder') ?>">
                     <span><i class="bi bi-check2-square"></i> <?= lang('Menus.reminder') ?></span>
                 </a>
-                <a class="dropdown-item mb-2" href="<?= site_url('notes/new?type=essay') ?>">
+                <a class="dropdown-item mb-2" href="<?= site_url('note/new?type=essay') ?>">
                     <span><i class="bi bi-journal-bookmark"></i> <?= lang('Menus.essayNote') ?></span>
                 </a>
-                <a class="dropdown-item" href="<?= site_url('notes/new?type=reflection') ?>">
+                <a class="dropdown-item" href="<?= site_url('note/new?type=reflection') ?>">
                     <span><i class="bi bi-calendar2-heart"></i> <?= lang('Menus.dailyReflct') ?></span>
                 </a>
             </div>
@@ -103,7 +103,7 @@
                 <?php endif ?>
                 <!-- User Notes/Dashboard -->
                 <li>
-                    <a href="<?= site_url('notes') ?>" class="svg-icon">
+                    <a href="<?= site_url('note') ?>" class="svg-icon">
                         <i class="bi bi-journal-text"></i>
                         <span><?= lang('Menus.yourNotes') ?></span>
                     </a>
@@ -147,11 +147,11 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="#" class="svg-icon">
+                    <a href="<?=  base_url('account/activity') ?>" class="svg-icon">
                         <i class="bi bi-broadcast"></i>
                         <!-- <i class="bi bi-journal-bookmark-fill"></i>
                          <i class="bi bi-rss"></i> -->
-                        Following &amp; Activity
+                        <span><?= lang('Menus.followActivity') ?></span>
                     </a>
                 </li>  
                 <!--Trash Bin -->

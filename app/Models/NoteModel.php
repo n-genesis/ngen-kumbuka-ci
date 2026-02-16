@@ -11,7 +11,7 @@ class NoteModel extends Model
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = NoteEntity::class;
-    protected $useSoftDeletes = false;
+    protected $useSoftDeletes = true;
     protected $protectFields = true;
     protected $allowedFields = [
         'user_id',
@@ -47,15 +47,54 @@ class NoteModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert = [];
+    protected $beforeInsert = ['generateSlug'];
     protected $afterInsert = [];
-    protected $beforeUpdate = [];
+    protected $beforeUpdate = ['generateSlug'];
     protected $afterUpdate = [];
     protected $beforeFind = [];
     protected $afterFind = [];
     protected $beforeDelete = [];
     protected $afterDelete = [];
+    protected $priorities = [
+        'primary' => 'Default (Primary)',
+        'success' => 'Very High (Success)',
+        'secondary' => 'Very Low (Secondary)',
+        'info' => 'Low (Information)',
+        'warning' => 'Medium (Warning)',
+        'danger' => 'High (Danger)',
+    ];
 
+    /**
+     * Generate a slug from the title
+     * Seemed easiest/best to put the mechanics here
+     * @param array $data
+     * @return array
+     */
+    protected function generateSlug(array $data)
+    {
+        if (isset($data['data']['title'])) {
+            // Retrieve the ID(s) being updated
+            // It is typically an array of IDs: [0 => 123]
+            if (isset($data['id'])) {
+                $id = is_array($data['id']) ? $data['id'][0] : $data['id'];
+            } else {
+                $id = null;
+            }
+            helper('url');
+            $baseSlug = mb_url_title($data['data']['title'], '-', true);
+            $slug = $baseSlug;
+            $count = 1;
+
+            // Check for uniqueness in the database
+            // Does the slug exist and NOT the current row being updated 
+            while ($this->where('id !=', $id)->where('slug', $slug)->first()) {
+                $slug = $baseSlug . '-' . $count++;
+            }
+
+            $data['data']['slug'] = $slug;
+        }
+        return $data;
+    }
     /**
      * Get a list of User Notes using user_id, $typeSlug, and or supplying a $limit
      * 
@@ -63,7 +102,7 @@ class NoteModel extends Model
      * @param mixed $limit
      * @return array
      */
-    public function getNotesByUserId(int $userId, string $typeSlug = null, ?int $limit = null)
+    public function getNotesByUserId(int $userId, string $typeSlug = '', ?int $limit = null)
     {
 
         $builder = $this->select('notes.*, note_types.name as type_name, note_types.slug as type_slug, note_types.btn_icon')
@@ -90,6 +129,24 @@ class NoteModel extends Model
             ->where('note_id', $noteId)
             ->countAllResults();
     }
-    
+    /**
+     * Summary of getNotePriority
+     * @return mixed
+     */
+    public function getNotePriority($column)
+    {
+
+        return $this->priorities;
+    }
+
+    /**
+     * Create a new notification for all Following Users with notifications
+     * settings turned on.
+     * 
+     * @return void
+     */
+    public function notifyFollowingUsers(){
+
+    }
 
 }

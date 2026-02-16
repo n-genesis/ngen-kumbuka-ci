@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Entities\Notification as NotificationEntity;
 
 class NotificationModel extends Model
 {
     protected $table            = 'notifications';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object';
+    protected $returnType       = NotificationEntity::class;
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields = [

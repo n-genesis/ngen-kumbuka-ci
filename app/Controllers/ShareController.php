@@ -80,7 +80,7 @@ class ShareController extends UserController
         }
 
         // Check is User already shared the note
-        if ($shareModel->isShared($this->userId, $noteId)) {
+        if ($shareModel->hasShared($this->userId, $noteId)) {
             return redirect()->back()->with('message', 'You have already shared this note.');
         }
 
@@ -102,7 +102,7 @@ class ShareController extends UserController
         if ($this->request->isAJAX()) {
 
             $token = [
-                'token' => csrf_hash(),
+                'csrf_token' => csrf_hash(),
             ];
 
             $noteId = $this->request->getPost('note_id');
@@ -129,7 +129,7 @@ class ShareController extends UserController
             }
 
             // Check is User already shared the note
-            if ($this->shareModel->isShared($this->userId, $noteId)) {
+            if ($this->shareModel->hasShared($this->userId, $noteId)) {
                 return $this->response->setJSON(array_merge($token,[
                     'status' => 'success',
                     'message' => 'You have already shared this note.'

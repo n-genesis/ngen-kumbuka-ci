@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use App\Models\NoteModel;
+use App\Models\ShareModel;
 use CodeIgniter\Entity\Entity;
 use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
 
@@ -20,11 +21,6 @@ use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
  */
 class Note extends Entity
 {
-    protected $attributes = [
-        'title',
-        'slug',
-        'body'
-    ];
     protected $datamap = [];
     protected $dates   = ['updated_at', 'deleted_at'];
     protected $casts   = [];
@@ -55,5 +51,19 @@ class Note extends Entity
         $noteModel = model(NoteModel::class);
 
         return $noteModel->getNoteSharesCount($this->attributes['id']);
+    }
+
+    public function hasUserShared($user_id){
+        $sharedModel = model(ShareModel::class);
+        return $sharedModel->hasShared($user_id,$this->attributes['id']);
+    }
+
+    public function getBodySummary(): string
+    {
+        helper('text'); // Ensure the helper is loaded
+        $rawBody = $this->attributes['body'];
+
+        // Truncate to 150 characters with a '...' suffix
+        return character_limiter($rawBody, 150, '...');
     }
 }

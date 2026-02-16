@@ -22,6 +22,7 @@ return [
     'yourNotes'     => 'Your Notes',
     'noteBooks'     => 'Notebooks',
     'reminder'      => 'Reminder',
+    'followActivity'=> 'Following &amp; Activity',
 
     // Admin Options
     'admin'     => 'Administrator',

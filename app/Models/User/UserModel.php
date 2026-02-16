@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Models\User;
 
 use CodeIgniter\Shield\Models\UserModel as ShieldUserModel;
-use App\Entities\User as UserEntity;
+use App\Entities\User\User as UserEntity;
 /**
  * Admin User Model extending CodeIgniter Shield's UserModel 
  * in additional to returning an extended User Entity.

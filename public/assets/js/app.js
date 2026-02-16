@@ -466,6 +466,8 @@ Index Of Script
             $('[data-note="type"]').html(type)
             // Custom function using URLSearchParams to update URL query parameter
             updateUrlQueryParam('type', type.toLowerCase());
+            // Updated hidden input
+            $('#type-id').val($(this).val());
         })
 
         $(document).on('change', '[data-change="radio"]', function (e) {

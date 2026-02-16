@@ -59,12 +59,11 @@ if (dataBlocks !== null) {
 }
 
 /**
- * Registration Agree to Terms Of Service
+ * Registration Agree to Terms Of Service for the User Registration Form
  */
-
 const checkboxTermsOfUse = document.getElementById('checkboxTermsOfUse');
-
 const registerForm = document.getElementById('user-register-form');
+
 if (registerForm !== null) {
     registerForm.addEventListener('submit', function (event) {
         // Prevent the default form submission
@@ -93,6 +92,7 @@ if (registerForm !== null) {
 }
 
 // Disable Submit button after click
+// Just for a UX feature and prevent multiple requests being sent.
 const kmForms = document.querySelectorAll('[data-km="form"]');
 
 if (kmForms !== null) {
@@ -120,8 +120,11 @@ if (kmForms !== null) {
 
 
 /**
+ * THIS FEATURE IS FOR NEW NOTES PAGE!!!!!!!
+ * 
  * Change a URL query value using the URLSearchParams interface 
  * along with the history.pushState() and history.replaceState() methods.
+ * 
  */
 function updateUrlQueryParam(key, value) {
     // 1. Create a URL object based on the current window location
@@ -141,7 +144,9 @@ function updateUrlQueryParam(key, value) {
 }
 
 /**
- * A simple AJAX function for the Share feature
+ * A simple AJAX function for the Share button feature
+ * using Forms form submittings & use meta X-CSRF-TOKEN to send with request
+ * for security
  */
 const kmAjaxForms = document.querySelectorAll('[data-km-form="ajax"]');
 
@@ -149,20 +154,28 @@ if (kmAjaxForms !== null) {
     kmAjaxForms.forEach(form => {
 
         form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Stop page refresh
+
+            event.preventDefault(); // Stop form submission
+
             const submitBtn = this.querySelector('[data-km="button"]');
             submitBtn.disabled = true;
+
             // Change the button text
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`;
 
+            // Grab the CSRF token from the meta tag
+            const csrfMeta = document.querySelector('meta[name="X-CSRF-TOKEN"]');
+            let token = csrfMeta.getAttribute('content');
+
             const formData = new FormData(this);
-            const fomrAction = this.action;
+            const fomrAction = this.action;// Action URL
 
             fetch(fomrAction, {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-Requested-With': 'XMLHttpRequest' // Helps CI4 detect AJAX
+                    'X-Requested-With': 'XMLHttpRequest', // Helps CI4 detect AJAX
+                    'X-CSRF-TOKEN': token // Unclude token in the rquest header
                 }
             })
                 .then(response => response.json())
@@ -180,14 +193,11 @@ if (kmAjaxForms !== null) {
                         //     alt: "Kumbuka"
                         // }
                     });
-
+                    
                     if (data.status === 'success') {
                         // Update the CSRF token for the next submission
-                        if (data.token) {
-                            const csrfTokenInputs = document.querySelectorAll("input[name='csrf_kumbuka_key']");
-                            csrfTokenInputs.forEach(input => {
-                                input.value = data.token;
-                            });
+                        if (data.csrf_token) {
+                            csrfMeta.setAttribute('content', data.csrf_token);
                         }
                     }
                 })
@@ -203,8 +213,10 @@ if (kmAjaxForms !== null) {
  * Creating a function to add to Server-Sent Events (SSE) and then attach an EventListener.
  * The ID arugument passed in is used to find the right Element's button. 
  * 
+ * @param {int} noticeId Notification ID
+ * @param {string} url Route to use for request 
  */
-const markAsReadAndNotify = async (noticeId, url) => {
+const markNoticeAsRead = async (noticeId, url) => {
 
     const badge = document.getElementById('notif-badge');
     const toast = document.getElementById('km-notice-' + noticeId);
@@ -233,14 +245,16 @@ const markAsReadAndNotify = async (noticeId, url) => {
                         })
                     });
 
-                    const result = await response.json();
-
+                    const result = await response.json();// Get responce a JSON
+                    
+                    // Update the meta tag CSRF token on success
                     if (result.csrf_token) {
-                        csrfMeta .setAttribute('content', result.csrf_token);
+                        csrfMeta.setAttribute('content', result.csrf_token);
                     }
 
                     // update button & hide badge
                     if (result.success) {
+                        // NOT CHANGING BUTTON STYLES RIGHT NOW
                         // noticeDismissBtn.classList.add('btn','btn-outline-danger');
                         // noticeDismissBtn.innerText = 'Marked as Read';
                         badge.innerText = 0;
@@ -255,4 +269,61 @@ const markAsReadAndNotify = async (noticeId, url) => {
     }
 }
 
+/**
+ * Request permission to show native brower notifications
+ * Show Alert element if USer hasn't decided
+ */
+function checkNotificationUI() {
 
+    const banner = document.getElementById('notif-banner');
+
+    // 1. Check if browser supports notifications
+    if (!("Notification" in window)) return;
+
+    // 2. Only show the UI if permission is 'default' (not yet asked)
+    if (Notification.permission === 'default') {
+        banner.style.display = 'block';
+    } else {
+        banner.style.display = 'none';
+    }
+}
+
+// Call checkNotificationUI() on page load
+document.addEventListener('DOMContentLoaded', checkNotificationUI);
+/**
+ * Enable Browser Notifications
+ */
+async function enableNotifications() {
+    const permission = await Notification.requestPermission();
+    
+    if (permission === 'granted') {
+        console.log("Permission granted!");
+        // Hide the banner now that we have permission
+        document.getElementById('notif-banner').style.display = 'none';
+        
+        // Optional: Show a test notification
+        new Notification("Notifications Enabled", { body: "You're all set!" });
+    } else {
+        // User clicked 'Block' or closed the prompt
+        document.getElementById('notif-banner').style.display = 'none';
+    }
+}
+
+/**
+ * Create a Native browser notification window
+ * 
+ * @param {string} title Title for notification window 
+ * @param {string} message Message for Notification window
+ */
+function showNativeNotification(title, message) {
+    if (Notification.permission === "granted") {
+        new Notification(title, {
+            body: message,
+            icon: '/path/to/icon.png', // Optional custom icon
+            tag: 'unique-id',         // Prevents duplicate notifications
+            requireInteraction: false  // Set to true to keep it visible until clicked
+        });
+        return false;
+
+    } 
+}

@@ -21,9 +21,16 @@ class UserDetailsSeeder extends Seeder
                 $firstName = 'Adrian';
                 $lastName = 'Garber';
                 $avatar = 'uploads/user-avatar.png';
+            } elseif ($i === 2) {
+                $firstName = 'That';
+                $lastName = 'Guy';
+                $avatar = 'uploads/user-avatar.png';
             } else {
-                $firstName = $faker->firstName;
-                $lastName = $faker->lastName;
+                // $firstName = $faker->firstName;
+                // $lastName = $faker->lastName;
+                $firstName = 'That';
+                $lastName = 'Girl';
+                $avatar = 'uploads/user-avatar.png';
             }
 
             $detailData = [

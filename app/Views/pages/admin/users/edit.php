@@ -78,10 +78,6 @@
                         <input type="radio" name="status" id="bannedBtn" value="banned" <?= $user->status !== null ? 'checked' : '' ?>> Banned
                     </label>
                 </div>
-                <!-- Return to User List -->
-                <a href="<?= site_url('admin/users') ?>" class="btn btn-primary ml-2">
-                    <i class="bi bi-box-arrow-left"></i> Cancel
-                </a>
             </div>
 
             <!-- Card Body -->

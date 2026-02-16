@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Entities\User;
 
 use CodeIgniter\Entity\Entity;
 use CodeIgniter\I18n\Time; // Recommended for CI4 date handling

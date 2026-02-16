@@ -42,6 +42,13 @@ class AdminSeeder extends Seeder
                     'password'=> '5832552911',
                     'active'=> true,
                 ];
+            } elseif ($i === 2) {
+                $userData = [
+                    'username'=> 'username',
+                    'email'=> 'username@localhost.com',
+                    'password'=> '5832552911',
+                    'active'=> true,
+                ];
             } else {
                 // Create additional admin users with fake data
                 $userData = [

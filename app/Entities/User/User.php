@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Entities\User;
 
 use App\Models\User\UserSocialLinksModel;
 use CodeIgniter\Shield\Entities\User as ShieldUserEntity;

@@ -95,56 +95,8 @@
                         <div class="icon active animate__animated animate__fadeIn i-grid">
                             <div class="row">
                                 <?php if($userNotes): ?>
-                                <?php foreach($userNotes as $note): ?>
-                                <div class="col-lg-4 col-md-6">
-                                    <div
-                                        class="card card-block card-stretch card-height card-bottom-border-<?= $note->priority ?> note-detail">
-                                        <div class="card-header d-flex justify-content-between pb-1">
-                                            <div class="icon iq-icon-box-2 icon-border-<?= $note->priority ?> rounded">
-                                                <i class="<?= $note->btn_icon ?> mr-2 ml-2" style="vertical-align: baseline;"></i>
-                                            </div>
-                                            <div class="card-header-toolbar d-flex align-items-center">
-                                                <div class="dropdown">
-                                                    <span class="dropdown-toggle dropdown-bg"
-                                                        id="note-dropdownMenuButton4" data-toggle="dropdown"
-                                                        aria-expanded="false" role="button">
-                                                        <i class="bi bi-three-dots"></i>
-                                                    </span>
-                                                    <div class="dropdown-menu dropdown-menu-right"
-                                                        aria-labelledby="note-dropdownMenuButton4" style="">
-                                                        <a href="#" class="dropdown-item new-note1" data-toggle="modal"
-                                                            data-target="#new-note1"><i
-                                                                class="bi bi-file-earmark-post mr-3"></i>View</a>
-                                                        <a href="#" class="dropdown-item edit-note1" data-toggle="modal"
-                                                            data-target="#edit-note1"><i
-                                                                class="bi bi-pencil-square mr-3"></i>Edit</a>
-                                                        <a class="dropdown-item" data-extra-toggle="delete"
-                                                            data-closest-elem=".card" href="#"><i
-                                                                class="bi bi-trash mr-3"></i>Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body rounded">
-                                            <div class="media flex-wrap align-items-top">
-                                                <h4 class="card-title mr-3"><?= $note->title ?></h4>
-                                                <span class="card-text card-text-<?= $note->priority ?>">
-                                                    <i class="bi bi-clock mr-2"></i> 02:30 Am</span>
-                                                <p class="mb-3 card-description short"><?= esc($note->body) ?></p>
-                                                <a href="#" class="btn btn-primary mt-2 ml-auto"><i class="bi bi-pencil-square"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div
-                                                class="d-flex align-items-center justify-content-between note-text note-text-<?= $note->priority ?>">
-                                                <a href="#" class=""><i class="bi bi-people mr-2 font-size-20"></i>03
-                                                    share</a>
-                                                <a href="#" class=""><i class="bi bi-calendar mr-2 font-size-20"></i><?= $note->created_at ?></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php endforeach ?>
+                                    <!-- Notes Card Include -->
+                                    <?= $this->setData(['noteCardClass'=> 'col-md-4'])->include('partials/note/note_card_v1'); ?>
                                 <?php endif ?>
                             </div>
                         </div>

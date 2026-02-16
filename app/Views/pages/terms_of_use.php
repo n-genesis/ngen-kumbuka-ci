@@ -190,7 +190,7 @@
                             </div>
                             <div class="accordion-details collapse" id="collapseSix" aria-labelledby="headingSix"
                                 data-parent="#faqAccordion">
-                                <p class="mb-0">>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                <p class="mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
                                     terry richardson ad squid. 3 wolf moon officia
                                     aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
                                     eiusmod. Brunch 3 wolf moon tempor, sunt

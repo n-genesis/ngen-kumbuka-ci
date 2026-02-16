@@ -48,4 +48,8 @@ class NoteTypesModel extends Model
     public function getForDropdown() {
         return $this->select('id, name, btn_icon')->findAll();
     }
+
+    public function getIdByName( $name) {
+        return $this->select('id')->where('name',$name)->first();
+    }
 }

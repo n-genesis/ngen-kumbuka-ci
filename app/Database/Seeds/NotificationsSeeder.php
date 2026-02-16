@@ -11,7 +11,6 @@ class NotificationsSeeder extends Seeder
     {
         $noticesData = [
             [
-                'id' => 1,
                 'recipient_id' => 1, 
                 'actor_id'=> 2,
                 'source_id'=> 1,
@@ -21,7 +20,6 @@ class NotificationsSeeder extends Seeder
                 'created_at' => Time::now(),
             ],
             [
-                'id' => 2,
                 'recipient_id' => 1, 
                 'actor_id'=> 3,
                 'source_id'=> 2,
@@ -31,7 +29,6 @@ class NotificationsSeeder extends Seeder
                 'created_at' => Time::now(),
             ],
             [
-                'id' => 3,
                 'recipient_id' => 1, 
                 'actor_id'=> 4,
                 'source_id'=> 1,
@@ -41,7 +38,15 @@ class NotificationsSeeder extends Seeder
                 'created_at' => Time::now(),
             ],
             [
-                'id' => 4,
+                'recipient_id' => 2, 
+                'actor_id'=> 1,
+                'source_id'=> 0,
+                'source_type' => 'welcome',
+                'message' => 'Welcome To Kumbuka, thanks for Signing up. To get started try our quick tour.',
+                'is_read' => 0,
+                'created_at'=> Time::now(),
+            ],
+            [
                 'recipient_id' => 2, 
                 'actor_id'=> 1,
                 'source_id'=> 3,
@@ -51,7 +56,6 @@ class NotificationsSeeder extends Seeder
                 'created_at' => Time::now(),
             ],
             [
-                'id' => 5,
                 'recipient_id' => 2, 
                 'actor_id'=> 3,
                 'source_id'=> 4,
@@ -61,12 +65,29 @@ class NotificationsSeeder extends Seeder
                 'created_at' => Time::now(),
             ],
             [
-                'id' => 6,
                 'recipient_id' => 2, 
                 'actor_id'=> 4,
                 'source_id'=> 3,
                 'source_type' => 'share',
                 'message' => 'Someone shared your note.',
+                'is_read' => 0,
+                'created_at'=> Time::now(),
+            ],
+            [
+                'recipient_id' => 3, 
+                'actor_id'=> 1,
+                'source_id'=> 0,
+                'source_type' => 'welcome',
+                'message' => 'Welcome To Kumbuka, thanks for Signing up. To get started try our quick tour.',
+                'is_read' => 0,
+                'created_at'=> Time::now(),
+            ],
+            [
+                'recipient_id' => 4, 
+                'actor_id'=> 1,
+                'source_id'=> 0,
+                'source_type' => 'welcome',
+                'message' => 'Welcome To Kumbuka, thanks for Signing up. To get started try our quick tour.',
                 'is_read' => 0,
                 'created_at'=> Time::now(),
             ],

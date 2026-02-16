@@ -19,7 +19,7 @@ class UserNoteCell extends Cell
     }
     public function render(): string
     {
-        return view('App\Views\partials\notes\note_card_v1', [
+        return view('App\Views\partials\note\note_card_v1', [
             'userNotes' => $this->note,
         ]);
     }

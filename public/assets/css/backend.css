@@ -12604,18 +12604,9 @@ body.right-sidebar-close footer {
   color: #768492;
 }
 
-.nav-pills .nav-link.active {
-  color: var(--ng-prussian-blue);
-  background: #B2B2B2;
-}
-
 .nav-pills .show>.nav-link {
   color: var(--ng-prussian-blue);
   background: #B2B2B2;
-}
-
-.nav-pills .nav-link:hover {
-  color: var(--ng-prussian-blue);
 }
 
 .nav-tabs {

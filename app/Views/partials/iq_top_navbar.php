@@ -1,3 +1,4 @@
+<!-- app/Views/partials/iq_top_navbar.php (Mobile View Navbar) -->
 <div class="iq-top-navbar">
     <div class="iq-navbar-custom">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
@@ -113,26 +114,27 @@
                                 aria-expanded="false">
                                 <img src="<?= base_url($userAvatar) ?>" class="img-fluid rounded avatar-50" alt="user">
                             </a>
+                            <?php if (auth()->loggedIn()): ?>
                             <div class="dropdown-menu dropdown-menu-right w-100 border-0 py-2" aria-labelledby="h-dropdownMenuButton001">
-                                <a class="dropdown-item mb-2" href="#">
+                                <a class="dropdown-item mb-2" href="<?= site_url(['user/profile','username' => $username]) ?>">
                                     <i class="bi bi-person-circle font-size-20 mr-1"></i>
                                     <span class="mt-2">
                                         <?= lang('Menus.myProfile') ?>
                                     </span>
                                 </a>
-                                <a class="dropdown-item mb-2" href="#">
+                                <a class="dropdown-item mb-2" href="<?= site_url('account') ?>">
                                     <i class="bi bi-file-person font-size-20 mr-1"></i>
                                     <span>
                                         <?= lang('Menus.editProfile') ?>
                                     </span>
                                 </a>
-                                <a class="dropdown-item mb-2" href="#">
+                                <a class="dropdown-item mb-2" href="<?= site_url('account/settings') ?>">
                                     <i class="bi bi-person-gear font-size-20 mr-1"></i>
                                     <span>
                                         <?= lang('Menus.accntSettings') ?>
                                     </span>
                                 </a>
-                                <a class="dropdown-item mb-3" href="#">
+                                <a class="dropdown-item mb-3" href="<?= site_url('account/privacy') ?>">
                                     <i class="bi bi-person-lock font-size-20 mr-1"></i>
                                     <span>
                                         <?= lang('Menus.prvySettings') ?>
@@ -146,6 +148,7 @@
                                     </span>
                                 </a>
                             </div>
+                            <?php endif ?>
                         </li>
 
                     </ul>

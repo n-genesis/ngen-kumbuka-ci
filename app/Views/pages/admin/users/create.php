@@ -16,10 +16,6 @@
                 <div class="header-title flex-fill">
                     <h4 class="card-title">Add User</h4>
                 </div>
-                <!-- Return to User List -->
-                <a href="<?= site_url('admin/users') ?>" class="btn btn-primary ml-2">
-                    <i class="bi bi-box-arrow-left"></i> Cancel
-                </a>
             </div>
 
             <!-- Card Body -->

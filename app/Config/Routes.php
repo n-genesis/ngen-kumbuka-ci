@@ -7,16 +7,13 @@ use App\Controllers\CustomErrors;
 // Admin Controllers
 use App\Controllers\Admin;
 // User Account Controllers
-use App\Controllers\User\Account;
-// General User Pages
-use App\Controllers\User\Dashboard;
-use App\Controllers\User\Notes;
+use App\Controllers\User;
+// General Pages
 use App\Controllers\Pages;
 // Share Controller
 use App\Controllers\ShareController as Share;
 // Public Controllers
 use App\Controllers\Public as PublicController;
-
 
 
 /**
@@ -48,10 +45,10 @@ $routes->group('/', function ($routes) {
 $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
     // User Dashboard
-    $routes->get('dashboard', [Dashboard::class, 'index']);
+    $routes->get('dashboard', [User\Dashboard::class, 'index']);
 
     //Note Routes
-    $routes->resource('notes',['namespace' => '', 'controller' => Notes::class]);
+    $routes->resource('note',['namespace' => '', 'controller' => User\Notes::class]);
     //$routes->get('notes', [Notes::class,'index']);
     //$routes->get('notes/create', [Notes::class, 'create']);
     // $routes->get('notes', [Notes::class, 'index']);
@@ -63,13 +60,19 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
     // Account Routes
     $routes->group('account', function ($routes) {
-        $routes->get('', [Account::class, 'index']);
+        // User Account Information CRUD Routes
+        $routes->get('', [User\Account\ProfileInformation::class, 'index']);
+        $routes->post('update', [User\Account\ProfileInformation::class,'update']);
 
-        $routes->post('update', [Account::class,'update']);
+        // User Settings CRUD Routes
+        $routes->get('settings', [User\Account\AccountSettings::class, 'index']);
+        
+        // User Privacy Settings CRUD Routes
+        $routes->get('privacy', [User\Account\PrivacySettings::class,'index']);
+        $routes->post('privacy/update', [User\Account\PrivacySettings::class, 'update']);
 
-        $routes->get('settings', [Account::class, 'settings']);
-        $routes->get('privacy', [Account::class,'privacy']);
-
+        // User Activity
+        $routes->get('activity', [User\Activity::class, 'index']);
     });
 
 });

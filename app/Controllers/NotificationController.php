@@ -88,8 +88,6 @@ class NotificationController extends UserController
         exit();
     }
 
-
-
     public function markAsRead()
     {
             // 1. Get JSON data as an associative array
