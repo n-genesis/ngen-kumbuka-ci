@@ -1,6 +1,9 @@
 # Project 2.0.0-alpa - Development Notes
 Well this was terribly overdue and done terribly, but hey it's done. So, here are some notes about the 2.0.0-alpha release. It's strutured much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield. Still need to extend sheilds user model to include more user details and custom data.
 
+#### Upgraded
+Added a custom Server name for project for localhost. Will include enviroment setup steps and what not later.
+
 #### ~~Project 1.1.0 Beta - Development Notes~~
 Finished; breaking changes
 

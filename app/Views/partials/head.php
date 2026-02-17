@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="<?= base_url('assets/css/backend-plugin.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/backend.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/kumbuka.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/spinner.css'); ?>">
     <!-- Select2 Css -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

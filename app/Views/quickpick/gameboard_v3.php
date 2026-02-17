@@ -1,0 +1,134 @@
+<div class="col-12">
+    <div class="chat_container">
+        <div class="job-box">
+            <div class="job-box-filter">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Show
+                            <select name="datatable_length" class="form-control input-sm">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            entries</label>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="filter-search-box text-right">
+                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inbox-message">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="unread">Unread</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="unread">Unread</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="pending">Pending Work</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="unread">Unread</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="business">Business</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="important">Important</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="message-avatar">
+                                <img src="<?= base_url('uploads/default-avatar.png') ?>" alt="">
+                            </div>
+                            <div class="message-body">
+                                <div class="message-body-heading">
+                                    <h5>Daniel Dock <span class="unread">Unread</span></h5>
+                                    <span>7 hours ago</span>
+                                </div>
+                                <p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolor....</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

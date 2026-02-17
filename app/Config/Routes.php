@@ -10,11 +10,13 @@ use App\Controllers\Admin;
 use App\Controllers\User;
 // General Pages
 use App\Controllers\Pages;
+use App\Controllers\System\SearchController as Search;
 // Share Controller
 use App\Controllers\ShareController as Share;
 // Public Controllers
 use App\Controllers\Public as PublicController;
-
+// Fun COntroller
+use App\Controllers\Game;
 
 /**
  * @var RouteCollection $routes
@@ -37,6 +39,9 @@ $routes->group('/', function ($routes) {
     $routes->get('support', [Pages::class, 'support']);
     // Sucessful Logout
     $routes->get('logged_out', [Pages::class, 'logged_out']);
+
+    // Search
+    $routes->post('search', [Search::class,'index']);
 });
 
 /**
@@ -44,8 +49,10 @@ $routes->group('/', function ($routes) {
  */
 $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
+    $routes->get('gameboard_v1', [Game\FunController::class, 'index']);
+
     // User Dashboard
-    $routes->get('dashboard', [User\Dashboard::class, 'index']);
+    $routes->get('home', [User\Home::class, 'index']);
 
     //Note Routes
     $routes->resource('note',['namespace' => '', 'controller' => User\Notes::class]);
@@ -73,6 +80,8 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
         // User Activity
         $routes->get('activity', [User\Activity::class, 'index']);
+        $routes->get('feed', [User\Feed::class, 'index']);
+        $routes->get('followers', [User\Social::class, 'followers']);
     });
 
 });

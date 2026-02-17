@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                 <i class="bi bi-list wrapper-menu"></i>
-                <a href="<?= $dashboardLink ?>" class="header-logo">
+                <a href="<?= base_url('home') ?>" class="header-logo">
                     <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
                     <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
                 </a>
@@ -27,10 +27,11 @@
                             <div class="iq-search-bar iq-sub-dropdown dropdown-menu"
                                 aria-labelledby="h1-dropdownSearch">
                                 <form action="#" class="searchbox p-2">
+                                    <?= csrf_field() ?>
                                     <div class="form-group mb-0 position-relative">
                                         <input type="text" class="text search-input font-size-12"
                                             placeholder="type here to search...">
-                                        <a href="#" class="search-link"><i class="bi bi-search"></i></a>
+                                        <a href="#" class="search-link" onclick="this.closest('form').submit(); return false;"><i class="bi bi-search"></i></a>
                                     </div>
                                 </form>
                             </div>

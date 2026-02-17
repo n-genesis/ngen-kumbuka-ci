@@ -19,10 +19,14 @@ return [
     'dailyReflct'   => 'Daily Reflection',
 
     // Menu Options
+    'HomePage'     => 'HomeStop',
     'yourNotes'     => 'Your Notes',
     'noteBooks'     => 'Notebooks',
     'reminder'      => 'Reminder',
     'followActivity'=> 'Following &amp; Activity',
+    'userActivity'=> 'Your Activity',
+    'userFeed'=> 'Feed',
+    'userFollowers'=> 'Followers',
 
     // Admin Options
     'admin'     => 'Administrator',

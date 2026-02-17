@@ -12,12 +12,12 @@ class Activity extends UserController
         $model = model(UserActivityModel::class);
 
         $data = [
-            'appTitle' => setting('App.appName').' | Recent Activity',
-                'pageHeader' => 'Activity Log',
-                'breadcrumbLinks' => [
-                    ['label' => 'Home', 'url' => site_url('dashboard')],
-                    ['label'=> 'Edit Profile','url'=> site_url('account')],
-                    ['label' => 'Activity Log', 'url' => ''],
+            'appTitle' => setting('App.appName') . ' | Recent Activity',
+            'pageHeader' => 'Activity Log',
+            'breadcrumbLinks' => [
+                ['label' => 'Home', 'url' => site_url('dashboard')],
+                ['label' => 'Edit Profile', 'url' => site_url('account')],
+                ['label' => 'Activity Log', 'url' => ''],
             ],
             // Users only see their own logs; Admins see everything
             'activities' => $model->where('user_id', auth()->id())

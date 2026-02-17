@@ -75,13 +75,13 @@ class Auth extends ShieldAuth
      * to apply any logic you may need.
      */
     public array $redirects = [
-        'register' => 'dashboard',
-        'login' => 'dashboard',
+        'register' => 'home',
+        'login' => 'home',
         'admin_login' => 'admin/dashboard',
         'logout' => 'login',
         'force_reset' => '/',
         'permission_denied' => '/',
-        'group_denied' => 'dashboard',
+        'group_denied' => 'home',
     ];
 
     /**
@@ -443,14 +443,17 @@ class Auth extends ShieldAuth
      */
     public function loginRedirect(): string
     {
-        $user = auth()->user();
-
-        if ($user && $user->inGroup('admin')) {
-            return setting('Auth.redirects')['admin_login'];
-        }
+        $url = setting('Auth.redirects')['login'];
+        // $user = auth()->user();
+        
+        // if ($user && $user->inGroup('admin')) {
+        //     $url = setting('Auth.redirects')['admin_login'];
+        // } else {
+        //     $url = setting('Auth.redirects')['login'];
+        // }
 
         // Fallback to the default redirect defined in the $redirects array
-        return setting('Auth.redirects')['login'];
+        return $url;
     }
 
     /**

@@ -30,7 +30,7 @@ class Notes extends UserController
             ],
             'slug' => [
                 'label' => 'Slug URL',
-                'rules' => 'permit_empty|alpha_dash|is_unique[posts.slug,id,{id}]|min_length[3]|max_length[255]',
+                'rules' => 'permit_empty|alpha_dash|is_unique[notes.slug,id,{id}]|min_length[3]|max_length[255]',
                 'errors' => [
                     'regex_match' => 'The {field} field may only contain alpha-numeric characters and dashes.',
                 ],

@@ -23,9 +23,6 @@ class UserController extends BaseController
         // Use Default avatart image in User Config file is avatar's not set
         $this->userAvatar = $this->userAvatar ?? $this->userConfig->defaultAvatar;
         $view->setVar('userAvatar', $this->userAvatar);
-        
-        // Create user dashboard link
-        $view->setVar('dashboardLink',site_url('dashboard'));
 
     }
 }

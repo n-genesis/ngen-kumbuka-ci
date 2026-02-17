@@ -29,9 +29,6 @@ class AdminController extends BaseController
         $this->userAvatar = $this->userAvatar ?? $this->userConfig->defaultAvatar;
         $view->setVar('userAvatar', $this->userAvatar);
         
-        // Create Admin dashboard link
-        $view->setVar('dashboardLink',site_url('admin/dashboard'));
-        
         // Get User Provider for Admin Operations
         $this->userModel = auth()->getProvider();
 
