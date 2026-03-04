@@ -5,11 +5,10 @@ This document jsut lists current tasks and planned features for the project. A m
 
 ## High Priority
 - [ ] Update template for Bootstrap 5 (legacy 4.6.2 used)
-- [ ] Add emptey `user_details` for email activated Users
+- [ ] Add empty `user_details` for email activated Users
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
 - [ ] Finish UserActivitySeeder Script
-
 
 
 ### Currently Completing
@@ -27,9 +26,11 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Create `Cell` Views for sidebar menus
 - [ ] Create `Cell` views for User Dashboard page
 - [ ] Create `Cell` views for User Notifications and Messages
-- [ ] Add Admin opts for editing website settings (Admin Section)
     - **Action Items:**
         - [ ] Create User Avatar and cover images uploads
+
+### Medium Priority Currently Completing
+- [x] Add Admin opts for editing website settings (Admin Section)
 
 ### Completed (Medium Priority)
 - [ ] 
@@ -40,6 +41,8 @@ This document jsut lists current tasks and planned features for the project. A m
     - *Might just redesignthe template from scratch using Bootstrap 5*
 - [ ] Create simple email templates for user actions (registration, password reset, etc.)
 - [ ] Add Pagination/Pager language file
+- [ ] Add Sheild OAuth Login
+
     - **Action Items:**
         - [ ] 
 

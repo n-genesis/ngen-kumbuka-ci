@@ -16,7 +16,6 @@ Finished; breaking changes
 - **Action Items:**
   - [x] Need to delete empty directories (they're confusing).
 
-
 - **Action Items:**
     - [x] Finish User authentication system w/ Shield.
     - [x] Add `user_details` table to store more user info 
@@ -25,6 +24,9 @@ Finished; breaking changes
   - [x] Working on Snippet & Bootsnippet (Front and Backend) Pages
   - [x] Extending User Details w/ Shield .
 
-### Feature X - Implementation Details
-This section outlines the key design decisions and implementation notes for current feature emplementation.
+### Features - Implementation Details
+This section outlines the key design decisions and implementation notes for current features and implementation.
 
+
+#### CustomEditor WYSIWYG
+This project use a custom/forked project for a Bootstrap 5 JavaScript/jQuery extension WYSIWYG. Will include implementation directions at a later time.
