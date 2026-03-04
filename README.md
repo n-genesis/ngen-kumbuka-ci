@@ -1,12 +1,25 @@
 # Kumbuka: Notebook Application
-Kumbuka (Swahili: 'to take note' or 'to remember') is a web-based notebook application built with CodeIgniter 4.
+Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook application built with CodeIgniter 4.
 
-~~**Version:** 1.0.0 alpha~~
 
-![Version](https://img.shields.io/badge/release-v2.0.0--alpa-red)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![Version](https://img.shields.io/badge/version-v2.0.0--alpa-blue?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/Status-Active-red?style=for-the-badge)
+[![Static Badge](https://img.shields.io/badge/Copyright%20%C2%A9%202026%20N--Gen%20Design-1E30F3?style=for-the-badge&label=Copyright)](https://ngendesign.com)
 
-### [Kumbuka](https://kumbuka.ngendesign.com) is a open-source project built with love by [N-Gen Design](https://ngendesign.com).
+
+### Tech Stack
+![Static Badge](https://img.shields.io/badge/PHP-8.5.1-474A8A?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/MariaDB-10.4.32-C0765A?style=for-the-badge&labelColor=1F305F)
+![Static Badge](https://img.shields.io/badge/Apache-2.4.58-A22160?style=for-the-badge&labelColor=F69824)
+![Static Badge](https://img.shields.io/badge/OpenSSL-3.1.3-721412?style=for-the-badge)
+
+
+![Static Badge](https://img.shields.io/badge/CodeIgniter-4.6.4-DD4814?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/Bootstrap-4.6.2-6f42c1?style=for-the-badge)
+
+
+
+### [Kumbuka](https://kumbuka.ngendesign.com) is a project developed with love & fun by [N-Gen Design](https://ngendesign.com).
 
 
 ![Dashboard](https://lh3.googleusercontent.com/d/1TsIHuLjOead--_CsQHjvznmpfXXXXUe9)
@@ -38,8 +51,9 @@ Run `composer install` whenever there is a new release of the framework.
 to your `app` folder. The affected files can be copied or merged from `vendor/codeigniter4/framework/app`.
 
 
-### Setup Localhost
+## **Need to update setup steps**
 
+### Setup Localhost
 1. Download or clone the repo to your `localhost` folder.
 2. Change directory to `cd ngen-kumbuka-ci` folder.
 3. Import `ngen-bootsnippets-ci/database.sql` to your MySQL or MariaDB Server, create a user and grant all rights to the imported `DB`

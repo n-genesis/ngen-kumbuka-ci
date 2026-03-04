@@ -4,7 +4,7 @@ This document jsut lists current tasks and planned features for the project. A m
 **Current Version (2.0.0-alpha)**
 
 ## High Priority
-- [ ] Update template for Bootstrap 5 (legacy 4.x used)
+- [ ] Update template for Bootstrap 5 (legacy 4.6.2 used)
 - [ ] Add emptey `user_details` for email activated Users
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
