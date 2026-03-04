@@ -27,9 +27,9 @@ class ShareController extends UserController
     public function share()
     {
         // Ensure this is a POST request (CSRF check happens automatically if enabled)
-        if ($this->request->getPost()) {
-            return redirect()->back()->with('error', 'Unable to share note.');
-        }
+        // if ($this->request->getPost()) {
+        //     return redirect()->back()->with('error', 'Unable to share note.');
+        // }
         $note_id = $this->request->getPost('note_id');
         $recipient_id = $this->request->getPost('user_id');
 
@@ -41,11 +41,14 @@ class ShareController extends UserController
 
         // 2. Fetch recipient details for the event
         $recipient = $this->userModel->find($recipient_id);
-        $noteModel = model(NoteModel::class);
-        $post = $noteModel->find($note_id);
 
-        // 3. Fire the event
-        //\CodeIgniter\Events\Events::trigger('post_shared', $recipient->email, $post);
+        if (!$recipient) {
+            return redirect()->back()->with('error', 'Unable to share note.');
+        }
+
+        $noteModel = model(NoteModel::class);
+        $noteModel->find($note_id);
+
 
         return redirect()->to('/dashboard')->with('message', 'Post shared successfully!');
     }
@@ -86,9 +89,9 @@ class ShareController extends UserController
 
         if ($shareModel->recordShare($noteId, $ownerId, $this->userId)) {
             return redirect()->back()->with('message', 'You\'ve shared the note successfully!');
-        } else {
-            return redirect()->back()->with('error', 'Unale to share note. Please try again later.');
         }
+
+        return redirect()->back()->with('error', 'Unale to share note. Please try again later.');
 
     }
 

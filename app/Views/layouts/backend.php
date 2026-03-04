@@ -2,7 +2,7 @@
 
 <!-- Head stylesheets -->
 <?= $this->section('styles') ?>
-    <link rel="stylesheet" href="<?= base_url('assets/vender/toasty/bootstrap-toasty.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/toasty/bootstrap-toasty.min.css'); ?>">
 <?= $this->endSection(); ?>
 
 <?= $this->section('csrf') ?>
@@ -89,7 +89,7 @@
 <?= $this->section('js') ?>
 
 <!-- Bootstrap 4 Toast Plugin -->
-<script src="<?= base_url('assets/vender/toasty/bootstrap-toasty.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/toasty/bootstrap-toasty.js'); ?>"></script>
 
 
 <!-- Kumbuka Tour Script -->

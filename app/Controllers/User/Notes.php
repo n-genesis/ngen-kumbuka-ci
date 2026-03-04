@@ -83,7 +83,7 @@ class Notes extends UserController
             'appTitle' => setting('App.appName') . ' | Your Notes',
             'pageHeader' => 'Your Notes',
             'breadcrumbLinks' => [
-                ['label' => 'Home', 'url' => site_url('dashboard')],
+                ['label' => 'Home', 'url' => site_url('home')],
                 ['label' => 'User Notes', 'url' => ''],
             ],
             'userId' => $this->userId,
@@ -122,14 +122,15 @@ class Notes extends UserController
         // 4. Run validation
         if (!$this->validateData($data, $rules)) {
             // If invalid, redirect back user dashboard
-            return redirect()->to(uri: 'notes')->with('error', 'Invalid category type selected.');
+            return redirect()->to(uri: 'note')->with('error', 'Invalid category type selected.');
         }
 
         return $this->renderView('pages/notes/new', [
             'appTitle' => setting('App.appName') . ' | New Note',
             'pageHeader' => 'New <span data-note="type">' . ucfirst($noteType) . '</span> Note',
             'breadcrumbLinks' => [
-                ['label' => 'Home', 'url' => site_url('dashboard')],
+                ['label' => 'Home', 'url' => site_url('home')],
+                ['label' => 'User Notes', 'url' => site_url('note')],
                 ['label' => 'New Note', 'url' => ''],
             ],
             'selectedType' => $noteType,
@@ -170,10 +171,9 @@ class Notes extends UserController
 
         // 4. Save via Model
         if ($noteModel->save($noteData)) {
-            return redirect()->to('/dashboard')
-                     ->with('message', 'Note created successfully!');
+            return redirect()->to('/note')->with('message', 'Note created successfully!');
         }
 
-        return $this->fail('Failed to save note.');
+        return redirect()->back()->withInput()->with('message','Failed to save note.');
     }
 }

@@ -16,8 +16,7 @@ class QuickPickCell extends Cell
     public function mount($quickPickPage)
     {
         $noteModel = model(NoteModel::class);
-        $page = $quickPickPage ?? $this->quickPickPage;
-        $this->quickPickPage = $page;
+        $this->quickPickPage = $quickPickPage ?? $this->quickPickPage;
     }
     public function render(): string
     {
