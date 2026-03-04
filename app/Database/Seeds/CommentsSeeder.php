@@ -14,7 +14,7 @@ class CommentsSeeder extends Seeder
         $comments = [];
 
         // Generate 10 fake users
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $rangeIndex = intdiv($i, 2);
             $values = [];
             switch ($rangeIndex) {
@@ -40,7 +40,7 @@ class CommentsSeeder extends Seeder
                 'entity_type' => $values['entity_type'],
                 'user_id' => $values['user_id'],
                 'parent_comment_id' => $values['parent_comment_id'],
-                'body' => $faker->text(125),
+                'body' => $faker->text(25),
                 'status' => 'approved',
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
             ];

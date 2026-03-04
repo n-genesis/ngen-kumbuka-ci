@@ -13,6 +13,7 @@ class CreateUserDetailsTable extends Migration
             'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
             'first_name' => ['type' => 'VARCHAR', 'constraint' => 255],
             'last_name' => ['type' => 'VARCHAR', 'constraint' => 255],
+            'bio' => ['type' => 'TEXT', 'null' => true],
             'phone' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'organization' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'address1' => ['type' => 'TEXT', 'null' => true],
@@ -36,6 +37,8 @@ class CreateUserDetailsTable extends Migration
 
         $this->db->table('users')->truncate();
         $this->db->table('auth_identities')->truncate();
+        $this->db->table('auth_groups_users')->truncate();
+        $this->db->table('auth_logins')->truncate();
 
         $this->db->enableForeignKeyChecks();
 

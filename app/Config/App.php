@@ -12,6 +12,21 @@ class App extends BaseConfig
      */
     public string $appName = 'Kumbuka';
     /**
+     * Application Logo Path
+     * @var string
+     */
+    public string $appLogo = 'assets/images/logo/logo.png'; 
+    /**
+     * Document description (Can be changed in the controller)
+     * @var string
+     */
+    public string $appTitle = 'Welcome to Kubmuka';
+    /**
+     * Default image for user profiles
+     * @var string
+     */
+    public string $appDefaultImage = 'assets/images/user/i1.jpg';
+    /**
      * Applications administrator email
      * @var string
      */
@@ -20,9 +35,9 @@ class App extends BaseConfig
      * Name of the application owner
      * @var string
      */
-    public string $appAuthor = 'Developer Persom';
-    public string $appAuthWebsite = 'https://appwebsite.com';
-    public string $appDesc = 'A web-based shared notebook application built with CodeIgniter 4.';
+    public string $appAuthor = '</N-Gen>';
+    public string $appAuthWebsite = 'https://ngendesign.com';
+    public string $appDesc = 'A simple notebook application built with CodeIgniter 4.';
     /**
      * Applications copyright
      * @var string
@@ -34,10 +49,19 @@ class App extends BaseConfig
      */
     public array $noteTypes = [
         'General',
-        'Essay',
-        'Daily Reflection',
         'Reminder',
+        'Essay',
+        'Reflection',
     ];
+    /**
+     * Default User credentials to use as placeholder values for representation
+     * or until the user set/updates them.
+     *  
+     */
+    public string $appDefaultUsername = 'newuser';
+    public string $appDefaultuserFullName = 'New User';
+    public string $appDefaultUserEmail = 'newuser@email.com';
+    public string $appDefaultPassword = 'password123!';
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
@@ -48,7 +72,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'https://kumbuka.ngen/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -72,7 +96,7 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
@@ -165,7 +189,7 @@ class App extends BaseConfig
      * @see https://www.php.net/manual/en/timezones.php for list of timezones
      *      supported by PHP.
      */
-    public string $appTimezone = 'UTC';
+    public string $appTimezone = 'America/New_York';
 
     /**
      * --------------------------------------------------------------------------
@@ -189,7 +213,7 @@ class App extends BaseConfig
      * secure, the user will be redirected to a secure version of the page
      * and the HTTP Strict Transport Security (HSTS) header will be set.
      */
-    public bool $forceGlobalSecureRequests = false;
+    public bool $forceGlobalSecureRequests = true;
 
     /**
      * --------------------------------------------------------------------------
@@ -231,4 +255,5 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+    
 }

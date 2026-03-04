@@ -3,44 +3,56 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use Faker\Factory;
 
 class UserDetailsSeeder extends Seeder
 {
     public function run()
     {
-        // 2. Insert the additional details into the 'user_details' table
-        $detailData = [
-            [
-                'user_id' => 1,
-                'first_name' => 'Andrew',
-                'last_name' => 'Nite',
-                'phone' => '(904) 479-5460',
-                'organization' => 'N-Gen Design',
-                'address1' => '1456 Chestnut Dr',
-                'address2' => null,
-                'city' => 'Centralia',
-                'state' => 'Pennsylvania',
-                'zip' => 17920,
-                'avatar' => '1759452960_4089d9940012885b223c.jpg'
-                // ... other fields from your user_details table
-            ],
-            [
-                'user_id' => 2,
-                'first_name' => 'Adrian',
-                'last_name' => 'Garber',
-                'phone' => '(717) 367-2573',
-                'organization' => 'Silver Cafe',
-                'address1' => '505 East Park Street',
-                'address2' => null,
-                'city' => 'Elizabethtown',
-                'state' => 'Pennsylvania',
-                'zip' => 17022,
-                'avatar' => null
-                // ... other fields from your user_details table
-            ],
-        ];
+        $faker = Factory::create();
+        for ($i = 0; $i < 4; $i++) {
+            $avatar = null;
+            if($i === 0) {
+                $firstName = 'Andrew';
+                $lastName = 'Nite';
+                $avatar = 'uploads/default-avatar.jpg';
+                
+            } elseif ($i === 1) {
+                $firstName = 'Adrian';
+                $lastName = 'Garber';
+                $avatar = 'uploads/user-avatar.png';
+            } elseif ($i === 2) {
+                $firstName = 'That';
+                $lastName = 'Guy';
+                $avatar = 'uploads/user-avatar.png';
+            } else {
+                // $firstName = $faker->firstName;
+                // $lastName = $faker->lastName;
+                $firstName = 'That';
+                $lastName = 'Girl';
+                $avatar = 'uploads/user-avatar.png';
+            }
 
-        // Use Query Builder if no dedicated model exists for user_details
-        $this->db->table('user_details')->insertBatch($detailData);
+            $detailData = [
+                'user_id' => $i + 1,
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'bio'        => $faker->text(500), 
+                'phone' => $faker->phoneNumber,
+                'organization' => $faker->company,
+                'address1' => $faker->streetAddress,
+                'address2' => $faker->secondaryAddress,
+                'city' => $faker->city,
+                'state' => $faker->state,
+                'zip' => $faker->postcode,
+                'avatar' => $avatar
+                // ... other fields from your user_details table
+            ];
+            // Use Query Builder if no dedicated model exists for user_details
+            $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
+            // Use Query Builder if no dedicated model exists for user_details
+            $this->db->table('user_details')->insertBatch($detailData);
+            $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        }
     }
 }

@@ -9,26 +9,29 @@ class InsertSeeder extends Seeder
     public function run()
     {
         // Users Inserts
-        $this->call('UsersSeeder');
+        $this->call('AdminSeeder');
         // Auth Identities Inserts
-        $this->call('AuthIdentitiesSeeder');
+        //$this->call('AuthIdentitiesSeeder');
         // User Details Inserts
         $this->call('UserDetailsSeeder');
+        // User Social Links Inserts
+        $this->call('UserSocialLinksSeeder');
         // Notebook Types Inserts
         $this->call('NoteTypesSeeder');
-        // Notes Inserts
-        $this->call('NotesSeeder');
         // Notebooks Inserts
         $this->call('NotebooksSeeder');
+        // Notes Inserts
+        $this->call('NotesSeeder');
         // User Likes Inserts
         $this->call('LikesSeeder');
         // Followers Inserts
         $this->call('FollowersSeeder');
         // User share Inserts
-        $this->call('SharedSeeder');
+        $this->call('SharedNotebooksSeeder');
         // Note Comments Inserts
         $this->call('CommentsSeeder');
-        
+        // Note Comments Inserts
+        $this->call('NotificationsSeeder');
         // Pages Inserts
         $this->call('PagesSeeder');
     }

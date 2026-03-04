@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Config\AppConfig\User as userConfig;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -24,22 +25,83 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-
-    // protected $session;
+    protected $userConfig;
+    protected $userId;
+    protected $username;
+    protected $userfullName;
+    protected $userEntity;
+    protected $userDetailsModel;
+    protected $userDetails;
+    protected $userAvatar;
+    protected $helpers = ['preferences_helper'];
+    /**
+     * Varable to store global data to be shared accross views
+     * @var list<mixed>
+     */
+    protected object $globalData;
 
     /**
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Load here all helpers you want to be available in your controllers that extend BaseController.
-        // Caution: Do not put the this below the parent::initController() call below.
-        // $this->helpers = ['form', 'url'];
-
-        // Caution: Do not edit this line.
+        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-        // $this->session = service('session');
+
+        // E.g.: $this->session = service('session');
+
+        // Get Config values or store settings
+        $this->globalData = (object) [
+            'appName' => service('settings')->get('App.appName'),
+            'appLogo' => service('settings')->get('App.appLogo'),
+            'appTitle' => service('settings')->get('App.appTitle'),
+            'appEmail' => service('settings')->get('App.appEmail'),
+            'appAuthor' => service('settings')->get('App.appAuthor'),
+            'appAuthWebsite' => service('settings')->get('App.appAuthWebsite'),
+            // TODO Rethink where the configs for Deafault User valuse should be stored
+            'appDesc' => service('settings')->get('App.appDesc'),
+            'appDefaultuserFullName' => service('settings')->get('App.appDefaultuserFullName'),
+            'appDefaultUserEmail' => service('settings')->get('App.appDefaultUserEmail'),
+            
+        ];
+
+        $view = service('renderer');
+        // Add Global Data to View $data array
+        $view->setData((array) $this->globalData);
+
+        // Get Default User Configs
+        $this->userConfig = config(UserConfig::class);
+
+        // Check if the User is logged in & get credentials
+        if (auth()->loggedIn()) {
+            $this->userEntity = auth()->user(); // User Entity
+            $this->userId = auth()->id();// Get User ID
+            $this->username = auth()->user()->username;
+            $this->userfullName = $this->userEntity->full_name; //TODO User Detail Model 
+            $this->userAvatar = $this->userEntity->avatar;// Set User avatart path if not NULL in the User details table
+            // Add Username to View $data array
+            $view->setVar('username',$this->username);
+            
+        }
+
+        // Set if user's full name to user_details first_name & last_name values is
+        // use is logged in else use default value from config
+        $this->userfullName = $this->userfullName ?? $this->globalData->appDefaultuserFullName;
+
+        // Add User's full name to View $data array
+        $view->setVar('userFullName',$this->userfullName);
+    }
+
+    public function renderView(string $viewName, array $data = [])
+    {
+        // Add data array values
+        return view($viewName, $data);
+    }
+
+    public function getOjbData()
+    {
+        return $this->globalData;
     }
 }

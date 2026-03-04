@@ -12,6 +12,7 @@ class CreateNoteTypesTable extends Migration
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'name' => ['type' => 'VARCHAR', 'constraint' => 50, 'null' => false],
             'slug' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => false],
+            'btn_icon'=> ['type'=> 'VARCHAR', 'constraint' => 255, 'null'=> true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addUniqueKey('slug');

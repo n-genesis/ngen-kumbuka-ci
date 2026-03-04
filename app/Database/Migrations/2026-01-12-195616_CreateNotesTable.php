@@ -22,6 +22,7 @@ class CreateNotesTable extends Migration
             'body' => ['type' => 'TEXT', null => false],
             'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'pinned' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
+            'notebook_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],
@@ -36,6 +37,7 @@ class CreateNotesTable extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE'); // Link to Shield's users table
         $this->forge->addForeignKey('type_id', 'note_types', 'id', 'CASCADE', 'CASCADE'); // Link to to Note Type table
+        $this->forge->addForeignKey('notebook_id', 'notebooks', 'id', 'NO ACTION', 'CASCADE'); // Link to to Notebook table
         $this->forge->createTable('notes');
     }
 

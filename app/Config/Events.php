@@ -2,9 +2,11 @@
 
 namespace Config;
 
+use App\Models\User\UserModel;
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
 use CodeIgniter\HotReloader\HotReloader;
+use PHPUnit\Event\Event;
 
 /*
  * --------------------------------------------------------------------
@@ -33,7 +35,7 @@ Events::on('pre_system', static function (): void {
             ob_end_flush();
         }
 
-        ob_start(static fn ($buffer) => $buffer);
+        ob_start(static fn($buffer) => $buffer);
     }
 
     /*
@@ -42,7 +44,7 @@ Events::on('pre_system', static function (): void {
      * --------------------------------------------------------------------
      * If you delete, they will no longer be collected.
      */
-    if (CI_DEBUG && ! is_cli()) {
+    if (CI_DEBUG && !is_cli()) {
         Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
         service('toolbar')->respond();
         // Hot Reload route - for framework use on the hot reloader.
@@ -52,4 +54,50 @@ Events::on('pre_system', static function (): void {
             });
         }
     }
+
+    /**
+     * Activity Event Listener
+     * 
+     * TODO: Need to name this even better and create email templates
+     */
+    Events::on('onActivity', function ($actorId, $recipientId, $sourceId, $type) {
+        if (ENVIRONMENT !== 'development') {
+            
+            // 1. Fetch User Data
+            $userModel = model(UserModel::class);
+            $recipient = $userModel->find($recipientId);
+            $actor = $userModel->find($actorId);
+
+            // 2. Define custom messages based on the action type
+            $messages = [
+                'post' => "{$actor->username} published a new note.",
+                'comment' => "{$actor->username} commented on your note.",
+                'share' => "{$actor->username} shared a note of yours."
+            ];
+            $body = $messages[$type] ?? "You have a new update.";
+
+            // 3. Trigger External Notifications (Email/Push)
+            // Email Notification
+            $email = \Config\Services::email();
+            $email->setTo($recipient->email);
+            $email->setSubject('New Notification');
+            $email->setMessage($body);
+            $email->send();
+
+            // 4. Trigger Real-Time Push (Pusher example)
+            // $pusher = service('pusher'); // Assuming Pusher is configured as a service
+            // $pusher->trigger("user-channel-{$recipientId}", 'new-notif', [
+            //     'message' => $body,
+            //     'url' => base_url("posts/view/{$sourceId}")
+            // ]);
+        }
+    });
+
+    Events::on('login', static function(){
+        log_activity('User logged into their acount','system','info');
+    });
+    Events::on('logout', static function(){
+        log_activity('User has logged out of their account','system','info'); 
+    });
+
 });
