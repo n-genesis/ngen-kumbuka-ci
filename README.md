@@ -22,12 +22,12 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 ### [Kumbuka](https://kumbuka.ngendesign.com) is a project developed with love & fun by [N-Gen Design](https://ngendesign.com).
 
 
-![Dashboard](https://lh3.googleusercontent.com/d/1TsIHuLjOead--_CsQHjvznmpfXXXXUe9)
+![Dashboard](https://lh3.googleusercontent.com/d/1aY5_KtxUvK1aBTipXSJIDU-aIZj9tVNd)
 
 ***Check Out:*** The project's [TODO.md list](./TODO.md) and [dev-notes file](./dev-notes.md) to see changelogs and planned updates and additions. [Here's a Google Doc]( https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing) with some applications development plans. 
 
 
-## Build w/ CodeIgniter 4
+## Build w/ CodeIgniter 4.x
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure. More information can be found at the [official site](https://codeigniter.com).
 
 You can read the [user guide](https://codeigniter.com/user_guide/) corresponding to the latest version of the framework.
