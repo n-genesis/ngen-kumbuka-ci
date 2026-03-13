@@ -1,7 +1,7 @@
 <?php
 
 use App\Controllers\Home;
-use App\Controllers\NotificationController;
+use App\Controllers\Notification as NotificationController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
 // Admin Controllers
@@ -64,6 +64,9 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     // $routes->get('notes/add_notes', [Notes::class, 'add_notes']);
     // $routes->post('notes/add_notes', [Notes::class, 'add_notes']);
     // $routes->post('notes/delete_notes/(:segment)', [[Notes::class, 'delete_notes'], '$1']);
+
+    // User Notifications
+    $routes->get('notifications', [NotificationController::class, 'index']);
 
     // Account Routes
     $routes->group('account', function ($routes) {
