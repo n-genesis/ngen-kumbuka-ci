@@ -49,6 +49,7 @@
                 </a>
                 <!-- Dropdown Menu -->
                 <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <!-- Notification Item -->
                     <div class="card shadow-none m-0">
                         <div class="card-body p-0 ">
                             <div class="p-3">

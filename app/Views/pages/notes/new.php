@@ -77,8 +77,7 @@
                             <!-- Note Content -->
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">Body</label>
-                                <textarea id="kumbukaEditor" name="body" rows="3" data-change="input" data-custom-target="#note-description" >
-                                    <?= old(key: 'body') ?>
+                                <textarea id="kumbukaEditor" name="body" rows="3" data-change="input" data-custom-target="#note-description" ><?= old(key: 'body') ?></textarea>
                             </textarea>
 
                             </div>
@@ -162,7 +161,7 @@
             </div>
 
             <footer class="card-footer d-flex align-items-center justify-content-between">
-                <a href="<?= site_url('dashboard') ?>" class="btn btn-secondary mr-auto">
+                <a href="<?= site_url('note') ?>" class="btn btn-secondary mr-auto">
                     <i class="bi bi-box-arrow-left"></i> Cancel
                 </a>
                 <button type="reset" class="btn btn-outline-primary mr-2" data-reset="note-reset">
@@ -196,6 +195,13 @@
         $('#kumbukaEditor').customEditor({
             language: 'en',
             height: '250px',
+            toolbar: [
+                ['bold', 'italic', 'underline'],
+                ['fontname', 'fontsize'],
+                ['forecolor','backcolor', 'removeFormat'],
+                ['insertImage', 'insertLink', 'video'],
+                ['undo', 'redo','codeView']
+            ],
             onChange: function (content) {
 
                 const target = $('#note-description');

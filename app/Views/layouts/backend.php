@@ -36,8 +36,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Top Right Nav -->
-                <?= $this->include('partials/topnav_right') ?>
+                <!-- Messages & Notifications -->
+                <?= view_cell('NotificationCell') ?>
             </div>
 
         </div>
@@ -105,6 +105,8 @@
     // Use base_url() to point to the CI4 controller
     const eventSource = new EventSource('<?= base_url("notifications/stream") ?>');
 
+    let index = 0;
+
     // Get SSE response/ Skip error checking for now
     eventSource.onmessage = function (event) {
         const data = JSON.parse(event.data);// Get returned datas
@@ -123,23 +125,29 @@
         const ele = document.getElementById('km-notice-' + data.id);// Only append one element
 
         if(ele === null){
-            const title = data.source_type.charAt(0).toUpperCase() + data.source_type.slice(1) + ' notification';
-            
-            // Show native browser notifications
-            showNativeNotification(title, data.message, data.id );
+            const title = data.source_type.charAt(0).toUpperCase() + data.source_type.slice(1);
 
-            //Show Toasty Alerts for in-window notifications
-            $.BToasty({
-                title: title,
-                extra: data.created_at,
-                customID: 'km-notice-' + data.id,
-                body: '<p>' + data.message + '</p>' +
-                    '<button class="btn btn-outline-primary btn-sm" data-km="dismiss" data-dismiss="toast">Dismiss</button>',
-                autoHide: false,
-            });
-            // Bind Event to dismiss notification and set is_read = 1 (using base_url for AJAX URL)
-            markNoticeAsRead(data.id,'<?= base_url("ajax/read") ?>')
+            // Create Navbar Notification elements and append to dropdown
+            if(index < 5){
+                createNotification(title,data.created_at, data.message, data.id);
+                index++;
         }
+            // Show native browser notifications
+            // showNativeNotification(title, data.message, data.id );
+
+            // //Show Toasty Alerts for in-window notifications
+            // $.BToasty({
+            //     title: title,
+            //     extra: data.created_at,
+            //     customID: 'km-notice-' + data.id,
+            //     body: '<p>' + data.message + '</p>' +
+            //         '<button class="btn btn-outline-primary btn-sm" data-km="dismiss" data-dismiss="toast">Dismiss</button>',
+            //     autoHide: false,
+            // });
+            // // Bind Event to dismiss notification and set is_read = 1 (using base_url for AJAX URL)
+            // markNoticeAsRead(data.id,'<?= base_url("ajax/read") ?>')
+        }
+        
     };
 
     // Add an event listener for the 'beforeunload' event
