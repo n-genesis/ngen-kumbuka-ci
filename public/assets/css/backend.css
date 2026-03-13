@@ -28190,7 +28190,7 @@ ul.iq-contact-rest li a p {
 }
 
 i {
-  vertical-align: middle;
+  align-items: center;   /* Centers content vertically */
 }
 
 .add-tag a {
