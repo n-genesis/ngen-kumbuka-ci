@@ -80,5 +80,10 @@ class NotificationModel extends Model
                     ->where('is_read', 0)
                     ->countAllResults(); // Returns integer
     }
+
+    public function getNotificationsByUserId(int $userId) {
+        return $this->where('recipient_id', $userId)
+                    ->orderBy('created_at', 'DESC');
+    }
     
 }

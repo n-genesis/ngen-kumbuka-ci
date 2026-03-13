@@ -23,7 +23,7 @@ class Home extends UserController
             'appTitle' => setting('App.appName') . ' | Home',
             'pageHeader' => 'Home',
             'breadcrumbLinks' => [
-                ['label' => 'Home', 'url' => site_url('dashboard')],
+                ['label' => 'Home', 'url' => site_url('home')],
                 ['label' => 'Quick Start', 'url' => ''],
             ],
             'quickPickPage' => 'dashboard'

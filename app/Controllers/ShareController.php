@@ -6,10 +6,12 @@ use App\Controllers\UserController;
 use App\Models\User\UserModel;
 use App\Models\ShareModel;
 use App\Models\NoteModel;
+use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class ShareController extends UserController
 {
+    use ResponseTrait;
     protected ShareModel $shareModel;
     protected UserModel $userModel;
 
@@ -50,7 +52,7 @@ class ShareController extends UserController
         $noteModel->find($note_id);
 
 
-        return redirect()->to('/dashboard')->with('message', 'Post shared successfully!');
+        return redirect()->to('/home')->with('message', 'Post shared successfully!');
     }
 
 
