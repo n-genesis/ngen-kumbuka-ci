@@ -94,10 +94,10 @@ Events::on('pre_system', static function (): void {
     });
 
     Events::on('login', static function(){
-        log_activity('User logged into their acount','system','info');
+        log_activity('User logged into acount','system','info');
     });
     Events::on('logout', static function(){
-        log_activity('User has logged out of their account','system','info'); 
+        log_activity('User has logged out of account','system','info'); 
     });
 
 });
