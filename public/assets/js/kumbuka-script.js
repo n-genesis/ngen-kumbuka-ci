@@ -327,3 +327,53 @@ function showNativeNotification(title, message) {
 
     } 
 }
+
+function createNotification(title,time,message,id) {
+    // Create parent elemenet
+    const parentDiv = Object.assign(document.createElement('div'),{
+        className:'p-3',
+    });
+    
+    // Create link & add attributes 
+    const link = Object.assign(document.createElement('a'), {
+        href: '#',
+        className: 'iq-sub-card',
+    });
+
+    const mediaDiv = Object.assign(document.createElement('div'),{
+        className: 'media align-items-center cust-card pb-3 border-bottom',
+    });
+
+    const mediaBodyDiv = Object.assign(document.createElement('div'),{
+        className: 'media-body',
+
+    });
+
+    const flexDiv = Object.assign(document.createElement('div'),{
+        className:'d-flex align-items-center justify-content-between',
+    });
+
+    const header = `<h5 class="mb-0">${title}</h5>
+    <small class="text-dark"><b>${time}</b></small>`;
+
+    flexDiv.insertAdjacentHTML('afterbegin',header);
+
+    const smallDiv = `<small class="mb-0">${message}</small>`;
+
+    
+
+    mediaBodyDiv.appendChild(flexDiv);
+    
+    mediaBodyDiv.insertAdjacentHTML('beforeend',smallDiv);
+
+    mediaDiv.appendChild(mediaBodyDiv);
+
+    link.appendChild(mediaDiv);
+
+    // Append Child element to link
+    parentDiv.appendChild(link);
+
+    // Append to Notification Nav list
+    document.getElementById('user-notifications').prepend(parentDiv);
+
+}
