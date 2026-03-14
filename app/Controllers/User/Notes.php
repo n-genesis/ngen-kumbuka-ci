@@ -176,4 +176,25 @@ class Notes extends UserController
 
         return redirect()->back()->withInput()->with('message','Failed to save note.');
     }
+
+    function show(string $slug)
+    {
+        $noteModel = model(NoteModel::class);
+
+
+        // if (!$note || $note->user_id != $this->userId) {
+        //     return redirect()->to('note')->with('error', 'Note not found.');
+        // }
+
+        return $this->renderView('pages/notes/show', [
+            'appTitle' => setting('App.appName') . ' | View Note',
+            'pageHeader' => 'View Note',
+            'breadcrumbLinks' => [
+                ['label' => 'Home', 'url' => site_url('home')],
+                ['label' => 'User Notes', 'url' => site_url('note')],
+                ['label' => 'View Note', 'url' => ''],
+            ],
+            'note' => null,
+        ]);
+    }
 }
