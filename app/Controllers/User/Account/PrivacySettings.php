@@ -82,9 +82,22 @@ class PrivacySettings extends UserController
 
         // Validate User Details
         // Get Checkbox selected
-        $choices = $this->request->getPost('privacySetting');
+        $profileVisibility = $this->request->getPost('profileVisibility');
+
+        // Update User Settings using the Helper Preference
+        if($profileVisibility) {
+            preference('UserSettings.profileVisibility', $profileVisibility);
+        } else if($profileVisibility === null) {
+            preference('UserSettings.profileVisibility', null);
+        }
+
+        // echo '<pre>';
+        // var_dump($profileVisibility);
+        // echo '</pre>';
+        // exit;
 
         // Loop Over array list
+        $choices = $this->request->getPost('privacySetting');
         foreach ($this->userChoices as $value) {
             $setting = "Users.{$value}";// Setting value
             if ($choices !== null) {

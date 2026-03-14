@@ -81,15 +81,15 @@
                     <div class="data-privacy">
                         <h4 class="mb-2"> Your Profile </h4>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="public" name="privacySetting[]" class="custom-control-input" value="publicProfile">
+                            <input type="radio" id="public" name="profileVisibility" class="custom-control-input" value="public">
                             <label class="custom-control-label" for="public"> <b>Public:</b> Visible to Everyone.</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="friend" name="privacySetting[]" class="custom-control-input" value="privateProfile">
+                            <input type="radio" id="friend" name="profileVisibility" class="custom-control-input" value="private">
                             <label class="custom-control-label" for="friend"> <b>Followers</b> Only visible to users following you.</label>
                         </div>
                         <div class="custom-control custom-radio mb-2">
-                            <input type="radio" id="onlyme" name="privacySetting[]" class="custom-control-input" value="onlyMeProfile">
+                            <input type="radio" id="onlyme" name="profileVisibility" class="custom-control-input" value="friends">
                             <label class="custom-control-label" for="onlyme"> <b>Only Me</b> Visible only to you.</label>
                         </div>
                         <p>Change the visablility of your Profile</p>
