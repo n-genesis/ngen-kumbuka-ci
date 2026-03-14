@@ -9,19 +9,22 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
 - [ ] Finish UserActivitySeeder Script
-
+- [ ] Add User Follower function and mechanics
+- [ ] Update User Registration to include more user details and store them in `user_details` table
+- [ ] Update User Login to fetch more user details from `user_details` table
+    - *Unsure what I meant by this*
 
 ### Currently Completing
 - [ ] Admin Section for User managment
 - [x] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
 - [x] **Add Native browser notification windows and User permission**
 - [x] Create profile visibility feature/settings
+    - [x] Need to create user follower mechanic for only friends profile visibilty
 - [x] Note pages and funtions
 
 ### Completed (High Priority)
 - [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)
-- [ ] Update User Registration to include more user details and store them in `user_details` table
-- [ ] Update User Login to fetch more user details from `user_details` table
+
 
 ## Medium Priority
 - [ ] Edit Admin Seeder file to remove redundant code
