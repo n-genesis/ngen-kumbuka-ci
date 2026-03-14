@@ -2,6 +2,7 @@
 
 namespace App\Entities\User;
 
+use App\Models\FollowerModel;
 use App\Models\User\UserSocialLinksModel;
 use CodeIgniter\Shield\Entities\User as ShieldUserEntity;
 use Config\AppConfig\UserSettings as userConfig;
@@ -85,5 +86,34 @@ class User extends ShieldUserEntity
             $link = model(UserSocialLinksModel::class)->where(['user_id' => $this->id, 'title' => $title])->first();
         }
         return $link;
+    }
+
+    /**
+     * Get all users following this user
+     * Accessible via $user->followers
+     */
+    public function getFollowers()
+    {
+        $model = model(FollowerModel::class);
+        
+        // Join with the users table to get full user objects
+        return $model->select('users.*')
+                     ->join('users', 'users.id = user_followers.follower_id')
+                     ->where('followed_id', $this->attributes['id'])
+                     ->findAll();
+    }
+
+    /**
+     * Get all users this user is following
+     * Accessible via $user->following
+     */
+    public function getFollowing()
+    {
+        $model = model(FollowerModel::class);
+        
+        return $model->select('users.*')
+                     ->join('users', 'users.id = user_followers.followed_id')
+                     ->where('follower_id', $this->attributes['id'])
+                     ->findAll();
     }
 }
