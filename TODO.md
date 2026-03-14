@@ -1,7 +1,7 @@
 # Project To-Do ListZ
 This document jsut lists current tasks and planned features for the project. A more [Detailed Google Doc Here](https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing), for more insign for future planes for the project. 
 
-**Current Version (2.0.0-alpha)**
+**Current Version (2.2.0-alpha)**
 
 ## High Priority
 - [ ] Update template for Bootstrap 5 (legacy 4.6.2 used)
