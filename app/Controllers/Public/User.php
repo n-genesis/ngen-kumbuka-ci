@@ -24,15 +24,6 @@ class User extends UserController
             ->where('users.username', $username)
             ->first(); // Returns an array of User Entity objects
 
-            // echo '<pre>';
-            // var_dump(preference('Users.public'));
-            // echo '</pre>';
-            // exit;
-
-            if(!$user || preference('Users.accountPrivacy') == true){
-                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("User not found");
-            }
-
             return $this->renderView('public/user/profile',[
                 'appTitle' => setting('App.appName').' | '.$user->username.' Profile',
                 'pageHeader' => $user->username.' Profile',
@@ -41,7 +32,7 @@ class User extends UserController
                     ['label' => $user->username.' Profile', 'url' => ''],
                 ],
                 'user' => $user,
-                'profileVisibility' => preference('Users.profileVisibility'),
+                'profileVisibility' => null,
             ]);
     }
 }
