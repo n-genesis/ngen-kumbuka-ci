@@ -111,8 +111,9 @@ $routes->group('ajax',['filter'=> ['userfilter']], function ($routes) {
 });
 
 // User Public Profile
+// This route is protected by the ProfileVisibilityFilter to check if the profile is public or private
 $routes->group('user/profile',function ($routes) {
-    $routes->get('(:segment)', [[PublicController\User::class,'profile'],'$1']);
+    $routes->get('(:segment)', [[PublicController\User::class,'profile'],'$1'], ['filter' => 'profilevisibility']);
 });
 
 
