@@ -98,7 +98,7 @@ class User extends ShieldUserEntity
         
         // Join with the users table to get full user objects
         return $model->select('users.*')
-                     ->join('users', 'users.id = user_followers.follower_id')
+                     ->join('users', 'users.id = followers.follower_id')
                      ->where('followed_id', $this->attributes['id'])
                      ->findAll();
     }
@@ -112,7 +112,7 @@ class User extends ShieldUserEntity
         $model = model(FollowerModel::class);
         
         return $model->select('users.*')
-                     ->join('users', 'users.id = user_followers.followed_id')
+                     ->join('users', 'users.id = followers.followed_id')
                      ->where('follower_id', $this->attributes['id'])
                      ->findAll();
     }
