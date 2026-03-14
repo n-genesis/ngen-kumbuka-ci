@@ -21,11 +21,7 @@ class FollowerModel extends Model
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 
-    protected array $casts = [
-        'follower_id' => 'integer',
-        'followed_id' => 'integer',
-        'status' => 'string',
-    ];
+    protected array $casts = [];
     protected array $castHandlers = [];
 
     // Dates
@@ -53,5 +49,5 @@ class FollowerModel extends Model
     protected $afterDelete    = [];
 
 
-    
+
 }
