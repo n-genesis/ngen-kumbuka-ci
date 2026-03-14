@@ -1,6 +1,20 @@
 # Project 2.0.0-alpa - Development Notes
 Well this was terribly overdue and done terribly, but hey it's done. So, here are some notes about the 2.0.0-alpha release. It's strutured much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield. Still need to extend sheilds user model to include more user details and custom data.
 
+### Curret Features
+- Admin
+  - CRUD User accounts
+    - Ban user accounts
+- User (All operation are avaiable to admin users)
+  - CRUD Notes Post
+  - CRUD Notebooks
+    - Share Notebooks with other Users
+      All the user to give permission to other User to post notes in a user created Notbook
+  - Follower and Following Users
+    User can follow other application User that allow followers
+    *User and aprove, deny or ban followers*
+
+
 #### Upgraded
 Added a custom Server name for project for localhost. Will include enviroment setup steps and what not later.
 
@@ -12,6 +26,7 @@ Finished; breaking changes
 - **Key Updates:**
   - [x] Restructure directory to resemble the M-V-C architecture.
   - [x] Started User BackEnd sections 
+  - [x] Create profile visibility feature
   
 - **Action Items:**
   - [x] Need to delete empty directories (they're confusing).
