@@ -1,6 +1,12 @@
 <?php
-
 // app/Helpers/user_settings_helper.php
+
+/**
+ * Helper function to check if a user's profile is visible to the current visitor
+ * @param int $ownerId The ID of the profile owner
+ * @return bool True if the profile is visible, false otherwise
+ * 
+ */
 if (!function_exists('user_settings')) {
     function is_profile_visible(int $ownerId): bool
     {
@@ -23,6 +29,8 @@ if (!function_exists('user_settings')) {
 
     /**
      * Placeholder for your friendship logic
+     * @param int $ownerId The ID of the profile owner
+     * @param int|null $visitorId The ID of the visitor (null if not logged
      */
     function check_friendship($ownerId, $visitorId): bool
     {

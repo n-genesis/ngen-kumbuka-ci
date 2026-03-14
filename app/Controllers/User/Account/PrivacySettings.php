@@ -25,6 +25,7 @@ class PrivacySettings extends UserController
             'accountPrivacy',
             'accountActivityStatus',
             'allowFollowers',
+            'profileVisibility',
         ];
     }
     /**
@@ -40,9 +41,18 @@ class PrivacySettings extends UserController
         $checked = [];
 
         foreach ($this->userChoices as $value) {
-            $setting = preference("Users.{$value}");
+            $setting = preference("UserSettings.{$value}");
             if (isset($setting)) {
-                $checked[$value] = 'checked';
+                // Special handling for profile visibility to set radio button states
+                if ($value === 'profileVisibility') {
+                    $checked[$value] = [
+                        'public' => $setting === 'public' ? 'checked' : '',
+                        'private' => $setting === 'private' ? 'checked' : '',
+                        'friends' => $setting === 'friends' ? 'checked' : '',
+                    ];
+                } else {
+                    $checked[$value] = $setting ? 'checked' : '';
+                }
             } else {
                 $checked[$value] = '';
             }
@@ -80,10 +90,32 @@ class PrivacySettings extends UserController
             return redirect()->back()->with('error', 'User not found.');
         }
 
-        // Validate User Details
-        // Get Checkbox selected
-        $profileVisibility = $this->request->getPost('profileVisibility');
+        // Get Account Privacy Checkbox selected
+        $accountPrivacy = $this->request->getPost('accountPrivacy');
+        if ($accountPrivacy) {
+            preference('UserSettings.accountPrivacy', $accountPrivacy);
+        } else if ($accountPrivacy === null) {
+            preference('UserSettings.accountPrivacy', null);
+        }
 
+        // Get Account Activity Status Checkbox selected
+        $accountActivityStatus = $this->request->getPost('accountActivityStatus');
+        if ($accountActivityStatus) {
+            preference('UserSettings.accountActivityStatus', (bool) $accountActivityStatus);
+        } else if ($accountActivityStatus === null) {
+            preference('UserSettings.accountActivityStatus', null);
+        }
+
+        // Get Allow Followers Checkbox selected
+        $allowFollowers = $this->request->getPost('allowFollowers');
+        if ($allowFollowers) {
+            preference('UserSettings.allowFollowers', (bool) $allowFollowers);
+        } else if ($allowFollowers === null) {
+            preference('UserSettings.allowFollowers', null);
+        }
+
+        // Get Profile Visibility Radio selected
+        $profileVisibility = $this->request->getPost('profileVisibility');
         // Update User Settings using the Helper Preference
         if($profileVisibility) {
             preference('UserSettings.profileVisibility', $profileVisibility);
@@ -95,25 +127,6 @@ class PrivacySettings extends UserController
         // var_dump($profileVisibility);
         // echo '</pre>';
         // exit;
-
-        // Loop Over array list
-        $choices = $this->request->getPost('privacySetting');
-        foreach ($this->userChoices as $value) {
-            $setting = "Users.{$value}";// Setting value
-            if ($choices !== null) {
-                if (in_array($value, $choices)) {
-                    preference($setting, true);// If found set
-                } else {
-                    preference($setting, null);// If NOT found remove
-                }
-            }else {
-                preference($setting, null);// If NOT found remove
-            }
-            // echo '<pre>';
-            // var_dump($setting);
-            // echo '</pre>';
-      
-        }
 
         return redirect()->back()->with('message', 'Privacy Settings updated successfully.');
 
