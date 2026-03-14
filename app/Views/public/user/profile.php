@@ -44,7 +44,7 @@
       <div class="col-lg-2 col-md-4 col-sm-12">
          <div class="card card-block card-stretch card-height">
             <div class="card-body text-center">
-               <h2 class="mb-2 mt-3">2+</h2>
+               <h2 class="mb-2 mt-3"><?= count($user->followers) ?>+</h2>
                <h4>Followers</h4>
             </div>
          </div>
