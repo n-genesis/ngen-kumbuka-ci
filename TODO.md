@@ -11,8 +11,8 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Finish UserActivitySeeder Script
 - [ ] Add User Follower function and mechanics
 - [ ] Update User Registration to include more user details and store them in `user_details` table
-- [ ] Update User Login to fetch more user details from `user_details` table
-    - *Unsure what I meant by this*
+- [ ] Update User Login to fetch more user details from `user_details` table  
+    *Unsure what I meant by this*
 
 ### Currently Completing
 - [ ] Admin Section for User managment
