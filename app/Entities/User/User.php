@@ -5,7 +5,7 @@ namespace App\Entities\User;
 use App\Models\FollowerModel;
 use App\Models\User\UserSocialLinksModel;
 use CodeIgniter\Shield\Entities\User as ShieldUserEntity;
-use Config\AppConfig\UserSettings as userConfig;
+use Config\UserSettings as userConfig;
 use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
 
 /**
