@@ -43,6 +43,11 @@ class PrivacySettings extends UserController
         foreach ($this->userChoices as $value) {
             $setting = preference("UserSettings.{$value}");
             if (isset($setting)) {
+            //     echo '<pre>';
+            // print_r("UserSettings.{$value}\n");
+            // echo "setting v: ".$setting."\n";
+            // echo '</pre>';
+            // exit;
                 // Special handling for profile visibility to set radio button states
                 if ($value === 'profileVisibility') {
                     $checked[$value] = [
