@@ -16,6 +16,7 @@ use \CodeIgniter\Shield\Filters\SessionAuth;
 use App\Filters\AdminFilter;
 use App\Filters\UserFilter;
 use App\Filters\SseFilter;
+use App\Filters\ProfileVisibilityFilter;
 
 class Filters extends BaseFilters
 {
@@ -52,6 +53,7 @@ class Filters extends BaseFilters
         'userfilter'    => UserFilter::class,
         'ssefilter'     => SseFilter::class,
         'session'       => SessionAuth::class,
+        'profilevisibility' =>ProfileVisibilityFilter::class,
     ];
 
     /**
