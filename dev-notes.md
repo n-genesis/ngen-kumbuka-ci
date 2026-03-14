@@ -21,12 +21,10 @@ Finished; breaking changes
     - [x] Add `user_details` table to store more user info 
 
 - **Action Items:**
-  - [x] Working on Snippet & Bootsnippet (Front and Backend) Pages
   - [x] Extending User Details w/ Shield .
 
 ### Features - Implementation Details
 This section outlines the key design decisions and implementation notes for current features and implementation.
-
 
 #### CustomEditor WYSIWYG
 This project use a custom/forked project for a Bootstrap 5 JavaScript/jQuery extension WYSIWYG. Will include implementation directions at a later time.

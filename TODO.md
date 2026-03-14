@@ -15,9 +15,11 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Admin Section for User managment
 - [x] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
 - [x] **Add Native browser notification windows and User permission**
+- [x] Create profile visibility feature/settings
+- [x] Note pages and funtions
 
 ### Completed (High Priority)
-- [x] Exten shield's User Model to include more user details (first_name, last_name, full_name)
+- [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)
 - [ ] Update User Registration to include more user details and store them in `user_details` table
 - [ ] Update User Login to fetch more user details from `user_details` table
 
