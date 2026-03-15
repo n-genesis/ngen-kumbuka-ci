@@ -11,6 +11,12 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             }
+        },
+        {
+            "label": "Monitor Accesslog",
+            "type": "shell",
+            "command": "Get-Content \"${workspaceFolder}\\apache\\logs\\kumbuka.ngen-access.log\" -Wait ",
+            
         }
     ]
 }
