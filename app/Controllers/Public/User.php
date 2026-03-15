@@ -3,6 +3,7 @@
 namespace App\Controllers\Public;
 
 use App\Controllers\UserController;
+use App\Models\FollowerModel;
 use App\Models\User\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -15,6 +16,8 @@ class User extends UserController
         }
         // Load user data based on username
             $userModel = model(UserModel::class);
+
+            $followerModel = model(FollowerModel::class );
 
             //$userId = $userModel->findByCredentials(['username' => $username]);
 
@@ -32,7 +35,7 @@ class User extends UserController
                     ['label' => $user->username.' Profile', 'url' => ''],
                 ],
                 'user' => $user,
-                'profileVisibility' => null,
+                'followerModel' => $followerModel,
             ]);
     }
 }
