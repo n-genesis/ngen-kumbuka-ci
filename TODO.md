@@ -14,8 +14,7 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Update User Login to fetch more user details from `user_details` table  
     *Unsure what I meant by this*
 - [ ] **Need to create cover image upload** (*Starting to get profiles confused*)
-- [ ] **Add Events for New follwing Users**  
-    - It's propably a good idea to incorperate throttling
+
 
 
 ### Currently Completing
@@ -24,6 +23,10 @@ This document jsut lists current tasks and planned features for the project. A m
 - [x] **Add Native browser notification windows and User permission**
 - [x] Create profile visibility feature/settings
     - [x] Need to create user follower mechanic for only friends profile visibilty
+
+- [x] **Add Events for New follwing Users**  
+    - It's propably a good idea to incorperate throttling
+
 - [x] Note pages and funtions
 
 ### Completed (High Priority)
