@@ -47,7 +47,9 @@
             <div class="card-body text-center">
                <h2 class="mb-2 mt-3"><?= count($user->followers) ?>+</h2>
                <h4>Followers</h4>
-               <?php if ($user->id !== auth()->id() && auth()->loggedIn()): ?>   
+               <!-- Show if User is logged in or not viewing their own profile -->
+               <?php if ($user->id !== auth()->id() && auth()->loggedIn()): ?>
+                  <!-- Show Follow/Unfollow Button based on the current follow status -->
                   <?php if ($followerModel->isFollowing(auth()->id(), $user->id)): ?>
                      <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
                         <?= csrf_field() ?>
