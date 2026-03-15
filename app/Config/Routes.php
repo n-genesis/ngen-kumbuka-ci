@@ -90,7 +90,7 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     });
 
     // Toggle Follow/Unfollow
-    $routes->post('follow/toggle/(:segment)', [[FollowerController::class,'followUser'], '$1']);
+    $routes->post('follow/toggle/(:segment)', [[FollowerController::class,'followUser'], '$1'],['filter' => 'followThrottle']);
 
 });
 

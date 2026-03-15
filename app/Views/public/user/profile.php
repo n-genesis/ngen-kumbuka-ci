@@ -52,7 +52,7 @@
                      <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
                         <?= csrf_field() ?>
                         <input type="hidden" name="followed_id" value="<?= $user->id ?>">
-                        <button type="submit" class="btn btn-outline-primary mt-3">Unfollow </button>
+                        <button type="submit" class="btn btn-success mt-3">Following <i class="bi bi-person-fill-check"></i></button>
                      </form>
                   <?php else: ?>
                      <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">

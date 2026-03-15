@@ -17,6 +17,7 @@ use App\Filters\AdminFilter;
 use App\Filters\UserFilter;
 use App\Filters\SseFilter;
 use App\Filters\ProfileVisibilityFilter;
+use App\Filters\FollowThrottleFilter;
 
 class Filters extends BaseFilters
 {
@@ -54,6 +55,7 @@ class Filters extends BaseFilters
         'ssefilter'     => SseFilter::class,
         'session'       => SessionAuth::class,
         'profilevisibility' =>ProfileVisibilityFilter::class,
+        'followThrottle' => FollowThrottleFilter::class,
     ];
 
     /**
