@@ -89,8 +89,8 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         $routes->get('followers', [User\Social::class, 'followers']);
     });
 
-    // Following and Followers Routes
-    $routes->post('follow/(:segment)', [[FollowerController::class,'followUser'], '$1/$2']);
+    // Toggle Follow/Unfollow
+    $routes->post('follow/toggle/(:segment)', [[FollowerController::class,'followUser'], '$1']);
 
 });
 
