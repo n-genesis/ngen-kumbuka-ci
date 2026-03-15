@@ -13,6 +13,7 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Update User Registration to include more user details and store them in `user_details` table
 - [ ] Update User Login to fetch more user details from `user_details` table  
     *Unsure what I meant by this*
+- [ ] **Need to create cover image upload** (*Starting to get profiles confused*)
 
 ### Currently Completing
 - [ ] Admin Section for User managment
@@ -39,6 +40,7 @@ This document jsut lists current tasks and planned features for the project. A m
 
 ### Completed (Medium Priority)
 - [ ] 
+
 
 ## Low Priority
 - [ ] Change theme to blue and visuals to match the name (just a thought)
