@@ -26,10 +26,10 @@ abstract class BaseController extends Controller
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
     protected $userConfig;
-    protected $userId;
-    protected $username;
-    protected $userfullName;
-    protected $userEntity;
+    protected $userId; // Store the ID of the currently logged-in user
+    protected $username; // Store the username of the currently logged-in user
+    protected $userfullName; // Store the full name of the currently logged-in user
+    protected $userEntity; // Store the User Model of the currently logged-in user
     protected $userDetailsModel;
     protected $userDetails;
     protected $userAvatar;
