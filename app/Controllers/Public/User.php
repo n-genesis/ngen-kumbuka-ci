@@ -26,7 +26,12 @@ class User extends UserController
             ->join('user_details', 'user_details.user_id = users.id','left')
             ->where('users.username', $username)
             ->first(); // Returns an array of User Entity objects
-
+            
+            // If user not found, redirect to home with error message
+            if (!$user) {
+                return redirect()->to('login')->with('error', 'User not found.');
+            }
+             
             return $this->renderView('public/user/profile',[
                 'appTitle' => setting('App.appName').' | '.$user->username.' Profile',
                 'pageHeader' => $user->username.' Profile',
