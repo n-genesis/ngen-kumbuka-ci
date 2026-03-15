@@ -14,7 +14,8 @@
                   <img src="<?= base_url('uploads/profile.jpg') ?>" class="img-fluid rounded w-100" alt="">
                   <!-- User Avatar Image -->
                   <div class="position-absolute" style="bottom: 10px; left: 10px;">
-                     <img class="avatar-100 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title="" title="">
+                     <img class="avatar-100 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title=""
+                        title="">
                   </div>
                </div>
                <div class="profile-overly">
@@ -46,13 +47,21 @@
             <div class="card-body text-center">
                <h2 class="mb-2 mt-3"><?= count($user->followers) ?>+</h2>
                <h4>Followers</h4>
-               <?php if($user->id !== auth()->user()->id): ?>
-                  <form action="<?= base_url('follow/' . $user->id) ?>" method="post">
-                     <?= csrf_field() ?>
-                     <input type="hidden" name="follower_id" value="<?= auth()->user()->id ?>">
-                     <input type="hidden" name="followed_id" value="<?= $user->id ?>">
-                     <button type="submit" class="btn btn-outline-primary mt-3">Follow <i class="bi bi-person-plus-fill"></i></button>
-                  </form>
+               <?php if ($user->id !== auth()->id()): ?>   
+                  <?php if ($followerModel->isFollowing(auth()->id(), $user->id)): ?>
+                     <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="followed_id" value="<?= $user->id ?>">
+                        <button type="submit" class="btn btn-outline-primary mt-3">Unfollow </button>
+                     </form>
+                  <?php else: ?>
+                     <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="followed_id" value="<?= $user->id ?>">
+                        <button type="submit" class="btn btn-outline-primary mt-3">Follow <i
+                              class="bi bi-person-plus-fill"></i></button>
+                     </form>
+                  <?php endif; ?>
                <?php endif; ?>
             </div>
          </div>
@@ -122,16 +131,19 @@
             <div class="card-body">
                <ul class="list-inline p-0 m-0 iq-contact-rest">
                   <li class="mb-3 d-flex">
-                     <i class="bi bi-geo-alt"></i> <p class="mb-0 ml-2 font-size-16 line-height">505 West Brickyard Rd, CA , USA</p>
+                     <i class="bi bi-geo-alt"></i>
+                     <p class="mb-0 ml-2 font-size-16 line-height">505 West Brickyard Rd, CA , USA</p>
                   </li>
                   <li class="mb-3 d-flex">
-                     <i class="bi bi-telephone"></i> <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->phone ?></p>
+                     <i class="bi bi-telephone"></i>
+                     <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->phone ?></p>
                   </li>
                   <li class="mb-3 d-flex">
-                     <i class="bi bi-envelope"></i> <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->email ?></p>
+                     <i class="bi bi-envelope"></i>
+                     <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->email ?></p>
                   </li>
                   <li class="mb-3 d-flex">
-                     <i class="bi bi-link-45deg"></i> 
+                     <i class="bi bi-link-45deg"></i>
                      <a href="javascript:void(0);">
                         <p class="mb-0 ml-2 font-size-16 line-height"> http://www.yourwebsite.com </p>
                      </a>
