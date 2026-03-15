@@ -47,7 +47,7 @@
             <div class="card-body text-center">
                <h2 class="mb-2 mt-3"><?= count($user->followers) ?>+</h2>
                <h4>Followers</h4>
-               <?php if ($user->id !== auth()->id()): ?>   
+               <?php if ($user->id !== auth()->id() && auth()->loggedIn()): ?>   
                   <?php if ($followerModel->isFollowing(auth()->id(), $user->id)): ?>
                      <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
                         <?= csrf_field() ?>
