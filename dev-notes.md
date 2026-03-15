@@ -1,5 +1,5 @@
 # Project 2.x.x-alpa - Development Notes
-Well this was terribly overdue and done terribly, but hey it's done. So, here are some notes about the 2.0.0-alpha release. It's strutured much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield. Still need to extend sheilds user model to include more user details and custom data.
+Here I describe and includenotes about the the development of the Kumbuka Project in addtions to furture plannes for for the project. It's strutured much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield.
 
 For more information about current development and furture feature make sure to check out [TODO.md](./TODO.md).
 
@@ -27,7 +27,8 @@ For more information about current development and furture feature make sure to 
 #### Upgraded
 Added a custom Server name for project for localhost. Will include enviroment setup steps and what not later.
 
-### YYYY_MM_DD - Daily Quip
+### 2026-MARCH-15TH - Daily Quip
+*After getting to a beta version of the project I should see if anyone will help be test Users? It's would be nice to have a project with active users, and activity so I can learn how to maintain a live CodeIgniter 4 project.*
 
 - **Key Updates:**
   - [x] Restructure directory to resemble the M-V-C architecture.
