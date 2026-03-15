@@ -32,18 +32,20 @@ Added a custom Server name for project for localhost. Will include enviroment se
 
 - **Key Updates:**
   - [x] Restructure directory to resemble the M-V-C architecture.
-  - [x] Started User BackEnd sections 
+  - [x] Started User BackEnd sections
+  - [x] Creating User Follower & Following mechanics/features
   - [x] Create profile visibility feature
   
 - **Action Items:**
-  - [x] Need to delete empty directories (they're confusing).
+  - [x] Need to delete empty directories (*done*).
+  - [x] Need to finish User Account, Privacy, and Setting sections
 
 - **Action Items:**
-    - [x] Finish User authentication system w/ Shield.
-    - [x] Add `user_details` table to store more user info 
+    - [x] Finish User authentication system w/ Shield. (**Done**)
+    - [x] Add `user_details` table to store more user info (**Done**)
 
 - **Action Items:**
-  - [x] Extending User Details w/ Shield. (**We're good to go for that!**)
+  - [x] Extending User Details w/ Shield. (**We're good for that!**)
 
 ### Features - Implementation Details
 This section outlines the key design decisions and implementation notes for current features and implementation.
