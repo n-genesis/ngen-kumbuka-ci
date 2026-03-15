@@ -42,10 +42,18 @@
 
       <!-- Followers Count -->
       <div class="col-lg-2 col-md-4 col-sm-12">
-         <div class="card card-block card-stretch card-height">
+         <div class="card card-block card-stretch">
             <div class="card-body text-center">
                <h2 class="mb-2 mt-3"><?= count($user->followers) ?>+</h2>
                <h4>Followers</h4>
+               <?php if($user->id !== auth()->user()->id): ?>
+                  <form action="<?= base_url('follow/' . $user->id) ?>" method="post">
+                     <?= csrf_field() ?>
+                     <input type="hidden" name="follower_id" value="<?= auth()->user()->id ?>">
+                     <input type="hidden" name="followed_id" value="<?= $user->id ?>">
+                     <button type="submit" class="btn btn-outline-primary mt-3">Follow <i class="bi bi-person-plus-fill"></i></button>
+                  </form>
+               <?php endif; ?>
             </div>
          </div>
       </div>
