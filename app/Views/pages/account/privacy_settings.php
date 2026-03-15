@@ -58,16 +58,18 @@
                         <p>Will <b>Hide</b>&#128737;&#65039;your account, notes, or shared notes. Your Profile will also be hidden. <i><b>Note: Your comments will still be been across the application.</b></i></p>
                     </div>
                     <hr>
+                    <!-- Account Activity Status -->
                     <div class="data-privacy">
-                        <h4 class="mb-2">Activity Status</h4>
+                        <h4 class="mb-2">Activity Status </h4>
                         <div class="custom-control custom-checkbox custom-control-inline">
                             <input type="checkbox" class="custom-control-input" name="accountActivityStatus" value="true" id="activety" <?= $checked['accountActivityStatus'] ?>>
                             <label class="custom-control-label privacy-status mb-2" for="activety">Show Activity
                                 Status</label>
                         </div>
-                        <p>Show others when your <b class="text-success">"online"</b> and writing and share great notes. &#128214;</p>
+                        <p>Show others when your <b class="text-success">"online"</b> and writing and share great notes. &#x1F6DC;</p>
                     </div>
                     <hr>
+                    <!-- Allow Followers Settngs -->
                     <div class="data-privacy">
                         <h4 class="mb-2"> Follower(s) </h4>
                         <div class="custom-control custom-checkbox custom-control-inline">

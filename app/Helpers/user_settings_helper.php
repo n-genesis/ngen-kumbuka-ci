@@ -4,7 +4,7 @@
 /**
  * Helper function to check if a user's profile is visible to the current visitor
  * @param int $ownerId The ID of the profile owner
- * @return bool True if the profile is visible, false otherwise
+ * @return bool True if the profile is visible, owner, or Admin otherwise false
  * 
  */
 if (!function_exists('user_settings')) {
@@ -16,8 +16,8 @@ if (!function_exists('user_settings')) {
         // Always visible to the owner or admin
         if ($visitorId === $ownerId || $visitorisAdmin)
             return true;
-        $settings = service('settings');
 
+        $settings = service('settings');
         // Get the profile visibility setting for the owner, defaulting to 'user:{ownerId}' if not set
         $visibility = $settings->get('UserSettings.profileVisibility', 'user:' . $ownerId);
 
