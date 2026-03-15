@@ -133,3 +133,4 @@ _modules/*
 # XAMMP & Apache
 #-------------------------
 /apache
+/public/km_sessions
