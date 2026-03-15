@@ -11,7 +11,13 @@ if (!function_exists('user_settings')) {
     function is_profile_visible(int $ownerId): bool
     {
         $visitorId = auth()->id() ?? null;// Get the current visitor's user ID (null if not logged in)
-        $visitorisAdmin = auth()->user()->inGroup('admin');// Check if User is part of admin group
+        // Check if the visitor or Admin
+        if (auth()->loggedIn()){
+            $visitorisAdmin = auth()->user()->inGroup('admin');// Check if User is part of admin group
+        } else {
+            $visitorisAdmin = false;
+        }
+        
 
         // Always visible to the owner or admin
         if ($visitorId === $ownerId || $visitorisAdmin)
