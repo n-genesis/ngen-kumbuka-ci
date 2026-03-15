@@ -1,7 +1,7 @@
 <?php
 
 use App\Controllers\Home;
-use App\Controllers\Notification as NotificationController;
+use App\Controllers\User\Notification as NotificationController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
 // Admin Controllers
@@ -12,7 +12,9 @@ use App\Controllers\User;
 use App\Controllers\Pages;
 use App\Controllers\System\SearchController as Search;
 // Share Controller
-use App\Controllers\ShareController as Share;
+use App\Controllers\System\ShareController as Share;
+// Follower Controller
+use App\Controllers\System\FollowerController;
 // Public Controllers
 use App\Controllers\Public as PublicController;
 // Fun COntroller
@@ -86,6 +88,9 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         $routes->get('feed', [User\Feed::class, 'index']);
         $routes->get('followers', [User\Social::class, 'followers']);
     });
+
+    // Following and Followers Routes
+    $routes->post('follow/(:segment)', [[FollowerController::class,'followUser'], '$1/$2']);
 
 });
 
