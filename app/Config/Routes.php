@@ -1,7 +1,10 @@
 <?php
 
 use App\Controllers\Home;
+// Notification Controller
 use App\Controllers\User\Notification as NotificationController;
+// Follower Controller
+use App\Controllers\User\Followers as FollowerController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
 // Admin Controllers
@@ -13,8 +16,6 @@ use App\Controllers\Pages;
 use App\Controllers\System\SearchController as Search;
 // Share Controller
 use App\Controllers\System\ShareController as Share;
-// Follower Controller
-use App\Controllers\System\FollowerController;
 // Public Controllers
 use App\Controllers\Public as PublicController;
 // Fun COntroller
