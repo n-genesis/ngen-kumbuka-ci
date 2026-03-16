@@ -1,10 +1,10 @@
-<!-- User Home Page -->
+<!-- app/Views/pages/home/index.php -->
 <?= $this->extend('layouts/backend'); ?>
 
 <?= $this->section('backend'); ?>
 
 <!-- Backend Content -->
-<div class="col-12">
+<div class="col-md-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">

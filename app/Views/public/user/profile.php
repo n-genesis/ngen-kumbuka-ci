@@ -11,7 +11,7 @@
          <div class="card car-transparent">
             <div class="card-body p-0">
                <div class="profile-image position-relative">
-                  <img src="<?= base_url('uploads/profile.jpg') ?>" class="img-fluid rounded w-100" alt="">
+                  <img src="https://picsum.photos/1224/417" class="img-fluid rounded w-100" alt="">
                   <!-- User Avatar Image -->
                   <div class="position-absolute" style="bottom: 10px; left: 10px;">
                      <img class="avatar-100 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title=""
