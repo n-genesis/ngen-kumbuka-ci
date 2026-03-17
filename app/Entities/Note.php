@@ -5,7 +5,6 @@ namespace App\Entities;
 use App\Models\NoteModel;
 use App\Models\ShareModel;
 use CodeIgniter\Entity\Entity;
-use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
 
 /**
  * User Note Entity

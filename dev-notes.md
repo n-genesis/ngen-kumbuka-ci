@@ -3,6 +3,11 @@ Here I describe and includenotes about the the development of the Kumbuka Projec
 
 For more information about current development and furture feature make sure to check out [TODO.md](./TODO.md).
 
+### *Need to Show View directory template stucture*  
+*I get the feeling I'm going to start to get confuded after a while*  
+The Home page & Quckpick Views use a combination of Views and Cells to dynamicly create the User Dashbaord page. This is done some a custom layout can be created by the User. I need to make sure to describe out these work together to prevent future consfusion.
+
+
 ### Curret Features (2.2.0-alpa)  
 *Minor feature of older versions are listed underneath the primary one below.*
 - Admin
@@ -51,5 +56,3 @@ Added a custom Server name for project for localhost. Will include enviroment se
 This section outlines the key design decisions and implementation notes for current features and implementation.
 
 
-### *Need to Show View directory template stucture*  
-*I get the feeling I'm going to start to get confuded after a while*

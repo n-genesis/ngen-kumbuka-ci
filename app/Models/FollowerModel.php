@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Entities\Follower as FollowerEntity;
 
 class FollowerModel extends Model
 {
     protected $table = 'followers';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType = 'object';
+    protected $returnType = FollowerEntity::class;
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
@@ -53,14 +54,26 @@ class FollowerModel extends Model
      * 
      * @param mixed $followerId The ID of the user who is following
      * @param mixed $followedId The ID of the user being followed
+     * @param bool $acceptedOnly If true, only considers accepted follow relationships
+     * 
      * @return bool Returns true if the follower is following the followed user, false otherwise
      */
-    public function isFollowing($followerId, $followedId)
+    public function isFollowing($followerId, $followedId, $acceptedOnly = false)
     {
-        return $this->where([
+        $query = $this->where([
             'follower_id' => $followerId,
-            'followed_id' => $followedId
-        ])->first() !== null;
+            'followed_id' => $followedId, 
+        ]);
+
+        // If $acceptedOnly is true, only consider relationships with status 'accepted'
+        if ($acceptedOnly) {
+            $query->whereIn('status', ['accepted']);
+        } else {
+            $query->whereIn('status', ['pending', 'accepted']);
+        }
+        $query->where('status !=', 'blocked');
+
+        return $query->first() !== null;
     }
 
     /**
@@ -90,5 +103,21 @@ class FollowerModel extends Model
             $this->insert($condition);
             return 'followed';
         }
+    }
+    /**
+     * Get current User Followers by User ID
+     * 
+     * @param mixed $userId The ID of the user whose followers we want to retrieve
+     * @return array Returns an array of followers, each containing the follower's username, avatar, and the date they started following
+     */
+    public function getFollowing($userId)
+    {
+        return $this->select('users.username, user_details.avatar, followers.created_at')
+            ->join('users', 'users.id = followers.followed_id')
+            ->join('user_details', 'user_details.user_id = followers.followed_id')
+            ->where('followers.follower_id', $userId)
+            ->where('followers.status', 'accepted')// Only get accepted followers
+            ->orderBy('followers.created_at', 'DESC')
+            ->findAll();
     }
 }

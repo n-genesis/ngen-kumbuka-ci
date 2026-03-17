@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\FollowerModel;
 // app/Helpers/user_settings_helper.php
 
 /**
@@ -27,6 +29,9 @@ if (!function_exists('user_settings')) {
         // Get the profile visibility setting for the owner, defaulting to 'user:{ownerId}' if not set
         $visibility = $settings->get('UserSettings.profileVisibility', 'user:' . $ownerId);
 
+        // echo "Is Profile Visibility: $visibility, Visitor ID: $visitorId, Owner ID: $ownerId, Is Admin: " . ($visitorisAdmin ? 'Yes' : 'No') . "\n";
+        // exit;
+
         return match ($visibility) {
             'public' => true,
             'private' => false, // Only owner or User in admin group (handled above)
@@ -45,7 +50,14 @@ if (!function_exists('user_settings')) {
         if (!$visitorId)
             return false;
 
-        // Example: return model(FriendModel::class)->areFriends($ownerId, $visitorId);
+        $isFollowing = model(FollowerModel::class)->isFollowing($visitorId, $ownerId, true);
+
+        // echo "Checking friendship: Visitor ID = $visitorId, Owner ID = $ownerId, Is Following = " . ($isFollowing ? 'Yes' : 'No') . "\n";
+        // exit;
+
+        if ($isFollowing) {
+            return true;
+        }
         return false;
     }
 }

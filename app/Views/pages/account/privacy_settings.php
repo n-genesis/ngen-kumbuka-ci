@@ -88,12 +88,12 @@
                             <label class="custom-control-label" for="public"> <b>Public:</b> Visible to Everyone.</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="friend" name="profileVisibility" class="custom-control-input" value="private" <?= $checked['profileVisibility']['private'] ?>>
+                            <input type="radio" id="friend" name="profileVisibility" class="custom-control-input" value="friends" <?= $checked['profileVisibility']['friends'] ?>>
                             <label class="custom-control-label" for="friend"> <b>Followers</b> Only visible to users following you.</label>
                         </div>
                         <div class="custom-control custom-radio mb-2">
-                            <input type="radio" id="onlyme" name="profileVisibility" class="custom-control-input" value="friends" <?= $checked['profileVisibility']['friends'] ?>>
-                            <label class="custom-control-label" for="onlyme"> <b>Only Me</b> Visible only to you.</label>
+                            <input type="radio" id="private" name="profileVisibility" class="custom-control-input" value="private" <?= $checked['profileVisibility']['private'] ?>>
+                            <label class="custom-control-label" for="private"> <b>Only Me</b> Visible only to you.</label>
                         </div>
                         <p>Change the visablility of your Profile</p>
                     </div>
