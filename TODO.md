@@ -30,8 +30,8 @@ This document jsut lists current tasks and planned features for the project. A m
 - [x] Create profile visibility feature/settings
     - [x] Need to create user follower mechanic for only friends profile visibilty
 
-- [ ] Add User Follower function and mechanics
-    - [ ] Create FollowerList Cell and User Follower/Follwing managment functions
+- [x] Add User Follower function and mechanics
+    - [x] Create FollowerList Cell and User Follower/Follwing managment functions
 
 - [x] **Add Events for New follwing Users**  
     - It's propably a good idea to incorperate throttling
