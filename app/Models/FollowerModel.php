@@ -73,7 +73,28 @@ class FollowerModel extends Model
         }
         $query->where('status !=', 'blocked');
 
-        return $query->first() !== null;
+        return $query->first() !== false;
+    }
+
+    /**
+     * Check if the Current loggined in User has blocked the $followdId User
+     * 
+     * @param mixed $followerId The ID of the user who is blocking
+     * @param mixed $followedId The ID of the user being blocked
+     * 
+     * @return bool Returns true if the follower has blocked the followed user, false otherwise
+     */
+    public function isBlocked($followerId, $followedId)
+    {
+        $query = $this->where([
+            'follower_id' => $followerId,
+            'followed_id' => $followedId,
+            'status' => 'blocked',
+        ])->first();
+
+        $query = $query ? true : false; // Returns true if a blocked relationship exists, false otherwise
+
+        return $query;
     }
 
     /**

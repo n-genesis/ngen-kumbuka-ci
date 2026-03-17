@@ -33,10 +33,10 @@ if (!function_exists('user_settings')) {
         // exit;
 
         return match ($visibility) {
-            'public' => true,
+            'public' => check_if_blocked($ownerId, $visitorId), // Check if User is blocked, if blocked return false (not visible), otherwise true (visible) of Public
             'private' => false, // Only owner or User in admin group (handled above)
             'friends' => check_friendship($ownerId, $visitorId),
-            default => true,
+            default => false, // Default to not visible if setting is unrecognized
         };
     }
 
@@ -52,12 +52,26 @@ if (!function_exists('user_settings')) {
 
         $isFollowing = model(FollowerModel::class)->isFollowing($visitorId, $ownerId, true);
 
-        // echo "Checking friendship: Visitor ID = $visitorId, Owner ID = $ownerId, Is Following = " . ($isFollowing ? 'Yes' : 'No') . "\n";
-        // exit;
+        echo "Checking friendship: Visitor ID = $visitorId, Owner ID = $ownerId, Is Following = " . ($isFollowing ? 'Yes' : 'No') . "\n";
+        exit;
 
         if ($isFollowing) {
             return true;
         }
         return false;
+    }
+
+    function check_if_blocked($ownerId, $visitorId): bool
+    {
+        if (!$visitorId)
+            return false;
+
+        $isBlocked = model(FollowerModel::class)->isBlocked($visitorId, $ownerId);
+        $isBlocked = $isBlocked ? true : false; // Ensure it's a boolean value
+
+        // echo "Checking block status: Visitor ID = $visitorId, Owner ID = $ownerId, Is Blocked = " . ($isBlocked ? 'Yes' : 'No') . "\n";
+        // exit;
+        
+        return $isBlocked ? false : true;// If blocked, return false (not visible), otherwise true (visible)
     }
 }
