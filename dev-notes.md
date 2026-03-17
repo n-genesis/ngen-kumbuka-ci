@@ -49,3 +49,7 @@ Added a custom Server name for project for localhost. Will include enviroment se
 
 ### Features - Implementation Details
 This section outlines the key design decisions and implementation notes for current features and implementation.
+
+
+### *Need to Show View directory template stucture*  
+*I get the feeling I'm going to start to get confuded after a while*

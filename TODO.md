@@ -3,7 +3,11 @@ This document jsut lists current tasks and planned features for the project. A m
 
 **Current Version (2.2.0-alpha)**
 
+### *TODO: Need to show View Directory Template Structure*
+
+
 ## High Priority
+- [ ] *TODO: Need to show View Directory Template Structure*
 - [ ] Update template for Bootstrap 5 (legacy 4.6.2 used)
 - [ ] Add empty `user_details` for email activated Users
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
