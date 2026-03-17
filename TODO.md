@@ -8,7 +8,6 @@ This document jsut lists current tasks and planned features for the project. A m
 - [ ] Add empty `user_details` for email activated Users
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
-- [ ] Add User Follower function and mechanics
 - [ ] Update User Registration to include more user details and store them in `user_details` table
 - [ ] Update User Login to fetch more user details from `user_details` table  
     *Unsure what I meant by this*
@@ -26,6 +25,9 @@ This document jsut lists current tasks and planned features for the project. A m
 - [x] **Add Native browser notification windows and User permission**
 - [x] Create profile visibility feature/settings
     - [x] Need to create user follower mechanic for only friends profile visibilty
+
+- [ ] Add User Follower function and mechanics
+    - [ ] Create FollowerList Cell and User Follower/Follwing managment functions
 
 - [x] **Add Events for New follwing Users**  
     - It's propably a good idea to incorperate throttling
