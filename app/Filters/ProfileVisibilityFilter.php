@@ -26,7 +26,7 @@ class ProfileVisibilityFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        // 1. Get the profile user ID from the URI (e.g., user/profile/username)
+        // Get the profile user ID from the URI (e.g., user/profile/username)
         $segments = $request->getUri()->getSegments();
         
         $profileUsername = $segments[2] ?? null; // Adjust index based on the route
@@ -44,7 +44,7 @@ class ProfileVisibilityFilter implements FilterInterface
         // Return early if user id not found
         if (!$profileUserId) return;
 
-        // 2. Check if the profile is visible to the current visitor
+        // Check if the profile is visible to the current visitor
         if (!is_profile_visible($profileUserId)) {
             return redirect()->to('home')->with('error', 'This profile is restricted.');
         }
