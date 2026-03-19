@@ -2,7 +2,7 @@
 Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook application built with CodeIgniter 4.
 
 
-![Version](https://img.shields.io/badge/version-v2.2.0--alpa-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-v2.5.0--alpa-blue?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/Status-Active-red?style=for-the-badge)
 [![Static Badge](https://img.shields.io/badge/Copyright%20%C2%A9%202026%20N--Gen%20Design-1E30F3?style=for-the-badge&label=Copyright)](https://ngendesign.com)
 
@@ -25,6 +25,13 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 ![Dashboard](https://lh3.googleusercontent.com/d/1aY5_KtxUvK1aBTipXSJIDU-aIZj9tVNd)
 
 ***Check Out:*** The project's [TODO.md list](./TODO.md) and [dev-notes file](./dev-notes.md) to see changelogs and planned updates and additions. [Here's a Google Doc]( https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing) with some applications development plans. 
+
+
+### Updates
+#### 2.5.0-alpa  
+These are some of the updates made from the last update
+- Added Profile visibility controls and mechanics
+- User can chagne settings in Account
 
 
 ## Build w/ CodeIgniter 4.x
