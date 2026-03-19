@@ -10,6 +10,14 @@ use App\Models\FollowerModel;
  * 
  */
 if (!function_exists('user_settings')) {
+    /**
+     * Get a User Visibility Setting Value from the database settings 'user:{ownerId}' not set, 
+     * otherwise return the default to the UserSettings.profileVisibility setting value.
+     * 
+     * @param int $ownerId The ID of the profile owner
+     * 
+     * @return bool Returns the visibility setting value for the user or the default setting if not set
+     */
     function is_profile_visible(int $ownerId): bool
     {
         $visitorId = auth()->id() ?? null;// Get the current visitor's user ID (null if not logged in)
@@ -35,15 +43,18 @@ if (!function_exists('user_settings')) {
         return match ($visibility) {
             'public' => check_if_blocked($ownerId, $visitorId), // Check if User is blocked, if blocked return false (not visible), otherwise true (visible) of Public
             'private' => false, // Only owner or User in admin group (handled above)
-            'friends' => check_friendship($ownerId, $visitorId),
+            'friends' => check_friendship($ownerId, $visitorId),// Check if User is a friend (mutual followers), if true return true (visible), otherwise false (not visible)
             default => false, // Default to not visible if setting is unrecognized
         };
     }
 
     /**
-     * Placeholder for your friendship logic
+     * Check is the current visitor is a friend of the profile owner by checking if they are following each other (mutual followers)
+     * 
      * @param int $ownerId The ID of the profile owner
-     * @param int|null $visitorId The ID of the visitor (null if not logged
+     * @param int|null $visitorId The ID of the visitor (null if not logged in)
+     * 
+     * @return bool Returns true if the visitor is a friend of the owner, false otherwise
      */
     function check_friendship($ownerId, $visitorId): bool
     {
@@ -52,19 +63,24 @@ if (!function_exists('user_settings')) {
 
         $isFollowing = model(FollowerModel::class)->isFollowing($visitorId, $ownerId, true);
 
-        echo "Checking friendship: Visitor ID = $visitorId, Owner ID = $ownerId, Is Following = " . ($isFollowing ? 'Yes' : 'No') . "\n";
-        exit;
-
         if ($isFollowing) {
             return true;
         }
         return false;
     }
 
+    /**
+     * Check if the Current loggined in User has blocked the $followdId User
+     * 
+     * @param int $ownerId The ID of the profile owner
+     * @param int|null $visitorId The ID of the visitor (null if not logged in)
+     * 
+     * @return bool Returns true if the visitor is not blocked by the owner, false if blocked or visitor is not logged in
+     */
     function check_if_blocked($ownerId, $visitorId): bool
     {
-        if (!$visitorId)
-            return false;
+        // if (!$visitorId)
+        //     return false;
 
         $isBlocked = model(FollowerModel::class)->isBlocked($visitorId, $ownerId);
         $isBlocked = $isBlocked ? true : false; // Ensure it's a boolean value
