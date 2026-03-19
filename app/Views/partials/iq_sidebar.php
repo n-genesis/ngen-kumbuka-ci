@@ -20,6 +20,7 @@
 
         <!-- SHOW IF USER IS SIGHNED IN -->
         <?php if (auth()->loggedIn()): ?>
+            
 
             <!-- SEARCH BAR -->
             <div class="iq-search-bar device-search mb-3">
@@ -168,7 +169,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li class="">
                         <a href="#feed" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                             <i class="bi bi-broadcast"></i>
@@ -203,6 +204,15 @@
 
                 </ul>
             </nav>
+        
+            <!-- Show Admin Badge if User is in Admin Group -->
+            <?php if(auth()->user()->inGroup('admin')): ?>
+                <div class="m-2 px-3 d-flex align-items-center justify-content-between">
+                    <button type="button" class="btn btn-block btn-outline-success">
+                        Administrator <span class="badge badge-danger"><i class="bi bi-key-fill m-0"></i></span>
+                    </button>
+                </div>
+            <?php endif; ?>
 
         <?php endif ?>
 
