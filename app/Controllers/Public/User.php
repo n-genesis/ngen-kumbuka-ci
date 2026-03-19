@@ -3,6 +3,7 @@
 namespace App\Controllers\Public;
 
 use App\Controllers\UserController;
+use App\Models\FollowerModel;
 use App\Models\User\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -16,6 +17,8 @@ class User extends UserController
         // Load user data based on username
             $userModel = model(UserModel::class);
 
+            $followerModel = model(FollowerModel::class );
+
             //$userId = $userModel->findByCredentials(['username' => $username]);
 
             // TODO: Optimize query to include user details in one go
@@ -23,7 +26,12 @@ class User extends UserController
             ->join('user_details', 'user_details.user_id = users.id','left')
             ->where('users.username', $username)
             ->first(); // Returns an array of User Entity objects
-
+            
+            // If user not found, redirect to home with error message
+            if (!$user) {
+                return redirect()->to('login')->with('error', 'User not found.');
+            }
+             
             return $this->renderView('public/user/profile',[
                 'appTitle' => setting('App.appName').' | '.$user->username.' Profile',
                 'pageHeader' => $user->username.' Profile',
@@ -32,7 +40,7 @@ class User extends UserController
                     ['label' => $user->username.' Profile', 'url' => ''],
                 ],
                 'user' => $user,
-                'profileVisibility' => null,
+                'followerModel' => $followerModel,
             ]);
     }
 }

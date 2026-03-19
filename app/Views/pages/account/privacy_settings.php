@@ -51,46 +51,49 @@
                     <div class="data-privacy">
                         <h4 class="mb-2">Account Privacy</h4>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="acc-private" name="privacySetting[]" value="accountPrivacy" <?= $checked['accountPrivacy'] ?>>
+                            <input type="checkbox" class="custom-control-input" id="acc-private" name="accountPrivacy" value="private" <?= $checked['accountPrivacy'] ?>>
                             <label class="custom-control-label privacy-status mb-2" for="acc-private">Private
                                 Account</label>
                         </div>
                         <p>Will <b>Hide</b>&#128737;&#65039;your account, notes, or shared notes. Your Profile will also be hidden. <i><b>Note: Your comments will still be been across the application.</b></i></p>
                     </div>
                     <hr>
+                    <!-- Account Activity Status -->
                     <div class="data-privacy">
-                        <h4 class="mb-2">Activity Status</h4>
+                        <h4 class="mb-2">Activity Status </h4>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" name="privacySetting[]" value="accountActivityStatus" id="activety" <?= $checked['accountActivityStatus'] ?>>
+                            <input type="checkbox" class="custom-control-input" name="accountActivityStatus" value="true" id="activety" <?= $checked['accountActivityStatus'] ?>>
                             <label class="custom-control-label privacy-status mb-2" for="activety">Show Activity
                                 Status</label>
                         </div>
-                        <p>Show others when your <b class="text-success">"online"</b> and writing and share great notes. &#128214;</p>
+                        <p>Show others when your <b class="text-success">"online"</b> and writing and share great notes. &#x1F6DC;</p>
                     </div>
                     <hr>
+                    <!-- Allow Followers Settngs -->
                     <div class="data-privacy">
                         <h4 class="mb-2"> Follower(s) </h4>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="followers" name="privacySetting[]" value="allowFollowers" <?= $checked['allowFollowers'] ?>>
+                            <input type="checkbox" class="custom-control-input" id="followers" name="allowFollowers" value="true" <?= $checked['allowFollowers'] ?>>
                             <label class="custom-control-label privacy-status mb-2" for="followers">Allow
                                 Followers</label>
                         </div>
                         <p>Allow other User to <b class="text-primary">"Follow"</b> you can know when you share new notes &#128172;. <i><b>Note: You must allow followers to be able to follow other users.</b></i></p>
                     </div>
                     <hr>
+                    <!-- Profile Visibility Settings -->
                     <div class="data-privacy">
-                        <h4 class="mb-2"> Your Profile </h4>
+                        <h4 class="mb-2"> Your Profile</h4>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="public" name="privacySetting[]" class="custom-control-input" value="publicProfile">
+                            <input type="radio" id="public" name="profileVisibility" class="custom-control-input" value="public" <?= $checked['profileVisibility']['public'] ?>>
                             <label class="custom-control-label" for="public"> <b>Public:</b> Visible to Everyone.</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="friend" name="privacySetting[]" class="custom-control-input" value="privateProfile">
+                            <input type="radio" id="friend" name="profileVisibility" class="custom-control-input" value="friends" <?= $checked['profileVisibility']['friends'] ?>>
                             <label class="custom-control-label" for="friend"> <b>Followers</b> Only visible to users following you.</label>
                         </div>
                         <div class="custom-control custom-radio mb-2">
-                            <input type="radio" id="onlyme" name="privacySetting[]" class="custom-control-input" value="onlyMeProfile">
-                            <label class="custom-control-label" for="onlyme"> <b>Only Me</b> Visible only to you.</label>
+                            <input type="radio" id="private" name="profileVisibility" class="custom-control-input" value="private" <?= $checked['profileVisibility']['private'] ?>>
+                            <label class="custom-control-label" for="private"> <b>Only Me</b> Visible only to you.</label>
                         </div>
                         <p>Change the visablility of your Profile</p>
                     </div>

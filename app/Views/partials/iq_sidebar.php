@@ -20,6 +20,7 @@
 
         <!-- SHOW IF USER IS SIGHNED IN -->
         <?php if (auth()->loggedIn()): ?>
+            
 
             <!-- SEARCH BAR -->
             <div class="iq-search-bar device-search mb-3">
@@ -110,12 +111,24 @@
                             </ul>
                         </li>
                     <?php endif ?>
+                    
+                    <!-- Dashboard/Home -->
+                     <li>
+                        <a href="<?= base_url('home') ?>" class="svg-icon">
+                            <i class="bi bi-layout-wtf"></i>
+                            <span><?= lang('Menus.HomePage') ?></span>
+                        </a>
+                        <ul id="index" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        </ul>
+                     </li>
 
-                    <!-- Home (QuickPick -->
+                    <!-- Home/Dashboard (QuickPick
                     <li>
                         <a href="#homestop" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                             <i class="bi bi-layout-wtf"></i>
                             <span><?= lang('Menus.HomePage') ?></span>
+                            <i class="bi bi-chevron-right iq-arrow-right arrow-active"></i>
+                            <i class="bi bi-chevron-down iq-arrow-right arrow-hover"></i>
                         </a>
                         <ul id="homestop" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <li class="">
@@ -127,6 +140,7 @@
 
                         </ul>
                     </li>
+                    -->
                     <!-- User Notes/Dashboard -->
                     <li>
                         <a href="<?= site_url('note') ?>" class="svg-icon">
@@ -136,8 +150,8 @@
                         <ul id="index" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         </ul>
                     </li>
-                    <!-- Notebooks/ User notebooks list -->
 
+                    <!-- Notebooks/ User notebooks list -->
                     <li class="">
                         <a href="#notebooks" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                             <i class="bi bi-folder"></i>
@@ -168,7 +182,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li class="">
                         <a href="#feed" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                             <i class="bi bi-broadcast"></i>
@@ -203,6 +217,15 @@
 
                 </ul>
             </nav>
+        
+            <!-- Show Admin Badge if User is in Admin Group -->
+            <?php if(auth()->user()->inGroup('admin')): ?>
+                <div class="m-2 px-3 d-flex align-items-center justify-content-between">
+                    <button type="button" class="btn btn-block btn-outline-success">
+                        Administrator <span class="badge badge-danger"><i class="bi bi-key-fill m-0"></i></span>
+                    </button>
+                </div>
+            <?php endif; ?>
 
         <?php endif ?>
 

@@ -1,7 +1,10 @@
 <?php
 
 use App\Controllers\Home;
-use App\Controllers\Notification as NotificationController;
+// Notification Controller
+use App\Controllers\User\Notification as NotificationController;
+// Follower Controller
+use App\Controllers\User\Followers as FollowerController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\CustomErrors;
 // Admin Controllers
@@ -12,7 +15,7 @@ use App\Controllers\User;
 use App\Controllers\Pages;
 use App\Controllers\System\SearchController as Search;
 // Share Controller
-use App\Controllers\ShareController as Share;
+use App\Controllers\System\ShareController as Share;
 // Public Controllers
 use App\Controllers\Public as PublicController;
 // Fun COntroller
@@ -86,6 +89,9 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         $routes->get('feed', [User\Feed::class, 'index']);
         $routes->get('followers', [User\Social::class, 'followers']);
     });
+
+    // Toggle Follow/Unfollow
+    $routes->post('follow/toggle/(:segment)', [[FollowerController::class,'followUser'], '$1'],['filter' => 'followThrottle']);
 
 });
 
