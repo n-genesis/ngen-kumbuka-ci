@@ -3,24 +3,36 @@ This document jsut lists current tasks and planned features for the project. A m
 
 **Current Version (2.2.0-alpha)**
 
+*After finishing the Following & Profile Visibility feature the next version with be v2.5.0-alpa*
+
 ### *TODO: Need to show View Directory Template Structure*
 
 
 ## High Priority
 - [ ] *TODO: Need to show View Directory Template Structure*
-- [ ] Update template for Bootstrap 5 (legacy 4.6.2 used)
-- [ ] Add empty `user_details` for email activated Users
+
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
+
 - [ ] Update User Registration to include more user details and store them in `user_details` table
 - [ ] Update User Login to fetch more user details from `user_details` table  
+- [ ] Add empty `user_details` for email activated Users
     *Unsure what I meant by this*
+
 - [ ] **Need to create cover image upload** (*Starting to get profiles confused*)
 - [ ] Complete Notification mechanics
 - [ ] Create User Notification section and mechanics
     - [ ] Show only the last 5 User notifications for Toates and Notification dropdown
     - [ ] Add dismiss button to Notification elements
 - [ ]
+
+- [ ] *TODO: Add Role-Based Access Controles* for admin and user operations.
+
+- [ ] Complete User Privacy Setting
+    - [ ] Private Account
+    - [ ] Show Activity Status  
+        - Show and Active badge next to the user Avatar picture
+
 
 
 ### Currently Completing
@@ -51,6 +63,8 @@ This document jsut lists current tasks and planned features for the project. A m
     - **Action Items:**
         - [ ] Create User Avatar and cover images uploads
 
+-[ ] Add User Support Form and maybe Chat
+
 ### Medium Priority Currently Completing
 - [x] Add Admin opts for editing website settings (Admin Section)
 
@@ -59,6 +73,7 @@ This document jsut lists current tasks and planned features for the project. A m
 
 
 ## Low Priority
+- [ ] Update template for Bootstrap 5 (legacy 4.6.2 used)
 - [ ] Change theme to blue and visuals to match the name (just a thought)
 - [ ] Update tabple to use Bootstrap 5
     - *Might just redesignthe template from scratch using Bootstrap 5*
