@@ -11834,6 +11834,7 @@ body.sidebar-main .iq-top-navbar {
 .data-scrollbar {
   height: 75vh;
   overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }
 
 .navbar-toggler {

@@ -111,12 +111,24 @@
                             </ul>
                         </li>
                     <?php endif ?>
+                    
+                    <!-- Dashboard/Home -->
+                     <li>
+                        <a href="<?= base_url('home') ?>" class="svg-icon">
+                            <i class="bi bi-layout-wtf"></i>
+                            <span><?= lang('Menus.HomePage') ?></span>
+                        </a>
+                        <ul id="index" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        </ul>
+                     </li>
 
-                    <!-- Home (QuickPick -->
+                    <!-- Home/Dashboard (QuickPick
                     <li>
                         <a href="#homestop" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                             <i class="bi bi-layout-wtf"></i>
                             <span><?= lang('Menus.HomePage') ?></span>
+                            <i class="bi bi-chevron-right iq-arrow-right arrow-active"></i>
+                            <i class="bi bi-chevron-down iq-arrow-right arrow-hover"></i>
                         </a>
                         <ul id="homestop" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <li class="">
@@ -128,6 +140,7 @@
 
                         </ul>
                     </li>
+                    -->
                     <!-- User Notes/Dashboard -->
                     <li>
                         <a href="<?= site_url('note') ?>" class="svg-icon">
@@ -137,8 +150,8 @@
                         <ul id="index" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         </ul>
                     </li>
-                    <!-- Notebooks/ User notebooks list -->
 
+                    <!-- Notebooks/ User notebooks list -->
                     <li class="">
                         <a href="#notebooks" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                             <i class="bi bi-folder"></i>
