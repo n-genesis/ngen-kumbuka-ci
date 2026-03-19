@@ -67,13 +67,19 @@ class FollowerModel extends Model
 
         // If $acceptedOnly is true, only consider relationships with status 'accepted'
         if ($acceptedOnly) {
-            $query->whereIn('status', ['accepted']);
+            $query->where('status', 'accepted')
+            ->where('status !=', 'blocked');
         } else {
-            $query->whereIn('status', ['pending', 'accepted']);
+            $query->whereIn('status', ['pending', 'accepted'])
+            ->where('status !=', 'blocked');
         }
-        $query->where('status !=', 'blocked');
 
-        return $query->first() !== false;
+        $result = $query->first() ? true : false; // Returns true if a follow relationship exists, false otherwise
+
+        // echo "Checking follow status: Follower ID = $followerId, Followed ID = $followedId, Accepted Only = " . ($acceptedOnly ? 'Yes' : 'No') . " Record Found = " . ($result ? 'Yes' : 'No') . "\n";
+        // exit;
+
+        return $result;
     }
 
     /**
