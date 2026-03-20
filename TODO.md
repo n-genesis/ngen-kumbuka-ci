@@ -3,7 +3,7 @@ This document jsut lists current tasks and planned features for the project. A m
 
 **Current Version (2.5.0-alpha)**
 
-*After finishing the Following & Profile Visibility feature the next version with be v2.5.0-alpa*
+*After finishing the Following & Profile Visibility feature the next version with be v2.7.0-alpa*
 
 ### *TODO: Need to show View Directory Template Structure*
 
@@ -28,7 +28,7 @@ This document jsut lists current tasks and planned features for the project. A m
 
 - [ ] *TODO: Add Role-Based Access Controles* for admin and user operations.
 
-- [ ] Complete User Privacy Setting
+- [x] Complete User Privacy Setting
     - [ ] Private Account
     - [ ] Show Activity Status  
         - Show and Active badge next to the user Avatar picture
@@ -36,7 +36,7 @@ This document jsut lists current tasks and planned features for the project. A m
 
 
 ### Currently Completing
-- [ ] Admin Section for User managment
+- [x] Admin Section for User managment
 - [x] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
 - [x] **Add Native browser notification windows and User permission**
 - [x] Create profile visibility feature/settings
@@ -50,6 +50,10 @@ This document jsut lists current tasks and planned features for the project. A m
 
 - [x] Note pages and funtions
 - [x] Finish UserActivitySeeder Script
+
+- [x] User account details section
+    - [x] User details, account & privacy settings, and mail notifications settings
+
 
 ### Completed (High Priority)
 - [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)

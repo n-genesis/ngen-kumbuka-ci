@@ -18,7 +18,6 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 ![Static Badge](https://img.shields.io/badge/Bootstrap-4.6.2-6f42c1?style=for-the-badge)
 
 
-
 ### [Kumbuka](https://kumbuka.ngendesign.com) is a project developed with love & fun by [N-Gen Design](https://ngendesign.com).
 
 
@@ -30,8 +29,7 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 ### Updates
 #### 2.5.0-alpa  
 These are some of the updates made from the last update
-- Added Profile visibility controls and mechanics
-- User can chagne settings in Account
+- Added Profile visibility controls
 
 
 ## Build w/ CodeIgniter 4.x
