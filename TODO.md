@@ -1,11 +1,11 @@
 # Project To-Do ListZ
-This document jsut lists current tasks and planned features for the project. A more [Detailed Google Doc Here](https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing), for more insign for future planes for the project. 
+This document just lists current tasks and planned features for the project. A more [Detailed Google Doc Here](https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing), for more insign for future planes for the project. 
 
 **Current Version (2.5.0-alpha)**
 
 *After finishing the Following & Profile Visibility feature the next version with be v2.7.0-alpa*
 
-### *TODO: Need to show View Directory Template Structure*
+#### *TODO: Need to show View Directory Template Structure*
 
 
 ## High Priority
@@ -20,10 +20,10 @@ This document jsut lists current tasks and planned features for the project. A m
     *Unsure what I meant by this*
 
 - [ ] **Need to create cover image upload** (*Starting to get profiles confused*)
-- [ ] Complete Notification mechanics
+- [ ] **Complete Notification mechanics**
 - [ ] Create User Notification section and mechanics
     - [ ] Show only the last 5 User notifications for Toates and Notification dropdown
-    - [ ] Add dismiss button to Notification elements
+
 - [ ]
 
 - [ ] *TODO: Add Role-Based Access Controles* for admin and user operations.
@@ -35,32 +35,36 @@ This document jsut lists current tasks and planned features for the project. A m
 
 
 
-### Currently Completing
-- [x] Admin Section for User managment
+### High Priority: Currently Completing
+- [x] **User Account Details Section**
+    - [x] User details, account & privacy settings, and mail notifications settings
+
 - [x] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
 - [x] **Add Native browser notification windows and User permission**
+
 - [x] Create profile visibility feature/settings
     - [x] Need to create user follower mechanic for only friends profile visibilty
 
-- [x] Add User Follower function and mechanics
+- [x] **Add User Follower function and mechanics**
     - [x] Create FollowerList Cell and User Follower/Follwing managment functions
 
-- [x] **Add Events for New follwing Users**  
-    - It's propably a good idea to incorperate throttling
+- [x] **Add Events for New following Users**  
+    - It's propably a good idea to incorperate throttling (no. of events recorded at once)
 
-- [x] Note pages and funtions
+- [x] User Note Section and functions
+
 - [x] Finish UserActivitySeeder Script
 
-- [x] User account details section
-    - [x] User details, account & privacy settings, and mail notifications settings
 
-
-### Completed (High Priority)
+### High Priority: Completed
 - [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)
+- [x] Add dismiss button to Notification elements
+- [x] Admin Section for User managment
 
 
 ## Medium Priority
 - [ ] Edit Admin Seeder file to remove redundant code
+
 - [ ] Create `Cell` Views for sidebar menus
 - [ ] Create `Cell` views for User Dashboard page
 - [ ] Create `Cell` views for User Notifications and Messages
@@ -69,11 +73,10 @@ This document jsut lists current tasks and planned features for the project. A m
 
 -[ ] Add User Support Form and maybe Chat
 
-### Medium Priority Currently Completing
+### Medium Priority: Currently Completing
 - [x] Add Admin opts for editing website settings (Admin Section)
 
-### Completed (Medium Priority)
-- [ ] 
+### Medium Priority: Completed
 
 
 ## Low Priority
@@ -89,10 +92,10 @@ This document jsut lists current tasks and planned features for the project. A m
         - [ ] 
 
 
-### Completed (Low Priority)
+### Low Priority: Completed
 - [ ]
 
-### Low Priority Currently Completing
+### Low Priority: Currently Completing
 - [ ]
 
 
@@ -101,4 +104,4 @@ This document jsut lists current tasks and planned features for the project. A m
 
 
 ## Future Ideas
-- [ ] 
+- [ ] Dashboard Layout Settings (User change Home Page/Dashboard View)
