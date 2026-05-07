@@ -12,6 +12,8 @@ This document just lists current tasks and planned features for the project. A m
 - [ ] *TODO: Need to show View Directory Template Structure*
 
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
+
+- ### User Accounts
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
 
 - [ ] Update User Registration to include more user details and store them in `user_details` table
@@ -19,13 +21,14 @@ This document just lists current tasks and planned features for the project. A m
 - [ ] Add empty `user_details` for email activated Users
     *Unsure what I meant by this*
 
-- [ ] **Need to create cover image upload** (*Starting to get profiles confused*)
-- [ ] **Complete Notification mechanics**
+- [ ] **Need to create cover image upload**
+
+- ### Complete Notification mechanics
 - [ ] Create User Notification section and mechanics
     - [ ] Show only the last 5 User notifications for Toates and Notification dropdown
-
 - [ ]
 
+- ### Administrator Controles
 - [ ] *TODO: Add Role-Based Access Controles* for admin and user operations.
 
 - [x] Complete User Privacy Setting
