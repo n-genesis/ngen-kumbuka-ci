@@ -51,17 +51,28 @@ You can read the [user guide](https://codeigniter.com/user_guide/) corresponding
 It has been built from the [development repository](https://github.com/codeigniter4/CodeIgniter4) and [Sheild](https://shield.codeigniter.com/)  - The official authentication and authorization framework for CodeIgniter 4 
 
 ```
-.vscode/
-├── apache\logs/               # Documentation files
-├── app/                # Source code
-│   ├── assets/         # Images, icons, and styles
-│   ├── components/     # Reusable UI elements
-│   └── utils/          # Helper functions
-├── public/              # Unit and integration tests
-├── .gitignore          # Files to exclude from Git
-├── LICENSE             # Project license
-├── package.json        # Dependencies and scripts
-└── README.md           # Project overview
+root/
+├── app/                # Application logic (Namespaced: App)
+│   ├── Config/         # Configuration files (Database, Routes, etc.)
+│   ├── Controllers/    # Application controllers
+│   ├── Database/       # Migrations and Seeds
+│   ├── Filters/        # Controller filters (Before/After classes)
+│   ├── Helpers/        # Custom helper functions
+│   ├── Models/         # Database models
+│   └── Views/          # UI templates (HTML/PHP)
+├── public/             # Web Root (accessible via browser)
+│   ├── assets/         # CSS, JS, and Images
+│   ├── .htaccess       # Apache configuration
+│   └── index.php       # Framework entry point
+├── tests/              # PHPUnit test files
+├── writable/           # Dynamic content (Cache, Logs, Session, Uploads)
+├── vendor/             # Composer dependencies (inc. system/ core)
+├── .env                # Environment-specific configuration
+├── composer.json       # Dependency manifest
+├── phpunit.xml.dist    # Testing configuration
+├── README.md           # Project documentation
+└── spark               # CLI tool for CodeIgniter commands
+
 ```
 
 Run `composer install` whenever there is a new release of the framework.
