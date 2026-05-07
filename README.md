@@ -50,6 +50,20 @@ You can read the [user guide](https://codeigniter.com/user_guide/) corresponding
 ***Required***: This repository holds a composer-installable app starter.
 It has been built from the [development repository](https://github.com/codeigniter4/CodeIgniter4) and [Sheild](https://shield.codeigniter.com/)  - The official authentication and authorization framework for CodeIgniter 4 
 
+```
+.vscode/
+├── apache\logs/               # Documentation files
+├── app/                # Source code
+│   ├── assets/         # Images, icons, and styles
+│   ├── components/     # Reusable UI elements
+│   └── utils/          # Helper functions
+├── public/              # Unit and integration tests
+├── .gitignore          # Files to exclude from Git
+├── LICENSE             # Project license
+├── package.json        # Dependencies and scripts
+└── README.md           # Project overview
+```
+
 Run `composer install` whenever there is a new release of the framework.
 
 **Important**: When updating, check the release notes to see if there are any changes you might need to apply

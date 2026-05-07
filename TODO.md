@@ -11,8 +11,6 @@ This document just lists current tasks and planned features for the project. A m
 ## High Priority
 - [ ] *TODO: Need to show View Directory Template Structure*
 
-- [ ] Pinpoint why AJAX Reuqest are sooooo slow.
-
 - ### User Accounts
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
 
@@ -36,7 +34,8 @@ This document just lists current tasks and planned features for the project. A m
     - [ ] Show Activity Status  
         - Show and Active badge next to the user Avatar picture
 
-
+- ### TODO
+- [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 
 ### High Priority: Currently Completing
 - [x] **User Account Details Section**
