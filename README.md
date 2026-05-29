@@ -3,7 +3,7 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 
 
 ![Version](https://img.shields.io/badge/version-v2.5.0--alpa-blue?style=for-the-badge)
-![Static Badge](https://img.shields.io/badge/Status-Active-red?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
 [![Static Badge](https://img.shields.io/badge/Copyright%20%C2%A9%202026%20N--Gen%20Design-1E30F3?style=for-the-badge&label=Copyright)](https://ngendesign.com)
 
 
