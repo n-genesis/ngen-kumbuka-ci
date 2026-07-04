@@ -76,9 +76,14 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         // User Account Information CRUD Routes
         $routes->get('', [User\Account\ProfileInformation::class, 'index']);
         $routes->post('update', [User\Account\ProfileInformation::class,'update']);
+        $routes->post('update-social', [User\Account\ProfileInformation::class,'updateSocial']);
+        // Update Avatar picture
+        $routes->post('update-avatar',[User\Account\ProfileInformation::class, 'uploadAvatar']);
 
         // User Settings CRUD Routes
         $routes->get('settings', [User\Account\AccountSettings::class, 'index']);
+        $routes->post('settings/update', [User\Account\AccountSettings::class,'updateInformation']);
+        $routes->post('settings/change-password', [User\Account\AccountSettings::class,'changePassword']);
         
         // User Privacy Settings CRUD Routes
         $routes->get('privacy', [User\Account\PrivacySettings::class,'index']);

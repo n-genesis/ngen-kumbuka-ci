@@ -18,7 +18,7 @@ use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
  * @author     Andrew Nite <ngendesign@email.com.com>
  * @copyright  2026 N-Gen Design <https://ngendesign.com>
  * @license    https://opensource.org MIT License
- * @link       https://github.com/n-genesis/ngen-bootsnippets-ci
+ * @link       https://github.com/n-genesis/ngen-kumbuka-ci
  * 
  */
 class User extends ShieldUserEntity
@@ -27,6 +27,7 @@ class User extends ShieldUserEntity
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     protected $casts = [
         'id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     /**
@@ -77,13 +78,13 @@ class User extends ShieldUserEntity
         return $avatar ?? $userConfig->defaultAvatar;
     }
 
-    public function getUserSocialLinks(string $title = null)
+    public function getUserSocialLink(string $title = '')
     {
         $link = '';
 
         // Caches the detail record so it only queries once per instance
         if (!isset($this->attributes['user_social_links'])) {
-            $link = model(UserSocialLinksModel::class)->where(['user_id' => $this->id, 'title' => $title])->first();
+            $link = model(UserSocialLinksModel::class)->where(['user_id' => $this->user_id, 'title' => $title])->first();
         }
         return $link;
     }
