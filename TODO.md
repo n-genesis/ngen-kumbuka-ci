@@ -73,7 +73,8 @@ This document just lists current tasks and planned features for the project. A m
     - **Action Items:**
         - [ ] Create User Avatar and cover images uploads
 
--[ ] Add User Support Form and maybe Chat
+- [ ] Add User Support Form and maybe Chat
+- [ ] Add Privacy Policy Alert for Edit Profile Pages 
 
 ### Medium Priority: Currently Completing
 - [x] Add Admin opts for editing website settings (Admin Section)
