@@ -54,8 +54,8 @@ class AdminSeeder extends Seeder
                 $userData = [
                     'username' => $faker->userName . $faker->randomNumber(3, true),
                     'email'    => $faker->unique()->safeEmail,
-                    'password' => 'Password123!', // Default password for fake admins
-                    'active'   => $faker->boolean(),
+                    'password' => '5832552911', // Default password for fake admins
+                    'active'   => true,
                 ];
             }
 

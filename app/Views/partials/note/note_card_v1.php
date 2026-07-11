@@ -62,7 +62,7 @@
                 <a href="#" class="">
                     <figure class="figure mb-0">
                         <!-- Note Image -->
-                        <img src="<?= base_url('uploads/default-image.jpg') ?>" class="figure-img img-fluid rounded mb-3"
+                        <img src="https://api.dicebear.com/10.x/miniavs/svg?seed=72xdgcro" class="figure-img img-fluid rounded mb-3"
                             alt="Descriptive image text">
 
                         <figcaption class="media flex-wrap align-items-top figure-caption">

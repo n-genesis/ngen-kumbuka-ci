@@ -8,7 +8,7 @@
  * @author     Andrew Nite <ngendesign@email.com.com>
  * @copyright  2026 N-Gen Design <https://ngendesign.com>
  * @license    https://opensource.org MIT License
- * @link       https://github.com/n-genesis/ngen-bootsnippets-ci
+ * @link       https://github.com/n-genesis/ngen-kumbuka-ci
  */
 namespace App\Controllers\System;
 

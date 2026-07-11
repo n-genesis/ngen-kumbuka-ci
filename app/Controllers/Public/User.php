@@ -9,7 +9,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class User extends UserController
 {
-    public function profile(string $username = null)
+    public function profile(string $username = '')
     {
         if(empty($username)){
             
@@ -40,6 +40,13 @@ class User extends UserController
                     ['label' => $user->username.' Profile', 'url' => ''],
                 ],
                 'user' => $user,
+                'user_links' => (object)[
+                    'facebook' => $user->getUserSocialLink('facebook')->link ?? '',
+                    'twitter' => $user->getUserSocialLink('twitter')->link ?? '',
+                    'instagram' => $user->getUserSocialLink('instagram')->link ?? '',
+                    'snapchat' => $user->getUserSocialLink('snapchat')->link ?? '',
+                ],
+                'user_website' => $user->getUserSocialLink('user_website')->link ?? '',
                 'followerModel' => $followerModel,
             ]);
     }

@@ -35,7 +35,7 @@ if (!function_exists('user_settings')) {
 
         $settings = service('settings');
         // Get the profile visibility setting for the owner, defaulting to 'user:{ownerId}' if not set
-        $visibility = $settings->get('UserSettings.profileVisibility', 'user:' . $ownerId);
+        $visibility = $settings->get('UserSettings.profileVisibility', "user:{$ownerId}");
 
         // echo "Is Profile Visibility: $visibility, Visitor ID: $visitorId, Owner ID: $ownerId, Is Admin: " . ($visitorisAdmin ? 'Yes' : 'No') . "\n";
         // exit;
@@ -70,7 +70,7 @@ if (!function_exists('user_settings')) {
     }
 
     /**
-     * Check if the Current loggined in User has blocked the $followdId User
+     * Check if the Current logged in User is blocked by the $followdId User
      * 
      * @param int $ownerId The ID of the profile owner
      * @param int|null $visitorId The ID of the visitor (null if not logged in)

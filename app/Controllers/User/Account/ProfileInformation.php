@@ -6,7 +6,8 @@ use App\Controllers\UserController;
 use App\Models\User\UserDetailsModel;
 use App\Models\User\UserModel;
 use App\Models\User\UserSocialLinksModel;
-use CodeIgniter\Files\FileCollection;
+use CodeIgniter\Database\Config;
+use Config\App;
 
 /**
  * CRUD operations for editing User Details Information
@@ -145,7 +146,7 @@ class ProfileInformation extends UserController
                     'max_dims[user-avatar,1024,768]',
                 ],
                 'errors' => [
-                    'max_size' => 'Sorry but that image is too large. Can you pick another one?'
+                    'max_size' => 'Sorry, but that image is a lil too big. Can you pick another one?'
                 ]
             ],
         ];
@@ -156,25 +157,27 @@ class ProfileInformation extends UserController
         $img = $this->request->getFile('user-avatar');
 
         if ($img->isValid() && !$img->hasMoved()) {
-            
+            $appConfig = config(App::class);
+            // Path Substring replace %username% See Config App.php
+            $imagePath = str_replace('%username%', $this->username, $appConfig->publicUploadPath);
             // Path to upload file
-            $filepath = ROOTPATH . 'public/uploads/' . $this->username . '/';
+            $filepath = ROOTPATH . 'public/'. $imagePath;            
             // New File name
             $newfile = $img->getRandomName();
             // // Clear Directroy to not
-            delete_files($filepath, false);
+            delete_files($filepath, false, true);
             // Move uploaded image to directroy
             $img->move($filepath, $newfile);
 
             // Update User Avatar field
             $userDetailsModel->where('user_id',$this->userId)->set([
-                'avatar' => "/uploads/$this->username/$newfile",
+                'avatar' => "$imagePath/$newfile",
             ])->update();
 
             return redirect()->back()->with('message', 'Your new avatar images was updated.');
 
         }
 
-        return redirect()->back()->with('errors', 'The file has already been moved.');;
+        return redirect()->back()->with('message', 'It seems that file has already been uploaded.');;
     }
 }

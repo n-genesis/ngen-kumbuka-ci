@@ -30,7 +30,7 @@ return [
     // Delete Account
     'delete-account' => [
         'text' => 'Deleting your account is a permanent action and cannot be undone. If you are sure you want to delete your account, select the button below.',
-        'notice' => 'This application does not store any digital personal information. To learn more please read the Pricavy Policy for more information.',
+        'notice' => 'This application does not store any digital personal information. To learn more please read the Privacy Policy for more information.',
         'btn' => 'I understand, delete my account',
     ]
 ];

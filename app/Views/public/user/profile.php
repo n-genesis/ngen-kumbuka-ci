@@ -48,18 +48,18 @@
                <h2 class="mb-2 mt-3"><?= count($user->followers) ?>+</h2>
                <h4>Followers</h4>
                <!-- Show if User is logged in or not viewing their own profile -->
-               <?php if ($user->id !== auth()->id() && auth()->loggedIn()): ?>
+               <?php if ($user->user_id != auth()->id() && auth()->loggedIn()): ?>
                   <!-- Show Follow/Unfollow Button based on the current follow status -->
-                  <?php if ($followerModel->isFollowing(auth()->id(), $user->id)): ?>
-                     <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
+                  <?php if ($followerModel->isFollowing(auth()->id(), $user->user_id)): ?>
+                     <form action="<?= base_url('follow/toggle/' . $user->user_id) ?>" method="post">
                         <?= csrf_field() ?>
-                        <input type="hidden" name="followed_id" value="<?= $user->id ?>">
+                        <input type="hidden" name="followed_id" value="<?= $user->user_id ?>">
                         <button type="submit" class="btn btn-success mt-3">Following <i class="bi bi-person-fill-check"></i></button>
                      </form>
                   <?php else: ?>
-                     <form action="<?= base_url('follow/toggle/' . $user->id) ?>" method="post">
+                     <form action="<?= base_url('follow/toggle/' . $user->user_id) ?>" method="post">
                         <?= csrf_field() ?>
-                        <input type="hidden" name="followed_id" value="<?= $user->id ?>">
+                        <input type="hidden" name="followed_id" value="<?= $user->user_id ?>">
                         <button type="submit" class="btn btn-outline-primary mt-3">Follow <i
                               class="bi bi-person-plus-fill"></i></button>
                      </form>
@@ -84,42 +84,19 @@
             </div>
             <div class="card-body">
                <ul class="list-inline p-0 m-0">
-                  <li class="d-flex align-items-center mb-3">
-                     <div class="profile-icon iq-icon-box rounded-small bg-info-light text-center">
-                        <i class="bi bi-facebook"></i>
-                     </div>
-                     <div class="pl-3">
-                        <h5>Facebook</h5>
-                        <p class="mb-0"><a href="#" target="_blank">Link to Social Network Profile</a></p>
-                     </div>
-                  </li>
-                  <li class="d-flex align-items-center mb-3">
-                     <div class="profile-icon iq-icon-box rounded-small bg-info-light text-center">
-                        <i class="bi bi-twitter"></i>
-                     </div>
-                     <div class="pl-3">
-                        <h5>Twitter</h5>
-                        <p class="mb-0"><a href="#" target="_blank">Link to Social Network Profile</a></p>
-                     </div>
-                  </li>
-                  <li class="d-flex align-items-center mb-3">
-                     <div class="profile-icon iq-icon-box rounded-small bg-warning-light text-center">
-                        <i class="bi bi-instagram"></i>
-                     </div>
-                     <div class="pl-3">
-                        <h5>Instagram</h5>
-                        <p class="mb-0"><a href="#" target="_blank">Link to Social Network Profile</a></p>
-                     </div>
-                  </li>
-                  <li class="d-flex align-items-center mb-3">
-                     <div class="profile-icon iq-icon-box rounded-small bg-warning-light text-center">
-                        <i class="bi bi-snapchat"></i>
-                     </div>
-                     <div class="pl-3">
-                        <h5>Snapchat</h5>
-                        <p class="mb-0"><a href="#" target="_blank">Link to Social Network Profile</a></p>
-                     </div>
-                  </li>
+                  <?php foreach($user_links as $title => $link) : ?>
+                     <?php if ($link !== ''): ?>
+                     <li class="d-flex align-items-center mb-3">
+                        <div class="profile-icon iq-icon-box rounded-small bg-info-light text-center">
+                           <i class="bi bi-<?= $title?>"></i>
+                        </div>
+                        <div class="pl-3">
+                           <h5><?= ucfirst($title) ?> </h5>
+                           <p class="mb-0"><a href="<?= $link ?>" target="_blank">Link to Social Network Profile</a></p>
+                        </div>
+                     </li>
+                     <?php endif ?>
+                  <?php endforeach ?>
                </ul>
             </div>
          </div>
@@ -132,9 +109,10 @@
             </div>
             <div class="card-body">
                <ul class="list-inline p-0 m-0 iq-contact-rest">
+                  <?php if(false): ?>
                   <li class="mb-3 d-flex">
                      <i class="bi bi-geo-alt"></i>
-                     <p class="mb-0 ml-2 font-size-16 line-height">505 West Brickyard Rd, CA , USA</p>
+                     <p class="mb-0 ml-2 font-size-16 line-height"><?= `{$user->address1} {$user->address2} {$user->city} {$user->state} {$user->zip}` ?></p>
                   </li>
                   <li class="mb-3 d-flex">
                      <i class="bi bi-telephone"></i>
@@ -144,12 +122,15 @@
                      <i class="bi bi-envelope"></i>
                      <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->email ?></p>
                   </li>
+                  <?php endif; ?>
+                  <?php if($user_website): ?>
                   <li class="mb-3 d-flex">
                      <i class="bi bi-link-45deg"></i>
-                     <a href="javascript:void(0);">
-                        <p class="mb-0 ml-2 font-size-16 line-height"> http://www.yourwebsite.com </p>
+                     <a class="user-select-none" href="javascript:void(0);">
+                        <p class="mb-0 ml-2 font-size-16 line-height"> <?= $user_website ?> </p>
                      </a>
                   </li>
+                  <?php endif; ?>
                </ul>
             </div>
          </div>
@@ -170,7 +151,7 @@
                <!-- User Notes Cell  -->
                <div class="notes-container">
                   <div class="row">
-                     <?= view_cell('UserNoteCell', ['userId' => $user->id]) ?>
+                     <?= view_cell('UserNoteCell', ['userId' => $user->user_id]) ?>
                   </div>
                </div>
 

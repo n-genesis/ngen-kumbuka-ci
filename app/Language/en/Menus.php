@@ -9,8 +9,8 @@ return [
     'prvySettings'          => 'Privacy Settings',
     'logout'                => 'Logout',
     // Bottom Content
-    'iqSideBarBusAccount'   => 'Setup A Buisness Account To Explore Premiun Features',
-    'iqSideupgradeButton'   => 'Upgrade Account',
+    'iqSideBarBusAccount'   => '"Hey there, qick question? Want to be in the Moderator Group?"',
+    'iqSideupgradeButton'   => 'Request Mod Account',
 
     // Notes Dropdown
     'addNewNote'            => 'Add New',

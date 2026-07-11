@@ -1,10 +1,10 @@
 <!-- app/Views/quickpick/dashboard.php -->
-<section class="row">
+<section id="quick-pick-dashboard" class="row">
 
     <div class="col-md-4 col-12">
         <?= view_cell('FollowerListCell', ['userId' => auth()->id()]) ?>
     </div>
-    <div class="col-md-6 col-12">
+    <div class="col-md-4 col-12">
         <div class="card border border-dark">
             <div class="card-header d-flex justify-content-between">
                 <div class="header-title">
@@ -25,10 +25,10 @@
             </div>
         </div>
     </div>
-    <aside class="col-md-2 col-12">
+    <aside class="col-md-4 col-12">
         <div class="card border border-dark">
             <div class="card-header">
-                Featured
+                <h4 class="card-title">Kumuka News</h4>
             </div>
             <div class="card-body">
                 <p class="card-text">Card body with text and what not.</p>

@@ -26,8 +26,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Top Right Nav -->
-                <?= $this->include('partials/topnav_right') ?>
             </div>
 
         </div>
