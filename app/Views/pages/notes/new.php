@@ -106,55 +106,12 @@
 
                     <!-- Example Note Element/Display -->
                     <aside class="col-md-4" id="default">
-                        <div class="card card-block card-stretch card-bottom-border-info note-detail basic-drop-shadow"
-                            id="update-note">
-                            <div class="card-header d-flex justify-content-between pb-1">
-                                <div class="icon iq-icon-box-2 icon-border-info rounded" id="note-icon">
-                                    <!-- Note Types Buttons -->
-                                    <?php
-                                    foreach ($noteTypeDropDown as $type) {
-                                        // List Note Type Buttons
-                                        if (strcasecmp($selectedType, $type->name) == 0) {
-                                            echo "<i class=\"$type->btn_icon ml-1 mr-1\"></i>";
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                                <div class="card-header-toolbar d-flex align-items-center">
-                                    <div class="dropdown">
-                                        <span class="dropdown-toggle dropdown-bg" id="dropdownMenuButton4"
-                                            data-toggle="dropdown" aria-expanded="false" role="button">
-                                            <i class="bi bi-three-dots"></i>
-                                        </span>
-                                        <div class="dropdown-menu dropdown-menu-right"
-                                            aria-labelledby="dropdownMenuButton4" style="">
-                                            <a href="#" class="dropdown-item new-note1" data-toggle="modal"
-                                                data-custom-target="#new-note1">
-                                                <i class="bi bi-file-earmark-post mr-3"></i>View
-                                            </a>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-trash mr-3"></i>Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <article class="card">
+                            <h4 class="card-title">Create a Sticker</h4>
+                            <div class="card-text">
+                                <img src="https://placehold.co/400" class="img-thumbnail"/>
                             </div>
-                            <div class="card-body rounded">
-                                <h4 class="card-title text-ellipsis short-1" id="note-title">Example
-                                    Note</h4>
-                                <p class="mb-3 text-ellipsis short-6" id="note-description">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex align-items-center justify-content-between note-text note-text-info">
-                                    <a href="#" class=""><i class="bi bi-people mr-2 font-size-20"></i>
-                                        Only Me</a>
-                                    <a href="#" class=""><i class="bi bi-calendar mr-2 font-size-20"></i><span
-                                            id="note-reminder-date">34th Feb 2026</span></a>
-                                </div>
-                            </div>
-                        </div>
+                        </article>
                     </aside>
 
                 </div>
@@ -162,15 +119,15 @@
 
             <footer class="card-footer d-flex align-items-center justify-content-between">
                 <a href="<?= site_url('note') ?>" class="btn btn-secondary mr-auto">
-                    <i class="bi bi-box-arrow-left"></i> Cancel
+                    <i class="bi bi-x-octagon"></i> Cancel
                 </a>
                 <button type="reset" class="btn btn-outline-primary mr-2" data-reset="note-reset">
-                    <i class="bi bi-rewind" id="new-note-reset"></i>
-                    Reset
+                    <i class="bi bi-arrow-clockwise" id="new-note-reset"></i>
+                    Clear
                 </button>
                 <button type="submit" class="btn btn-primary mr-2">
-                    <i class="bi bi-save2" id="new-note-save"></i>
-                    Save
+                    <i class="bi bi-envelope-arrow-up" id="new-note-save"></i>
+                    Post Note
                 </button>
             </footer>
 
@@ -190,8 +147,7 @@
 <?= $this->section('scripts') ?>
 <script>
     $(document).ready(function () {
-        const placeholderText = document.getElementById('note-description').textContent;
-
+        // Generate a sticker
         $('#kumbukaEditor').customEditor({
             language: 'en',
             height: '250px',
@@ -204,29 +160,8 @@
             ],
             onChange: function (content) {
 
-                const target = $('#note-description');
-
-                const defaultValue = placeholderText;
-
-                // Create a new, temporary div element in the document
-                const temporalDivElement = document.createElement("div");
-
-                // Set the HTML content of the temporary div
-                temporalDivElement.innerHTML = content;
-
-                const text = temporalDivElement.textContent || temporalDivElement.innerText || "";
-
-                const isEmpty = text.trim().length === 0;
-                if (!isEmpty) {
-                    $(target).html(text);
-                } else {
-                    $(target).html(placeholderText);
-                }
-
             }
         });
-
-
     });
 </script>
 

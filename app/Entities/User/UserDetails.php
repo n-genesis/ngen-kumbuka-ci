@@ -15,20 +15,17 @@ use Config\AppConfig\User;
  * @author     Andrew Nite <ngendesign@email.com.com>
  * @copyright  2026 N-Gen Design <https://ngendesign.com>
  * @license    https://opensource.org MIT License
- * @link       https://github.com/n-genesis/ngen-bootsnippets-ci
+ * @link       https://github.com/n-genesis/ngen-kumbuka-ci
  * 
  */
 
 class UserDetails extends Entity
 {
-    protected $allowedFields = ['user_id', 'bio', 'phone', 'address']; 
-    protected $attributes = [
-        'user_id' => null,
-        'avatar' => null,
-    ];
     protected $datamap = [];
     protected $dates   = ['created_at', 'updated_at', 'deleted_at'];
-    protected $casts   = [];
+    protected $casts   = [
+        'user_id' => 'integer',
+    ];
 
     public function getBirthday(): string
     {

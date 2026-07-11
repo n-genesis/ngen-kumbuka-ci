@@ -1,6 +1,12 @@
 <!-- app/Views/pages/home/index.php -->
 <?= $this->extend('layouts/backend'); ?>
 
+<?= $this->section('styles') ?>
+    <!-- Core Stylesheet -->
+    <link href="<?= base_url('assets/js/libs/introjs.min.css') ?>" rel="stylesheet" />
+<?= $this->endSection() ?>
+
+
 <?= $this->section('backend'); ?>
 
 <!-- Backend Content -->
@@ -22,3 +28,8 @@
 
 
 <?= $this->endSection(); ?>
+
+<?= $this->section('scripts') ?>
+    <script src="<?= base_url('assets/js/libs/intro.min.js') ?>"></script>
+    <!-- <script src="<?= base_url('assets/js/tour.js') ?>"></script> -->
+<?= $this->endSection() ?>

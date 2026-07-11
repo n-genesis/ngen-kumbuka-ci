@@ -74,7 +74,7 @@
                             <!-- User Row -->
                             <?php foreach ($users as $user): ?>
                                 <!-- User form -->
-                                <form action="<?= base_url('admin/users/delete/' . $user->id) ?>" data-km="form"  data-km-username="<?= esc($user->username) ?>" method="post">
+                                <form action="<?= base_url('admin/users/delete/' . $user->id) ?>" data-km="form" data-km-username="<?= esc($user->username) ?>" method="post">
 
                                 <!-- CSRF Protection is mandatory for destructive actions -->
                                 <?= csrf_field() ?>

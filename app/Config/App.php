@@ -54,6 +54,13 @@ class App extends BaseConfig
         'Reflection',
     ];
     /**
+     * Path to upload user files
+     * 
+     * E.gg public/uploads/username/
+     * @var string
+     */
+    public string $publicUploadPath = 'uploads/%username%/images';
+    /**
      * Default User credentials to use as placeholder values for representation
      * or until the user set/updates them.
      *  
@@ -73,6 +80,7 @@ class App extends BaseConfig
      * E.g., http://example.com/
      */
     public string $baseURL = 'https://kumbuka.ngen/';
+    // public string $baseURL = 'https://192.168.0.6/dev-sites/ngen-kumbuka-ci/public/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

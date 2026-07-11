@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/bootstrap-toasty.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #fafafa;
+        }
+    </style>
+
+    <title>Toasty: Bootstrap Toast Plugin Examples</title>
+</head>
+<body>
+
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5 text-center">Toasty: Bootstrap Toast Plugin Examples</h1>
+            <div class="jquery-script-ads" style="margin:50px auto" align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col">
+                        <button id="toastExample1"  class="btn btn-primary w-100">
+                            Bottom Middle
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jumbotron">
+                <div class="row mt-3">
+                    <div class="col">
+                        <h4>Choose a position:</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <select id="toastExample2Select" class="form-control custom-select">
+                            <option value="top_left">Top Left</option>
+                            <option value="top_middle">Top Middle</option>
+                            <option value="top_right">Top Right</option>
+                            <option value="bottom_left">Bottom Left</option>
+                            <option value="bottom_middle">Bottom Middle</option>
+                            <option value="bottom_right">Bottom Right</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <button id="toastExample2"  class="btn btn-primary">
+                            Show The Toast
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="jumbotron">
+                <div class="row mt-3">
+                    <div class="col">
+                        <h4>With Custom Content:</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button id="toastExample3"  class="btn btn-primary">
+                            Show The Toast
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="jumbotron">
+                <div class="row mt-3">
+                    <div class="col">
+                        <h4>Without Close Button:</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button id="toastExample4"  class="btn btn-primary">
+                            Show The Toast
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="jumbotron">
+                <div class="row mt-3">
+                    <div class="col">
+                        <h4>Always Be Visible</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button id="toastExample5"  class="btn btn-primary">
+                            Show The Toast
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <script src="src/js/bootstrap-toasty.min.js"></script>
+    <script>
+
+
+        $("#toastExample1").on("click", function() {
+            $.BToasty("Hello!", "I have a body!", "", "bottom_middle");
+        });
+
+        $("#toastExample2").on("click", function() {
+            $.BToasty("Hello!", "Do you like my position?", "I'm customized", $("#toastExample2Select").val());
+        });
+
+        $("#toastExample3").on("click", function() {
+            $.BToasty({
+                title: "jQueryScript.Net",
+                body:"<b>I'm bold!</b><p><i>This is italic!</i></p><button class='btn btn-primary'>This is a button!!</button>"
+            })
+        })
+
+        $("#toastExample4").on("click", function() {
+            $.BToasty({
+                title: "I'll stay here for a while",
+                xbutton: false,
+                autoHide: true,
+                duration: 6000,
+                position:"top_middle",
+            });
+        });
+
+        $("#toastExample5").on("click", function() {
+            $.BToasty({
+                title: "Always Be Visible",
+                xbutton: true,
+                autoHide: false,
+                position:"bottom_middle",
+            });
+        });
+
+        $.BToasty({
+            title: "Welcome to a Toasty land!",
+            extra: "time-auto",
+            xbutton: true,
+            duration: 10000,
+            position: "top_right",
+        });
+    </script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

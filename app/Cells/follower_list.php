@@ -14,7 +14,7 @@
                 <?php foreach ($followers as $follower): ?>
                     <a href="<?= site_url('user/profile/' . $follower->username) ?>"
                         class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img class="avatar-40 rounded mr-3" src="<?= base_url($follower->avatar) ?>" class="rounded-circle mr-3"
+                        <img class="avatar-40 rounded mr-3" src="<?= $follower->avatar ? base_url($follower->avatar) : '' ?>" class="rounded-circle mr-3"
                             style="width:40px; height:40px;" alt="Avatar">
                         <div class="flex-column">
                             <span class="font-weight-bold">@<?= esc($follower->username) ?></span>

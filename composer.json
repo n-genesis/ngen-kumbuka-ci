@@ -1,7 +1,7 @@
 {
     "name": "n-genesis/ngen-kumbuka-ci",
     "description": "A simple web-based shared notebook application built with CodeIgniter 4.",
-    "version": "1.0.0-a",
+    "version": "2.5.0-a",
     "license": "MIT",
     "type": "project",
     "authors": [

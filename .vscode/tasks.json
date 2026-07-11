@@ -17,6 +17,113 @@
             "type": "shell",
             "command": "Get-Content \"${workspaceFolder}\\apache\\logs\\kumbuka.ngen-access.log\" -Wait ",
             
+        },
+        {
+            "label": "Open Browser",
+            "type": "shell",
+            "command": "start https://kumbuka.ngen",
+            "presentation": {
+                "reveal": "never",
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Apache Start",
+            "type": "shell",
+            "command": "C:/xampp/apache/bin/httpd.exe",
+            "args": [],
+            "windows": {
+                "command": "C:/xampp/apache/bin/httpd.exe"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Apache Stop",
+            "type": "shell",
+            "command": "C:/xampp/apache/bin/httpd.exe",
+            "args": ["-k", "shutdown"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "apache_start.bat",
+            "type": "shell",
+            "command": "C:\\xampp\\apache_start.bat",
+            "isBackground": true,
+            "presentation": { "group": "xampp-group" },
+            "problemMatcher": []
+        },
+        {
+            "label": "apache_stop.bat",
+            "type": "shell",
+            "command": "C:\\xampp\\apache_stop.bat",
+            "isBackground": true,
+            "presentation": { "group": "xampp-group-stop" },
+            "problemMatcher": []
+        },
+        {
+            "label": "mysql_start.bat",
+            "type": "shell",
+            "command": "C:\\xampp\\mysql_start.bat",
+            "isBackground": true,
+            "presentation": { "group": "xampp-group" },
+            "problemMatcher": []
+        },
+        {
+            "label": "mysql_stop.bat",
+            "type": "shell",
+            "command": "C:\\xampp\\mysql_stop.bat",
+            "isBackground": true,
+            "presentation": { "group": "xampp-group-stop" },
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Server (.bat)",
+            "dependsOn": [
+                "apache_start.bat", 
+                "mysql_start.bat",
+                "Open Browser"
+            ],
+            "presentation": { "reveal": "always" }
+        },
+        {
+            "label": "Stop Server (.bat)",
+            "dependsOn": [
+                "apache_stop.bat", 
+                "mysql_stop.bat"
+            ],
+            "presentation": {
+                "reveal": "never",
+            }
+        },
+        {
+            "label": "Start XAMPP",
+            "dependsOn": ["Start XAMPP Service", "Open Browser"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Start XAMPP Service",
+            "type": "shell",
+            "command": "C:\\xampp\\xampp_start.exe",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal":"always",
+                "panel": "shared",
+                "close": true
+            }
+        },
+        {
+            "label": "Stop XAMPP",
+            "type": "shell",
+            "command": "C:\\xampp\\xampp_stop.exe",
         }
     ]
 }

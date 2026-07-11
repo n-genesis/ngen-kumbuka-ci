@@ -3,7 +3,7 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 
 
 ![Version](https://img.shields.io/badge/version-v2.5.0--alpa-blue?style=for-the-badge)
-![Static Badge](https://img.shields.io/badge/Status-Active-red?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
 [![Static Badge](https://img.shields.io/badge/Copyright%20%C2%A9%202026%20N--Gen%20Design-1E30F3?style=for-the-badge&label=Copyright)](https://ngendesign.com)
 
 
@@ -18,7 +18,6 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 ![Static Badge](https://img.shields.io/badge/Bootstrap-4.6.2-6f42c1?style=for-the-badge)
 
 
-
 ### [Kumbuka](https://kumbuka.ngendesign.com) is a project developed with love & fun by [N-Gen Design](https://ngendesign.com).
 
 
@@ -30,8 +29,7 @@ Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook applicat
 ### Updates
 #### 2.5.0-alpa  
 These are some of the updates made from the last update
-- Added Profile visibility controls and mechanics
-- User can chagne settings in Account
+- Added Profile visibility controls
 
 
 ## Build w/ CodeIgniter 4.x
@@ -51,6 +49,31 @@ You can read the [user guide](https://codeigniter.com/user_guide/) corresponding
 
 ***Required***: This repository holds a composer-installable app starter.
 It has been built from the [development repository](https://github.com/codeigniter4/CodeIgniter4) and [Sheild](https://shield.codeigniter.com/)  - The official authentication and authorization framework for CodeIgniter 4 
+
+```
+root/
+├── app/                # Application logic (Namespaced: App)
+│   ├── Config/         # Configuration files (Database, Routes, etc.)
+│   ├── Controllers/    # Application controllers
+│   ├── Database/       # Migrations and Seeds
+│   ├── Filters/        # Controller filters (Before/After classes)
+│   ├── Helpers/        # Custom helper functions
+│   ├── Models/         # Database models
+│   └── Views/          # UI templates (HTML/PHP)
+├── public/             # Web Root (accessible via browser)
+│   ├── assets/         # CSS, JS, and Images
+│   ├── .htaccess       # Apache configuration
+│   └── index.php       # Framework entry point
+├── tests/              # PHPUnit test files
+├── writable/           # Dynamic content (Cache, Logs, Session, Uploads)
+├── vendor/             # Composer dependencies (inc. system/ core)
+├── .env                # Environment-specific configuration
+├── composer.json       # Dependency manifest
+├── phpunit.xml.dist    # Testing configuration
+├── README.md           # Project documentation
+└── spark               # CLI tool for CodeIgniter commands
+
+```
 
 Run `composer install` whenever there is a new release of the framework.
 

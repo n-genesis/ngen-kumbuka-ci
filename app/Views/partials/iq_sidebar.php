@@ -1,7 +1,7 @@
 <!-- Main Sidebar -->
 <aside id="iq-sidebar" class="iq-sidebar sidebar-default">
     <!-- Kumbuka LOGO-->
-    <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+    <div id="kumbuk-logo-n-title" class="iq-sidebar-logo d-flex align-items-center justify-content-between">
         <a href="<?= base_url('home') ?>" class="header-logo">
             <img id="sidebar-avatar" src="<?= base_url('assets/images/logo.png') ?>"
                 class="img-fluid rounded-normal light-logo" alt="logo">
@@ -234,23 +234,33 @@
             <div class="card rounded shadow-none">
                 <div class="card-body">
                     <div class="sidebarbottom-content">
-                        <div class="image">
-                            <img src="<?= base_url('assets/images/layouts/side-bkg.png') ?>" class="img-fluid"
-                                alt="side-bkg">
-                        </div>
                         <!-- Registration Link -->
-                        <?php if (auth()->loggedIn()): ?>
+                        <?php if (auth()->loggedIn() && !auth()->user()->inGroup('admin')): ?>
+                            <div id="request-form">
+                            <div class="image">
+                                <img src="<?= base_url('assets/images/kuma-moderator.webp') ?>" class="img-fluid"
+                                    alt="Sign up and start sharing notes.">
+                            </div>
+                            
                             <p class="mb-0"><?= lang('Menus.iqSideBarBusAccount') ?></p>
                             <a href="#" class="btn bg-primary mt-3"><?= lang('Menus.iqSideupgradeButton') ?></a>
-                        <?php elseif (setting('Auth.allowRegistration')): ?>
+                            </div>
+                        <?php elseif (setting('Auth.allowRegistration') && !auth()->user()->inGroup('admin')): ?>
+                            <div class="image">
+                                <img src="<?= base_url('assets/images/layouts/kuma-login.png') ?>" class="img-fluid"
+                                    alt="Want to get an upgrade?">
+                            </div>
                             <a href="<?= url_to('register') ?>" class="btn bg-primary mt-3 mb-1">
                                 <?= lang('Auth.needAccountLinkText') ?>
                             </a>
                             <p class="mb-0"><?= lang('Auth.needAccountText') ?></p>
                         <?php else: ?>
+                            <div class="image">
+                                <img src="<?= base_url('assets/images/layouts/kuma-sos-help.png') ?>" class="img-fluid"
+                                    alt="Oh no, SOS Help!">
+                            </div>
                             <p class="mb-1 mt-3"><?= lang('Landing.cardThreeBody') ?></p>
-                            <a href="<?= site_url('support') ?>"
-                                class="btn bg-primary mt-3"><?= lang('Landing.cardThreeLink') ?></a>
+                            <a href="<?= site_url('support') ?>" class="btn bg-primary mt-3"><?= lang('Landing.cardThreeLink') ?></a>
                         <?php endif ?>
                     </div>
                 </div>

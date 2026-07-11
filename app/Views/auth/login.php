@@ -9,7 +9,12 @@
         <div class="container h-100">
             <div class="row justify-content-center align-items-center height-self-center">
 
-                <div class="col-md-5 col-sm-12 col-12 align-self-center">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <!-- Background Image: Shifted right and placed behind -->
+                        <img src="assets/images/layouts/kuma-login.png" class="img-fluid" alt="Hello There">
+                </div>
+
+                <div class="col-sm-12 col-lg-4 align-self-center">
 
                     <!-- Alerts -->
                     <?= $this->include('blocks/alerts') ?>
@@ -82,6 +87,9 @@
                             
                         </form>
                     </div>
+
+
+
                 </div>
             </div>
         </div>

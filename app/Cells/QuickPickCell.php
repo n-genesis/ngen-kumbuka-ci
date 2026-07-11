@@ -7,7 +7,6 @@ use App\Models\NoteModel;
 
 class QuickPickCell extends Cell
 {
-    protected string $theme = 'light';
     protected string $quickPickPage = 'dashboard';
     protected string $path = 'Views/quickpick/';
 

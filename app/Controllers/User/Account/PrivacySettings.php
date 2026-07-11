@@ -42,21 +42,27 @@ class PrivacySettings extends UserController
 
         foreach ($this->userChoices as $value) {
             $setting = preference("UserSettings.{$value}");
-            if (isset($setting)) {
-            //     echo '<pre>';
-            // print_r("UserSettings.{$value}\n");
-            // echo "setting v: ".$setting."\n";
+            // echo '<pre>';
+            // echo "UserSettings.{$value}\n";
+            // echo $setting;
             // echo '</pre>';
-            // exit;
-                // Special handling for profile visibility to set radio button states
-                if ($value === 'profileVisibility') {
-                    $checked[$value] = [
-                        'public' => $setting === 'public' ? 'checked' : '',
-                        'private' => $setting === 'private' ? 'checked' : '',
-                        'friends' => $setting === 'friends' ? 'checked' : '',
-                    ];
-                } else {
-                    $checked[$value] = $setting ? 'checked' : '';
+          
+            if (isset($setting)) {
+                // Special handling for set radio button states
+                switch ($value) {
+                    case 'profileVisibility':
+                        $checked[$value] = [
+                            'public' => $setting == 'public' ? 'checked' : '',
+                            'private' => $setting == 'private' ? 'checked' : '',
+                            'friends' => $setting == 'friends' ? 'checked' : '',
+                        ];
+                        break;
+                    case 'accountActivityStatus':
+                        $checked[$value] = ((bool) $setting ? 'checked' : '');
+                        break;
+                    default:
+                        $checked[$value] = $setting ? 'checked' : '';
+                        break;
                 }
             } else {
                 $checked[$value] = '';
@@ -105,6 +111,10 @@ class PrivacySettings extends UserController
 
         // Get Account Activity Status Checkbox selected
         $accountActivityStatus = $this->request->getPost('accountActivityStatus');
+            // echo '<pre>';
+            // print_r("accountActivityStatus.{$accountActivityStatus}\n");
+            // echo '</pre>';
+            // exit;
         if ($accountActivityStatus) {
             preference('UserSettings.accountActivityStatus', (bool) $accountActivityStatus);
         } else if ($accountActivityStatus === null) {

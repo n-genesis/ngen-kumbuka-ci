@@ -101,7 +101,7 @@ if (kmForms !== null) {
         element.addEventListener('submit', (event) => {
             const form = event.target;
             const kmSubmitBtn = form.querySelector('[data-km="submit"]');
-            const btnText = kmSubmitBtn.textContent;
+            const btnText = kmSubmitBtn.innerHTML;
 
             // Disable the button to prevent further clicks
             kmSubmitBtn.disabled = true;
@@ -113,7 +113,7 @@ if (kmForms !== null) {
                 // Reset state if needed
                 kmSubmitBtn.disabled = false;
                 kmSubmitBtn.innerHTML = btnText;
-            }, 3000);
+            }, 4000);
         });
     });
 }
@@ -276,6 +276,7 @@ const markNoticeAsRead = async (noticeId, url) => {
 function checkNotificationUI() {
 
     const banner = document.getElementById('notif-banner');
+    if(banner == null) return false;
 
     // 1. Check if browser supports notifications
     if (!("Notification" in window)) return;
