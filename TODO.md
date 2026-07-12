@@ -13,6 +13,8 @@ This document just lists current tasks and planned features for the project. A m
 
 - ### User Accounts
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
+- [ ] Complete Email and Notification Settings
+
 
 - [ ] Update User Registration to include more user details and store them in `user_details` table
 - [ ] Update User Login to fetch more user details from `user_details` table  
@@ -36,6 +38,9 @@ This document just lists current tasks and planned features for the project. A m
 
 - ### TODO
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
+
+
+
 
 ### High Priority: Currently Completing
 - [x] **User Account Details Section**
@@ -62,17 +67,18 @@ This document just lists current tasks and planned features for the project. A m
 - [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)
 - [x] Add dismiss button to Notification elements
 - [x] Admin Section for User managment
+- [x] **User Account Details Section**
+    - [x] User Profile Information details, account & privacy settings
 
 
 ## Medium Priority
+- [ ] Add WebAuthentication API
 - [ ] Edit Admin Seeder file to remove redundant code
-
 - [ ] Create `Cell` Views for sidebar menus
 - [ ] Create `Cell` views for User Dashboard page
 - [ ] Create `Cell` views for User Notifications and Messages
     - **Action Items:**
         - [ ] Create User Avatar and cover images uploads
-
 - [ ] Add User Support Form and maybe Chat
 - [ ] Add Privacy Policy Alert for Edit Profile Pages 
 
@@ -89,10 +95,10 @@ This document just lists current tasks and planned features for the project. A m
     - *Might just redesignthe template from scratch using Bootstrap 5*
 - [ ] Create simple email templates for user actions (registration, password reset, etc.)
 - [ ] Add Pagination/Pager language file
-- [ ] Add Sheild OAuth Login
 
-    - **Action Items:**
-        - [ ] 
+
+- **Action Items:**
+    - [ ] 
 
 
 ### Low Priority: Completed
