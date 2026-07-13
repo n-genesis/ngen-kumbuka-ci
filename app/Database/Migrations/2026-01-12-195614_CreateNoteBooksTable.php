@@ -12,6 +12,7 @@ class CreateNoteBooksTable extends Migration
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'parent_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'default' => null, 'null' => true],
             'name' => ['type' => 'VARCHAR', 'constraint' => 145, 'null' => false],
+            'description' => ['type' => 'TEXT', 'default' => null, 'null' => true],
             'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'is_folder' => ['type' => 'BOOLEAN', 'default' => 1, 'null' => true],
             'metadata' => ['type' => 'TEXT', 'default' => null, 'null' => true],

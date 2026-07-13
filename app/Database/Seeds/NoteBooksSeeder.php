@@ -14,7 +14,8 @@ class NoteBooksSeeder extends Seeder
       [
         'id' => 1,
         'parent_id' => null,
-        'name' => 'Dummy Folder',
+        'name' => 'The First Folder',
+        'description' => 'This is a dummy folder for testing purposes.',
         'user_id' => 1,
         'is_folder' => true,
         'metadata' => null,
@@ -23,7 +24,8 @@ class NoteBooksSeeder extends Seeder
       [
         'id' => 2,
         'parent_id' => 1,
-        'name' => 'Dummy Folder',
+        'name' => 'Another Great Folder',
+        'description' => 'This is another dummy folder for testing purposes.',
         'user_id' => 1,
         'is_folder' => true,
         'metadata' => null,
@@ -32,7 +34,8 @@ class NoteBooksSeeder extends Seeder
       [
         'id' => 3,
         'parent_id' => null,
-        'name' => 'Dummy Folder',
+        'name' => 'The Second Folder',
+        'description' => 'This is a dummy folder for testing purposes.',
         'user_id' => 2,
         'is_folder' => true,
         'metadata' => null,
@@ -41,7 +44,8 @@ class NoteBooksSeeder extends Seeder
       [
         'id' => 4,
         'parent_id' => 3,
-        'name' => 'Dummy Folder',
+        'name' => 'A Great Folder',
+        'description' => 'This is a dummy folder for testing purposes.',
         'user_id' => 2,
         'is_folder' => true,
         'metadata' => null,

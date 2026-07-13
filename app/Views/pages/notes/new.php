@@ -10,7 +10,7 @@
 <div class="col-lg-12">
     <div class="card card-block card-stretch">
         <!-- Note Form -->
-        <form action="<?= base_url('note') ?>" method="post">
+        <form action="<?= base_url('notes') ?>" method="post">
 
             <div class="card-body write-card pb-4">
                 <div class="row">
@@ -108,7 +108,7 @@
                     <aside class="col-md-4" id="default">
                         <article class="card">
                             <h4 class="card-title">Create a Sticker</h4>
-                            <div class="card-text">
+                            <div class="card-body">
                                 <img src="https://placehold.co/400" class="img-thumbnail"/>
                             </div>
                         </article>

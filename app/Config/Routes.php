@@ -57,16 +57,27 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     // User Dashboard
     $routes->get('home', [User\Home::class, 'index']);
 
+    // User Notes Collection
+    $routes->get('users/(:num)/notes',  [[User\Notes::class, 'index'], '$1']);
+    // User Public Note Post
+    $routes->get('users/(:num)/notes/(:segment)', [[User\Notes::class, 'showPublicNote'], '$1/$2']);
+    // User NoteBooks Collection
+    $routes->get('users/(:num)/notebooks', [[User\Notebooks::class, 'index'], '$1']);
+
     //Note Routes
-    $routes->resource('note',['namespace' => '', 'controller' => User\Notes::class]);
-    //$routes->get('notes', [Notes::class,'index']);
-    //$routes->get('notes/create', [Notes::class, 'create']);
-    // $routes->get('notes', [Notes::class, 'index']);
-    // $routes->get('notes/update_notes/(:segment)', [[Notes::class, 'update_notes'], '$1']);
-    // $routes->post('notes/s/(:segment)', [[Notes::class, 'update_notes'], '$1']);
-    // $routes->get('notes/add_notes', [Notes::class, 'add_notes']);
-    // $routes->post('notes/add_notes', [Notes::class, 'add_notes']);
-    // $routes->post('notes/delete_notes/(:segment)', [[Notes::class, 'delete_notes'], '$1']);
+    $routes->resource('notes', [
+        'namespace' => 'App\Controllers\User', 
+        'controller' => 'Notes',
+        'only' => ['show', 'edit', 'create', 'new', 'update', 'delete']
+        ]);
+    
+    // Notebook Routes
+    $routes->resource('notebooks', [
+        'namespace' => 'App\Controllers\User',
+        'controler' => 'Notebooks',
+        'only'      => ['index', 'new', 'show', 'edit', 'create', 'update', 'delete']
+    ]);
+
 
     // User Notifications
     $routes->get('notifications', [NotificationController::class, 'index']);

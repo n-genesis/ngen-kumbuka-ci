@@ -37,7 +37,7 @@ class Notes extends UserController
             ],
             'body' => [
                 'label' => 'Note Content',
-                'rules' => 'required|max_length[5000]|min_length[10]',
+                'rules' => 'required|min_length[10]',
                 'errors' => [
                     'min_length' => '{field} can be no less then 10 characters.',
                 ]
@@ -73,8 +73,11 @@ class Notes extends UserController
 
         ];
     }
-    public function index(string $type = '')
+    public function index($userId = null)
     {
+        if ($userId === null) {
+            return redirect()->to('home')->with('error', 'User ID is required.');
+        }
         $noteModel = model(NoteModel::class);
 
         $noteTypesModel = model(NoteTypesModel::class);
@@ -86,8 +89,8 @@ class Notes extends UserController
                 ['label' => 'Home', 'url' => site_url('home')],
                 ['label' => 'User Notes', 'url' => ''],
             ],
-            'userId' => $this->userId,
-            'userNotes' => $noteModel->getNotesByUserId($this->userId, $type),
+            'userId' => $userId,
+            'userNotes' => $noteModel->getNotesByUserId($userId),
             'noteTypeDropDown' => $noteTypesModel->getForDropdown(),
         ]);
     }
@@ -171,20 +174,24 @@ class Notes extends UserController
 
         // 4. Save via Model
         if ($noteModel->save($noteData)) {
-            return redirect()->to('/note')->with('message', 'Note created successfully!');
+            return redirect()->to("users/" . $this->userId . "/notes")->with('message', 'Note created successfully!');
         }
 
         return redirect()->back()->withInput()->with('message','Failed to save note.');
     }
-
-    function show(string $slug)
+    /**
+     * Show User Note Post
+     * @param int $id
+     * @return string|\CodeIgniter\HTTP\RedirectResponse
+     */
+    public function show(int $id)
     {
         $noteModel = model(NoteModel::class);
+        $note = $noteModel->getNoteById($id);
 
-
-        // if (!$note || $note->user_id != $this->userId) {
-        //     return redirect()->to('note')->with('error', 'Note not found.');
-        // }
+        if (!$note) {
+            return redirect()->to('note')->with('error', 'Note not found.');
+        }
 
         return $this->renderView('pages/notes/show', [
             'appTitle' => setting('App.appName') . ' | View Note',
@@ -194,7 +201,38 @@ class Notes extends UserController
                 ['label' => 'User Notes', 'url' => site_url('note')],
                 ['label' => 'View Note', 'url' => ''],
             ],
-            'note' => null,
+            'note' => $note,
+        ]);
+    }
+    /**
+     * Show a Users Public Note Post
+     * @param int $userId
+     * @param string $slug
+     * @return string|\CodeIgniter\HTTP\RedirectResponse
+     */
+    public function showPublicNote(int $userId, string $slug)
+    {
+        $noteModel = model(NoteModel::class);
+        $note = $noteModel->getNoteBySlug($userId, $slug);
+
+        // echo '<pre>';
+        // print_r($noteId);
+        // echo '</pre>';
+        // exit;
+
+        if (!$note || $note->user_id != $userId) {
+            return redirect()->to('home')->with('error', 'Sorry, I couldn\'t find that Note or maybe it wasn\'t posted by that specific user.');
+        }
+
+        return $this->renderView('pages/notes/show', [
+            'appTitle' => setting('App.appName') . ' | View Note',
+            'pageHeader' => 'View Note',
+            'breadcrumbLinks' => [
+                ['label' => 'Home', 'url' => site_url('home')],
+                ['label' => 'User Notes', 'url' => site_url('note')],
+                ['label' => 'View Note', 'url' => ''],
+            ],
+            'note' => $note,
         ]);
     }
 }

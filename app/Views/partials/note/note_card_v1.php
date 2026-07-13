@@ -59,7 +59,7 @@
             <!-- Card Body -->
             <section class="card-body rounded">
                 <!-- Link -->
-                <a href="#" class="">
+                <a href="<?= base_url("/users/$note->user_id/notes/$note->slug") ?>" class="">
                     <figure class="figure mb-0">
                         <!-- Note Image -->
                         <img src="https://api.dicebear.com/10.x/miniavs/svg?seed=72xdgcro" class="figure-img img-fluid rounded mb-3"

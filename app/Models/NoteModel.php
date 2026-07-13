@@ -122,6 +122,27 @@ class NoteModel extends Model
         return $builder->findAll();
     }
 
+    public function getNoteById(int $id)
+    {
+        return $this->select('notes.*, note_types.name as type_name, note_types.slug as type_slug, note_types.btn_icon, users.username as author_username, user_details.avatar as author_avatar, user_details.first_name as author_first_name, user_details.last_name as author_last_name')
+            ->join('note_types', 'note_types.id = notes.type_id')
+            ->join('users', 'users.id = notes.user_id')
+            ->join('user_details', 'user_details.user_id = users.id', 'left')
+            ->where('notes.id', $id)
+            ->first();
+    }
+
+    public function getNoteBySlug(int $userId, string $slug)
+    {
+        return $this->select('notes.*, note_types.name as type_name, note_types.slug as type_slug, note_types.btn_icon, users.username as author_username, user_details.avatar as author_avatar, user_details.first_name as author_first_name, user_details.last_name as author_last_name')
+            ->join('note_types', 'note_types.id = notes.type_id')
+            ->join('users', 'users.id = notes.user_id')
+            ->join('user_details', 'user_details.user_id = users.id', 'left')
+            ->where('notes.user_id', $userId)
+            ->where('notes.slug', $slug)
+            ->first();
+    }
+
     public function getNoteSharesCount(int $noteId)
     {
         return $this->db->table('shares')

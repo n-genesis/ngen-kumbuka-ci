@@ -100,7 +100,7 @@
                             </div>
                             <div class="card-body">
                                 <!-- User form -->
-                                <form action="<?= base_url('admin/users/delete/' . $user->id) ?>" data-km="form" data-km-username="<?= esc($user->username) ?>" method="post">
+                                <form action="<?= base_url('admin/users/delete/' . $user->id) ?>" data-km="delete-form" data-km-username="<?= esc($user->username) ?>" method="post">
 
                                 <!-- CSRF Protection is mandatory for destructive actions -->
                                 <?= csrf_field() ?>
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-const deleteForms = document.querySelectorAll('form[data-km="form"]');
+const deleteForms = document.querySelectorAll('form[data-km="delete-form"]');
 deleteForms.forEach(form => {
     form.addEventListener('submit', function(event) {
         event.preventDefault();// Prevent form submission

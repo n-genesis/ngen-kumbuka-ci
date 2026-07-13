@@ -145,8 +145,7 @@
                                 </div>
                             </div>
                             <!-- General Profile Information FORM -->
-                            <form action="<?= site_url('account/update') ?>" method="post" class="needs-validation"
-                                data-km="form" novalidate>
+                            <form action="<?= site_url('account/update') ?>" method="post" class="needs-validation" data-km="form" novalidate>
                                 <?= csrf_field() ?>
                                 <!-- Profile Info Card Body -->
                                 <div class="card-body">
@@ -276,13 +275,6 @@
                 avatarForm.submit();
             });
         }
-    });
-</script>
-
-<script>
-    // Form validation
-    (function () {
-        'use strict';
 
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation');
@@ -299,6 +291,8 @@
                 form.classList.add('was-validated');
             }, false);
         });
-    })();
+
+    });
 </script>
+
 <?= $this->endSection() ?>

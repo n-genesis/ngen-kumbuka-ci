@@ -7,7 +7,7 @@
 <!-- User Notes -->
 <div class="col-lg-12">
     <div class="card card-block card-stretch">
-        <div class="card-body custom-notes-space">
+        <div class="card-body">
             <h3 class="">Your Notes</h3>
             <div class="iq-tab-content">
                 <div class="d-flex flex-wrap align-items-top justify-content-between">
