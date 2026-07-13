@@ -22,6 +22,8 @@ class InsertSeeder extends Seeder
         $this->call('NotebooksSeeder');
         // Notes Inserts
         $this->call('NotesSeeder');
+        // Note Images
+        $this->call('NoteImagesSeeder');
         // User Likes Inserts
         $this->call('LikesSeeder');
         // Followers Inserts
