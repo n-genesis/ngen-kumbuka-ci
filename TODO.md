@@ -5,13 +5,12 @@ This document just lists current tasks and planned features for the project. A m
 
 *After finishing the Following & Profile Visibility feature the next version with be v2.7.0-alpa*
 
-#### *TODO: Need to show View Directory Template Structure*
+### *See [dev-note.md](./dev-notes.md) to see the Application Directory Structure*
 
 
-## High Priority
-- [ ] *TODO: Need to show View Directory Template Structure*
+## High Priority Tasks
 
-- ### User Accounts
+### User Accounts
 - [ ] FIX forced email activation on Admin Created or modify user accounts.
 - [ ] Complete Email and Notification Settings
 
@@ -23,12 +22,12 @@ This document just lists current tasks and planned features for the project. A m
 
 - [ ] **Need to create cover image upload**
 
-- ### Complete Notification mechanics
+### Complete Notification mechanics
 - [ ] Create User Notification section and mechanics
     - [ ] Show only the last 5 User notifications for Toates and Notification dropdown
 - [ ]
 
-- ### Administrator Controles
+### Administrator Controles
 - [ ] *TODO: Add Role-Based Access Controles* for admin and user operations.
 
 - [x] Complete User Privacy Setting
@@ -36,15 +35,13 @@ This document just lists current tasks and planned features for the project. A m
     - [ ] Show Activity Status  
         - Show and Active badge next to the user Avatar picture
 
-- ### TODO
+### TODO
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
 
 
 
-
-### High Priority: Currently Completing
-- [x] **User Account Details Section**
-    - [x] User details, account & privacy settings, and mail notifications settings
+## High Priority: Currently Completing
+- [x] **Mail notifications settings**
 
 - [x] **Need to update AJAX request to include name="X-CSRF-TOKEN" in post requests**
 - [x] **Add Native browser notification windows and User permission**
@@ -63,7 +60,7 @@ This document just lists current tasks and planned features for the project. A m
 - [x] Finish UserActivitySeeder Script
 
 
-### High Priority: Completed
+## High Priority: Completed
 - [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)
 - [x] Add dismiss button to Notification elements
 - [x] Admin Section for User managment
@@ -82,10 +79,10 @@ This document just lists current tasks and planned features for the project. A m
 - [ ] Add User Support Form and maybe Chat
 - [ ] Add Privacy Policy Alert for Edit Profile Pages 
 
-### Medium Priority: Currently Completing
+## Medium Priority: Currently Completing
 - [x] Add Admin opts for editing website settings (Admin Section)
 
-### Medium Priority: Completed
+## Medium Priority: Completed
 
 
 ## Low Priority
@@ -101,10 +98,10 @@ This document just lists current tasks and planned features for the project. A m
     - [ ] 
 
 
-### Low Priority: Completed
+## Low Priority: Completed
 - [ ]
 
-### Low Priority: Currently Completing
+## Low Priority: Currently Completing
 - [ ]
 
 

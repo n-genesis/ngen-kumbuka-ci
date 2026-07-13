@@ -1,10 +1,53 @@
 # Project 2.x.x-alpa - Development Notes
-Here I describe and includenotes about the the development of the Kumbuka Project in addtions to furture plannes for for the project. It's strutured much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield.
+Here describes the development of the Kumbuka Application Project in addtions to furture plannes for the project.   
+*It's built much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield.*
 
 For more information about current development and furture feature make sure to check out [TODO.md](./TODO.md).
 
-### *Need to Show View directory template stucture*  
-*I get the feeling I'm going to start to get confuded after a while*  
+## Directory Template Structure
+This project is a composer-installable app starter built from the [development repository](https://github.com/codeigniter4/CodeIgniter4) and [Sheild](https://shield.codeigniter.com/)  - The official authentication and authorization framework for CodeIgniter 4.  
+
+Below is a list of the directories currently used the Kumbua application.
+
+```
+├── app/                      # Main application source code
+│   ├── apache/               # Appache Log files for Virtual Hosts kumbuka.ngen
+│   ├── Cells/                # View Cells (Subscriber list, notes, and notifications) 
+│   ├── Config/               # Configuration files (Database, Routes, App, etc.)
+│   ├── Controllers/          # App controllers (handles incoming requests)
+│   ├── Database/             # Database migrations, seeds, and backups
+│   ├── Filters/              # Request/Response filters (Middleware)
+│   ├── Helpers/              # Custom helper functions
+│   ├── Language/             # Language files for localization (i18n)
+│   ├── Libraries/            # Custom third-party or standalone libraries
+│   ├── Models/               # Data models interacting with the database
+│   ├── ThirdParty/           # Manual/Legacy third-party libraries
+│   └── Views/                # HTML layout templates and UI elements
+├── public/                   # Web server public root directory
+│   ├── assets/               # Public assets (CSS, JavaScript, Images)
+│   ├── km_sessions/          # File-based user session store
+│   ├── uploads/              # User-uploaded files (Images and text files)
+│   ├── .htaccess             # Apache server configuration
+│   └── index.php             # Front controller (Framework bootstrap file)
+├── scripts/                  # .bat files for doing random things
+├── tests/                    # Automated testing suite (PHPUnit, Feature tests)
+├── writable/                 # Directory for dynamic file storage (Must be writable)
+│   ├── cache/                # App performance caching files
+│   ├── debugbar/             # Kint and debug toolbar runtime logs
+│   ├── logs/                 # Core framework runtime error logs
+│   ├── session/              # File-based user session store
+│   └── uploads/              # User-uploaded files and media
+├── vendor/                   # Composer dependency directories (managed via CLI)
+├── .env                      # Local environment configurations (credentials/keys)
+├── composer.json             # PHP package dependencies and autoload setup
+├── phpunit.xml.dist          # Testing environment configuration
+├── spark                     # CodeIgniter 4 Command Line Interface executable
+├── README.md                 # Project documentation file
+├── TODO.md                   # Project TODOs
+└── dev-notes.md              # Development notes and list of current and future tasks 
+```
+
+### Home Page Quick Views
 The Home page & Quckpick Views use a combination of Views and Cells to dynamicly create the User Dashbaord page. This is done some a custom layout can be created by the User. I need to make sure to describe out these work together to prevent future consfusion.
 
 
