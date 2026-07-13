@@ -5,19 +5,20 @@ namespace App\Controllers\User;
 use App\Controllers\UserController;
 use App\Models\NoteModel;
 use App\Models\NoteTypesModel;
+use App\Models\User\UserDetailsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Notes extends UserController
 {
-    protected $notesModel;
+    protected $noteModel;
     protected $noteTypesModel;
 
     protected $rules;
 
     public function __construct()
     {
-        $noteModel = model(NoteModel::class);
-        $noteTypesModel = model(NoteTypesModel::class);
+        $this->noteModel = model(NoteModel::class);
+        $this->noteTypesModel = model(NoteTypesModel::class);
 
         $this->rules = [
             'title' => [
@@ -78,36 +79,31 @@ class Notes extends UserController
         if ($userId === null) {
             return redirect()->to('home')->with('error', 'User ID is required.');
         }
-        $noteModel = model(NoteModel::class);
 
-        $noteTypesModel = model(NoteTypesModel::class);
+        $userModel = model(UserDetailsModel::class);
+        $user = $userModel->getDetailsByUserId($userId);
+        $username = "$user->first_name $user->last_name";
 
         return $this->renderView('pages/notes/index', [
-            'appTitle' => setting('App.appName') . ' | Your Notes',
-            'pageHeader' => 'Your Notes',
+            'appTitle' => setting('App.appName') . " | $username Note's",
+            'pageHeader' => "$username's Notes",
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'User Notes', 'url' => ''],
+                ['label' => "$username's Notes", 'url' => ''],
             ],
             'userId' => $userId,
-            'userNotes' => $noteModel->getNotesByUserId($userId),
-            'noteTypeDropDown' => $noteTypesModel->getForDropdown(),
+            'userNotes' => $this->noteModel->getNotesByUserId($userId),
+            'noteTypeDropDown' => $this->noteTypesModel->getForDropdown(),
         ]);
     }
 
     public function new()
     {
-        $noteModel = model(NoteModel::class);
 
-        // echo '<pre>';
-        // print_r($noteModel->getNotePriority('priority'));
-        // echo '</pre>';
-        // exit;
-
-        // 1. Get note type from URL query
+        // Get note type from URL query
         $noteType = $this->request->getGet('type');
 
-        // 2. Get the parameter from the URL query string (?type=...)
+        // Get the parameter from the URL query string (?type=...)
         $data = [
             'type' => $noteType,
         ];
@@ -115,14 +111,12 @@ class Notes extends UserController
         $appConfig = config('App');// Get the array of allow note types from the App config file
         $allowedTypes = strtolower(implode(',', $appConfig->noteTypes));
 
-        // 3. Define rules (Check if the note types are allowed)
+        // Define rules (Check if the note types are allowed)
         $rules = [
             'type' => "required|in_list[$allowedTypes]",
         ];
 
-        $noteTypesModel = model(NoteTypesModel::class);
-
-        // 4. Run validation
+        // Run validation
         if (!$this->validateData($data, $rules)) {
             // If invalid, redirect back user dashboard
             return redirect()->to(uri: 'note')->with('error', 'Invalid category type selected.');
@@ -137,29 +131,22 @@ class Notes extends UserController
                 ['label' => 'New Note', 'url' => ''],
             ],
             'selectedType' => $noteType,
-            'selectTypeId'=> $noteTypesModel->getIdByName($noteType)->id,
-            'noteTypeDropDown' => $noteTypesModel->getForDropdown(),
-            'priority' => $noteModel->getNotePriority('priority'),
+            'selectTypeId'=> $this->noteTypesModel->getIdByName($noteType)->id,
+            'noteTypeDropDown' => $this->noteTypesModel->getForDropdown(),
+            'priority' => $this->noteModel->getNotePriority('priority'),
         ]);
     }
 
     public function create()
     {
-        $noteModel = model(NoteModel::class);
 
-        // 1. Validate the 'type' is allowed (e.g., 'user', 'product')
-        // $allowedTypes = ['user', 'product', 'order'];
-        // if (!in_array($type, $allowedTypes)) {
-        //     return $this->fail('Invalid note target type.');
-        // }
-
-        // 2. Validate incoming data
+        // Validate incoming data
         $formData = $this->request->getPost();
 
         if (!$this->validate($this->rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
-        // 3. Inject polymorphic identifiers
+        // Inject polymorphic identifiers
         $noteData = [
             'user_id' => $this->userId,
             'title' => $this->request->getPost('title'),
@@ -172,8 +159,8 @@ class Notes extends UserController
             'notebook_id' => $this->request->getPost('notebook_id'),
         ];
 
-        // 4. Save via Model
-        if ($noteModel->save($noteData)) {
+        // Save via Model
+        if ($this->noteModel->save($noteData)) {
             return redirect()->to("users/" . $this->userId . "/notes")->with('message', 'Note created successfully!');
         }
 
@@ -204,6 +191,7 @@ class Notes extends UserController
             'note' => $note,
         ]);
     }
+
     /**
      * Show a Users Public Note Post
      * @param int $userId
@@ -215,21 +203,16 @@ class Notes extends UserController
         $noteModel = model(NoteModel::class);
         $note = $noteModel->getNoteBySlug($userId, $slug);
 
-        // echo '<pre>';
-        // print_r($noteId);
-        // echo '</pre>';
-        // exit;
-
         if (!$note || $note->user_id != $userId) {
             return redirect()->to('home')->with('error', 'Sorry, I couldn\'t find that Note or maybe it wasn\'t posted by that specific user.');
         }
 
-        return $this->renderView('pages/notes/show', [
+        return $this->renderView('pages/notes/show_public', [
             'appTitle' => setting('App.appName') . ' | View Note',
-            'pageHeader' => 'View Note',
+            'pageHeader' => "$note->author_username's Note",
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'User Notes', 'url' => site_url('note')],
+                ['label' => "$note->author_first_name $note->author_last_name Notes", 'url' => site_url("users/$note->user_id/notes")],
                 ['label' => 'View Note', 'url' => ''],
             ],
             'note' => $note,

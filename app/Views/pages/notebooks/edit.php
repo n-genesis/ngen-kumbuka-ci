@@ -18,11 +18,11 @@
                     data-original-title="" title="">
                 <h3 class="m-0 flex-fill"><?= esc($notebook->name) ?></h3>
                 <div class="d-flex justify-content-between align-items-sm-center">
-                    <a href="<?= site_url('users/' . $userId . '/notebooks') ?>"
-                        class="btn btn-outline-secondary mb-2 mr-4 mb-sm-0 mr-sm-2"><i class="bi bi-backspace"></i>
-                        Back</a>
                     <a href="<?= site_url('notebooks/create') ?>" class="btn btn-danger mb-2 mb-sm-0 mr-sm-2"><i
                             class="bi bi-trash"></i> Delete</a>
+                    <a href="<?= site_url('users/' . $userId . '/notebooks') ?>"
+                        class="btn btn-outline-secondary mb-2 mb-sm-0 mr-sm-2"><i class="bi bi-backspace"></i>
+                        Back</a>
                 </div>
             </header>
             <!-- Card Body -->
