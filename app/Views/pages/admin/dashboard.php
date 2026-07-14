@@ -19,8 +19,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Total Users</h5>
                                 <p class="display-4"><?= $totalUsers ?></p>
-                                <a href="<?= site_url('admin/users') ?>" class="btn btn-primary">Manage
-                                    Users</a>
+                                <a href="<?= site_url('admin/users') ?>" class="btn btn-primary">Users Managment</a>
                             </div>
                         </div>
                     </div>

@@ -4,20 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class NoteImagesModel extends Model
+class NotebookImagesModel extends Model
 {
-    protected $table            = 'note_images';
+    protected $table            = 'notebook_images';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object';
+    protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'user_id', 
-        'file_path', 
-        'file_name', 
-        'file_size',
-        'sort_order',
+        'user_id',
+        'notebook_id',
+        'image_path',
+        'image_name',
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -50,21 +49,26 @@ class NoteImagesModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getImagesByUserId(int $userId)
+    public function getNotebookImagesByNotebookId(int $notebookId)
     {
-        return $this->select('note_images.*')->where('user_id', $userId)->findAll();
+        return $this->select('notebook_images.*')->where('notebook_id', $notebookId)->first();
     }
 
-    public function getImagesByNoteId(int $noteId)
+    public function saveImage(int $notebookId, string $imagePath)
     {
-        return $this->select('note_images.*')
-                    ->where('note_images.note_id', $noteId)
-                    ->findAll();
+        $data = [
+            'notebook_id' => $notebookId,
+            'image_path'  => $imagePath
+        ];
+
+        // Check if the record already exists for this notebook_id
+        if ($this->where('notebook_id', $notebookId)->find()) {
+            // Update the existing row
+            return $this->where('notebook_id', $notebookId)->set($data)->update();
+        }
+
+        // Insert a brand new row
+        return $this->insert($data);
     }
 
-    public function getImageById(int $imageId)
-    {
-        return $this->select('note_images.*')->where('id', $imageId)->first();
-    }
-    
 }

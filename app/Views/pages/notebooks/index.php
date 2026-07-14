@@ -9,19 +9,23 @@
     <div class="card card-block card-stretch vh-100">
 
         <header class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="m-0">Your Username Notebooks</h3>
-            <a href="<?= site_url('notebooks/new') ?>" class="btn btn-primary"><i class="bi bi-plus-square"></i> New</a>
+            <h3 class="m-0"><?= $pageHeader ?></h3>
+            <?php if($userId == auth()->id()): ?>
+                <a href="<?= site_url('notebooks/new') ?>" class="btn btn-primary"><i class="bi bi-plus-square"></i> New</a>
+            <?php endif; ?>
         </header>
 
         <div class="card-body">
             <div class="row">
-                <?php if (!empty($userNotebooks)): ?>
+                <?php if ($userNotebooks): ?>
                     <?php foreach ($userNotebooks as $notebook): ?>
                         <div class="col-lg-6 col-sm-12">
                             <div class="card border-secondary border h-100">
                                 <div class="card-body">
                                     <div class="d-flex flex-column flex-sm-row justify-content-between mb-2">
-                                        <img src="https://placehold.co/200x200" class="img-thumbnail avatar-100 rounded mb-md-0 mb-2" alt="Responsive image">
+                                        <a href="<?= site_url('notebooks/'.$notebook->id.'/edit') ?>" class="no-underline">
+                                            <img src="<?= ($notebook->notebookImage ? base_url($notebook->notebookImage) : 'https://placehold.net/400x400.png')  ?>" class="img-thumbnail avatar-100 rounded mb-md-0 mb-2" alt="Notebook image">
+                                        </a>
                                         <p class="card-text">
                                             <span class="badge badge-primary"><?= $notebook->created_at ?></span></small>
                                         </p>
@@ -40,14 +44,19 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                <?php else: ?>
+                <?php elseif($userId == auth()->id()): ?>
                     <div class="col-12">
-                        <h1 class="text-center">No Notebooks Found</h1>
-                        <p class="text-center">You have not created any notebooks yet. Click the button below to create your
+                        <h1 class="text-center mb-2">Create a Notebook</h1>
+                        <p class="text-center mb-4">You have not created any notebooks yet. Click the button below to create your
                             first notebook.</p>
                         <div class="text-center">
                             <a href="<?= site_url('notebooks/new') ?>" class="btn btn-success">Create Notebook</a>
                         </div>
+                    </div>
+                <?php else: ?>
+                    <div class="col-12">
+                        <h1 class="text-center mb-2">No Notebooks Found</h1>
+                        <p class="text-center mb-4">This user has not created any notebooks yet. Come back later and maybe they'll have some to share!</p>
                     </div>
                 <?php endif; ?>
             </div>

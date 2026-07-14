@@ -62,11 +62,12 @@ class NoteImagesSeeder extends Seeder {
                 'sort_order' => 5,
                 'created_at' => $currentTime,
             ],
+            // Note 2 User 2
             [
                 'id' => 6,
                 'user_id' => 2, 
                 'note_id' => 3, 
-                'file_path' => 'uploads/gallery/blog-post-1.webp', 
+                'file_path' => 'uploads/gallery/pac-man-001.jpg', 
                 'file_name' => 'Bolg Post 1', 
                 'file_size' => 0,
                 'sort_order' => 1,
@@ -76,12 +77,33 @@ class NoteImagesSeeder extends Seeder {
                 'id' => 7,
                 'user_id' => 2, 
                 'note_id' => 3, 
-                'file_path' => 'uploads/gallery/blog-post-2.webp', 
+                'file_path' => 'uploads/gallery/pinball.jpg', 
                 'file_name' => 'Bolg Post 2', 
                 'file_size' => 0,
                 'sort_order' => 2,
                 'created_at' => $currentTime,
             ],
+            [
+                'id' => 8,
+                'user_id' => 2, 
+                'note_id' => 4, 
+                'file_path' => 'uploads/gallery/sega_game_gear-001.jpg', 
+                'file_name' => 'Bolg Post 1', 
+                'file_size' => 0,
+                'sort_order' => 1,
+                'created_at' => $currentTime,
+            ],
+            [
+                'id' => 9,
+                'user_id' => 2, 
+                'note_id' => 4, 
+                'file_path' => 'uploads/gallery/sega_game_gear-002.jpg', 
+                'file_name' => 'Bolg Post 2', 
+                'file_size' => 0,
+                'sort_order' => 2,
+                'created_at' => $currentTime,
+            ],
+
 
         ];
 

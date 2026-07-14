@@ -10,7 +10,7 @@ class UserSettings extends BaseConfig
      * Default avart iamge
      * @var string
      */
-    public string $defaultAvatar = '/uploads/default-avatar.png';
+    public string $defaultAvatar = '/uploads/user-icon.png';
     public $accountPrivacy = null; // Default for account privacy
     public bool $accountActivityStatus = false; // Default to hide activity status
     public bool $allowFollowers = false; // Default to allow followers

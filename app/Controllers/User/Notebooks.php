@@ -4,27 +4,40 @@ namespace App\Controllers\User;
 
 use App\Controllers\UserController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\User\UserDetailsModel;
 use App\Models\NotebookModel;
-
+use App\Models\NotebookImagesModel;
+use Config\App;
 
 class Notebooks extends UserController
 {
+    protected $notebookImagesModel;
+
+    public function __construct() {
+        $this->notebookImagesModel = model(NotebookImagesModel::class);
+    }
+
     public function index($userId = null)
     {
+
         if ($userId === null) {
             return redirect()->to('home')->with('error', 'User ID is required.');
         }
+
+        $user = model(UserDetailsModel::class)->find($userId);
+
         $notebookModel = model(NotebookModel::class);
+        $notebooks = $notebookModel->getNotebooksByUserId($userId);
 
         return $this->renderView('pages/notebooks/index', [
             'appTitle' => setting('App.appName') . ' | Your Notebooks',
-            'pageHeader' => 'Your Notebooks',
+            'pageHeader' => "$user->first_name $user->last_name's Notebooks",
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'User Notebooks', 'url' => ''],
+                ['label' => "$user->first_name $user->last_name's Notebooks", 'url' => ''],
             ],
             'userId' => $userId,
-            'userNotebooks' => $notebookModel->getNotebooksByUserId($userId),
+            'userNotebooks' => $notebooks,
         ]);
     }
 
@@ -105,5 +118,59 @@ class Notebooks extends UserController
             'userId' => $userId,
             'notebook' => $notebook,
         ]);
+    }
+
+    public function uploadImage()
+    {
+        
+        $validationRule = [
+            'notebook-image' => [
+                'label' => 'File',
+                'rules' => [
+                    'uploaded[notebook-image]',
+                    'is_image[notebook-image]',
+                    'mime_in[notebook-image,image/jpg,image/jpeg,image/png,image/webp]',
+                    'max_size[notebook-image,2048]', // 2MB max limit
+                    'max_dims[notebook-image,max_width,1080,max_height,1080,min_width,1080,min_height,1080]',
+                ],
+                'errors' => [
+                    'uploaded' => 'Please select an image to upload.',
+                    'is_image' => 'The file must be a valid image.',
+                    'mime_in'  => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
+                    'max_size' => 'The image size cannot exceed 2MB.',
+                    'max_dims'      => 'The image must be exactly 1080x1080 pixels.',
+                ],
+            ],
+        ];
+        if (!$this->validate($validationRule)) {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
+
+        $img = $this->request->getFile('notebook-image');
+        $notebookId = $this->request->getPost('notebook_id');
+
+        if ($img->isValid() && !$img->hasMoved()) {
+            $appConfig = config(App::class);
+            // Path Substring replace %username% See Config App.php
+            $dirHash = md5($this->username.'|'.$this->userId);
+            $imagePath = str_replace('%username%', $dirHash, $appConfig->publicUploadPath);
+            // Path to upload file
+            $filepath = ROOTPATH . 'public/'. $imagePath . '/notebooks';
+            $files = directory_map($filepath);
+            // New File name
+            $newfile = $img->getName();
+            // Check if image already exists in the directory
+            $newfile = $img->getName();
+            // Move uploaded image to directroy
+            $img->move($filepath, $newfile, true);
+
+        }
+            
+        // Update Notebook Image field
+        if($this->notebookImagesModel->saveImage($notebookId, "$imagePath/notebooks/$newfile")){
+            return redirect()->back()->with('message', 'Your new notebook images was updated.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update notebook image. Please try again.');
+        }
     }
 }

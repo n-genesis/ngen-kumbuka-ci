@@ -159,7 +159,8 @@ class ProfileInformation extends UserController
         if ($img->isValid() && !$img->hasMoved()) {
             $appConfig = config(App::class);
             // Path Substring replace %username% See Config App.php
-            $imagePath = str_replace('%username%', $this->username, $appConfig->publicUploadPath);
+            $dirHash = md5($this->username.'|'.$this->userId);
+            $imagePath = str_replace('%username%', $dirHash, $appConfig->publicUploadPath);
             // Path to upload file
             $filepath = ROOTPATH . 'public/'. $imagePath;            
             // New File name

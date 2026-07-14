@@ -3,6 +3,7 @@
 namespace App\Controllers\User;
 
 use App\Controllers\UserController;
+use App\Models\NoteImagesModel;
 use App\Models\NoteModel;
 use App\Models\NoteTypesModel;
 use App\Models\User\UserDetailsModel;
@@ -201,7 +202,12 @@ class Notes extends UserController
     public function showPublicNote(int $userId, string $slug)
     {
         $noteModel = model(NoteModel::class);
+        // Get Note
         $note = $noteModel->getNoteBySlug($userId, $slug);
+
+        $noteImageModel = model(NoteImagesModel::class);
+        // Get Note Images
+        $noteImages = $noteImageModel->getImagesByNoteId($note->id);
 
         if (!$note || $note->user_id != $userId) {
             return redirect()->to('home')->with('error', 'Sorry, I couldn\'t find that Note or maybe it wasn\'t posted by that specific user.');
@@ -209,13 +215,14 @@ class Notes extends UserController
 
         return $this->renderView('pages/notes/show_public', [
             'appTitle' => setting('App.appName') . ' | View Note',
-            'pageHeader' => "$note->author_username's Note",
+            'pageHeader' => "$note->author_first_name $note->author_last_name's Notes",
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => "$note->author_first_name $note->author_last_name Notes", 'url' => site_url("users/$note->user_id/notes")],
-                ['label' => 'View Note', 'url' => ''],
+                ['label' => "$note->author_first_name $note->author_last_name's Notes", 'url' => site_url("users/$note->user_id/notes")],
+                ['label' => $note->title, 'url' => ''],
             ],
             'note' => $note,
+            'noteImages' => $noteImages,
         ]);
     }
 }

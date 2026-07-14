@@ -20,6 +20,8 @@ class InsertSeeder extends Seeder
         $this->call('NoteTypesSeeder');
         // Notebooks Inserts
         $this->call('NotebooksSeeder');
+        // Nootbook Images
+        $this->call('NotebookImagesSeeder');
         // Notes Inserts
         $this->call('NotesSeeder');
         // Note Images

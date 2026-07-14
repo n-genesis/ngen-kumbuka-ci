@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Models\NotebookImagesModel;
 use CodeIgniter\Entity\Entity;
 
 /**
@@ -35,6 +36,11 @@ class NoteBook extends Entity
         // 'jS' = Day without leading zero + ordinal suffix (3rd)
         // 'Y' = 4-digit year (2025)
         return $time->format('M jS, Y');
+    }
+
+    public function getNotebookImage(){
+        $image = model(NotebookImagesModel::class)->getNotebookImagesByNotebookId($this->attributes['id']);
+        return $image ? $image['image_path'] : '';
     }
 
 }

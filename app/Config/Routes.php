@@ -47,34 +47,47 @@ $routes->group('/', function ($routes) {
     $routes->post('search', [Search::class,'index']);
 });
 
+
+// User Public Profile
+// Uses Filter ProfileVisibilityFilter to check if the profile is public or private
+$routes->group('user/profile',function ($routes) {
+    $routes->get('(:segment)', [[PublicController\User::class,'profile'],'$1'], ['filter' => 'profilevisibility']);
+});
+
+// Public User Notes Collection 
+// TODO: Add filter to check if the user profile is public or private
+$routes->get('users/(:num)/notes', [[User\Notes::class, 'index'], '$1']);
+// Public User Note Post
+$routes->get('users/(:num)/notes/(:segment)', [[User\Notes::class, 'showPublicNote'], '$1/$2']);
+// Public User NoteBooks Collection
+$routes->get('users/(:num)/notebooks', [[User\Notebooks::class, 'index'], '$1'], ['filter' => 'profilevisibility']);
+
 /**
  * User Account Routes
  */
 $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
+    // QuickPick dashboard view
     $routes->get('gameboard_v1', [Game\FunController::class, 'index']);
 
     // User Dashboard
     $routes->get('home', [User\Home::class, 'index']);
 
-    // User Notes Collection
-    $routes->get('users/(:num)/notes',  [[User\Notes::class, 'index'], '$1']);
-    // User Public Note Post
-    $routes->get('users/(:num)/notes/(:segment)', [[User\Notes::class, 'showPublicNote'], '$1/$2']);
-    // User NoteBooks Collection
-    $routes->get('users/(:num)/notebooks', [[User\Notebooks::class, 'index'], '$1']);
+    
 
     //Note Routes
     $routes->resource('notes', [
-        'namespace' => 'App\Controllers\User', 
+        'namespace' => User::class, 
         'controller' => 'Notes',
         'only' => ['show', 'edit', 'create', 'new', 'update', 'delete']
-        ]);
+    ]);
     
+    // Upload Note Image
+    $routes->post('notebooks/update-notebook-image',[User\Notebooks::class, 'uploadImage']);
     // Notebook Routes
     $routes->resource('notebooks', [
-        'namespace' => 'App\Controllers\User',
-        'controler' => 'Notebooks',
+        'namespace' => User::class,
+        'controller' => 'Notebooks',
         'only'      => ['index', 'new', 'show', 'edit', 'create', 'update', 'delete']
     ]);
 
@@ -132,11 +145,7 @@ $routes->group('ajax',['filter'=> ['userfilter']], function ($routes) {
     $routes->post('read', [NotificationController::class,'markAsRead']);
 });
 
-// User Public Profile
-// This route is protected by the ProfileVisibilityFilter to check if the profile is public or private
-$routes->group('user/profile',function ($routes) {
-    $routes->get('(:segment)', [[PublicController\User::class,'profile'],'$1'], ['filter' => 'profilevisibility']);
-});
+
 
 
 /**

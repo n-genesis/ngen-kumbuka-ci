@@ -100,13 +100,17 @@ class Filters extends BaseFilters
                     '',
                     'terms_of_use', 
                     'privacy_policy', 
-                    'support', 
-                    'user/profile/*',// TODO: Make s the user make their profile public or private
+                    'support',
+                    // Public User Profile, Note posts, and Notebook Collection routes
+                    'user/profile/*', // Public User profile page
+                    'users/*/notes', // Public User Notes Post Collection
+                    'users/*/notes/*', // Public User Note Post
+                    'users/*/notebooks', // Public User Notebooks Collection
                     'login*', 
                     'register', 
                     'auth/a/*', 
                     'logout',
-                    'notifications/*',// Excluding notifications
+                    'notifications/*', // Excluding notifications
                     'share/*',
                     'ajax/read'
                 ]

@@ -68,25 +68,25 @@
             <h1 class="lead">Notebook Picture</h1>
         </header>
         <div class="card-body d-flex justify-content-center">
-            <form id="notebook-images">
+            <form id="notebook-image-form" action="<?= base_url('/notebooks/update-notebook-image') ?>" method="post" enctype="multipart/form-data">
                 <!-- User Avatar Image -->
-                <div class="form-group row align-items-center">
+                <div class="form-group row align-items-center mb-0">
                     <div class="col-md-12">
                         <div class="profile-img-edit">
                             <div class="crm-profile-img-edit">
-                                <label for="image-select" role="button">
-                                    <img src="https://placehold.co/200x200"
-                                        class="crm-profile-pic img-thumbnail img-fluid rounded" alt="Responsive image">
+                                <label for="notebook-image-input" role="button">
+                                    <img id="notebook-image-preview" src="https://placehold.co/400x400" class="img-thumbnail img-fluid rounded" alt="Responsive image">
                                 </label>
-                                <label class="crm-p-image bg-primary" style="left: 0px;" for="image-select">
+                                <label class="crm-p-image bg-primary" style="left: 0px;" for="notebook-image-input">
                                     <i class="bi bi-image"></i>
-                                    <input id="image-select" class="file-upload" name="notebook-image" type="file"
+                                    <input id="notebook-image-input" class="file-upload" name="notebook-image" type="file"
                                         accept="image/*">
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p class="mb-0 text-center">Click Image to upload</p>
             </form>
         </div>
     </div>
@@ -97,13 +97,20 @@
 <?= $this->section('scripts') ?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const fileInput = document.getElementById('avatarFile');
-        const avatarForm = document.getElementById('user-avatar-form');
-        if (fileInput !== null && avatarForm !== null) {
-            console.log('Found')
+        const fileInput = document.getElementById('notebook-image-input');
+        const imageForm = document.getElementById('notebook-image-form');
+        const previewImage = document.getElementById('notebook-image-preview');
+        if (fileInput !== null && imageForm !== null) {
             fileInput.addEventListener('change', function () {
-
-                avatarForm.submit();
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        previewImage.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+                // imageForm.submit();
             });
         }
 

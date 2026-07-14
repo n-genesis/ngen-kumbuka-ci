@@ -9,7 +9,8 @@
 
     <div class="card card-block card-stretch">
 
-        <form id="notebook-info" action="<?= base_url('notebooks/' . $notebook->id) ?>" method="post" class="needs-validation" data-km="form" novalidate>
+        <form id="notebook-info" action="<?= base_url('notebooks/' . $notebook->id) ?>" method="post"
+            class="needs-validation" data-km="form" novalidate>
             <?= csrf_field() ?>
             <input type="hidden" name="_method" value="PUT">
             <!-- Card Header -->
@@ -30,7 +31,8 @@
                 <div class="row align-items-center">
                     <div class="form-group col-lg-6 col-sm-12">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" name="name" value="<?= old('name', $notebook->name) ?>" required>
+                        <input type="text" class="form-control" name="name" value="<?= old('name', $notebook->name) ?>"
+                            required>
                     </div>
                     <div class="form-group col-lg-6 col-sm-12">
                         <label for="notebook_parent">Notebook Binder(Parent):</label>
@@ -43,19 +45,23 @@
                     </div>
                     <div class="form-group col-12">
                         <label for="metadata">Metadata:</label>
-                        <input type="text" class="form-control" name="metadata" id="metadata" value="<?= old('metadata', $notebook->metadata) ?>">
+                        <input type="text" class="form-control" name="metadata" id="metadata"
+                            value="<?= old('metadata', $notebook->metadata) ?>">
                     </div>
                     <div class="form-group col-12">
                         <label for="description">Description:</label>
-                        <textarea class="form-control" id="description" name="description" rows="7" style="line-height: 22px;" required><?= $notebook->description ?></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="7"
+                            style="line-height: 22px;" required><?= $notebook->description ?></textarea>
                     </div>
                 </div>
             </div>
 
             <!-- Footer -->
             <footer class="card-footer d-flex align-items-center justify-content-between">
-                <a href="<?= site_url('users/'.$userId.'/notebooks') ?>" class="btn btn-primary"><i class="bi bi-box-arrow-left"></i> Cancel</a>
-                <button type="submit" class="btn btn-outline-primary" data-km="submit"><i class="bi bi-floppy"></i> Save</button>
+                <a href="<?= site_url('users/' . $userId . '/notebooks') ?>" class="btn btn-primary"><i
+                        class="bi bi-box-arrow-left"></i> Cancel</a>
+                <button type="submit" class="btn btn-outline-primary" data-km="submit"><i class="bi bi-floppy"></i>
+                    Save</button>
             </footer>
 
         </form>
@@ -72,25 +78,26 @@
             <h1 class="lead">Notebook Picture</h1>
         </header>
         <div class="card-body d-flex justify-content-center">
-            <form id="notebook-images">
-                <!-- User Avatar Image -->
-                <div class="form-group row align-items-center">
+            <form id="notebook-image-form" action="<?= base_url('/notebooks/update-notebook-image') ?>" method="post" enctype="multipart/form-data">
+                <?= csrf_field() ?>
+                <!-- Notebook Image -->
+                <div class="form-group row align-items-center mb-0">
                     <div class="col-md-12">
                         <div class="profile-img-edit">
                             <div class="crm-profile-img-edit">
-                                <label for="image-select" role="button">
-                                    <img src="https://placehold.co/200x200"
-                                        class="crm-profile-pic img-thumbnail img-fluid rounded" alt="Responsive image">
+                                <label for="notebook-image-input" role="button">
+                                    <img src="<?= base_url($notebook->notebookImage) ?>" class="notebook-image-preview img-thumbnail img-fluid rounded" alt="Notebook Image">
                                 </label>
-                                <label class="crm-p-image bg-primary" style="left: 0px;" for="image-select">
+                                <label class="crm-p-image bg-primary" style="left: 0px;" for="notebook-image-input">
                                     <i class="bi bi-image"></i>
-                                    <input id="image-select" class="file-upload" name="notebook-image" type="file"
-                                        accept="image/*">
+                                    <input id="notebook-image-input" class="file-upload" name="notebook-image" type="file" accept="image/*">
+                                    <input name="notebook_id" value="<?= $notebook->id ?>" type="hidden">
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p class="mb-0 text-center">Click Image to upload</p>
             </form>
         </div>
     </div>
@@ -101,13 +108,11 @@
 <?= $this->section('scripts') ?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const fileInput = document.getElementById('avatarFile');
-        const avatarForm = document.getElementById('user-avatar-form');
-        if (fileInput !== null && avatarForm !== null) {
-            console.log('Found')
+        const fileInput = document.getElementById('notebook-image-input');
+        const imageForm = document.getElementById('notebook-image-form');
+        if (fileInput !== null && imageForm !== null) {
             fileInput.addEventListener('change', function () {
-
-                avatarForm.submit();
+                imageForm.submit();
             });
         }
 

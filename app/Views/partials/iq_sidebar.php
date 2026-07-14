@@ -223,7 +223,7 @@
                             <p class="mb-0"><?= lang('Menus.iqSideBarBusAccount') ?></p>
                             <a href="#" class="btn bg-primary mt-3"><?= lang('Menus.iqSideupgradeButton') ?></a>
                             </div>
-                        <?php elseif (setting('Auth.allowRegistration') && !auth()->user()->inGroup('admin')): ?>
+                        <?php elseif (setting('Auth.allowRegistration') && !auth()->user()): ?>
                             <div class="image">
                                 <img src="<?= base_url('assets/images/layouts/kuma-login.png') ?>" class="img-fluid"
                                     alt="Want to get an upgrade?">

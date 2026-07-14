@@ -51,7 +51,18 @@ class NoteBooksSeeder extends Seeder
         'metadata' => null,
         'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
       ],
+      [
+        'id' => 5,
+        'parent_id' => null,
+        'name' => 'The Folder',
+        'description' => 'Just make this different from the rest.',
+        'user_id' => 3,
+        'is_folder' => true,
+        'metadata' => null,
+        'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+      ],
     ];
+    
     $this->db->table('notebooks')->insertBatch($notebooks);
   }
 }
