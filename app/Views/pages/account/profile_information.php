@@ -45,8 +45,36 @@
 
                 <div class="row">
 
-                    <!-- User Avatar & Social Links -->
+                    <!-- User Cover, Avatar & Social Links -->
                     <aside class="col-md-4">
+                        <!-- cover Image -->
+                        <div class="card">
+                            <header class="card-header">
+                                <h1 class="lead">Cover Image</h1>
+                            </header>
+                            <div class="card-body d-flex justify-content-center">
+                                    <div class="form-group row mb-0">
+                                        <div class="col-md-12">
+                                            <div class="profile-img-edit">
+                                                <div class="crm-profile-img-edit">
+                                                    <form id="cover-image-form" action="<?= base_url('account/update-cover-image') ?>" method="post" enctype="multipart/form-data">
+                                    <?= csrf_field() ?>
+                                                    <label for="cover-image-input" role="button">
+                                                        <img src="<?= base_url($user->cover_image) ?>" class="cover-image-preview img-thumbnail img-fluid rounded" alt="Profile Cover Image">
+                                                    </label>
+                                                    <label class="crm-p-image bg-primary" style="left: 0px; bottom: 0px;" for="cover-image-input">
+                                                        <i class="bi bi-image"></i>
+                                                        <input id="cover-image-input" class="file-upload" name="cover_image" type="file" accept="image/*">
+                                                    </label>
+                                                    <p class="mb-0 text-center">Click Image to upload</p>
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
 
                         <div class="card">
                             <!-- Card Header -->
@@ -266,10 +294,10 @@
 <!-- Uploading User Avatar Image -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Avatar Image Uplaod
         const fileInput = document.getElementById('avatarFile');
         const avatarForm = document.getElementById('user-avatar-form');
         if (fileInput !== null && avatarForm !== null) {
-            console.log('Found')
             fileInput.addEventListener('change', function () {
 
                 avatarForm.submit();
@@ -291,6 +319,15 @@
                 form.classList.add('was-validated');
             }, false);
         });
+
+        // Cover Image Uploading
+        const fileCoverInput = document.getElementById('cover-image-input');
+        const imageForm = document.getElementById('cover-image-form');
+        if (fileCoverInput !== null && imageForm !== null) {
+            fileCoverInput.addEventListener('change', function () {
+                imageForm.submit();
+            });
+        }
 
     });
 </script>

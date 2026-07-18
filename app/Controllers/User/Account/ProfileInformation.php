@@ -181,4 +181,64 @@ class ProfileInformation extends UserController
 
         return redirect()->back()->with('message', 'It seems that file has already been uploaded.');;
     }
+
+    public function uploadCoverImage()
+    {
+        $userDetailsModel = model(UserDetailsModel::class);
+        // $img = $this->request->getFile('cover-image');
+        // echo '<pre>';
+        // var_dump($img = $this->request->getFile('cover-image'));
+        // echo '</pre>';
+        // exit;
+        $validationRule = [
+        'cover_image' => [
+            'label' => 'Cover Image',
+            'rules' => [
+                'uploaded[cover_image]',
+                'is_image[cover_image]',
+                'mime_in[cover_image,image/jpg,image/jpeg,image/png,image/webp]',
+                'max_size[cover_image,4096]', // 4MB limit
+                'min_dims[cover_image,1200,400]', // Ensures high-quality display
+            ],
+            'errors' => [
+                'uploaded' => 'Please select a cover image to upload.',
+                'is_image' => 'The uploaded file must be a valid image.',
+                'mime_in'  => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
+                'max_size' => 'The cover image size cannot exceed 4MB.',
+                'min_dims' => 'The cover image must be at least 1200px wide and 400px tall.',
+            ],
+        ],
+    ];
+
+        if (!$this->validate($validationRule)) {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
+
+        $img = $this->request->getFile('cover_image');
+
+        if ($img->isValid() && !$img->hasMoved()) {
+            $appConfig = config(App::class);
+            // Path Substring replace %username% See Config App.php
+            $dirHash = md5($this->username.'|'.$this->userId);
+            $imagePath = str_replace('%username%', $dirHash, $appConfig->publicUploadPath);
+            // Path to upload file
+            $filepath = ROOTPATH . 'public/'. $imagePath;            
+            // New File name
+            $newfile = $img->getRandomName();
+            // // Clear Directroy to not
+            delete_files($filepath, false, true);
+            // Move uploaded image to directroy
+            $img->move($filepath, $newfile);
+
+            // Update User Avatar field
+            $userDetailsModel->where('user_id',$this->userId)->set([
+                'cover_image' => "$imagePath/$newfile",
+            ])->update();
+
+            return redirect()->back()->with('message', 'Your new profile cover images was updated.');
+
+        }
+
+        return redirect()->back()->with('message', 'It seems that file has already been uploaded.');;
+    }
 }

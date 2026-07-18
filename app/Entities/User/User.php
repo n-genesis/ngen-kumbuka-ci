@@ -63,9 +63,28 @@ class User extends ShieldUserEntity
     /**
      * Custom logic to check if a user is an admin.
      */
-    public function isSuperAdmin(): bool
+    public function getIsSuperAdmin(): bool
     {
         return $this->inGroup('superadmin');
+    }
+
+    /**
+     * Get highest User Group
+     */
+    public function getUserGroup() {
+        // 1. Define your hierarchy from highest permission to lowest
+        $groupPriority = ['admin', 'moderator', 'developer', 'user'];
+
+        // 2. Fetch all groups assigned to this user (e.g., ['user', 'admin'])
+        $userGroups = $this->getGroups();
+
+        // 3. Find matches and keep the original priority order
+        $matchedGroups = array_intersect($groupPriority, $userGroups);
+
+        // 4. Extract the highest group (the first element in the matched array)
+        $highestGroup = reset($matchedGroups); // Returns 'admin'
+
+        return ucfirst($highestGroup);
     }
 
     public function getAvatar(): string
@@ -78,6 +97,16 @@ class User extends ShieldUserEntity
         return $avatar ?? $userConfig->defaultAvatar;
     }
 
+    public function getCoverImage(): string
+    {
+        // Use Default avatart image in User Config file User's not set
+        $userConfig = config(userConfig::class);
+
+        $avatar = $this->attributes['cover_image'];
+
+        return $avatar ?? $userConfig->defaultCoverImage;
+    }
+
     public function getUserSocialLink(string $title = '')
     {
         $link = '';
@@ -87,6 +116,17 @@ class User extends ShieldUserEntity
             $link = model(UserSocialLinksModel::class)->where(['user_id' => $this->user_id, 'title' => $title])->first();
         }
         return $link;
+    }
+
+    
+
+    public function getHasSocialLinks(){
+        $socialLinks = model(UserSocialLinksModel::class);
+        if($socialLinks->where(['user_id' => $this->user_id])->first()){
+            return true;
+        }
+
+        return false;
     }
 
     /**

@@ -11,16 +11,15 @@
          <div class="card car-transparent">
             <div class="card-body p-0">
                <div class="profile-image position-relative">
-                  <img src="https://placehold.co/800x300" class="img-fluid rounded w-100" alt="">
+                  <img src="<?= base_url($user->coverImage) ?>" class="img-fluid rounded w-100" alt="">
                   <!-- User Avatar Image -->
                   <div class="position-absolute" style="bottom: 10px; left: 10px;">
-                     <img class="avatar-100 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title=""
-                        title="">
+                     <img class="avatar-70 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title="" title="">
                   </div>
                </div>
                <div class="profile-overly">
                   <h3><?= $user->full_name ?></h3>
-                  <span>Administrator</span>
+                  <span><?= $user->userGroup ?></span>
                </div>
             </div>
          </div>
@@ -74,7 +73,11 @@
    <!-- Social Links and Contact Information -->
    <div class="row">
       <!-- Social Links -->
-      <div class="col-lg-4 col-md-5">
+      <?php if($accountPrivacy != 'private'): ?>
+      <div class="col-lg-4 col-sm-12">
+
+
+         <?php if($user->hasSocialLinks): ?>
          <!-- Social Links Card -->
          <div class="card card-block">
             <div class="card-header">
@@ -82,6 +85,7 @@
                   <h4 class="card-title">Social Networks</h4>
                </div>
             </div>
+
             <div class="card-body">
                <ul class="list-inline p-0 m-0">
                   <?php foreach($user_links as $title => $link) : ?>
@@ -100,6 +104,8 @@
                </ul>
             </div>
          </div>
+         <?php endif; ?>
+
          <!-- Contact Information -->
          <div class="card card-block">
             <div class="card-header">
@@ -109,10 +115,9 @@
             </div>
             <div class="card-body">
                <ul class="list-inline p-0 m-0 iq-contact-rest">
-                  <?php if(false): ?>
                   <li class="mb-3 d-flex">
                      <i class="bi bi-geo-alt"></i>
-                     <p class="mb-0 ml-2 font-size-16 line-height"><?= `{$user->address1} {$user->address2} {$user->city} {$user->state} {$user->zip}` ?></p>
+                     <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->address1 . '<br />' . ($user->address2 ? $user->address2.'<br />' : '') . $user->city . ' ' . $user->state . ' ' . $user->zip ?></p>
                   </li>
                   <li class="mb-3 d-flex">
                      <i class="bi bi-telephone"></i>
@@ -122,7 +127,6 @@
                      <i class="bi bi-envelope"></i>
                      <p class="mb-0 ml-2 font-size-16 line-height"><?= $user->email ?></p>
                   </li>
-                  <?php endif; ?>
                   <?php if($user_website): ?>
                   <li class="mb-3 d-flex">
                      <i class="bi bi-link-45deg"></i>
@@ -134,11 +138,12 @@
                </ul>
             </div>
          </div>
-
+         
       </div>
+      <?php endif ?>
 
       <!-- User Notes Section -->
-      <div class="col-lg-8 col-md-6">
+      <div class="<?= ($accountPrivacy == 'private' ? 'col-12' : 'col-lg-8' ) ?> col-sm-12">
 
          <div class="card card-block card-stretch card-height">
             <div class="card-header">

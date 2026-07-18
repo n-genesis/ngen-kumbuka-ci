@@ -22,6 +22,7 @@ class CreateUserDetailsTable extends Migration
             'state' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'zip' => ['type' => 'INT', 'constraint' => 11, 'null' => true],
             'avatar' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'cover_image' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],

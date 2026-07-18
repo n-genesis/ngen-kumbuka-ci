@@ -53,10 +53,9 @@
                         <h4 class="mb-2">Account Privacy <i class="bi bi-shield-shaded"></i></h4>
                         <div class="custom-control custom-checkbox custom-control-inline">
                             <input type="checkbox" class="custom-control-input" id="acc-private" name="accountPrivacy" value="private" <?= $checked['accountPrivacy'] ?>>
-                            <label class="custom-control-label privacy-status mb-2" for="acc-private">Private
-                                Account</label>
+                            <label class="custom-control-label privacy-status mb-2" for="acc-private">Hide Account Info</label>
                         </div>
-                        <p>Will <b>Hide</b> <i class="bi bi-eye-slash-fill"></i> your account, notes, or shared notes. Your Profile will also be hidden. <i><b>Note: Your comments will still be been across the application.</b></i></p>
+                        <p>Will <b>Hide</b> <i class="bi bi-eye-slash-fill"></i> your account contact information and social media links on you profile page.</p>
                     </div>
                     <hr>
                     <!-- Account Activity Status -->

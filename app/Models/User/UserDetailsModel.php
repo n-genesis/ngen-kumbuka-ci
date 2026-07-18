@@ -26,6 +26,7 @@ class UserDetailsModel extends Model
         'zip',
         'phone',
         'avatar',
+        'cover_image'
     ];
 
     protected bool $allowEmptyInserts = false;

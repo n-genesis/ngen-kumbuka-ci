@@ -111,10 +111,7 @@ class PrivacySettings extends UserController
 
         // Get Account Activity Status Checkbox selected
         $accountActivityStatus = $this->request->getPost('accountActivityStatus');
-            // echo '<pre>';
-            // print_r("accountActivityStatus.{$accountActivityStatus}\n");
-            // echo '</pre>';
-            // exit;
+
         if ($accountActivityStatus) {
             preference('UserSettings.accountActivityStatus', (bool) $accountActivityStatus);
         } else if ($accountActivityStatus === null) {
@@ -137,11 +134,6 @@ class PrivacySettings extends UserController
         } else if($profileVisibility === null) {
             preference('UserSettings.profileVisibility', null);
         }
-
-        // echo '<pre>';
-        // var_dump($profileVisibility);
-        // echo '</pre>';
-        // exit;
 
         return redirect()->back()->with('message', 'Privacy Settings updated successfully.');
 

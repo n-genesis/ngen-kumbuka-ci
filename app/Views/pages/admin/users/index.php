@@ -84,7 +84,7 @@
                                 <tr class="user_row <?= !isset($user->status) ? '' : 'table-danger' ?> ">
                                     <!-- Profile Image -->
                                     <td class="text-center">
-                                        <a href="<?= site_url(['user/profile','username' => $user->username]) ?>" title="View <?= esc($user->username) ?>'s Profile">
+                                        <a href="<?= site_url(['users/profile','username' => $user->username]) ?>" title="View <?= esc($user->username) ?>'s Profile">
                                             <img class="rounded img-fluid avatar-40"
                                                 src="<?= base_url($user->avatar) ?>" alt="profile image">
                                         </a>

@@ -22,7 +22,7 @@ class CreateNotesTable extends Migration
             'body' => ['type' => 'TEXT', null => false],
             'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'pinned' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
-            'notebook_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
+            'notebook_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true , 'default' => null],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],

@@ -143,7 +143,7 @@
                     -->
                     <!-- User Notes/Dashboard -->
                     <li>
-                        <a href="<?= site_url('users/' . auth()->user()->id . '/notes') ?>" class="svg-icon">
+                        <a href="<?= site_url('notes/') ?>" class="svg-icon">
                             <i class="bi bi-journal-text"></i>
                             <span><?= lang('Menus.yourNotes') ?></span>
                         </a>
@@ -153,7 +153,7 @@
 
                     <!-- Notebooks/ User notebooks list -->
                      <li>
-                        <a href="<?= site_url('users/' . auth()->user()->id . '/notebooks') ?>" class="svg-icon">
+                        <a href="<?= site_url('notebooks/') ?>" class="svg-icon">
                             <i class="bi bi-folder"></i>
                             <span><?= lang('Menus.noteBooks') ?></span>
                         </a>

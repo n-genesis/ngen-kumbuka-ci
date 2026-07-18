@@ -6,7 +6,7 @@
 
 <!-- User Notes -->
 <div class="col-lg-12">
-    <div class="card card-block card-stretch vh-100">
+    <div class="card card-block card-stretch min-vh-100">
 
         <header class="card-header d-flex justify-content-between align-items-center">
             <h3 class="m-0"><?= $pageHeader ?></h3>
@@ -19,8 +19,8 @@
             <div class="row">
                 <?php if ($userNotebooks): ?>
                     <?php foreach ($userNotebooks as $notebook): ?>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="card border-secondary border h-100">
+                        <div class="col-lg-6 col-sm-12 mb-4">
+                            <div class="card border-secondary border">
                                 <div class="card-body">
                                     <div class="d-flex flex-column flex-sm-row justify-content-between mb-2">
                                         <a href="<?= site_url('notebooks/'.$notebook->id.'/edit') ?>" class="no-underline">

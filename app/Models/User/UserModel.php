@@ -49,6 +49,14 @@ class UserModel extends ShieldUserModel
                     ->find($id);
     }
 
+    public function findByUsername(string $username){
+        return $this->select('users.*, user_details.*')
+            ->join('user_details', 'user_details.user_id = users.id', 'left')
+            ->join('user_social_links', 'user_social_links.user_id = users.id', 'left')
+            ->where('users.username', $username)
+            ->first(); // Returns an array of User Entity objects
+    }
+
     public function findByIdWithDetails($id = null): ?UserEntity
     {
         return $this->select('users.*, user_details.*')
@@ -85,4 +93,5 @@ class UserModel extends ShieldUserModel
                     ->where('ag.name', $groupName)
                     ->findAll();
     }
+    
 }

@@ -75,25 +75,31 @@ class Notes extends UserController
 
         ];
     }
-    public function index($userId = null)
-    {
-        if ($userId === null) {
-            return redirect()->to('home')->with('error', 'User ID is required.');
-        }
+    /**
+     * Show a Users Account Notes Collection
+     * @param int $userId
+     * @return string|\CodeIgniter\HTTP\RedirectResponse
+     */
+    public function index() {
 
         $userModel = model(UserDetailsModel::class);
-        $user = $userModel->getDetailsByUserId($userId);
+        $user = $userModel->getDetailsByUserId($this->userId);
         $username = "$user->first_name $user->last_name";
+
+        // Check if current User is access there own note collection
+        if (auth()->id() !== $this->userId) {
+            return redirect()->to('home')->with('error', 'Oh no, this is not your notebooks collection. You can only view your own.');
+        }
 
         return $this->renderView('pages/notes/index', [
             'appTitle' => setting('App.appName') . " | $username Note's",
-            'pageHeader' => "$username's Notes",
+            'pageHeader' => "Your Notes",
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => "$username's Notes", 'url' => ''],
+                ['label' => "Your Notes", 'url' => ''],
             ],
-            'userId' => $userId,
-            'userNotes' => $this->noteModel->getNotesByUserId($userId),
+            'userId' => $this->userId,
+            'userNotes' => $this->noteModel->getNotesByUserId($this->userId),
             'noteTypeDropDown' => $this->noteTypesModel->getForDropdown(),
         ]);
     }
@@ -141,9 +147,6 @@ class Notes extends UserController
     public function create()
     {
 
-        // Validate incoming data
-        $formData = $this->request->getPost();
-
         if (!$this->validate($this->rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
@@ -167,13 +170,13 @@ class Notes extends UserController
 
         return redirect()->back()->withInput()->with('message','Failed to save note.');
     }
+
     /**
-     * Show User Note Post
+     * Show a User Note
      * @param int $id
      * @return string|\CodeIgniter\HTTP\RedirectResponse
      */
-    public function show(int $id)
-    {
+    public function show(int $id) {
         $noteModel = model(NoteModel::class);
         $note = $noteModel->getNoteById($id);
 
@@ -189,12 +192,27 @@ class Notes extends UserController
                 ['label' => 'User Notes', 'url' => site_url('note')],
                 ['label' => 'View Note', 'url' => ''],
             ],
+            'noteid' => $id,
             'note' => $note,
         ]);
     }
 
+    public function delete(int $id){
+        If(($note = $this->noteModel->find($id))){
+            if($note->user_id == $this->userId){
+               $this->noteModel->delete($id);
+                return redirect()->to('notes')->with('message','Your note have been deleted'); 
+            } else {
+                return redirect()->to('notes')->with('message', "Looks like you don't have permistion to delete this note.");
+            }
+            
+        }else {
+            return redirect()->to('notes')->with('error', 'Note Record note found');
+        }
+    }
+
     /**
-     * Show a Users Public Note Post
+     * Public Users Note Post
      * @param int $userId
      * @param string $slug
      * @return string|\CodeIgniter\HTTP\RedirectResponse

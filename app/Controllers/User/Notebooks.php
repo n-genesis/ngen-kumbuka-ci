@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * Notebooks Controller
+ * 
+ * This controller handles all user notebook management within the application.
+ * 
+ * @package    App\User\Controllers
+ * @author     Andrew Nite <ngendesign@email.com.com>
+ * @copyright  2026 N-Gen Design <https://ngendesign.com>
+ * @license    https://opensource.org MIT License
+ * @link       https://github.com/n-genesis/ngen-kumbuka-ci
+ */
 namespace App\Controllers\User;
 
 use App\Controllers\UserController;
@@ -12,22 +22,25 @@ use Config\App;
 class Notebooks extends UserController
 {
     protected $notebookImagesModel;
+    protected $notebookModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->notebookImagesModel = model(NotebookImagesModel::class);
+        $this->notebookModel = model(NotebookModel::class);
     }
 
-    public function index($userId = null)
+    public function index()
     {
 
-        if ($userId === null) {
-            return redirect()->to('home')->with('error', 'User ID is required.');
+        if (auth()->id() !== $this->userId) {
+            return redirect()->to('home')->with('error', 'Wait a minute. Those aren\'t your notes. You can only view your own note collection.');
         }
 
-        $user = model(UserDetailsModel::class)->find($userId);
+        $user = model(UserDetailsModel::class)->find($this->userId);
 
         $notebookModel = model(NotebookModel::class);
-        $notebooks = $notebookModel->getNotebooksByUserId($userId);
+        $notebooks = $notebookModel->getNotebooksByUserId($this->userId);
 
         return $this->renderView('pages/notebooks/index', [
             'appTitle' => setting('App.appName') . ' | Your Notebooks',
@@ -36,29 +49,84 @@ class Notebooks extends UserController
                 ['label' => 'Home', 'url' => site_url('home')],
                 ['label' => "$user->first_name $user->last_name's Notebooks", 'url' => ''],
             ],
-            'userId' => $userId,
+            'userId' => $this->userId,
             'userNotebooks' => $notebooks,
         ]);
     }
 
-    public function new($notebookId = null)
+    public function new()
     {
         $userId = auth()->id();
+
+        $data['status'] = [
+            'public' => '(Public) Everyone',
+            'private' => '(Private) Only You',
+            'archived' => '(Archive) Stored For later'
+        ];
+
 
         return $this->renderView('pages/notebooks/new', [
             'appTitle' => setting('App.appName') . ' | Your Notebooks',
             'pageHeader' => 'New Notebooks',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'Notebooks', 'url' => site_url('users/'.$userId.'/notebooks')],
+                ['label' => 'Notebooks', 'url' => site_url('/notebooks')],
                 ['label' => 'New Notebooks', 'url' => ''],
             ],
+            'data' => $data,
             'userId' => $userId,
         ]);
     }
-    
-    public function create(){
-        echo 'Hello World';
+
+    public function create()
+    {
+        $rules = [
+            'name' => [
+                'label' => 'Notebook Name',
+                'rules' => 'required|max_length[255]|min_length[5]',
+                'errors' => [
+                    'required' => '{field} is required.',
+                    'min_length' => 'can be no less then 5 characters.'
+                ]
+            ],
+            'description' => [
+                'label' => 'Notebook Description',
+                'rules' => 'required|min_length[10]',
+                'errors' => [
+                    'min_length' => '{field} can be no less then 10 characters.',
+                ]
+            ],
+            'status' => [
+                'label' => 'Status',
+                'rules' => 'required|in_list[private, public, archived]',
+                'errors' => [
+                    'required' => 'A {field} must be selected.'
+                ]
+            ],
+
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        // Inject polymorphic identifiers
+        $noteData = [
+            'user_id' => $this->userId,
+            'name' => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'metadata' => $this->request->getPost('metadata'),
+            'status' => $this->request->getPost('status'),
+        ];
+
+
+        // Save via Model
+        if (!$this->notebookModel->save($noteData)) {
+            return redirect()->to('notebooks')->withInput()->with('message', "Oh no, Something went wrong and the notebook couldn't be save.");
+        }
+
+
+        return redirect()->to('notebooks')->with('message', 'Your new notebook was saved.');
+
     }
 
     // PUT or PATCH /notebooks/{id}
@@ -88,7 +156,7 @@ class Notebooks extends UserController
 
         // 5. Update the database and respond
         if ($notebookModel->update($id, $data)) {
-            return redirect()->back()->with('message', 'Notebook updated successfully');
+            return redirect()->to('notebooks')->with('message', 'Notebook updated successfully');
         }
 
         // Return validation errors if the model rules fail
@@ -96,7 +164,7 @@ class Notebooks extends UserController
     }
 
 
-    public function edit($notebookId = null)
+    public function show($notebookId = null)
     {
         $userId = auth()->id();
 
@@ -112,7 +180,7 @@ class Notebooks extends UserController
             'pageHeader' => 'Your Notebooks',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'Notebooks', 'url' => site_url('users/'.$userId.'/notebooks')],
+                ['label' => 'Notebooks', 'url' => site_url('/notebooks')],
                 ['label' => 'Edit Notebooks', 'url' => ''],
             ],
             'userId' => $userId,
@@ -120,9 +188,15 @@ class Notebooks extends UserController
         ]);
     }
 
+
+    public function edit()
+    {
+
+    }
+
     public function uploadImage()
     {
-        
+
         $validationRule = [
             'notebook-image' => [
                 'label' => 'File',
@@ -136,9 +210,9 @@ class Notebooks extends UserController
                 'errors' => [
                     'uploaded' => 'Please select an image to upload.',
                     'is_image' => 'The file must be a valid image.',
-                    'mime_in'  => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
+                    'mime_in' => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
                     'max_size' => 'The image size cannot exceed 2MB.',
-                    'max_dims'      => 'The image must be exactly 1080x1080 pixels.',
+                    'max_dims' => 'The image must be exactly 1080x1080 pixels.',
                 ],
             ],
         ];
@@ -152,10 +226,10 @@ class Notebooks extends UserController
         if ($img->isValid() && !$img->hasMoved()) {
             $appConfig = config(App::class);
             // Path Substring replace %username% See Config App.php
-            $dirHash = md5($this->username.'|'.$this->userId);
+            $dirHash = md5($this->username . '|' . $this->userId);
             $imagePath = str_replace('%username%', $dirHash, $appConfig->publicUploadPath);
             // Path to upload file
-            $filepath = ROOTPATH . 'public/'. $imagePath . '/notebooks';
+            $filepath = ROOTPATH . 'public/' . $imagePath . '/notebooks';
             $files = directory_map($filepath);
             // New File name
             $newfile = $img->getName();
@@ -165,12 +239,17 @@ class Notebooks extends UserController
             $img->move($filepath, $newfile, true);
 
         }
-            
+
         // Update Notebook Image field
-        if($this->notebookImagesModel->saveImage($notebookId, "$imagePath/notebooks/$newfile")){
+        if ($this->notebookImagesModel->saveImage($notebookId, "$imagePath/notebooks/$newfile")) {
             return redirect()->back()->with('message', 'Your new notebook images was updated.');
         } else {
             return redirect()->back()->with('error', 'Failed to update notebook image. Please try again.');
         }
+    }
+
+    public function showPublicNote(int $userId)
+    {
+        echo "Notebook Collection for User ID: $userId";
     }
 }

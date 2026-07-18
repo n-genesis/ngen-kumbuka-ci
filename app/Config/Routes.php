@@ -48,22 +48,22 @@ $routes->group('/', function ($routes) {
 });
 
 
-// User Public Profile
+// User Public Pages
 // Uses Filter ProfileVisibilityFilter to check if the profile is public or private
-$routes->group('user/profile',function ($routes) {
-    $routes->get('(:segment)', [[PublicController\User::class,'profile'],'$1'], ['filter' => 'profilevisibility']);
+$routes->group('users', ['filter' => 'profilevisibility'], function ($routes) {
+    // Public User Profile
+    $routes->get('profile/(:segment)', [[User\Profile::class,'profile'],'$1']);
+    // Public User Notes Collection 
+    $routes->get('(:num)/notes', [[User\Notes::class, 'index'], '$1']);// TODO: Add filter to check if the user profile is public or private
+    // Public User Note Post
+    $routes->get('(:num)/notes/(:segment)', [[User\Notes::class, 'showPublicNote'], '$1/$2']);
+    // Public User NoteBooks Collection
+    $routes->get('(:num)/notebooks', [[User\Notebooks::class, 'showPublicNote'], '$1']);
 });
 
-// Public User Notes Collection 
-// TODO: Add filter to check if the user profile is public or private
-$routes->get('users/(:num)/notes', [[User\Notes::class, 'index'], '$1']);
-// Public User Note Post
-$routes->get('users/(:num)/notes/(:segment)', [[User\Notes::class, 'showPublicNote'], '$1/$2']);
-// Public User NoteBooks Collection
-$routes->get('users/(:num)/notebooks', [[User\Notebooks::class, 'index'], '$1'], ['filter' => 'profilevisibility']);
 
 /**
- * User Account Routes
+ * User Account Routes (Authenticated Users Only Filter userfilter)
  */
 $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
@@ -73,22 +73,20 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     // User Dashboard
     $routes->get('home', [User\Home::class, 'index']);
 
-    
-
     //Note Routes
     $routes->resource('notes', [
         'namespace' => User::class, 
         'controller' => 'Notes',
-        'only' => ['show', 'edit', 'create', 'new', 'update', 'delete']
+        'only' => ['index','show', 'edit', 'create', 'new', 'update', 'delete']
     ]);
     
     // Upload Note Image
     $routes->post('notebooks/update-notebook-image',[User\Notebooks::class, 'uploadImage']);
     // Notebook Routes
-    $routes->resource('notebooks', [
+    $routes->presenter('notebooks', [
         'namespace' => User::class,
         'controller' => 'Notebooks',
-        'only'      => ['index', 'new', 'show', 'edit', 'create', 'update', 'delete']
+        'only' => ['index', 'new', 'show', 'edit', 'create', 'update', 'delete']
     ]);
 
 
@@ -103,6 +101,8 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         $routes->post('update-social', [User\Account\ProfileInformation::class,'updateSocial']);
         // Update Avatar picture
         $routes->post('update-avatar',[User\Account\ProfileInformation::class, 'uploadAvatar']);
+        // Update Cover Image
+        $routes->post('update-cover-image',[User\Account\ProfileInformation::class, 'uploadCoverImage']);
 
         // User Settings CRUD Routes
         $routes->get('settings', [User\Account\AccountSettings::class, 'index']);

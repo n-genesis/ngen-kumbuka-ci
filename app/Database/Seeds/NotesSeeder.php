@@ -42,7 +42,7 @@ class NotesSeeder extends Seeder
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
                 'allow_comments' => true,
-                'notebook_id'=> 2,
+                'notebook_id'=> null,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'private',
@@ -60,7 +60,7 @@ class NotesSeeder extends Seeder
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
                 'allow_comments' => true,
-                'notebook_id'=> 3,
+                'notebook_id'=> 2,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'archived',
@@ -78,7 +78,7 @@ class NotesSeeder extends Seeder
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
                 'allow_comments' => true,
-                'notebook_id'=> 4,
+                'notebook_id'=> null,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'public',

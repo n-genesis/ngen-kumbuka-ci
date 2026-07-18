@@ -12,7 +12,7 @@
         <div class="list-group">
             <?php if (!empty($followers)): ?>
                 <?php foreach ($followers as $follower): ?>
-                    <a href="<?= site_url('user/profile/' . $follower->username) ?>"
+                    <a href="<?= site_url('users/profile/' . $follower->username) ?>"
                         class="list-group-item list-group-item-action d-flex align-items-center">
                         <img class="avatar-40 rounded mr-3" src="<?= $follower->avatar ? base_url($follower->avatar) : '' ?>" class="rounded-circle mr-3"
                             style="width:40px; height:40px;" alt="Avatar">

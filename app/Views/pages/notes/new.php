@@ -107,7 +107,9 @@
                     <!-- Example Note Element/Display -->
                     <aside class="col-md-4" id="default">
                         <article class="card">
-                            <h4 class="card-title">Create a Sticker</h4>
+                            <header class="card-header">
+                                <h1 class="lead">Create a Sticker</h1>
+                            </header>
                             <div class="card-body">
                                 <img src="https://placehold.co/400" class="img-thumbnail"/>
                             </div>
@@ -118,7 +120,7 @@
             </div>
 
             <footer class="card-footer d-flex align-items-center justify-content-between">
-                <a href="<?= site_url('note') ?>" class="btn btn-secondary mr-auto">
+                <a href="<?= site_url('notes') ?>" class="btn btn-secondary mr-auto">
                     <i class="bi bi-x-octagon"></i> Cancel
                 </a>
                 <button type="reset" class="btn btn-outline-primary mr-2" data-reset="note-reset">

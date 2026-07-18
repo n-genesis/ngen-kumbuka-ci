@@ -12,13 +12,13 @@
 
         <!-- Card Header: User Info -->
         <div class="card-header bg-white d-flex align-items-center border-bottom-0 py-3">
-            <a href="<?= site_url('user/profile/' . $note->author_username) ?>">
+            <a href="<?= site_url('users/profile/' . $note->author_username) ?>">
                 <img src="<?= base_url($note->author_avatar) ?>" class="rounded-circle avatar-80 mr-1"
                     alt="User Avatar">
             </a>
             <div>
                 <h3 class="mb-0 font-light">
-                    <a href="<?= site_url('user/profile/' . $note->author_username) ?>"><?= $note->author_first_name ?>
+                    <a href="<?= site_url('users/profile/' . $note->author_username) ?>"><?= $note->author_first_name ?>
                         <?= $note->author_last_name ?></a>
                 </h3>
                 <p class="mb-0 text-muted"><?= $note->created_at ?></p>

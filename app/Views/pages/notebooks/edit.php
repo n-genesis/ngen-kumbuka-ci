@@ -9,19 +9,16 @@
 
     <div class="card card-block card-stretch">
 
-        <form id="notebook-info" action="<?= base_url('notebooks/' . $notebook->id) ?>" method="post"
+        <form id="notebook-info" action="<?= base_url('notebooks/update/' . $notebook->id) ?>" method="post"
             class="needs-validation" data-km="form" novalidate>
             <?= csrf_field() ?>
-            <input type="hidden" name="_method" value="PUT">
             <!-- Card Header -->
             <header class="card-header d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                 <img class="avatar-70 rounded mr-3" src="<?= base_url($notebook->author_avatar) ?>" alt="#"
                     data-original-title="" title="">
                 <h3 class="m-0 flex-fill"><?= esc($notebook->name) ?></h3>
                 <div class="d-flex justify-content-between align-items-sm-center">
-                    <a href="<?= site_url('notebooks/create') ?>" class="btn btn-danger mb-2 mb-sm-0 mr-sm-2"><i
-                            class="bi bi-trash"></i> Delete</a>
-                    <a href="<?= site_url('users/' . $userId . '/notebooks') ?>"
+                    <a href="<?= site_url('notebooks/') ?>"
                         class="btn btn-outline-secondary mb-2 mb-sm-0 mr-sm-2"><i class="bi bi-backspace"></i>
                         Back</a>
                 </div>
@@ -35,12 +32,12 @@
                             required>
                     </div>
                     <div class="form-group col-lg-6 col-sm-12">
-                        <label for="notebook_parent">Notebook Binder(Parent):</label>
-                        <select class="form-control" id="notebook_parent">
-                            <option selected="">The Greatest One</option>
-                            <option>Good for Nothing</option>
-                            <option>Rock-n-roll to Space and Science</option>
-                            <option>The Now and Millennium</option>
+                        <label for="status">Status:</label>
+                        <select name="status" class="form-control" id="status">
+                            <option select value="">Choose a Category</option>
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="archived">Archived</option>
                         </select>
                     </div>
                     <div class="form-group col-12">
@@ -58,10 +55,12 @@
 
             <!-- Footer -->
             <footer class="card-footer d-flex align-items-center justify-content-between">
-                <a href="<?= site_url('users/' . $userId . '/notebooks') ?>" class="btn btn-primary"><i
-                        class="bi bi-box-arrow-left"></i> Cancel</a>
-                <button type="submit" class="btn btn-outline-primary" data-km="submit"><i class="bi bi-floppy"></i>
-                    Save</button>
+                <a href="#" class="btn btn-danger mb-2 mb-sm-0 mr-sm-2">
+                    <i class="bi bi-trash"></i> Delete
+                </a>
+                <button type="submit" class="btn btn-outline-primary" data-km="submit">
+                    <i class="bi bi-floppy"></i> Save
+                </button>
             </footer>
 
         </form>
@@ -86,7 +85,7 @@
                         <div class="profile-img-edit">
                             <div class="crm-profile-img-edit">
                                 <label for="notebook-image-input" role="button">
-                                    <img src="<?= base_url($notebook->notebookImage) ?>" class="notebook-image-preview img-thumbnail img-fluid rounded" alt="Notebook Image">
+                                    <img src="<?= ($notebook->notebookImage ? base_url($notebook->notebookImage) : 'https://placehold.net/400x400.png')  ?>" class="notebook-image-preview img-thumbnail img-fluid rounded" alt="Notebook Image">
                                 </label>
                                 <label class="crm-p-image bg-primary" style="left: 0px;" for="notebook-image-input">
                                     <i class="bi bi-image"></i>

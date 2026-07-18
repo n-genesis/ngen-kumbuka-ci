@@ -102,7 +102,7 @@ class Filters extends BaseFilters
                     'privacy_policy', 
                     'support',
                     // Public User Profile, Note posts, and Notebook Collection routes
-                    'user/profile/*', // Public User profile page
+                    'users/profile/*', // Public User profile page
                     'users/*/notes', // Public User Notes Post Collection
                     'users/*/notes/*', // Public User Note Post
                     'users/*/notebooks', // Public User Notebooks Collection

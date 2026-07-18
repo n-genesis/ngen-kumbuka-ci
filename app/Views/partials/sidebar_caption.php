@@ -11,7 +11,7 @@
     <!-- SHOW IF USER IS SIGHNED IN -->
     <?php if (auth()->loggedIn()): ?>
     <div class="dropdown-menu w-100 border-0 my-2" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item mb-2" href="<?= site_url(['user/profile','username' => $username]) ?>">
+        <a class="dropdown-item mb-2" href="<?= site_url(['users/profile','username' => $username]) ?>">
             <i class="bi bi-person-circle font-size-20 mr-1"></i>
             <span class="mt-2"><?= lang('Menus.myProfile') ?></span>
         </a>

@@ -19,18 +19,22 @@ use CodeIgniter\View\Cells\Cell;
 class UserNoteCell extends Cell
 {
     protected $note;
+    protected $noteCardClass;
 
     // You can pass data to the cell via properties
-    public function mount(int $userId)
+    public function mount(int $userId, string $noteCardClass = '')
     {
         $model = model(NoteModel::class);
         // Fetch the note and its author info
         $this->note = $model->getNotesByUserId($userId);
+        // Set Cell card class
+        $this->noteCardClass = $noteCardClass;
     }
     public function render(): string
     {
         return view('App\Views\partials\note\note_card_v1', [
             'userNotes' => $this->note,
+            'noteCardClass' => $this->noteCardClass,
         ]);
     }
 }
