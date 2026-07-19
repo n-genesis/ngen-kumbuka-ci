@@ -1,25 +1,22 @@
 # Kumbuka: Notebook Application
 Kumbuka is a simple MVC-driven Notes/Record Management Web Application built as a portfolio project to demonstrate backend architecture, database normalization, and secure coding practices using the [**CodeIgniter Framework**](https://github.com/cirebonweb/codeigniter4-starter-kit).
 
-A modern, MVC-driven [describe what the app does, e.g., Task Management Web Application] 
 
 ## Contents
-- [Development Installation](#development-installation)
-    - [Clone the Repository](#clone-the-repository)
-- [Local Development Quick Start](#local-development-quick-start)
-    - [Launch the Live Sandbox](#launch-the-live-sandbox)
-- [Quick Start](#quick-start)
-    - [Include Dependenciess](#include-dependencies)
-    - [Add a Element](#boilerplate.json)
-    - [Initialize](#blank.json)
+- [Tech Stach](#tech-stack)
+    - [Live Version Demo](#click-here-for-live-verison)
+- [Updates](#updates)
+- [Getting started](#getting-started)
+    - [Server Requirements](#server-requirements)
+    - [Setup Localhost](#setup-localhost)
+    - [Credits](#include-dependencies)
+    - [License](#license)
+- [Live Demo Information](#live-demo-information)
+- [Privacy Notice](#privacy-notice)
 - [Configuration Reference](#configuration-reference)
     - [Example: Custom Toolbar & Fonts](#example-custom-toolbar--fonts)
-    - [API & Events](#api--events)
-    - [Theming & Dark Mode](#theming--dark-mode)
-    - [Toolbar Buttons](#toolbar-buttons)
-- [File Structure](#file-structure)
 
-![Version](https://img.shields.io/badge/version-v1.0.0--alpa-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-v1.0.0-blue?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
 [![Static Badge](https://img.shields.io/badge/Copyright%20%C2%A9%202026%20N--Gen%20Design-1E30F3?style=for-the-badge&label=Copyright)](https://ngendesign.com)
 
@@ -35,7 +32,8 @@ A modern, MVC-driven [describe what the app does, e.g., Task Management Web Appl
 ![Static Badge](https://img.shields.io/badge/Bootstrap-4.6.2-6f42c1?style=for-the-badge)
 
 
-### [Kumbuka](https://kumbuka.ngendesign.com) is a project developed with love & fun by [N-Gen Design](https://ngendesign.com).
+### [Click here for Live Verison](https://kumbuka.ngendesign.com)
+*For more about the Live sandbox version's Privacy Notice and Terms and Conditions you can check them out here*
 
 
 ![Dashboard](./public/screenshot-preview.webp)
@@ -44,6 +42,10 @@ A modern, MVC-driven [describe what the app does, e.g., Task Management Web Appl
 
 
 ### Updates
+
+## Current 1.0.0
+Up and running.
+
 #### 2.5.0-alpa  
 These are some of the updates made from the last update
 - Added Profile visibility controls
@@ -53,6 +55,7 @@ These are some of the updates made from the last update
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure. More information can be found at the [official site](https://codeigniter.com).
 
 You can read the [user guide](https://codeigniter.com/user_guide/) corresponding to the latest version of the framework.
+
 
 ### Included Packages & Libraries
 - CodeIgniter 4 User Guide: https://codeigniter.com/user_guide/index.html
@@ -77,6 +80,18 @@ to your `app` folder. The affected files can be copied or merged from `vendor/co
 
 ## **Need to update setup steps**
 
+## Server Requirements
+
+PHP version 8.5 or higher is required, with the following extensions installed:
+- [intl](http://php.net/manual/en/intl.requirements.php)
+- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+
+Additionally, make sure that the following extensions are enabled in your PHP:
+
+- json (enabled by default - don't turn it off)
+- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
+- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
 ### Setup Localhost
 1. Download or clone the repo to your `localhost` folder.
 2. Change directory to `cd ngen-kumbuka-ci` folder.
@@ -93,18 +108,6 @@ to your `app` folder. The affected files can be copied or merged from `vendor/co
         3. **Select the task**: A list of available tasks (auto-detected or those defined in your tasks.json file) will appear. Select `Run Compser Server (Kubmuka)` to the launch a built-in development server the integrated terminal.
 9. Alternatively, you can browse the app using a web browser, by entering this URL address `http://localhost:8080` or the App URL used in `app.baseURL`.
 
-## Server Requirements
-
-PHP version 8.5 or higher is required, with the following extensions installed:
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
 
 ## Credits
 
@@ -115,7 +118,9 @@ Persistent user-specific settings for CodeIgniter 4
 https://github.com/tattersoftware/codeigniter4-preferences
 
 ## License
-"Copyright (c) 2026 N-Gen Design. All rights reserved. No license is granted for use, modification, or distribution".
+"Copyright (c) 2026 N-Gen Design. All rights reserved." but feel free still have fun.
+
+### Live Demo Information
 
 ## 🔒 Privacy Notice
 This is a portfolio project built to showcase development practices with CodeIgniter. 
