@@ -30,13 +30,6 @@ class Notes extends UserController
                     'min_length' => 'can be no less then 5 characters.'
                 ]
             ],
-            'slug' => [
-                'label' => 'Slug URL',
-                'rules' => 'permit_empty|alpha_dash|is_unique[notes.slug,id,{id}]|min_length[3]|max_length[255]',
-                'errors' => [
-                    'regex_match' => 'The {field} field may only contain alpha-numeric characters and dashes.',
-                ],
-            ],
             'body' => [
                 'label' => 'Note Content',
                 'rules' => 'required|min_length[10]',
@@ -46,9 +39,9 @@ class Notes extends UserController
             ],
             'priority' => [
                 'label' => 'Priority',
-                'rules' => 'required|in_list[primary,secondary,success,danger,warning,info]',
+                'rules' => 'required|regex_match[/^#?([a-fA-F0-9]{3,4}|[a-fA-F0-9]{6}|[a-fA-F0-9]{8})$/]',
                 'errors' => [
-                    'required' => 'A {field} must be selected.'
+                    'regex_match' => 'The theme color must be a valid CSS hexadecimal color code (e.g. #FF5733).'
                 ]
             ],
             'status' => [
@@ -77,7 +70,6 @@ class Notes extends UserController
     }
     /**
      * Show a Users Account Notes Collection
-     * @param int $userId
      * @return string|\CodeIgniter\HTTP\RedirectResponse
      */
     public function index() {
@@ -126,7 +118,7 @@ class Notes extends UserController
         // Run validation
         if (!$this->validateData($data, $rules)) {
             // If invalid, redirect back user dashboard
-            return redirect()->to(uri: 'note')->with('error', 'Invalid category type selected.');
+            return redirect()->to('notes')->with('message', 'To post something new click the "Add New" button in the Navbar and pick the category. Easy like Potatos!');
         }
 
         return $this->renderView('pages/notes/new', [
@@ -134,13 +126,12 @@ class Notes extends UserController
             'pageHeader' => 'New <span data-note="type">' . ucfirst($noteType) . '</span> Note',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'User Notes', 'url' => site_url('note')],
+                ['label' => 'User Notes', 'url' => site_url('notes')],
                 ['label' => 'New Note', 'url' => ''],
             ],
             'selectedType' => $noteType,
             'selectTypeId'=> $this->noteTypesModel->getIdByName($noteType)->id,
             'noteTypeDropDown' => $this->noteTypesModel->getForDropdown(),
-            'priority' => $this->noteModel->getNotePriority('priority'),
         ]);
     }
 
@@ -165,7 +156,7 @@ class Notes extends UserController
 
         // Save via Model
         if ($this->noteModel->save($noteData)) {
-            return redirect()->to("users/" . $this->userId . "/notes")->with('message', 'Note created successfully!');
+            return redirect()->to("/notes")->with('message', 'Note created successfully!');
         }
 
         return redirect()->back()->withInput()->with('message','Failed to save note.');
@@ -177,24 +168,78 @@ class Notes extends UserController
      * @return string|\CodeIgniter\HTTP\RedirectResponse
      */
     public function show(int $id) {
-        $noteModel = model(NoteModel::class);
-        $note = $noteModel->getNoteById($id);
+        $note = $this->noteModel->getNoteById($id);
 
-        if (!$note) {
-            return redirect()->to('note')->with('error', 'Note not found.');
+        $noteImageModel = model(NoteImagesModel::class);
+        // Get Note Images
+        $noteImages = $noteImageModel->getImagesByNoteId($this->userId);
+
+        if (!$note || $note->user_id != $this->userId) {
+            return redirect()->to('home')->with('error', 'Sorry, I couldn\'t find that Note or maybe it wasn\'t posted by that specific user.');
         }
 
-        return $this->renderView('pages/notes/show', [
-            'appTitle' => setting('App.appName') . ' | View Note',
-            'pageHeader' => 'View Note',
+        echo 'User Show';
+        
+    }
+
+    public function edit(int $id = null){
+        $note = $this->noteModel->getNoteById($id);
+
+        if(!$id && $note->user_id != $this->userId){
+            return redirect()->to('notes')->with('error', "I don't think that's your Note =( Please try again. Thanks!");
+        }
+
+        $noteType = $this->noteTypesModel->getById($note->type_id);
+
+        return $this->renderView('pages/notes/edit', [
+            'appTitle' => setting('App.appName') . ' | New Note',
+            'pageHeader' => 'New <span data-note="type">' . ucfirst($note->title) . '</span> Note',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
                 ['label' => 'User Notes', 'url' => site_url('note')],
-                ['label' => 'View Note', 'url' => ''],
+                ['label' => 'New Note', 'url' => ''],
             ],
-            'noteid' => $id,
+            'selectedType' => $this->noteTypesModel->getById($note->type_id)->name,
+            'noteType' => $this->noteTypesModel->getById($note->type_id)->name,
+            'noteTypeId'=> $note->type_id,
+            'noteTypeDropDown' => $this->noteTypesModel->getForDropdown(),
+            'priority' => $this->noteModel->getNotePriority('priority'),
             'note' => $note,
         ]);
+    }
+
+    public function update($id = null)
+    {
+        // Get the current logged-in user's ID via Shield
+        $currentUserId = auth()->id();
+
+        // Verify this notebook exists AND belongs to this user
+        $note = $this->noteModel->getNoteById($id);
+
+        if (!$note  && $note->user_id != $this->userId) {
+            // Return error message if notebook is accessed by unauthorized users
+            return redirect()->back()->with('error', 'Doesn\'t look like you\'re unauthorized to open this notebook.');
+        }
+
+        if (!$this->validate($this->rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Extract the update payload safely (supports PUT/PATCH content types)
+        $data = $this->request->getRawInput();
+
+        // Prevent malicious payload injection 
+        // Ensure they cannot change the owner or the notebook ID itself
+        unset($data['user_id']);
+        unset($data['id']);
+
+        // 5. Update the database and respond
+        if ($this->noteModel->update($id, $data)) {
+            return redirect()->to('notes')->with('message', 'Notebook updated successfully');
+        }
+
+        // Return validation errors if the model rules fail
+        return redirect()->back()->with('errors', $this->noteModel->errors());
     }
 
     public function delete(int $id){
@@ -209,6 +254,29 @@ class Notes extends UserController
         }else {
             return redirect()->to('notes')->with('error', 'Note Record note found');
         }
+    }
+
+    public function showPublicNotes(int $userId){
+        $userModel = model(UserDetailsModel::class);
+        $user = $userModel->getDetailsByUserId($userId);
+        $fullname = "$user->first_name $user->last_name";
+
+        // Check if current User is access there own note collection
+        if (!$userId) {
+            return redirect()->to('home')->with('error', 'Oh no, this is not your notebooks collection. You can only view your own.');
+        }
+
+        return $this->renderView('pages/notes/index', [
+            'appTitle' => setting('App.appName') . " | $user->username Note's",
+            'pageHeader' => "$fullname Notes",
+            'breadcrumbLinks' => [
+                ['label' => 'Home', 'url' => site_url('home')],
+                ['label' => "$fullname Notes", 'url' => ''],
+            ],
+            'userId' => $userId,
+            'userNotes' => $this->noteModel->getNotesByUserId($userId),
+            'noteTypeDropDown' => $this->noteTypesModel->getForDropdown(),
+        ]);
     }
 
     /**

@@ -65,4 +65,10 @@ class Note extends Entity
         // Truncate to 150 characters with a '...' suffix
         return character_limiter($rawBody, 150, '...');
     }
+
+    public function getSticker(): string {
+        $sticker = $this->attributes['sticker'];
+
+        return $sticker ? $sticker : '57963244';
+    }
 }

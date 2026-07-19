@@ -45,7 +45,7 @@
 
                 <div class="row">
 
-                    <div class="col-6">
+                    <div class="col-lg-6 col-sm-12">
 
                         <div class="card">
 
@@ -100,7 +100,7 @@
                             </div>
                             <div class="card-body">
                                 <!-- User form -->
-                                <form action="<?= base_url('admin/users/delete/' . $user->id) ?>" data-km="delete-form" data-km-username="<?= esc($user->username) ?>" method="post">
+                                <form action="<?= base_url('account/purge') ?>" data-km="delete-form" data-km-username="<?= esc($user->username) ?>" method="post">
 
                                 <!-- CSRF Protection is mandatory for destructive actions -->
                                 <?= csrf_field() ?>
@@ -118,7 +118,7 @@
                     </div>
 
                     <!-- User Password -->
-                    <div class="col-6">
+                    <div class="col-lg-6 col-sm-12">
                         <!-- Security Kuma -->
                          <img src="<?= base_url('assets/images/layouts/kuma-security.png') ?>" class="img-fluid mx-auto d-block" alt="Centered Image" width="360">
 

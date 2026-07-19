@@ -29,8 +29,8 @@ return [
 
     // Delete Account
     'delete-account' => [
-        'text' => 'Deleting your account is a permanent action and cannot be undone. If you are sure you want to delete your account, select the button below.',
-        'notice' => 'This application does not store any digital personal information. To learn more please read the Privacy Policy for more information.',
+        'text' => "You can permanently delete your account at any time. If you would like to delete your account, click the button below and all will be erased. Bye. =)",
+        'notice' => 'This Kumuka does use any email account information for personal use in any way. To learn more please read the Privacy Policy for more information.',
         'btn' => 'I understand, delete my account',
     ]
 ];

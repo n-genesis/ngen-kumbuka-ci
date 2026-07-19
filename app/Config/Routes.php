@@ -54,11 +54,11 @@ $routes->group('users', ['filter' => 'profilevisibility'], function ($routes) {
     // Public User Profile
     $routes->get('profile/(:segment)', [[User\Profile::class,'profile'],'$1']);
     // Public User Notes Collection 
-    $routes->get('(:num)/notes', [[User\Notes::class, 'index'], '$1']);// TODO: Add filter to check if the user profile is public or private
+    $routes->get('(:segment)/notes', [[User\Notes::class, 'showPublicNotes'], '$1']);// TODO: Add filter to check if the user profile is public or private
     // Public User Note Post
     $routes->get('(:num)/notes/(:segment)', [[User\Notes::class, 'showPublicNote'], '$1/$2']);
     // Public User NoteBooks Collection
-    $routes->get('(:num)/notebooks', [[User\Notebooks::class, 'showPublicNote'], '$1']);
+    $routes->get('(:num)/notebooks', [[User\Notebooks::class, 'showPublicNotebooks'], '$1']);
 });
 
 
@@ -74,10 +74,11 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
     $routes->get('home', [User\Home::class, 'index']);
 
     //Note Routes
-    $routes->resource('notes', [
+    $routes->delete('notes/delete/(:num)', [[User\Notes::class,'delete'], '$1']);
+    $routes->presenter('notes', [
         'namespace' => User::class, 
         'controller' => 'Notes',
-        'only' => ['index','show', 'edit', 'create', 'new', 'update', 'delete']
+        'only' => ['index','new', 'show', 'edit', 'create', 'update']
     ]);
     
     // Upload Note Image
@@ -117,6 +118,7 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         $routes->get('activity', [User\Activity::class, 'index']);
         $routes->get('feed', [User\Feed::class, 'index']);
         $routes->get('followers', [User\Social::class, 'followers']);
+        $routes->delete('purge',  [[User\Account\PurgeProfile::class, 'purgeAccount'], '$1']);
     });
 
     // Toggle Follow/Unfollow

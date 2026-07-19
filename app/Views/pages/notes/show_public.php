@@ -7,7 +7,7 @@
 
 <?= $this->section('backend'); ?>
 
-<div class="col-8">
+<div class="col-lg-8 col-md-8 col-sm-12">
     <div class="card card-block card-stretch">
 
         <!-- Card Header: User Info -->
@@ -104,10 +104,10 @@
     </div>
 </div>
 
-<aside class="col-4">
+<aside class="col-lg-4 col-md-4 col-sm-12">
     <article class="card card-block card-stretch">
         <div class="card-body">
-            <img src="https://api.dicebear.com/10.x/miniavs/svg?seed=72xdgcro" class="img-thumbnail">
+            <img src="https://api.dicebear.com/10.x/thumbs/svg?seed=<?= $note->sticker ?>" class="img-thumbnail">
         </div>
     </article>
 

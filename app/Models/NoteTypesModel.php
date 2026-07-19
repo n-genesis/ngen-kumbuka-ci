@@ -49,7 +49,11 @@ class NoteTypesModel extends Model
         return $this->select('id, name, btn_icon')->findAll();
     }
 
-    public function getIdByName( $name) {
+    public function getIdByName($name) {
         return $this->select('id')->where('name',$name)->first();
+    }
+
+    public function getById(int $id){
+        return $this->select("note_types.*")->where('id', $id);
     }
 }

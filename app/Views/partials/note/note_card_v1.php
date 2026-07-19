@@ -1,13 +1,13 @@
 <!-- app/Views/partials/note/note_card_v1.php -->
 <?php if ($userNotes): ?>
     <?php foreach ($userNotes as $note): ?>
-        <div class="<?= $noteCardClass != '' ? $noteCardClass : 'col-lg-4 col-md-4 col-sm-12' ?>">
+        <div class="<?= $noteCardClass != '' ? $noteCardClass : 'col-md-6 col-sm-12' ?>">
             <!-- Header with Semantic Tag and Dropdown -->
-            <article class="card card-block card-stretch card-height card-bottom-border-<?= $note->priority ?> note-detail">
+            <article class="card card-block card-stretch card-height border-1 card-bottom-border-primary note-detail" style="border:3px solid <?= $note->priority ?>;">
                 <!-- Card Header -->
                 <header class="card-header d-flex justify-content-between pb-1">
                     <!-- Icon Button -->
-                    <div class="icon iq-icon-box-2 icon-border-<?= $note->priority ?> rounded">
+                    <div class="icon iq-icon-box-2 border-primary rounded">
                         <i class="<?= $note->btn_icon ?> mr-2 ml-2" style="vertical-align: baseline;"></i>
                     </div>
                     <!-- Card Shard & Dropdown -->
@@ -44,12 +44,12 @@
                                         <i class="bi bi-three-dots"></i>
                                     </span>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="note-dropdownMenuButton4" style="">
-                                        <a href="<?= site_url("notes/$note->id/edit") ?>" class="dropdown-item edit-note1">
-                                            <i class="bi bi-pencil-square mr-3"></i>Edit
+                                        <a href="<?= base_url("notes/edit/$note->id") ?>" class="dropdown-item edit-note1">
+                                            <i class="bi bi-pencil-square"></i> Edit
                                         </a>
                                         <button type="button" data-toggle="modal" data-target="#deleteModal" data-id="<?=$note->id?>"
                                             data-name="<?= $note->title ?>" class="dropdown-item edit-note1">
-                                            <i class="bi bi-trash"></i> Delete Post
+                                            <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </div>
                                 </div>
@@ -64,23 +64,15 @@
                 <section class="card-body rounded">
                     <!-- Link Logging or Account -->
                     <?php if (auth()->loggedIn() && $note->user_id == auth()->user()->id): ?>
-                        <a href="<?= base_url("/notes/$note->id") ?>" class="">
+                        <a href="<?= base_url("users/$note->user_id/notes/$note->slug") ?>" class="">
                         <?php else: ?>
-                            <a href="<?= base_url("/users/$note->user_id/notes/$note->slug") ?>" class="">
+                            <a href="<?= base_url("users/$note->user_id/notes/$note->slug") ?>" class="">
                             <?php endif; ?>
-                            <figure class="figure mb-0">
-                                <!-- Note Image -->
-                                <img src="https://placehold.net/400x400.png" class="figure-img img-fluid rounded mb-3"
-                                    alt="Descriptive image text">
-                                <figcaption class="media flex-wrap align-items-top figure-caption">
-                                    <h3 class="card-title mb-2">
-                                        <?= $note->title ?>
-                                    </h3>
-                                    <p class="card-description short mb-3">
-                                        <?= strip_tags($note->body_summary) ?>
-                                    </p>
-                                </figcaption>
-                            </figure>
+                            <!-- Note Sticker -->
+                            <img src="https://api.dicebear.com/10.x/thumbs/svg?seed=<?= $note->sticker ?>" class="figure-img img-fluid rounded mb-3" alt="Note Sticker">
+                            <h3 class="card-title mb-2">
+                                <?= $note->title ?>
+                            </h3>
                         </a>
                 </section>
 
@@ -105,7 +97,7 @@
 <?php else: ?>
     <div class="col-12 pt-4">
         <div class="text-center">
-            <h1 class="mb-2">No Post Yet</h1>
+            <h1 class="mb-2">No Posts Yet</h1>
             <p class="mb-4"><?= $user->username ?> hasn't posted any notes yet. Make sure to check back later.</p>
         </div>
     </div>
@@ -131,9 +123,10 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <!-- The form triggers your backend delete action -->
                 <form id="deleteForm" method="POST" action="" data-km="form">
-                    <?= csrf_field() ?>
                     <!-- This "spoofs" the POST request as a DELETE request -->
                     <input type="hidden" name="_method" value="DELETE">
+                    <?= csrf_field() ?>
+                    
                     <button type="submit" class="btn btn-danger" data-km="submit">Delete permanently</button>
                 </form>
             </div>
@@ -158,7 +151,7 @@
             modal.find('#deleteItemName').text(itemName);
 
             // Set the dynamic form submission URL pointing to your backend endpoint
-            modal.find('#deleteForm').attr('action', '/notes/' + itemId);
+            modal.find('#deleteForm').attr('action', '/notes/delete/' + itemId);
         });
     });
 

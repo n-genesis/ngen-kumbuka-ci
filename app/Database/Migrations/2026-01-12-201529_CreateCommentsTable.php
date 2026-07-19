@@ -26,7 +26,7 @@ class CreateCommentsTable extends Migration
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'NO ACTION'); // Link to Shield's users table
+        $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE'); // Link to Shield's users table
         $this->forge->addForeignKey('parent_comment_id', 'comments', 'id', 'NO ACTION', 'CASCADE'); // Link to snippets table
         $this->forge->createTable('comments');
     }

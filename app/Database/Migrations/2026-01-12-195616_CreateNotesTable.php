@@ -13,13 +13,9 @@ class CreateNotesTable extends Migration
             'user_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'slug' => ['type' => 'VARCHAR', 'constraint' => 128],
             'title' => ['type' => 'VARCHAR', 'constraint' => 128],
-            'priority' => [
-                'type'       => 'ENUM',
-                'constraint' => ['primary','secondary','success','danger','warning','info'], // Define the ENUM values here
-                'default'    => 'primary',
-                'null'       => false,
-            ],
+            'priority' => ['type' => 'VARCHAR', 'constraint' => 128, 'null' => true , 'default' => null],
             'body' => ['type' => 'TEXT', null => false],
+            'sticker' => ['type' => 'VARCHAR', 'constraint' => 128, 'null' => true , 'default' => null],
             'allow_comments' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'pinned' => ['type' => 'BOOLEAN', 'null' => true, 'default' => 0],
             'notebook_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true , 'default' => null],

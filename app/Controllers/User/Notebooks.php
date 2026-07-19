@@ -201,19 +201,12 @@ class Notebooks extends UserController
             'notebook-image' => [
                 'label' => 'File',
                 'rules' => [
-                    'uploaded[notebook-image]',
-                    'is_image[notebook-image]',
-                    'mime_in[notebook-image,image/jpg,image/jpeg,image/png,image/webp]',
-                    'max_size[notebook-image,2048]', // 2MB max limit
-                    'max_dims[notebook-image,max_width,1080,max_height,1080,min_width,1080,min_height,1080]',
-                ],
-                'errors' => [
-                    'uploaded' => 'Please select an image to upload.',
-                    'is_image' => 'The file must be a valid image.',
-                    'mime_in' => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
-                    'max_size' => 'The image size cannot exceed 2MB.',
-                    'max_dims' => 'The image must be exactly 1080x1080 pixels.',
-                ],
+                    'uploaded[notebook-image]', // 1. Must contain an active file
+                    'is_image[notebook-image]', // 2. Must be a genuine image header, not an execution script
+                    'mime_in[notebook-image,image/jpg,image/jpeg,image/png,image/webp]', // 3. Explict whitelist
+                    'max_size[notebook-image,2048]', // 4. Cap weight at 2MB (2048KB)
+                    'max_dims[notebook-image,1200,1200]', // 5. Cap maximum allowed canvas resolution
+                ]
             ],
         ];
         if (!$this->validate($validationRule)) {
@@ -233,10 +226,22 @@ class Notebooks extends UserController
             $files = directory_map($filepath);
             // New File name
             $newfile = $img->getName();
-            // Check if image already exists in the directory
-            $newfile = $img->getName();
             // Move uploaded image to directroy
             $img->move($filepath, $newfile, true);
+
+            // Path to new file
+            $newFile = "$filepath/$newfile";
+
+            // echo '<pre>';
+            // var_dump($newFile);
+            // echo '</pre>';
+            // exit;
+
+            // Crop the image to a perfect 400x400px centered square automatically
+            \Config\Services::image()
+                ->withFile($newFile)
+                ->fit(400, 400, 'center') // Dimensions: Width, Height, Position Anchor
+                ->save($newFile); // Overwrites the original raw file securely
 
         }
 
@@ -248,7 +253,7 @@ class Notebooks extends UserController
         }
     }
 
-    public function showPublicNote(int $userId)
+    public function showPublicNotebooks(int $userId)
     {
         echo "Notebook Collection for User ID: $userId";
     }

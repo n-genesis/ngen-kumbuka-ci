@@ -19,6 +19,7 @@ class NoteModel extends Model
         'title',
         'priority',
         'body',
+        'sticker',
         'allowed_comments',
         'pinned',
         'notebook_id',

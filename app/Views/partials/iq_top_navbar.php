@@ -5,7 +5,8 @@
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                 <i class="bi bi-list wrapper-menu"></i>
                 <a href="<?= base_url('home') ?>" class="header-logo">
-                    <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo" alt="logo">
+                    <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo"
+                        alt="logo">
                     <h4 class="logo-title ml-3"><?= esc($appName) ?></h4>
                 </a>
             </div>
@@ -31,13 +32,15 @@
                                     <div class="form-group mb-0 position-relative">
                                         <input type="text" class="text search-input font-size-12"
                                             placeholder="type here to search...">
-                                        <a href="#" class="search-link" onclick="this.closest('form').submit(); return false;"><i class="bi bi-search"></i></a>
+                                        <a href="#" class="search-link"
+                                            onclick="this.closest('form').submit(); return false;"><i
+                                                class="bi bi-search"></i></a>
                                     </div>
                                 </form>
                             </div>
                         </li>
                         <!-- Messages -->
-                         <li class="nav-item nav-icon mail-content">
+                        <li class="nav-item nav-icon mail-content">
                             <a href="#">
                                 <i class="bi bi-envelope"></i>
                             </a>
@@ -57,41 +60,11 @@
                                 <img src="<?= base_url($userAvatar) ?>" class="img-fluid rounded avatar-50" alt="user">
                             </a>
                             <?php if (auth()->loggedIn()): ?>
-                            <div class="dropdown-menu dropdown-menu-right w-100 border-0 py-2" aria-labelledby="h-dropdownMenuButton001">
-                                <a class="dropdown-item mb-2" href="<?= site_url(['user/profile','username' => $username]) ?>">
-                                    <i class="bi bi-person-circle font-size-20 mr-1"></i>
-                                    <span class="mt-2">
-                                        <?= lang('Menus.myProfile') ?>
-                                    </span>
-                                </a>
-                                <a class="dropdown-item mb-2" href="<?= site_url('account') ?>">
-                                    <i class="bi bi-file-person font-size-20 mr-1"></i>
-                                    <span>
-                                        <?= lang('Menus.editProfile') ?>
-                                    </span>
-                                </a>
-                                <a class="dropdown-item mb-2" href="<?= site_url('account/settings') ?>">
-                                    <i class="bi bi-person-gear font-size-20 mr-1"></i>
-                                    <span>
-                                        <?= lang('Menus.accntSettings') ?>
-                                    </span>
-                                </a>
-                                <a class="dropdown-item mb-3" href="<?= site_url('account/privacy') ?>">
-                                    <i class="bi bi-person-lock font-size-20 mr-1"></i>
-                                    <span>
-                                        <?= lang('Menus.prvySettings') ?>
-                                    </span>
-                                </a>
-                                <hr class="my-2">
-                                <a class="dropdown-item" href="<?= site_url('logout') ?>">
-                                    <i class="bi bi-box-arrow-right font-size-20 mr-1"></i>
-                                    <span>
-                                        <?= lang('Menus.logout') ?>
-                                    </span>
-                                </a>
-                            </div>
+                                <?= view('partials/dropdown') ?>
                             <?php endif ?>
                         </li>
+
+
 
                     </ul>
                 </div>

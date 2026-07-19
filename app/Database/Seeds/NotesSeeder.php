@@ -14,17 +14,18 @@ class NotesSeeder extends Seeder
         $notesData = [
             [
                 'id' => 1,
-                'user_id' => 1, 
-                'slug' => 'my-first-note', 
-                'title' => 'My First Notes', 
-                'priority' => 'primary', 
+                'user_id' => 1,
+                'slug' => 'my-first-note',
+                'title' => 'My First Notes',
+                'priority' => '#00396B',
                 'body' => "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h4>Another Title</h4>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
+                'sticker' => '54342454',
                 'allow_comments' => false,
-                'notebook_id'=> 1,
+                'notebook_id' => 1,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'public',
@@ -32,17 +33,18 @@ class NotesSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'user_id' => 1, 
-                'slug' => 'the-second-note', 
-                'title' => 'I can Fell It!', 
-                'priority' => 'success', 
+                'user_id' => 1,
+                'slug' => 'the-second-note',
+                'title' => 'I can Fell It!',
+                'priority' => '#00396B',
                 'body' => "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h4>Another Title</h4>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
+                'sticker' => '54342454',
                 'allow_comments' => true,
-                'notebook_id'=> null,
+                'notebook_id' => null,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'private',
@@ -50,17 +52,18 @@ class NotesSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'user_id' => 2, 
-                'slug' => 'the-best-title', 
-                'title' => 'Something New Note', 
-                'priority' => 'success', 
+                'user_id' => 2,
+                'slug' => 'the-best-title',
+                'title' => 'Something New Note',
+                'priority' => '#00396B',
                 'body' => "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h4>Another Title</h4>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
+                'sticker' => '54342454',
                 'allow_comments' => true,
-                'notebook_id'=> 2,
+                'notebook_id' => 2,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'archived',
@@ -68,17 +71,18 @@ class NotesSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'user_id' => 2, 
-                'slug' => 'what-now-im-woundering', 
-                'title' => 'What is going on?', 
-                'priority' => 'success', 
+                'user_id' => 2,
+                'slug' => 'what-now-im-woundering',
+                'title' => 'What is going on?',
+                'priority' => '#00396B',
                 'body' => "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h4>Another Title</h4>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
 <h5>Getting Deep</h5>
 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>",
+                'sticker' => '54342454',
                 'allow_comments' => true,
-                'notebook_id'=> null,
+                'notebook_id' => null,
                 'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
                 'updated_at' => null,
                 'status' => 'public',

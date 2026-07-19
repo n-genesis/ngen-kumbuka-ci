@@ -1,4 +1,7 @@
 
+i.bi {
+    margin: 0px !important;
+}
 .card-box {
     padding: 20px;
     border-radius: 3px;
@@ -73,10 +76,22 @@
     margin-left: 0
 }
 
+ .profile-cover {
+  max-height: 400px !important;
+  width: 100% !important;
+  overflow: auto !important; /* Adds scrollbars if the inner image is larger than 300px */
+}
 
+ .profile-cover {
+  display: block !important;
+  height: auto ; /* Keeps original aspect ratio */
+  width: 100% !important; 
+}
 
-
-
+.card:after {
+    border: 0px solid !important;
+    border-radius: 0px !important;
+}
 
 /*================================
 Filter Box Style

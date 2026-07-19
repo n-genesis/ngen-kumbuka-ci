@@ -33,114 +33,68 @@
         <!-- Privacy Policy -->
         <main class="container-fluid">
             <div class="row">
+                <div class="col-lg-12 col-sm-12 mt-5 mt-md-0">
+                    <div class="alert bg-white alert-info" role="alert">
+                        <div class="iq-alert-text">
+                            <h5 class="alert-heading">Please Note:</h5>
+                            <p>"This application is a live portfolio project built to showcase web development skills using the CodeIgniter framework. It is not intended for commercial use."</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">What is Lorem Ipsum?</h4>
+                                <h4 class="card-title">1. Information We Collect</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been
-                                the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley
-                                of type and scrambled it to make a type specimen book. It has survived not only five
-                                centuries,
-                                but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                passages,
-                                and more recently with desktop publishing software like Aldus PageMaker including
-                                versions of
-                                Lorem Ipsum.</p>
+                            <p>Because this is a demonstration application, we minimize data collection as much as possible:</p>
+                                <ul>
+                                    <li> <b>User-Submitted Data:</b> If you create a test account, fill out a sample form, or post mock data, that information is stored in our database purely to demonstrate application functionality. Please do not enter real, sensitive personal information.</li>
+                                    <li><b>Automated Technical Data:</b> Like most websites, our server may automatically log standard technical data such as your IP address, browser type, and the time of your visit.</li>
+                                </ul>
+
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Why do we use it?</h4>
+                                <h4 class="card-title">2. Cookies and Sessions</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of
-                                a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                normal
-                                distribution of letters, as opposed to using 'Content here, content here', making it
-                                look like
-                                readable English. Many desktop publishing packages and web page editors now use Lorem
-                                Ipsum as
-                                their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                still in
-                                their infancy. Various versions have evolved over the years, sometimes by accident,
-                                sometimes on
-                                purpose (injected humour and the like). </p>
+                            <p>This application uses standard, built-in CodeIgniter session cookies (such as `ci_session`) to ensure the website functions correctly, maintains your session state, and protects against Cross-Site Request Forgery (CSRF) attacks. These cookies do not track your browsing habits outside of this site.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Where does it come from?</h4>
+                                <h4 class="card-title">3. How Your Data is Used and Shared</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of
-                                a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                normal
-                                distribution of letters, as opposed to using 'Content here, content here', making it
-                                look like
-                                readable English. Many desktop publishing packages and web page editors now use Lorem
-                                Ipsum as
-                                their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                still in
-                                their infancy. Various versions have evolved over the years, sometimes by accident,
-                                sometimes on
-                                purpose (injected humour and the like).</p>
+                            <p>Any data you enter into this application is used strictly to display the app's features. We do not sell, rent, trade, or share your data with any third parties.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Where can I get some?</h4>
+                                <h4 class="card-title">Data Retention and Security</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of
-                                a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                normal
-                                distribution of letters, as opposed to using 'Content here, content here', making it
-                                look like
-                                readable English. Many desktop publishing packages and web page editors now use Lorem
-                                Ipsum as
-                                their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                still in
-                                their infancy. Various versions have evolved over the years, sometimes by accident,
-                                sometimes on
-                                purpose (injected humour and the like).</p>
+                            <p>Data entered into this demonstration site is considered temporary and may be deleted or reset at any time without notice. While we implement standard framework security measures, this site is not intended to secure highly sensitive data.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Why do we use it?</h4>
+                                <h4 class="card-title">Contact Information</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of
-                                a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                normal
-                                distribution of letters, as opposed to using 'Content here, content here', making it
-                                look like
-                                readable English. Many desktop publishing packages and web page editors now use Lorem
-                                Ipsum as
-                                their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                still in
-                                their infancy. Various versions have evolved over the years, sometimes by accident,
-                                sometimes on
-                                purpose (injected humour and the like).</p>
+                            <p>If you have any questions about this project or the CodeIgniter implementation, please contact the developer via their primary portfolio website or [ngendesign@email.com/<a href=""></a>].</p>
                         </div>
                     </div>
                     <div class="card">

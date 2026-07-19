@@ -1,6 +1,27 @@
 # Kumbuka: Notebook Application
 Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook application built with CodeIgniter 4.
 
+A modern, MVC-driven [describe what the app does, e.g., Task Management Web Application] built as a portfolio project to demonstrate backend architecture, database normalization, and secure coding practices using the **CodeIgniter Framework**.
+
+---
+
+## 🔒 Privacy Notice
+This is a portfolio project built to showcase development practices with CodeIgniter. 
+* **No Collection:** The live demonstration of this application does not collect, log, or store any personal data. 
+* **Local Sessions:** Any interaction or input is handled strictly in-memory or via functional session cookies to demonstrate framework mechanics. No data persists after you close your browser.
+
+## 💡 Key Features Showcase
+* **User Authentication:** Secure registration, password hashing, and role-based access control.
+* **RESTful API Endpoint:** Demonstrates CodeIgniter's API routing and handling JSON payloads.
+* **CSRF & Security Protection:** Fully implemented CSRF token validation on all data-submitting forms.
+* **Interactive Dashboard:** Dynamic views rendering data fetched via CodeIgniter models.
+
+## 🛠️ Tech Stack & Architecture
+* **Backend:** PHP 8.x, CodeIgniter Framework (MVC Architecture)
+* **Database:** MySQL / PostgreSQL
+* **Frontend:** Bootstrap 5, JavaScript (Vanilla / Alpine.js)
+* **Tools Used:** Composer, Git, [Docker / XAMPP]
+
 
 ![Version](https://img.shields.io/badge/version-v2.5.0--alpa-blue?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
@@ -99,3 +120,26 @@ https://github.com/tattersoftware/codeigniter4-preferences
 
 ## License
 "Copyright (c) 2026 N-Gen Design. All rights reserved. No license is granted for use, modification, or distribution".
+
+# Privacy Policy for Kumbuka (Portfolio Project)
+
+**Last Updated: July 2026**
+
+Welcome to [Your App Name]. This web application was developed solely as a portfolio project to demonstrate web development and programming proficiency using the CodeIgniter framework. 
+
+### 1. Information We Collect
+Because this is a demonstration application, we minimize data collection as much as possible:
+* **User-Submitted Data:** If you create a test account, fill out a sample form, or post mock data, that information is stored in our database purely to demonstrate application functionality. Please do not enter real, sensitive personal information.
+* **Automated Technical Data:** Like most websites, our server may automatically log standard technical data such as your IP address, browser type, and the time of your visit. 
+
+### 2. Cookies and Sessions
+This application uses standard, built-in CodeIgniter session cookies (such as `ci_session`) to ensure the website functions correctly, maintains your session state, and protects against Cross-Site Request Forgery (CSRF) attacks. These cookies do not track your browsing habits outside of this site.
+
+### 3. How Your Data is Used and Shared
+Any data you enter into this application is used strictly to display the app's features. We do not sell, rent, trade, or share your data with any third parties. 
+
+### 4. Data Retention and Security
+Data entered into this demonstration site is considered temporary and may be deleted or reset at any time without notice. While we implement standard framework security measures, this site is not intended to secure highly sensitive data. 
+
+### 5. Contact Information
+If you have any questions about this project or the CodeIgniter implementation, please contact the developer via their primary portfolio website or [Your Contact Email/GitHub Link].

@@ -36,7 +36,7 @@
                         <p class="text-center mb-4">You have not created any notes yet. Click the button below to post your
                             first note.</p>
                         <div class="text-center">
-                            <a href="<?= site_url('notes/new?type=general') ?>" class="btn btn-success">Post Note</a>
+                            <a href="<?= site_url('notes/new?type=general') ?>" class="btn btn-success">Create New Note</a>
                         </div>
                     </div>
                     <?php endif ?>

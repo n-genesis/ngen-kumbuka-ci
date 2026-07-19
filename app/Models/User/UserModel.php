@@ -26,6 +26,8 @@ class UserModel extends ShieldUserModel
     protected $allowedFields = ['username', 'email', 'status'];
     // Dates
     protected $useTimestamps = true;
+
+    
     
     protected function initialize(): void
     {

@@ -11,7 +11,7 @@
          <div class="card car-transparent">
             <div class="card-body p-0">
                <div class="profile-image position-relative">
-                  <img src="<?= base_url($user->coverImage) ?>" class="img-fluid rounded w-100" alt="">
+                  <img src="<?= base_url($user->coverImage) ?>" class="img-fluid rounded w-100 profile-cover" alt="Cover Image">
                   <!-- User Avatar Image -->
                   <div class="position-absolute" style="bottom: 10px; left: 10px;">
                      <img class="avatar-70 rounded" src="<?= base_url($user->avatar) ?>" alt="#" data-original-title="" title="">
@@ -156,14 +156,14 @@
                <!-- User Notes Cell  -->
                <div class="notes-container">
                   <div class="row">
-                     <?= view_cell('UserNoteCell', ['userId' => $user->user_id]) ?>
+                     <?= view_cell('UserNoteCell', ['userId' => $user->user_id, 'noteCardClass' => $accountPrivacy == 'private'  ? 'col-lg-4 col-md-4 col-sm-12': 'col-lg-6 col-md-6 col-sm-12']) ?>
                   </div>
                </div>
 
             </div>
 
             <div class="card-footer text-right">
-               <a href="javascript:void();" class="btn btn-primary">View All Notes</a>
+               <a href="<?= base_url('notes') ?>" class="btn btn-primary">View All Notes</a>
             </div>
          </div>
 

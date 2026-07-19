@@ -10,7 +10,7 @@
 <div class="col-lg-12">
     <div class="card card-block card-stretch">
         <!-- Note Form -->
-        <form action="<?= base_url('notes') ?>" method="post">
+        <form id="note-form" action="<?= base_url("notes/update/$note->id") ?>" method="post">
 
             <div class="card-body write-card pb-4">
                 <div class="row">
@@ -19,10 +19,18 @@
                         <?= csrf_field() ?>
                         <div class="form-row">
                             <!-- Note Title -->
-                            <div class="form-group col-md-12 col-sm-12">
+                            <div class="form-group col-md-6 col-sm-12">
                                 <label class="label-control">Title</label>
-                                <input type="text" class="form-control" name="title" placeholder="Note Title" value="<?= old(key: 'title') ?>"
-                                    data-change="input" data-custom-target="#note-title">
+                                <input type="text" class="form-control" name="title" placeholder="Note Title"
+                                    value="<?= old('name', $note->title) ?>" data-change="input"
+                                    data-custom-target="#note-title">
+                            </div>
+                            <!-- URL Friendly Title -->
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="label-control">Custom URL</label>
+                                <input type="text" class="form-control" name="slug" placeholder="URL Friendly Title"
+                                    value="<?= old('slug', $note->slug) ?>" data-change="input"
+                                    data-custom-target="#note-title">
                             </div>
                             <!-- Note Icons -->
                             <div class="form-group col-md-4 col-sm-12">
@@ -44,8 +52,9 @@
                                         ]);
                                     }
                                     ?>
+                                    <span class="mb-0"><?= $type->name ?></span>
                                 </div>
-                                <input type="hidden" id="type-id" name="type_id" value="<?= $selectTypeId ?>">
+                                <input type="hidden" id="type-id" name="type_id" value="<?= $note->type_id ?>">
                             </div>
                             <!-- Notebook -->
                             <div class="form-group col-md-4 col-sm-12">
@@ -58,19 +67,19 @@
                                     <option value="">Folder Name 005</option>
                                 </select>
                             </div>
-
                             <!-- Note Color -->
                             <div class="form-group col-md-4 col-sm-12">
                                 <label for="themeColor">Choose a Outline Color</label>
                                 <input type="color" class="form-control form-control-color" id="themeColor"
-                                    value="<?= old('priority', '#00396B' ) ?>" name="priority">
+                                    value="<?= $note->priority ?>" name="priority">
                             </div>
 
                             <!-- Note Content -->
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">Body</label>
-                                <textarea id="kumbukaEditor" name="body" rows="3" data-change="input" data-custom-target="#note-description" ><?= old(key: 'body') ?></textarea>
-                            </textarea>
+                                <textarea id="kumbukaEditor" name="body" rows="3" data-change="input"
+                                    data-custom-target="#note-description"><?= old('body', $note->body) ?></textarea>
+                                </textarea>
 
                             </div>
                             <!-- Note Status (Visability) -->
@@ -103,7 +112,7 @@
                                 <h1 class="lead">Create a Sticker</h1>
                             </header>
                             <div class="card-body">
-                                <img id="note-sticker" src="https://api.dicebear.com/10.x/thumbs/svg?seed=<?= old('sticker', 'p2ycqof7') ?>"
+                                <img id="note-sticker" src="https://api.dicebear.com/10.x/thumbs/svg?seed=<?= old('sticker', $note->sticker) ?>"
                                     class="img-thumbnail" />
 
                                 <section id="sticker-form">
@@ -112,7 +121,7 @@
                                             <button class="btn btn-outline-secondary" type="button"
                                                 id="button-addon1"><i class="bi bi-file-earmark-image"></i></button>
                                         </div>
-                                        <input id="generate-url-input" type="text" value="<?= old(key: 'sticker') ?>" name="sticker" maxlength="8"
+                                        <input id="generate-url-input" type="text" value="<?= old('sticker', $note->sticker) ?>" name="sticker" maxlength="8"
                                             class="form-control" placeholder=""
                                             aria-label="Example text with button addon"
                                             aria-describedby="button-addon1">
@@ -132,7 +141,7 @@
                 </a>
                 <button type="submit" class="btn btn-primary mr-2">
                     <i class="bi bi-envelope-arrow-up" id="new-note-save"></i>
-                    Post Note
+                    Update Note
                 </button>
             </footer>
 
@@ -159,14 +168,15 @@
             toolbar: [
                 ['bold', 'italic', 'underline'],
                 ['fontname', 'fontsize'],
-                ['forecolor','backcolor', 'removeFormat'],
+                ['forecolor', 'backcolor', 'removeFormat'],
                 ['insertImage', 'insertLink', 'video'],
-                ['undo', 'redo','codeView']
+                ['undo', 'redo', 'codeView']
             ],
             onChange: function (content) {
 
             }
         });
+
         const urlInput = document.getElementById('generate-url-input');
         const updateButton = document.getElementById('button-addon1');
         const targetImage = document.getElementById('note-sticker');
@@ -202,6 +212,7 @@
                 updateImageSource();
             }
         });
+
     });
 </script>
 

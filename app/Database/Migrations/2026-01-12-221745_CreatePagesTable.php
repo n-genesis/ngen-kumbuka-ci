@@ -32,7 +32,7 @@ class CreatePagesTable extends Migration
             'deleted_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('author_id', 'users', 'id', 'NO ACTION', 'NO ACTION'); // Link to Shield's users table
+        $this->forge->addForeignKey('author_id', 'users', 'id', 'CASCADE', 'CASCADE'); // Link to Shield's users table
         $this->forge->createTable('pages');
     }
 
