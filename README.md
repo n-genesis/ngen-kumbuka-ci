@@ -1,29 +1,25 @@
 # Kumbuka: Notebook Application
-Kumbuka (Swahili: 'to take note' or 'to remember') is a simple notebook application built with CodeIgniter 4.
+Kumbuka is a simple MVC-driven Notes/Record Management Web Application built as a portfolio project to demonstrate backend architecture, database normalization, and secure coding practices using the [**CodeIgniter Framework**](https://github.com/cirebonweb/codeigniter4-starter-kit).
 
-A modern, MVC-driven [describe what the app does, e.g., Task Management Web Application] built as a portfolio project to demonstrate backend architecture, database normalization, and secure coding practices using the **CodeIgniter Framework**.
+A modern, MVC-driven [describe what the app does, e.g., Task Management Web Application] 
 
----
+## Contents
+- [Development Installation](#development-installation)
+    - [Clone the Repository](#clone-the-repository)
+- [Local Development Quick Start](#local-development-quick-start)
+    - [Launch the Live Sandbox](#launch-the-live-sandbox)
+- [Quick Start](#quick-start)
+    - [Include Dependenciess](#include-dependencies)
+    - [Add a Element](#boilerplate.json)
+    - [Initialize](#blank.json)
+- [Configuration Reference](#configuration-reference)
+    - [Example: Custom Toolbar & Fonts](#example-custom-toolbar--fonts)
+    - [API & Events](#api--events)
+    - [Theming & Dark Mode](#theming--dark-mode)
+    - [Toolbar Buttons](#toolbar-buttons)
+- [File Structure](#file-structure)
 
-## 🔒 Privacy Notice
-This is a portfolio project built to showcase development practices with CodeIgniter. 
-* **No Collection:** The live demonstration of this application does not collect, log, or store any personal data. 
-* **Local Sessions:** Any interaction or input is handled strictly in-memory or via functional session cookies to demonstrate framework mechanics. No data persists after you close your browser.
-
-## 💡 Key Features Showcase
-* **User Authentication:** Secure registration, password hashing, and role-based access control.
-* **RESTful API Endpoint:** Demonstrates CodeIgniter's API routing and handling JSON payloads.
-* **CSRF & Security Protection:** Fully implemented CSRF token validation on all data-submitting forms.
-* **Interactive Dashboard:** Dynamic views rendering data fetched via CodeIgniter models.
-
-## 🛠️ Tech Stack & Architecture
-* **Backend:** PHP 8.x, CodeIgniter Framework (MVC Architecture)
-* **Database:** MySQL / PostgreSQL
-* **Frontend:** Bootstrap 5, JavaScript (Vanilla / Alpine.js)
-* **Tools Used:** Composer, Git, [Docker / XAMPP]
-
-
-![Version](https://img.shields.io/badge/version-v2.5.0--alpa-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-v1.0.0--alpa-blue?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
 [![Static Badge](https://img.shields.io/badge/Copyright%20%C2%A9%202026%20N--Gen%20Design-1E30F3?style=for-the-badge&label=Copyright)](https://ngendesign.com)
 
@@ -42,7 +38,7 @@ This is a portfolio project built to showcase development practices with CodeIgn
 ### [Kumbuka](https://kumbuka.ngendesign.com) is a project developed with love & fun by [N-Gen Design](https://ngendesign.com).
 
 
-![Dashboard](https://lh3.googleusercontent.com/d/1aY5_KtxUvK1aBTipXSJIDU-aIZj9tVNd)
+![Dashboard](./public/screenshot-preview.webp)
 
 ***Check Out:*** The project's [TODO.md list](./TODO.md) and [dev-notes file](./dev-notes.md) to see changelogs and planned updates and additions. [Here's a Google Doc]( https://docs.google.com/document/d/1-cpAjEaZSQvS6A5ZcgJN0wKay-YI9Nf7xm1bFfvkC3s/edit?usp=sharing) with some applications development plans. 
 
@@ -121,6 +117,32 @@ https://github.com/tattersoftware/codeigniter4-preferences
 ## License
 "Copyright (c) 2026 N-Gen Design. All rights reserved. No license is granted for use, modification, or distribution".
 
+## 🔒 Privacy Notice
+This is a portfolio project built to showcase development practices with CodeIgniter. 
+* **No Collection:** The live demonstration of this application does not collect, log, or store any personal data. 
+* **Local Sessions:** Any interaction or input is handled strictly in-memory or via functional session cookies to demonstrate framework mechanics. No data persists after you close your browser.
+
+## 💡 Key Features Showcase
+* **User Authentication:** Secure registration, password hashing, and role-based access control.
+* **RESTful API Endpoint:** Demonstrates CodeIgniter's API routing and handling JSON payloads.
+* **CSRF & Security Protection:** Fully implemented CSRF token validation on all data-submitting forms.
+* **Interactive Dashboard:** Dynamic views rendering data fetched via CodeIgniter models.
+
+## 🛠️ Tech Stack & Architecture
+* **Backend:** PHP 8.x, CodeIgniter Framework (MVC Architecture)
+* **Database:** MySQL / PostgreSQL
+* **Frontend:** Bootstrap 5, JavaScript (Vanilla / Alpine.js)
+* **Tools Used:** Composer, Git, [Docker / XAMPP]
+
+
+# Terms and Conditions
+
+**Last Updated: July 2026**
+
+Welcome to [Your Application Name] (the "Application"). This website is a public portfolio project created solely to demonstrate web development proficiency, backend architecture, and design implementations using the CodeIgniter framework. 
+
+By accessing or using this Application, you acknowledge that you have read, understood, and agreed to be bound by these Terms and Conditions. If you do not agree, please discontinue use of the site immediately.
+
 # Privacy Policy for Kumbuka (Portfolio Project)
 
 **Last Updated: July 2026**
@@ -143,3 +165,5 @@ Data entered into this demonstration site is considered temporary and may be del
 
 ### 5. Contact Information
 If you have any questions about this project or the CodeIgniter implementation, please contact the developer via their primary portfolio website or [Your Contact Email/GitHub Link].
+
+
