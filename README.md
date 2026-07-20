@@ -1,6 +1,18 @@
 # Kumbuka: Notebook Application
 Kumbuka is a simple MVC-driven Notes/Record Management Web Application built as a portfolio project to demonstrate backend architecture, database normalization, and secure coding practices using the [**CodeIgniter Framework**](https://github.com/cirebonweb/codeigniter4-starter-kit).
 
+## 💡 Key Features Showcase
+* **User Authentication:** Secure registration, password hashing, and role-based access control.
+* **RESTful API Endpoint:** Demonstrates CodeIgniter's API routing and handling JSON payloads.
+* **CSRF & Security Protection:** Fully implemented CSRF token validation on all data-submitting forms.
+* **Interactive Dashboard:** Dynamic views rendering data fetched via CodeIgniter models.
+
+## 🛠️ Tech Stack & Architecture
+* **Backend:** PHP 8.x, CodeIgniter Framework (MVC Architecture)
+* **Database:** MySQL / PostgreSQL
+* **Frontend:** Bootstrap, JavaScript (minimal jQuery)
+* **Tools Used:** Composer and XAMPP
+
 
 ## Contents
 - [Tech Stach](#tech-stack)
@@ -12,9 +24,9 @@ Kumbuka is a simple MVC-driven Notes/Record Management Web Application built as 
     - [Credits](#include-dependencies)
     - [License](#license)
 - [Live Demo Information](#live-demo-information)
-- [Privacy Notice](#privacy-notice)
-- [Configuration Reference](#configuration-reference)
-    - [Example: Custom Toolbar & Fonts](#example-custom-toolbar--fonts)
+    - [Privacy Notice](#privacy-notice)
+    - [Terms and Conditions](#privacy-policy-for-kumbuka)
+
 
 ![Version](https://img.shields.io/badge/version-v1.0.0-blue?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
@@ -127,19 +139,6 @@ This is a portfolio project built to showcase development practices with CodeIgn
 * **No Collection:** The live demonstration of this application does not collect, log, or store any personal data. 
 * **Local Sessions:** Any interaction or input is handled strictly in-memory or via functional session cookies to demonstrate framework mechanics. No data persists after you close your browser.
 
-## 💡 Key Features Showcase
-* **User Authentication:** Secure registration, password hashing, and role-based access control.
-* **RESTful API Endpoint:** Demonstrates CodeIgniter's API routing and handling JSON payloads.
-* **CSRF & Security Protection:** Fully implemented CSRF token validation on all data-submitting forms.
-* **Interactive Dashboard:** Dynamic views rendering data fetched via CodeIgniter models.
-
-## 🛠️ Tech Stack & Architecture
-* **Backend:** PHP 8.x, CodeIgniter Framework (MVC Architecture)
-* **Database:** MySQL / PostgreSQL
-* **Frontend:** Bootstrap 5, JavaScript (Vanilla / Alpine.js)
-* **Tools Used:** Composer, Git, [Docker / XAMPP]
-
-
 # Terms and Conditions
 
 **Last Updated: July 2026**
@@ -148,7 +147,7 @@ Welcome to [Your Application Name] (the "Application"). This website is a public
 
 By accessing or using this Application, you acknowledge that you have read, understood, and agreed to be bound by these Terms and Conditions. If you do not agree, please discontinue use of the site immediately.
 
-# Privacy Policy for Kumbuka (Portfolio Project)
+# Privacy Policy for Kumbuka
 
 **Last Updated: July 2026**
 
