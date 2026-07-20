@@ -163,7 +163,7 @@
             </div>
 
             <div class="card-footer text-right">
-               <a href="<?= base_url('notes') ?>" class="btn btn-primary">View All Notes</a>
+               <a href="<?= base_url("users/$user->user_id/notes/") ?>" class="btn btn-primary">View All Notes</a>
             </div>
          </div>
 

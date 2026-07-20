@@ -64,7 +64,7 @@
                                                     </label>
                                                     <label class="crm-p-image bg-primary" style="left: 0px; bottom: 0px;" for="cover-image-input">
                                                         <i class="bi bi-image"></i>
-                                                        <input id="cover-image-input" class="file-upload" name="cover_image" type="file" accept="image/*">
+                                                        <input id="cover-image-input" class="file-upload" name="cover-image" type="file" accept="image/jpeg, image/png, image/webp" required>
                                                     </label>
                                                     <p class="mb-0 text-center">Click Image to upload</p>
                                                     </form>
@@ -94,8 +94,7 @@
                                                 alt="profile-pic">
                                             </label>
                                             <!-- User Avatar Image -->
-                                            <form id="user-avatar-form"
-                                                action="<?= base_url('/account/update-avatar') ?>" method="post"
+                                            <form id="user-avatar-form" action="<?= base_url('account/update-avatar') ?>" method="post"
                                                 enctype="multipart/form-data">
                                                 <?= csrf_field() ?>
                                                 <input type="file" class="form-control" name="user-avatar"

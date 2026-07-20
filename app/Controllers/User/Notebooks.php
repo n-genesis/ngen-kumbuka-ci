@@ -201,12 +201,11 @@ class Notebooks extends UserController
             'notebook-image' => [
                 'label' => 'File',
                 'rules' => [
-                    'uploaded[notebook-image]', // 1. Must contain an active file
-                    'is_image[notebook-image]', // 2. Must be a genuine image header, not an execution script
-                    'mime_in[notebook-image,image/jpg,image/jpeg,image/png,image/webp]', // 3. Explict whitelist
-                    'max_size[notebook-image,2048]', // 4. Cap weight at 2MB (2048KB)
-                    'max_dims[notebook-image,1200,1200]', // 5. Cap maximum allowed canvas resolution
-                ]
+                    'uploaded[notebook-image]', // Ensures a file was actually sent
+                    'is_image[notebook-image]', // Blocks malicious scripts disguised as images
+                    'mime_in[notebook-image,image/jpg,image/jpeg,image/png,image/webp]', // Safe format whitelist
+                    'max_size[notebook-image,5120]', // Limit to 5MB (phone photos can be large)
+                ],
             ],
         ];
         if (!$this->validate($validationRule)) {
@@ -231,11 +230,6 @@ class Notebooks extends UserController
 
             // Path to new file
             $newFile = "$filepath/$newfile";
-
-            // echo '<pre>';
-            // var_dump($newFile);
-            // echo '</pre>';
-            // exit;
 
             // Crop the image to a perfect 400x400px centered square automatically
             \Config\Services::image()

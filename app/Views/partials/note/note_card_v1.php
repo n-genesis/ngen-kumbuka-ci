@@ -151,7 +151,7 @@
             modal.find('#deleteItemName').text(itemName);
 
             // Set the dynamic form submission URL pointing to your backend endpoint
-            modal.find('#deleteForm').attr('action', '/notes/delete/' + itemId);
+            modal.find('#deleteForm').attr('action', '<?= base_url('notes/delete/')?>' + itemId);
         });
     });
 

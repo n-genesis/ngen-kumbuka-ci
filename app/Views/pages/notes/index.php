@@ -8,9 +8,11 @@
 <div class="col-lg-12">
     <div class="card card-block card-stretch min-vh-100">
         <header class="card-header d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-            <h2 class="m-0 lean mb-2 mb-md-0">Posted Notes</h2>
+            <h2 class="m-0 lean mb-2 mb-md-0"><?= $pageHeader ?></h2>
             <div class="d-flex justify-content-between align-items-sm-center">
+            <?php if (auth()->id() == $userId): ?>
                 <a href="<?= site_url('notes/new?type=general') ?>" class="btn btn-outline-success mr-2">New Note</a>
+            <?php endif ?>
                 <div class="form-group mb-0">
                     <select class="form-control" id="note-type" style="width:300px;">
                         <option selected="">All Notes</option>

@@ -256,6 +256,11 @@ class Notes extends UserController
         }
     }
 
+    /**
+     * Other Users Public Note Collection
+     * @param int $userId
+     * @return string|\CodeIgniter\HTTP\RedirectResponse
+     */
     public function showPublicNotes(int $userId){
         $userModel = model(UserDetailsModel::class);
         $user = $userModel->getDetailsByUserId($userId);
@@ -268,10 +273,10 @@ class Notes extends UserController
 
         return $this->renderView('pages/notes/index', [
             'appTitle' => setting('App.appName') . " | $user->username Note's",
-            'pageHeader' => "$fullname Notes",
+            'pageHeader' => "$fullname's Notes",
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => "$fullname Notes", 'url' => ''],
+                ['label' => "$fullname's Notes", 'url' => ''],
             ],
             'userId' => $userId,
             'userNotes' => $this->noteModel->getNotesByUserId($userId),

@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
 
         // Get admin details from .env or fallback values
         $email    = getenv('app.adminEmail') ?: 'andrewnite@localhost.com';
-        $username = getenv('app.adminUsername') ?: 'admin';
+        $username = getenv('app.adminUsername') ?: 'andre_nite33ri';
         $password = getenv('app.adminPassword') ?: '5832552911';
 
         // Check if admin user already exists
@@ -52,8 +52,8 @@ class AdminSeeder extends Seeder
             } else {
                 // Create additional admin users with fake data
                 $userData = [
-                    'username' => $faker->userName . $faker->randomNumber(3, true),
-                    'email'    => $faker->unique()->safeEmail,
+                    'username' => 'Dee0therGuy',
+                    'email'    => 'thatguy@localhost.com',
                     'password' => '5832552911', // Default password for fake admins
                     'active'   => true,
                 ];

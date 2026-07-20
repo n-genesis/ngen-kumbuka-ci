@@ -14,11 +14,19 @@ use Config\App;
  */
 class ProfileInformation extends UserController
 {
+    protected $userModel;
+
+    protected $userDetailModel;
+
+    public function __construct() {
+        $this->userModel = model(UserModel::class);
+        $this->userDetailsModel = model(UserDetailsModel::class);
+    }
+
     public function index()
     {
 
-        $userModel = model(UserModel::class);
-        $user = $userModel->findByIdWithDetails($this->userId);
+        $user = $this->userModel->findByIdWithDetails($this->userId);
 
         return $this->renderView('pages/account/profile_information', [
             'appTitle' => setting('App.appName') . ' | User Profile',
@@ -138,13 +146,12 @@ class ProfileInformation extends UserController
         $validationRule = [
             'user-avatar' => [
             'label' => 'Profile Picture',
-            'rules' => [
-                'uploaded[user-avatar]', // Ensures a file was actually sent (Required field)
-                'is_image[user-avatar]', // Verifies the file header structure represents an actual image
-                'mime_in[user-avatar,image/jpg,image/jpeg,image/png,image/webp]', // Explicit whitelist
-                'max_size[user-avatar,2048]', // Restricts file weight to 2048 KB (2MB)
-                'max_dims[user-avatar,1200,1200]', // Caps maximum width and height resolutions
-            ]
+            'rules'  => [
+                    'uploaded[user-avatar]', // Ensures a file was actually sent
+                    'is_image[user-avatar]', // Blocks malicious scripts disguised as images
+                    'mime_in[user-avatar,image/jpg,image/jpeg,image/png,image/webp]', // Safe format whitelist
+                    'max_size[user-avatar,5120]', // Limit to 5MB (phone photos can be large)
+                ],
         ]
     ];
 
@@ -165,7 +172,7 @@ class ProfileInformation extends UserController
             // New File name
             $newfile = $img->getRandomName();
             // // Clear Directroy to not
-            delete_files($filepath, false, true);
+            // delete_files($filepath, false, true);
             // Move uploaded image to directroy
             $img->move($filepath, $newfile);
 
@@ -176,7 +183,7 @@ class ProfileInformation extends UserController
             // Crop the image to a perfect 400x400px centered square automatically
             \Config\Services::image()
                 ->withFile($newFile)
-                ->fit(400, 400, 'center') // Dimensions: Width, Height, Position Anchor
+                ->fit(500, 500, 'center') // Dimensions: Width, Height, Position Anchor
                 ->save($newFile); // Overwrites the original raw file securely
 
 
@@ -195,36 +202,25 @@ class ProfileInformation extends UserController
 
     public function uploadCoverImage()
     {
-        $userDetailsModel = model(UserDetailsModel::class);
-        // $img = $this->request->getFile('cover-image');
-        // echo '<pre>';
-        // var_dump($img = $this->request->getFile('cover-image'));
-        // echo '</pre>';
-        // exit;
+        $user = $this->userModel->findByIdWithDetails($this->userId);
         $validationRule = [
-            'cover_image' => [
+            'cover-image' => [
                 'label' => 'Cover Image',
                 'rules' => [
-                    'uploaded[cover_image]', // Change to 'permit_empty' if completely optional
-                    'is_image[cover_image]',
-                    'mime_in[cover_image,image/jpg,image/jpeg,image/png,image/webp]',
-                    'max_size[cover_image,2048]', // 2MB max weight limit
-                    'max_dims[cover_image,4096,4096]', // High safety ceiling for 4K displays
+                    'uploaded[cover-image]', // File must be present
+                    'is_image[cover-image]', // Must be a valid image file binary structure
+                    'mime_in[cover-image,image/jpg,image/jpeg,image/png,image/webp]', // Allowed formats
+                    'max_size[cover-image,8192]', // Limit to 8MB (high-res panoramas/phone landscapes can be heavy)
                 ],
                 'errors' => [
-                    'uploaded' => 'Please select a cover image to upload.',
-                    'is_image' => 'The uploaded file must be a valid graphic format.',
-                    'mime_in' => 'Only JPG, JPEG, PNG, and WebP formats are allowed.',
-                    'max_size' => 'The cover image cannot be larger than 2MB.',
-                    'max_dims' => 'The image resolution is too high. Keep it under 4096x4096px.',
-                ],
+                    'mime_in' => 'Please upload a valid JPG, PNG, or WebP cover image.',
+                    'max_size' => 'The cover image is too large. Maximum limit is 8MB.'
+                ]
             ],
         ];
 
-
-
         if ($this->validate($validationRule)) {
-            $img = $this->request->getFile('cover_image');
+            $img = $this->request->getFile('cover-image');
 
             if ($img->isValid() && !$img->hasMoved()) {
 
@@ -237,25 +233,24 @@ class ProfileInformation extends UserController
             // New File name
             $newfile = $img->getRandomName();
             // // Clear Directroy to not
-            delete_files($filepath, false, true);
+            // delete_files($filepath, false, true);
             // Move uploaded image to directroy
             $img->move($filepath, $newfile);
             // Path to new file
             $newFile = "$imagePath/$newfile";
 
-            // Update User Avatar field
-            $userDetailsModel->where('user_id', $this->userId)->set([
+            $this->userDetailsModel->where('user_id', $this->userId)->set([
                 'cover_image' => $newFile,
             ])->update();
 
                 $targetWidth = 1200;
                 $targetHeight = 400;
 
-                // 2. Process using CI4 Image Service
+                // 2CI4 Image Service
                 $imageService = \Config\Services::image()
                     ->withFile($newFile);
 
-                // Option A: Smart Crop & Scale to ensure canvas is perfectly filled
+                // Smart Crop & Scale to ensure canvas is perfectly filled
                 $imageService->fit($targetWidth, $targetHeight, 'center')
                     ->save($newFile);
             }
