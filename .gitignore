@@ -131,3 +131,6 @@ _modules/*
 /apache
 /public/km_sessions
 /scripts
+
+
+/public/uploads/
