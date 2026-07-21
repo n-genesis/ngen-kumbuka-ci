@@ -11,33 +11,28 @@ This document just lists current tasks and planned features for the project. A m
 ## High Priority Tasks
 
 ### User Accounts
-- [ ] FIX forced email activation on Admin Created or modify user accounts.
-- [ ] Complete Email and Notification Settings
-
-
-- [ ] Update User Registration to include more user details and store them in `user_details` table
-- [ ] Update User Login to fetch more user details from `user_details` table  
-- [ ] Add empty `user_details` for email activated Users
+- [ ] **Update User Registration to include more user details and store them in `user_details` table**
+- [ ] **Update User Login to fetch more user details from `user_details` table**
+- [ ] **Add empty `user_details` for email activated Users**
     *Unsure what I meant by this*
 
-- [ ] **Need to create cover image upload**
+- [ ] FIX forced email activation on Admin Created or modify user accounts.
+- [ ] Complete Email and Notification Settings
 
 ### Complete Notification mechanics
 - [ ] Create User Notification section and mechanics
     - [ ] Show only the last 5 User notifications for Toates and Notification dropdown
-- [ ]
 
 ### Administrator Controles
 - [ ] *TODO: Add Role-Based Access Controles* for admin and user operations.
 
 - [x] Complete User Privacy Setting
-    - [ ] Private Account
+    - [x] Private Account
     - [ ] Show Activity Status  
         - Show and Active badge next to the user Avatar picture
 
 ### TODO
 - [ ] Pinpoint why AJAX Reuqest are sooooo slow.
-
 
 
 ## High Priority: Currently Completing
@@ -47,7 +42,7 @@ This document just lists current tasks and planned features for the project. A m
 - [x] **Add Native browser notification windows and User permission**
 
 - [x] Create profile visibility feature/settings
-    - [x] Need to create user follower mechanic for only friends profile visibilty
+- [x] Need to create user follower mechanic for only friends profile visibilty
 
 - [x] **Add User Follower function and mechanics**
     - [x] Create FollowerList Cell and User Follower/Follwing managment functions
@@ -55,9 +50,6 @@ This document just lists current tasks and planned features for the project. A m
 - [x] **Add Events for New following Users**  
     - It's propably a good idea to incorperate throttling (no. of events recorded at once)
 
-- [x] User Note Section and functions
-
-- [x] Finish UserActivitySeeder Script
 
 
 ## High Priority: Completed
@@ -66,11 +58,14 @@ This document just lists current tasks and planned features for the project. A m
 - [x] Admin Section for User managment
 - [x] **User Account Details Section**
     - [x] User Profile Information details, account & privacy settings
+- [x] **Need to create cover image upload**
+- [x] User Note Section and functions
+- [x] Finish UserActivitySeeder Script
 
 
 ## Medium Priority
 - [ ] Add WebAuthentication API
-- [ ] Edit Admin Seeder file to remove redundant code
+
 - [ ] Create `Cell` Views for sidebar menus
 - [ ] Create `Cell` views for User Dashboard page
 - [ ] Create `Cell` views for User Notifications and Messages
@@ -80,9 +75,10 @@ This document just lists current tasks and planned features for the project. A m
 - [ ] Add Privacy Policy Alert for Edit Profile Pages 
 
 ## Medium Priority: Currently Completing
-- [x] Add Admin opts for editing website settings (Admin Section)
+- [x] Edit Admin Seeder file to remove redundant code
 
 ## Medium Priority: Completed
+- [x] Add Admin opts for editing website settings (Admin Section)
 
 
 ## Low Priority
@@ -92,10 +88,6 @@ This document just lists current tasks and planned features for the project. A m
     - *Might just redesignthe template from scratch using Bootstrap 5*
 - [ ] Create simple email templates for user actions (registration, password reset, etc.)
 - [ ] Add Pagination/Pager language file
-
-
-- **Action Items:**
-    - [ ] 
 
 
 ## Low Priority: Completed

@@ -1,4 +1,4 @@
-# Project 2.x.x-alpa - Development Notes
+# Project 1.0.0 - Development Notes
 Here describes the development of the Kumbuka Application Project in addtions to furture plannes for the project.   
 *It's built much better from bootsnippets 1.x releases using CodeIgniter 4 and Shield.*
 
@@ -51,7 +51,7 @@ Below is a list of the directories currently used the Kumbua application.
 The Home page & Quckpick Views use a combination of Views and Cells to dynamicly create the User Dashbaord page. This is done some a custom layout can be created by the User. I need to make sure to describe out these work together to prevent future consfusion.
 
 
-### Curret Features (2.2.0-alpa)  
+### Curret Features 1.0.0 ~~(2.2.0-alpa)~~
 *Minor feature of older versions are listed underneath the primary one below.*
 - Admin
   - CRUD User accounts
