@@ -8,8 +8,8 @@ Kumbuka is a simple MVC-driven Notes/Record Management Web Application built as 
 * **Interactive Dashboard:** Dynamic views rendering data fetched via CodeIgniter models.
 
 ## 🛠️ Tech Stack & Architecture
-* **Backend:** PHP 8.x, CodeIgniter Framework (MVC Architecture)
-* **Database:** MySQL / PostgreSQL
+* **Backend:** PHP 8.5+, CodeIgniter Framework (MVC Architecture)
+* **Database:** MySQL / MariaDB
 * **Frontend:** Bootstrap, JavaScript (minimal jQuery)
 * **Tools Used:** Composer and XAMPP
 
