@@ -18,13 +18,19 @@ use App\Controllers\System\SearchController as Search;
 use App\Controllers\System\ShareController as Share;
 // Public Controllers
 use App\Controllers\Public as PublicController;
-// Fun COntroller
+// Fun Controller
 use App\Controllers\Game;
+//Auth
+use App\Controllers\Auth\RegisterController;
+
 
 /**
  * @var RouteCollection $routes
  */
 
+$routes->group('', function ($routes) {
+    $routes->post('register', [RegisterController::class, 'registerAction']);
+});
 
 service('auth')->routes($routes);
 

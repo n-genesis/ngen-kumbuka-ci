@@ -39,7 +39,7 @@ class Validation extends BaseConfig
         ],
         'bio' => [
             'label' => 'Bio',
-            'rules' => 'permit_empty|min_length[25]|max_length[500]',
+            'rules' => 'permit_empty|min_length[25]|max_length[700]',
             'errors' => [
                 'max_length' => 'The {field} cannot be longer than {param} characters.'
             ]

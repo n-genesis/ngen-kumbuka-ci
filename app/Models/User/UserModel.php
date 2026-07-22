@@ -23,7 +23,6 @@ class UserModel extends ShieldUserModel
 {
     protected $returnType  = UserEntity::class;
     protected bool $updateOnlyChanged = true;
-    protected $allowedFields = ['username', 'email', 'status'];
     // Dates
     protected $useTimestamps = true;
 

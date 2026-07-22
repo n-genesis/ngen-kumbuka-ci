@@ -147,6 +147,7 @@ class Notes extends UserController
             'title' => $this->request->getPost('title'),
             'slug' => $this->request->getPost('slug'),
             'body' => $this->request->getPost('body'),// body input attribute name="content" for clarity
+            'sticker' => $this->request->getPost('sticker'),
             'priority' => $this->request->getPost('priority'),
             'allow_comments' => $this->request->getPost('allow_comments'),
             'status' => $this->request->getPost('status'),
@@ -196,7 +197,7 @@ class Notes extends UserController
             'pageHeader' => 'New <span data-note="type">' . ucfirst($note->title) . '</span> Note',
             'breadcrumbLinks' => [
                 ['label' => 'Home', 'url' => site_url('home')],
-                ['label' => 'User Notes', 'url' => site_url('note')],
+                ['label' => 'User Notes', 'url' => site_url('notes')],
                 ['label' => 'New Note', 'url' => ''],
             ],
             'selectedType' => $this->noteTypesModel->getById($note->type_id)->name,

@@ -46,7 +46,7 @@
 
     <div class="card">
         <!-- Edit User Form -->
-        <form action="<?= site_url('admin/users/update/' . $user->id) ?>" method="post" data-km="form" class="needs-validation"
+        <form action="<?= base_url('admin/users/update/' . $user->id) ?>" method="post" data-km="form" class="needs-validation"
             novalidate>
 
             <?= csrf_field() ?>
@@ -90,6 +90,22 @@
                         <textarea class="form-control is-invalid" name="status_message" id="userStatusMsg"
                             rows="3"><?= old('status_message', $user->status_message) ?></textarea>
                         <div class="invalid-feedback">A message to add to users account.</div>
+                    </div>
+                </div>
+
+                <!-- User First and Last name -->
+                 <div class="form-row mb-3">
+                    <div class="col">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="first_name"
+                            value="<?= old('first_name', $user->first_name) ?>" readonly>
+                        <div class="invalid-feedback">Please enter a First Name.</div>
+                    </div>
+                    <div class="col">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="last_name"
+                            value="<?= old('last_name', $user->last_name) ?>" readonly>
+                        <div class="invalid-feedback">Please enter a First Name.</div>
                     </div>
                 </div>
 

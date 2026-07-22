@@ -7,34 +7,28 @@
     <div class="col-md-4 col-12">
         <div class="card border border-dark">
             <div class="card-header d-flex justify-content-between">
-                <div class="header-title">
-                    <h4 class="card-title">User Followers</h4>
-                </div>
+                <h1 class="lead mb-0">User Followers</h1>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
+                <div class="p-4 p-md-5 text-center border rounded-3 text-muted">
+                    <i class="bi bi-file-code display-1"></i>
+                    <p class="mt-3 fs-5">No component loaded.</p>
+                    <p class="small mb-0">Integrate dynamic content here.</p>
+                </div>
             </div>
         </div>
     </div>
     <aside class="col-md-4 col-12">
         <div class="card border border-dark">
             <div class="card-header">
-                <h4 class="card-title">Kumuka News</h4>
+                <h1 class="lead mb-0">Kumuka News</h1>
             </div>
             <div class="card-body">
-                <p class="card-text">Card body with text and what not.</p>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
+                <div class="p-4 p-md-5 text-center border rounded-3 text-muted">
+                    <i class="bi bi-file-code display-1"></i>
+                    <p class="mt-3 fs-5">No component loaded.</p>
+                    <p class="small mb-0">Integrate dynamic content here.</p>
+                </div>
             </div>
         </div>
     </aside>

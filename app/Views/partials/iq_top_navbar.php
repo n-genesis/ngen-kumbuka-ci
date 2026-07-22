@@ -3,7 +3,7 @@
     <div class="iq-navbar-custom">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
-                <i class="bi bi-list wrapper-menu"></i>
+                <i class="bi bi-list wrapper-menu" style="margin-right:12px !important;"></i>
                 <a href="<?= base_url('home') ?>" class="header-logo">
                     <img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid rounded-normal light-logo"
                         alt="logo">
@@ -18,7 +18,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-list align-items-center">
-
+                        <?php if (auth()->loggedIn()): ?>
                         <!-- SEARCH BAR -->
                         <li class="nav-item nav-icon search-content">
                             <a href="#" class="search-toggle rounded" id="h1-dropdownSearch" data-toggle="dropdown"
@@ -52,6 +52,7 @@
                                 <span class="badge badge-pill badge-primary">1</span>
                             </a>
                         </li>
+                        <?php endif ?>
                         <!-- User Avatar & Options -->
                         <li class="caption-content">
                             <a href="#" class="iq-user-toggle d-flex align-items-center justify-content-between mt-1"
@@ -63,9 +64,6 @@
                                 <?= view('partials/dropdown') ?>
                             <?php endif ?>
                         </li>
-
-
-
                     </ul>
                 </div>
             </div>

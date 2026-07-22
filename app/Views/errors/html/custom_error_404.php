@@ -12,7 +12,7 @@
                      <img src="<?= base_url('assets/images/kuma-404.png') ?>" class="img-fluid" alt="">
                      <h2 class="mb-0 mt-4"><?= lang('Errors.whoops') ?></h2>
                      <p><?= lang('Errors.weHitASnag') ?></p>
-                     <a class="btn btn-primary d-inline-flex align-items-center mt-3" href="<?= site_url('login') ?>"><i class="ri-home-4-line"></i><?= lang('Errors.backToLogin') ?></a>
+                     <a class="btn btn-primary d-inline-flex align-items-center mt-3" href="<?= site_url('home') ?>"><i class="ri-home-4-line"></i>Go Back Home</a>
                </div>
             </div>
          </div>

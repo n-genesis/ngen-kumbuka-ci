@@ -56,7 +56,7 @@ class NotebookModel extends Model
 
     public function getNotebooksByUserId(int $userId)
     {
-        return $this->select('notebooks.*')->where('user_id', $userId)->findAll();
+        return $this->select('notebooks.*')->where('user_id', $userId)->orderBy('notebooks.created_at', 'desc')->findAll();
     }
 
     /**
@@ -70,6 +70,7 @@ class NotebookModel extends Model
         return $this->select('notebooks.*, users.username as author_username, user_details.avatar as author_avatar, user_details.first_name as author_first_name, user_details.last_name as author_last_name')->where('notebooks.id', $notebookId)->where('users.id', $userId)
             ->join('users', 'users.id = notebooks.user_id')
             ->join('user_details', 'user_details.user_id = users.id', 'left')
+            ->orderBy('notebooks.created_at', 'desc')
             ->first();
     }
 

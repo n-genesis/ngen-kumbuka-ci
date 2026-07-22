@@ -1,9 +1,7 @@
 <!-- Follower List Cell -->
 <div class="card border border-info">
     <div class="card-header d-flex justify-content-between">
-        <div class="header-title">
-            <h4 class="card-title">Following Users</h4>
-        </div>
+        <h1 class="lead mb-0">Following Users</h1>
     </div>
     <div class="card-body">
         <p class="card-text text-muted">This will be a list of Followers the User currently has. the overflow is set to
@@ -29,6 +27,6 @@
             <?php endif; ?>
         </div>
         <p class="mb-1 mt-2">To see a list of Following Users, checkout the "Following" page.</p>
-        <a href="<?= base_url('following') ?>" class="btn-block btn btn-info">View All Following</a>
+        <a href="<?= base_url('account/followers') ?>" class="btn-block btn btn-info">View All Following</a>
     </div>
 </div>

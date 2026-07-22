@@ -59,29 +59,6 @@
                                     </div>
                                 </div>
 
-                                <!-- First Name -->
-                                <div class="col-lg-6">
-                                    <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="text"
-                                            id="floatingFirstNameInput" name="first_name" inputmode="email"
-                                            autocomplete="email" placeholder=" " value="<?= old('first_name') ?>"
-                                            required>
-                                        <label for="floatingFirstNameInput"><?= lang('Auth.firstName') ?></label>
-                                    </div>
-                                </div>
-
-                                <!-- Last Name -->
-                                <div class="col-lg-6">
-                                    <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="text"
-                                            id="floatingLastNameInput" name="last_name" inputmode="email"
-                                            autocomplete="email" placeholder=" " value="<?= old('last_name') ?>"
-                                            required>
-                                        <label for="floatingLastNameInput"><?= lang('Auth.lastName') ?></label>
-                                    </div>
-                                </div>
-
-
                                 <!-- Email -->
                                 <div class="col-lg-12">
                                     <div class="floating-label form-group">

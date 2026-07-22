@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\AdminController;
 use App\Entities\User;
+use App\Models\User\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Shield\Models\UserIdentityModel;
 
@@ -21,6 +22,11 @@ use CodeIgniter\Shield\Models\UserIdentityModel;
  */
 class Users extends AdminController
 {
+    protected $userModel;
+
+    public function __construct(){
+        $this->userModel = model(UserModel::class);
+    }
     /**
      * Show a list if current application Users
      * 
@@ -127,15 +133,12 @@ class Users extends AdminController
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        // Create user
-        $user = new User([
+        // Save user
+        $this->userModel->save([
             'username' => $this->request->getPost('username'),
             'email' => $this->request->getPost('email'),
             'password' => $this->request->getPost('password'),
         ]);
-
-        // Save user
-        $this->userModel->save($user);
 
         // To get the complete user object with ID, we need to get from the database
         $user = $this->userModel->findById($this->userModel->getInsertID());
@@ -207,8 +210,14 @@ class Users extends AdminController
     public function update($id = null)
     {
 
+        $users = auth()->getProvider();
         // Get user
-        $user = $this->userModel->find($id);
+        $user = $users->findById($id);
+
+        // echo '<pre>';
+        // var_dump($user);
+        // echo '</pre>';
+        // exit;
 
         // Check if user exists
         if (!$user) {
@@ -217,6 +226,12 @@ class Users extends AdminController
 
         // Check is User is being banned or unbanned
         $status = $this->request->getPost('status');
+
+        // echo '<pre>';
+        // var_dump($this->request->getPost());
+        // echo '</pre>';
+        // exit;
+
         if ($status === 'banned') {
             // Prevent admin from banning their own account
             if( $user->id === auth()->id()){
@@ -248,21 +263,21 @@ class Users extends AdminController
             $user->unban();
         }
 
-        // Check to activate user
-        $active = $this->request->getPost('active');
+        // TODO: Check to activate user
+        // $active = $this->request->getPost('active');
         
-        if ($active) {
-            $user->activate();
-            //Remove the forced activation screen identity
-            $identityModel = model(UserIdentityModel::class);
-            $identityModel->deleteIdentitiesByType($user, 'email_activate');
-        } else {
-            // Prevent admin from deactivating their own account
-            if( $user->id === auth()->id()){
-                return redirect()->to('admin/users')->with('error', 'You cannot deactivate your own account. What!? Lol.');
-            }
-            $user->deactivate();
-        }
+        // if ($active) {
+        //     $user->activate();
+        //     //Remove the forced activation screen identity
+        //     $identityModel = model(UserIdentityModel::class);
+        //     $identityModel->deleteIdentitiesByType($user, 'email_activate');
+        // } else {
+        //     // Prevent admin from deactivating their own account
+        //     if( $user->id === auth()->id()){
+        //         return redirect()->to('admin/users')->with('error', 'You cannot deactivate your own account. What!? Lol.');
+        //     }
+        //     $user->deactivate();
+        // }
 
         // Validate input
         // TODO: Improve validation rules and error messages
@@ -303,7 +318,7 @@ class Users extends AdminController
         $user->fill($userData);
 
         // Save user
-        $this->userModel->save($user);
+        $users->save($user);
 
         // Update user groups
         // First remove all existing groups
@@ -338,7 +353,8 @@ class Users extends AdminController
         }
         // If User exists, delete them
         if($user){
-            $this->userModel->delete($id);
+            $this->userModel->delete($id, true);
+            log_activity("Admin Deleted user $user->username",'system','info');
             return redirect()->to('admin/users')->with('message', 'User deleted successfully.');
         }else{
             return redirect()->to('admin/users')->with('error', 'User could not be deleted.');

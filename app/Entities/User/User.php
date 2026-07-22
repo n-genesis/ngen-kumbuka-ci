@@ -23,7 +23,10 @@ use CodeIgniter\I18n\Time; // Recommended for CI4 date handling
  */
 class User extends ShieldUserEntity
 {
-    protected $datamap = [];
+    protected $datamap = [
+        'first_name' => 'first_name',
+        'last_name' => 'last_name',
+    ];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     protected $casts = [
         'id' => 'integer',

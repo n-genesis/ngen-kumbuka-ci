@@ -10,7 +10,7 @@
         <div class="box-body p-0">
             <div class="p-3 d-flex align-items-center bg-light border-bottom osahan-post-header">
                 <div class="dropdown-list-image mr-3">
-                    <img class="img avatar-50 rounded" src="<?= base_url('uploads/default-avatar.png') ?>" alt="" />
+                    <img class="img avatar-50 rounded" src="https://placehold.co/200" alt="" />
                 </div>
                 <div class="font-weight-bold mr-3">
                     <div class="text-truncate">DAILY RUNDOWN: WEDNESDAY</div>
@@ -36,7 +36,7 @@
             </div>
             <div class="p-3 d-flex align-items-center osahan-post-header">
                 <div class="dropdown-list-image mr-3">
-                    <img class="img avatar-50 rounded" src="<?= base_url('uploads/default-avatar.png') ?>" alt="" />
+                    <img class="img avatar-50 rounded" src="https://placehold.co/200" alt="" />
                 </div>
                 <div class="font-weight-bold mr-3">
                     <div class="mb-2">We found a job at askbootstrap Ltd that you may be interested in Vivamus
@@ -94,7 +94,7 @@
             </div>
             <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                 <div class="dropdown-list-image mr-3"><img class="img avatar-50 rounded"
-                        src="<?= base_url('uploads/default-avatar.png') ?>" alt="" /></div>
+                        src="https://placehold.co/200" alt="" /></div>
                 <div class="font-weight-bold mr-3">
                     <div class="text-truncate">DAILY RUNDOWN: SATURDAY</div>
                     <div class="small">Pellentesque semper ex diam, at tristique ipsum varius sed. Pellentesque
@@ -119,7 +119,7 @@
             </div>
             <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                 <div class="dropdown-list-image mr-3">
-                    <img class="img avatar-50 rounded" src="<?= base_url('uploads/default-avatar.png') ?>" alt="" />
+                    <img class="img avatar-50 rounded" src="https://placehold.co/200" alt="" />
                 </div>
                 <div class="font-weight-bold mr-3">
                     <div class="mb-2"><span class="font-weight-normal">Congratulate Gurdeep Singh Osahan
@@ -145,7 +145,7 @@
             </div>
             <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                 <div class="dropdown-list-image mr-3">
-                    <img class="img avatar-50 rounded" src="<?= base_url('uploads/default-avatar.png') ?>" alt="" />
+                    <img class="img avatar-50 rounded" src="https://placehold.co/200" alt="" />
                 </div>
                 <div class="font-weight-bold mr-3">
                     <div>
@@ -199,7 +199,7 @@
             </div>
             <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                 <div class="dropdown-list-image mr-3"><img class="img avatar-50 rounded"
-                        src="<?= base_url('uploads/default-avatar.png') ?>" alt="" /></div>
+                        src="https://placehold.co/200" alt="" /></div>
                 <div class="font-weight-bold mr-3">
                     <div class="text-truncate">DAILY RUNDOWN: SATURDAY</div>
                     <div class="small">Pellentesque semper ex diam, at tristique ipsum varius sed. Pellentesque
@@ -224,7 +224,7 @@
             </div>
             <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                 <div class="dropdown-list-image mr-3">
-                    <img class="img avatar-50 rounded" src="<?= base_url('uploads/default-avatar.png') ?>" alt="" />
+                    <img class="img avatar-50 rounded" src="https://placehold.co/200" alt="" />
                 </div>
                 <div class="font-weight-bold mr-3">
                     <div class="mb-2"><span class="font-weight-normal">Congratulate Gurdeep Singh Osahan
@@ -250,7 +250,7 @@
             </div>
             <div class="p-3 d-flex align-items-center osahan-post-header">
                 <div class="dropdown-list-image mr-3">
-                    <img class="img avatar-50 rounded" src="<?= base_url('uploads/default-avatar.png') ?>" alt="" />
+                    <img class="img avatar-50 rounded" src="https://placehold.co/200" alt="" />
                 </div>
                 <div class="font-weight-bold mr-3">
                     <div>

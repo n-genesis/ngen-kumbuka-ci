@@ -23,21 +23,19 @@ class UserDetailsSeeder extends Seeder
                 $firstName = 'Adrian';
                 $lastName = 'Garber';
                 $bio = $faker->text(500);
-                $avatar = 'uploads/user-icon.png';
-                $cover = null;
+                $avatar = 'uploads/ag_avatar_bl.jpg';
+                $cover = 'uploads/profile.jpg';
             } elseif ($i === 2) {
-                $firstName = 'That';
-                $lastName = 'Guy';
-                $bio = $faker->text(500);
+                $firstName = 'Demo';
+                $lastName = 'User';
+                $bio = "Meet the new user, a certified Professional Bubble Wrap Popper and amateur turtle whisperer. they've spent twelve long years in corporate accounting before realizing his true calling was the satisfying 'pop' of low-density polyethylene. They now hold three unofficial world records for synchronized popping and claims he can identify a bubble wrap's country of origin just by its pitch. When they're is not actively decompressing plastic sheets, they train the highly uncooperative box turtles for the annual neighborhood slow-crawl championships. He lives in a house made of cardboard boxes with his roommate, a moody iguana named Sir Fluffington. There goal is to make edible wallpaper tasting like soup!!";
                 $avatar = 'uploads/user-icon.png';
                 $cover = null;
             } else {
-                // $firstName = $faker->firstName;
-                // $lastName = $faker->lastName;
-                $firstName = 'That';
-                $lastName = 'Girl';
-                $bio = $faker->text(500);
-                $avatar = 'uploads/user-icon.png';
+                $firstName = 'Penelope';
+                $lastName = 'Potts';
+                $bio = "Penelope Potts is an Olympic-level competitive napper who has turned sleeping into a highly aggressive performance art. She regularly trains by drinking massive amounts of warm milk and staring at spreadsheets until her eyelids grow heavy. Penelope specializes in the 'accidental zoom meeting snooze' and the 'standing up on a crowded subway drift.' Her dedication to the craft has earned her sponsorship deals with three major pajama manufacturers and a local coffee shop that pays her to stay away. When she is awake, which is rare, she manages a thriving online business selling tiny hand-knitted sweaters specifically designed for garden snails. She hopes to someday nap on all seven continents!!";
+                $avatar = 'uploads/avatar-icon7-.webp';
                 $cover = null;
             }
 
@@ -46,7 +44,7 @@ class UserDetailsSeeder extends Seeder
                 'first_name' => $firstName,
                 'last_name' => $lastName,
                 'bio'        => $bio, 
-                'phone' => $faker->phoneNumber,
+                'phone' => '(555) 555-5555',
                 'organization' => $faker->company,
                 'address1' => $faker->streetAddress,
                 'address2' => $faker->secondaryAddress,
