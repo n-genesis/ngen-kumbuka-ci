@@ -79,8 +79,8 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    // public string $baseURL = 'https://kumbuka.ngen/';
-    public string $baseURL = 'https://192.168.0.6/dev-sites/ngen-kumbuka-ci/public/';
+    public string $baseURL = 'https://kumbuka.ngen/';
+    // public string $baseURL = 'https://192.168.0.6/dev-sites/ngen-kumbuka-ci/public/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -93,9 +93,7 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
-    public array $allowedHostnames = [
-        'https://kumbuka.ngen/'
-    ];
+    public array $allowedHostnames = [];
 
     /**
      * --------------------------------------------------------------------------

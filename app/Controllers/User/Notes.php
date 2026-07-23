@@ -7,7 +7,7 @@ use App\Models\NoteImagesModel;
 use App\Models\NoteModel;
 use App\Models\NoteTypesModel;
 use App\Models\User\UserDetailsModel;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\CommentModel;
 
 class Notes extends UserController
 {
@@ -293,13 +293,17 @@ class Notes extends UserController
      */
     public function showPublicNote(int $userId, string $slug)
     {
-        $noteModel = model(NoteModel::class);
+        
         // Get Note
-        $note = $noteModel->getNoteBySlug($userId, $slug);
+        $note = $this->noteModel->getNoteBySlug($userId, $slug);
 
         $noteImageModel = model(NoteImagesModel::class);
         // Get Note Images
         $noteImages = $noteImageModel->getImagesByNoteId($note->id);
+
+        // Get Note Comments
+        $commentModel = model(CommentModel::class);
+        
 
         if (!$note || $note->user_id != $userId) {
             return redirect()->to('home')->with('error', 'Sorry, I couldn\'t find that Note or maybe it wasn\'t posted by that specific user.');
@@ -315,6 +319,7 @@ class Notes extends UserController
             ],
             'note' => $note,
             'noteImages' => $noteImages,
+            // 'noteComments' => $commentModel->getCommentsByNoteId($note->id, 'note'),
         ]);
     }
 }

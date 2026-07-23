@@ -13,9 +13,8 @@ use App\Controllers\Admin;
 use App\Controllers\User;
 // General Pages
 use App\Controllers\Pages;
-use App\Controllers\System\SearchController as Search;
-// Share Controller
-use App\Controllers\System\ShareController as Share;
+// System Controller
+use App\Controllers\System;
 // Public Controllers
 use App\Controllers\Public as PublicController;
 // Fun Controller
@@ -50,7 +49,7 @@ $routes->group('/', function ($routes) {
     $routes->get('logged_out', [Pages::class, 'logged_out']);
 
     // Search
-    $routes->post('search', [Search::class,'index']);
+    $routes->post('search', [System\SearchController::class,'index']);
 });
 
 
@@ -96,6 +95,9 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         'only' => ['index', 'new', 'show', 'edit', 'create', 'update', 'delete']
     ]);
 
+    // Notes Comments
+    $routes->post('comments/store',[System\CommentController::class, 'store']);
+
 
     // User Notifications
     $routes->get('notifications', [NotificationController::class, 'index']);
@@ -121,9 +123,24 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         $routes->post('privacy/update', [User\Account\PrivacySettings::class, 'update']);
 
         // User Activity
-        $routes->get('activity', [User\Activity::class, 'index']);
+        $routes->group('activity', function ($routes) {
+            $routes->get('', [User\Activity::class, 'index']);
+            // User Comments
+            $routes->presenter('comments', [
+                'namespace' => User::class,
+                'controller' => 'Comments',
+                'only' => ['index', 'new', 'show', 'edit', 'create', 'update', 'delete']
+            ]);
+        });
+
+        
+
+
         $routes->get('feed', [User\Feed::class, 'index']);
         $routes->get('followers', [User\Social::class, 'followers']);
+
+        
+        // Delete User Account
         $routes->delete('purge',  [[User\Account\PurgeProfile::class, 'purgeAccount'], '$1']);
     });
 
@@ -134,8 +151,8 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
 
 // Share feature
 $routes->group('share',['filter' => ['userfilter']], function ($routes) {
-    $routes->post('note', [Share::class,'shareNote']);
-    $routes->post('ajax', [Share::class,'shareNoteAjax']);
+    $routes->post('note', [System\ShareController::class,'shareNote']);
+    $routes->post('ajax', [System\ShareController::class,'shareNoteAjax']);
 });
 
 /**

@@ -176,6 +176,13 @@
                                     <span><?= lang('Menus.userActivity') ?></span>
                                 </a>
                             </li>
+                            <!-- Comments -->
+                            <li class="">
+                                <a href="<?= base_url('account/activity/comments') ?>" class="svg-icon">
+                                    <i class="bi bi-chat-square-dots"></i>
+                                    <span>Comments</span>
+                                </a>
+                            </li>
                             <!-- Feed -->
                             <li class="">
                                 <a href="<?= base_url('account/feed') ?>" class="svg-icon">
