@@ -125,8 +125,8 @@ class ShareModel extends Model
     /**
      * Check to see if the User already shared the note
      * 
+     * @param int $sharerId
      * @param int $noteId
-     * @param int $actorId
      * @return bool
      */
     public function hasShared(int $sharerId, int $noteId)
