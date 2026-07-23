@@ -16,15 +16,15 @@ class UserDetailsSeeder extends Seeder
                 $firstName = 'Andrew';
                 $lastName = 'Nite';
                 $bio = "Let's see, What about me? Well, I'm half-past-crazy and from the North. But on a serious note, ha, web development is definitely my jam. Been doing it for about 15 years now. Wow, that makes me feel old. Were the 90s and 2000's really that long ago. I could've sworn just last summer I was the Emperor of The Backyard. Ruling with my domain with my Incredible Storm 2000 Water Gun. Bwa-ha-ha! And if you thought you'd catch me you better be able to keep up when I'm on my Synergy Rollerblades. Anyway, Hey who it goin?";
-                $avatar = 'uploads/user-icon.png';
-                $cover = 'uploads/cover.webp';
+                $avatar = 'uploads/dark-desk.jpg';
+                $cover = 'uploads/cover-city-sky.png';
                 
             } elseif ($i === 1) {
                 $firstName = 'Adrian';
                 $lastName = 'Garber';
                 $bio = $faker->text(500);
                 $avatar = 'uploads/ag_avatar_bl.jpg';
-                $cover = 'uploads/profile.jpg';
+                $cover = 'uploads/cover.webp';
             } elseif ($i === 2) {
                 $firstName = 'Demo';
                 $lastName = 'User';
