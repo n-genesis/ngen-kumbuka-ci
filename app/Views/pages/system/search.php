@@ -54,7 +54,7 @@
                             </div>
                             <div class="search-item">
                                 <div class="media"><img class="d-flex mr-3 rounded-circle"
-                                        src="<?= base_url('uploads/default-avatar.png') ?>"
+                                        src="https://placehold.co/200"
                                         alt="Generic placeholder image" height="54">
                                     <div class="media-body">
                                         <h5 class="media-heading mt-0"><a href="#" class="text-dark">Chadengle</a></h5>
@@ -84,13 +84,13 @@
                                 <div class="font-13 text-success mb-3">
                                     https://www.bootdey.com/bootstrap-snippets?utf8=%E2%9C%93&q=snippet</div>
                                 <div class="">
-                                    <img src="<?= base_url('uploads/default-avatar.png') ?>" height="48"
+                                    <img src="https://placehold.co/200" height="48"
                                         alt="image">
-                                    <img src="<?= base_url('uploads/default-avatar.png') ?>" height="48"
+                                    <img src="https://placehold.co/200" height="48"
                                         alt="image">
-                                    <img src="<?= base_url('uploads/default-avatar.png') ?>" height="48"
+                                    <img src="https://placehold.co/200" height="48"
                                         alt="image">
-                                    <img src="<?= base_url('uploads/default-avatar.png') ?>" height="48"
+                                    <img src="https://placehold.co/200" height="48"
                                         alt="image">
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                 <div class="tab-pane" id="users">
                     <div class="search-item">
                         <div class="media mt-1"><img class="d-flex mr-3 rounded-circle"
-                                src="<?= base_url('uploads/default-avatar.png') ?>" alt="Generic placeholder image"
+                                src="https://placehold.co/200" alt="Generic placeholder image"
                                 height="54">
                             <div class="media-body">
                                 <h5 class="media-heading mt-0"><a href="#" class="text-dark">Chadengle</a></h5>
@@ -150,7 +150,7 @@
                     </div>
                     <div class="search-item">
                         <div class="media"><img class="d-flex mr-3 rounded-circle"
-                                src="<?= base_url('uploads/default-avatar.png') ?>" alt="Generic placeholder image"
+                                src="https://placehold.co/200" alt="Generic placeholder image"
                                 height="54">
                             <div class="media-body">
                                 <h5 class="media-heading mt-0"><a href="#" class="text-dark">Chadengle</a></h5>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="search-item">
                         <div class="media"><img class="d-flex mr-3 rounded-circle"
-                                src="<?= base_url('uploads/default-avatar.png') ?>" alt="Generic placeholder image"
+                                src="https://placehold.co/200" alt="Generic placeholder image"
                                 height="54">
                             <div class="media-body">
                                 <h5 class="media-heading mt-0"><a href="#" class="text-dark">Chadengle</a></h5>
@@ -184,7 +184,7 @@
                     </div>
                     <div class="search-item">
                         <div class="media"><img class="d-flex mr-3 rounded-circle"
-                                src="<?= base_url('uploads/default-avatar.png') ?>" alt="Generic placeholder image"
+                                src="https://placehold.co/200" alt="Generic placeholder image"
                                 height="54">
                             <div class="media-body">
                                 <h5 class="media-heading mt-0"><a href="#" class="text-dark">Chadengle</a></h5>
@@ -201,7 +201,7 @@
                     </div>
                     <div class="search-item">
                         <div class="media"><img class="d-flex mr-3 rounded-circle"
-                                src="<?= base_url('uploads/default-avatar.png') ?>" alt="Generic placeholder image"
+                                src="https://placehold.co/200" alt="Generic placeholder image"
                                 height="54">
                             <div class="media-body">
                                 <h5 class="media-heading mt-0"><a href="#" class="text-dark">Chadengle</a></h5>

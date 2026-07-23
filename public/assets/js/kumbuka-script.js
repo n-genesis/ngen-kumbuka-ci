@@ -218,7 +218,7 @@ if (kmAjaxForms !== null) {
  */
 const markNoticeAsRead = async (noticeId, url) => {
 
-    const badge = document.getElementById('notif-badge');
+    // const badge = document.getElementById('notif-badge');
     const toast = document.getElementById('km-notice-' + noticeId);
     const noticeDismissBtn = toast.querySelectorAll('[data-dismiss="toast"]');
     
@@ -257,8 +257,8 @@ const markNoticeAsRead = async (noticeId, url) => {
                         // NOT CHANGING BUTTON STYLES RIGHT NOW
                         // noticeDismissBtn.classList.add('btn','btn-outline-danger');
                         // noticeDismissBtn.innerText = 'Marked as Read';
-                        badge.innerText = 0;
-                        badge.classList.add('d-none');
+                        // badge.innerText = 0;
+                        // badge.classList.add('d-none');
                     }
                     
                 } catch (error) {

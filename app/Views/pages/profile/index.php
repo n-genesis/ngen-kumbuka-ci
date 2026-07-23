@@ -33,7 +33,7 @@
          <div class="card card-block card-stretch card-height">
             <div class="card-body">
                <h4 class="mb-3">About Me</h4>
-               <p class="mb-0 text-ellipsis short-4">
+               <p class="mb-0">
                   <?= esc($user->bio) ?>
                </p>
             </div>

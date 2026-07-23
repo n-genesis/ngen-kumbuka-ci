@@ -59,46 +59,17 @@
         <div class="card-body">
             <h1 class="card-title"><?= $note->title ?></h1>
             <p class="card-text"><?= $note->body ?></p>
-            <div class="d-flex justify-content-between align-items-center text-muted pt-2 border-top">
-                <span><i class="far fa-heart mr-1"></i> <?= $note->share_history ?> Share(s)</span>
-                <span><i class="far fa-comment mr-1"></i> 1 Comment(s)</span>
-            </div>
         </div>
 
         <!-- Card Footer: Comment Section -->
         <div class="card-footer p-3">
 
             <!-- Input Form -->
-            <div class="mb-4 pb-2 border-bottom">
-                <form class="input-group">
-                    <input type="text" class="form-control" placeholder="Write a comment..."
-                        aria-label="Comment text">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">
-                            Post Comment
-                        </button>
-                    </div>
-                </form>
-            </div>
+            
 
-            <!-- Existing Comments List -->
-            <div class="comments-list mb-3" style="overflow-y: auto;">
-
-                <!-- Single Comment -->
-                <div class="d-flex align-items-center mb-2 pb-2">
-                    <!-- User Avatar Image -->
-                    <img src="https://placehold.net/400x400.png" class="rounded-circle avatar-50 mr-2" alt="User">
-                    <!-- User Comment -->
-                    <div class="comment-content">
-                        <span class="font-weight-bold mr-2 text-dark">That Guy:</span>
-                        <span class="text-secondary">Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet
-                            consectetur adipiscing elit quisque faucibus ex. Adipiscing elit quisque faucibus ex sapien
-                            vitae pellentesque. Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet
-                            consectetur adipiscing elit quisque faucibus ex.</span>
-                    </div>
-                </div>
-
-            </div>
+            <!-- Comment Form & List Cell -->
+             <?= view_cell('CommentSectionCell', ['note_id' => $note->id]); ?>
+            
 
         </div>
     </div>
@@ -133,12 +104,6 @@
 
 <?= $this->endSection(); ?>
 
-<!-- Additional  JS Scripts -->
-<?= $this->section('js') ?>
-
-<?= $this->endSection() ?>
-
 <?= $this->section('scripts') ?>
-
 
 <?= $this->endSection() ?>

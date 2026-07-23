@@ -193,7 +193,7 @@
                             <div class="accordion-details collapse" id="collapseFive" aria-labelledby="headingFive"
                                 data-parent="#faqAccordion">
                                 <p class="mb-0">These Terms and Conditions are governed by and construed in accordance
-                                    with the laws of Tennessee/United States, without regard to its conflict of law
+                                    with the laws of United States, without regard to its conflict of law
                                     principles.
                                 </p>
                             </div>
