@@ -47,22 +47,23 @@ class CommentController extends ResourceController
             ], 422);
         }
 
+        $noteId = $this->request->getPost('entity_id');
+
         $userId = auth()->user()->id;
         $userModel = model(UserModel::class);
         $user = $userModel->findById($userId);
-
 
         // Process Database insertion
         $commentModel = model(CommentModel::class);
 
         $data = [
-            'entity_id' => $this->request->getPost('entity_id'),
+            'entity_id' => $noteId,
             'entity_type' => 'note',
             'user_id'   => $userId,
             'body'       => $this->request->getPost('body'),
             'status'    => 'approved',
         ];
-
+        // Trigger NotificationModel Callback in CommentModel
         if ($commentModel->insert($data)) {
             return $this->respond([
                 'status'   => 'success',
@@ -70,6 +71,7 @@ class CommentController extends ResourceController
                 'fullname' => $user->fullname,
                 'avatar'   => base_url($user->avatar),
                 'body'     => esc($data['body']),
+                'commentCount' => $commentModel->getNumOfCommentsById($noteId, 'note'),
                 'token'    => csrf_hash() // Fresh token for next submission
             ], 201);
         }

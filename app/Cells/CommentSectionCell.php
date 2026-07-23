@@ -7,7 +7,7 @@ use App\Models\CommentModel;
 
 class CommentSectionCell extends Cell
 {
-    public $noteId; // This property is automatically filled from the view_cell() call
+    public $note_id; // This property is automatically filled from the view_cell() call
     protected $comments;
     protected $numComments;
 
@@ -17,8 +17,8 @@ class CommentSectionCell extends Cell
         
         $model = model(CommentModel::class);
         // Fetch users who follow the given userId
-        $this->comments = $model->getCommentsByNoteId($this->noteId, 'note');
-        $this->numComments = $model->getNumOfCommentsById($this->noteId, 'note');
+        $this->comments = $model->getCommentsByNoteId($this->note_id, 'note');
+        $this->numComments = $model->getNumOfCommentsById($this->note_id, 'note');
 
     }
 

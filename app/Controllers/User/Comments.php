@@ -18,6 +18,8 @@ class Comments extends UserController
 
     public function index()
     {
+        $comments = $this->commentModel->getCommentsByUserId($this->userId);
+
         return $this->renderView('pages/user/comment_activity.php', [
             'appTitle' => setting('App.appName') . " |  Comments's",
             'pageHeader' => "Comment Activity",
@@ -26,6 +28,8 @@ class Comments extends UserController
                 ['label' => "Your Notes", 'url' => ''],
             ],
             'userId' => null,
+            'comments' => $comments,
+            'commentCount' => count($comments)
         ]);
     }
 }

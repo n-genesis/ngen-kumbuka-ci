@@ -2,7 +2,7 @@
 <div class="mb-4 pb-2 border-bottom">
     <form id="comment-form" class="input-group" method="post" action="<?= site_url('comments/store') ?>">
         <?= csrf_field() ?>
-        <input type="hidden" name="entity_id" value="<?= esc($noteId) ?>">
+        <input type="hidden" name="entity_id" value="<?= $note_id ?>">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i

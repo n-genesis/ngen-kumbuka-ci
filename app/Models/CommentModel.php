@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Entities\Comment as CommentEntity;
 
 class CommentModel extends Model
 {
     protected $table            = 'comments';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object';
+    protected $returnType       = CommentEntity::class;
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
@@ -28,7 +29,7 @@ class CommentModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -43,7 +44,7 @@ class CommentModel extends Model
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert   = [];
-    protected $afterInsert    = [];
+    protected $afterInsert    = ['createNotification'];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
@@ -63,5 +64,51 @@ class CommentModel extends Model
 
     public function getNumOfCommentsById(int $entityId, string $entityType): int{
         return $this->select('entity_id')->where(['entity_id' => $entityId, 'entity_type' => $entityType])->countAllResults();
+    }
+
+    public function getCommentsByUserId(int $userId) {
+        return $this->select('comments.*, notes.user_id as owner_id, users.username as author_username, user_details.avatar as author_avatar, user_details.first_name as author_first_name, user_details.last_name as author_last_name')
+        ->join('users', 'users.id = comments.user_id')
+        ->join('user_details', 'user_details.user_id = users.id', 'left')
+        ->join('notes','notes.id = comments.entity_id')
+        ->where('notes.user_id',$userId)
+        ->orderBy('comments.created_at', 'DESC')
+        ->findAll();
+    }
+
+    /**
+     * Callback Method
+     * This receives $eventData automatically from CodeIgniter's event pipeline
+     */
+    protected function createNotification(array $eventData): array
+    {
+        // Ensure the insertion succeeded and gave us an ID
+        if (!$eventData['result']) {
+            return $eventData;
+        }
+
+        // Extract the form data arrays passed during the insert() execution
+        $submittedData = $eventData['data'];
+        $userId = auth()->user()->id ?? null; // Capture the user ID from the data array
+
+        // Get the User's ID of Note post
+        $noteModel = model(NoteModel::class);
+        $note = $noteModel->getNoteById($submittedData['entity_id']);
+
+        if ($userId) {
+            $notifModel = model(NotificationModel::class);
+
+            $notifModel->addNotification(
+                $submittedData['entity_id'],
+                $note->user_id,
+                $userId,
+                'Someone commented on your note.',
+                'comment',
+                
+            );
+        }
+
+        // Always return the original event data array so the pipeline can finish cleanly
+        return $eventData;
     }
 }
