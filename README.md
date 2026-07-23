@@ -54,6 +54,8 @@ Kumbuka is a simple MVC-driven Notes/Record Management Web Application built as 
 
 
 ### Updates
+- Comment Controller & Cell using AJAX
+
 
 ## Current 1.0.0
 Up and running.

@@ -52,7 +52,7 @@ This document just lists current tasks and planned features for the project. A m
 
 
 
-## High Priority: Completed
+## Completed
 - [x] Extend shield's User Model to include more user details (first_name, last_name, full_name)
 - [x] Add dismiss button to Notification elements
 - [x] Admin Section for User managment
@@ -61,7 +61,7 @@ This document just lists current tasks and planned features for the project. A m
 - [x] **Need to create cover image upload**
 - [x] User Note Section and functions
 - [x] Finish UserActivitySeeder Script
-
+- [x] Comment Section Controller & Cell
 
 ## Medium Priority
 - [ ] Add WebAuthentication API
@@ -77,7 +77,7 @@ This document just lists current tasks and planned features for the project. A m
 ## Medium Priority: Currently Completing
 - [x] Edit Admin Seeder file to remove redundant code
 
-## Medium Priority: Completed
+## Completed
 - [x] Add Admin opts for editing website settings (Admin Section)
 
 
@@ -88,18 +88,6 @@ This document just lists current tasks and planned features for the project. A m
     - *Might just redesignthe template from scratch using Bootstrap 5*
 - [ ] Create simple email templates for user actions (registration, password reset, etc.)
 - [ ] Add Pagination/Pager language file
-
-
-## Low Priority: Completed
-- [ ]
-
-## Low Priority: Currently Completing
-- [ ]
-
-
-## Completed Tasks
-- [ ]
-
 
 ## Future Ideas
 - [ ] Dashboard Layout Settings (User change Home Page/Dashboard View)
