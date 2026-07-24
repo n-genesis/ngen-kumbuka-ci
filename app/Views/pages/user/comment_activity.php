@@ -51,36 +51,68 @@
           <div class="card border border-dark rounded-0">
             <div class="card-header py-3 border-bottom-0 d-flex justify-content-between">
               <h4 class="mb-0">Comments Received</h4>
-              <h4><span id="comment-count"><?= $commentCount ?></span></h4>
+              <h4><span id="comment-count"><?= $commentCount ? $commentCount : 'No Comments' ?></span></h4>
             </div>
 
-            <div class="list-group list-group-flush">
+            <?php if ($comments): ?>
+              <div class="list-group list-group-flush">
+                <!-- Comment item 1 -->
+                <?php foreach ($comments as $comment): ?>
+                  <div class="list-group-item list-comment d-flex justify-content-between align-items-start p-4">
 
-              <!-- Comment item 1 -->
-              <?php foreach ($comments as $comment): ?>
-                <div class="list-group-item list-comment d-flex justify-content-between align-items-start p-4">
-                <div class="flex-grow-1 mr-3 text-truncate">
-                  <div class="d-flex align-items-center mb-2">
-                    <img src="<?= base_url($comment->author_avatar) ?>" class="rounded-circle avatar-80 mr-2" alt="User Avatar">
-                    <span class="text-dark mr-2"><?= $comment->author_username ?></span>
-                    <span class="text-muted mr-2"><?= $comment->created_at ?></span>
-                    <span class="text-muted mr-2">&bull;</span>
-                    <span class="text-primary text-truncate">On Note: <?= $comment->note_title ?></span>
+                    <div class="flex-grow-1 mr-3 text-truncate">
+                      <div class="d-flex align-items-center mb-2">
+                        <a href="<?= base_url("users/profile/$comment->author_username") ?>">
+                          <img src="<?= base_url($comment->author_avatar) ?>" class="rounded-circle avatar-80 mr-2"
+                            alt="User Avatar">
+                          <span class="text-dark mr-2"><?= $comment->author_username ?></span>
+                        </a>
+                        <span class="text-muted mr-2"><?= $comment->created_at ?></span>
+                        <span class="text-muted mr-2">&bull;</span>
+                        <span class="text-primary text-truncate">
+                          <a href="<?= base_url("users/$comment->owner_id/notes/$comment->note_slug") ?>">
+                            On Note: <?= $comment->note_title ?>
+                          </a>
+                        </span>
+                      </div>
+                      <p class="mb-0 text-secondary text-truncate"><?= $comment->body ?></p>
+                    </div>
+
+                    <!-- Isolated Action Wrapper -->
+                    <div class="ml-2">
+                      <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                        data-url="<?= base_url("account/activity/comment/delete/$comment->id") ?>"
+                        data-target="#deleteConfirmModal" data-comment-id="<?= $comment->id ?>" title="Delete comment">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
                   </div>
-                  <p class="mb-0 text-secondary text-truncate"><?= $comment->body ?></p>
+                <?php endforeach ?>
+              </div>
+            <?php else: ?>
+              <div class=" text-center p-5 my-4">
+
+                <!-- Icon with a subtle, soft color -->
+                <div class="mb-4">
+                  <span class="d-inline-flex align-items-center justify-content-center">
+                    <i class="bi bi-chat-square-text display-4"></i>
+                  </span>
                 </div>
 
-                <!-- Isolated Action Wrapper -->
-                <div class="ml-2">
-                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-url="<?= base_url("account/activity/comment/delete/$comment->id") ?>"
-                    data-target="#deleteConfirmModal" data-comment-id="<?= $comment->id ?>" title="Delete comment">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </div>
+                <!-- Heading and Subtext -->
+                <h5 class="font-weight-bold text-dark mb-2">No Comments Yet</h5>
+                <p class="text-muted mx-auto mb-4">
+                  When users leave feedback or ask questions on your note posts, they will show up here for you to
+                  manage.
+                </p>
+
+                <!-- Call to action button to drive user engagement -->
+                <a href="<?= base_url('notes') ?>" class="btn btn-primary">View Your Notes</a>
+
               </div>
-              <?php endforeach ?>
-                
-            </div>
+            <?php endif ?>
+
+
           </div>
         </div>
 
@@ -123,15 +155,15 @@
 
   <!-- Reusable Bootstrap Dismissal Modal -->
   <div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-      <div class="modal-content border-0 shadow">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content border border-dark rounded-0 shadow">
         <div class="modal-body text-center p-4">
-          <i class="fas fa-exclamation-circle text-danger display-4 mb-3"></i>
-          <h5 class="font-weight-bold mb-2">Delete Comment?</h5>
-          <p class="text-muted small mb-4">This action cannot be undone. The comment will be permanently removed.</p>
+          <i class="bi bi-exclamation-circle text-danger display-4 mb-3"></i>
+          <h4 class="font-weight-bold mb-2">Delete Comment?</h4>
+          <p class="text-muted mb-4">This action cannot be undone. The comment will be permanently removed.</p>
           <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-light rounded-pill px-4 mr-2" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger rounded-pill px-4" id="confirmDeleteBtn">Delete</button>
+            <button type="button" class="btn btn-light mr-2" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
           </div>
         </div>
       </div>
@@ -146,8 +178,8 @@
 <?= $this->section('scripts') ?>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    
-  let selectedBtn, deleteUrl = null;
+
+    let selectedBtn, deleteUrl = null;
 
     $('#deleteConfirmModal').on('show.bs.modal', function (event) {
       selectedBtn = event.relatedTarget;
@@ -155,47 +187,47 @@
     });
 
     $('#confirmDeleteBtn').on('click', async (event) => {
-        const csrfToken = document.getElementById('csrf-meta').getAttribute('content');
-    
-        selectedBtn.disabled = true; // Block double-clicks instantly
+      const csrfToken = document.getElementById('csrf-meta').getAttribute('content');
 
-        try {
-          // Simple Fetch Configuration using standard DELETE verb headers
-          const response = await fetch(deleteUrl, {
-            method: 'DELETE',
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest', // Tells CI4 this is an AJAX call
-              'X-CSRF-TOKEN': csrfToken           // Passes CSRF verification checks seamlessly
-            }
-          });
+      selectedBtn.disabled = true; // Block double-clicks instantly
 
-          // Read the JSON response from CodeIgniter
-          const result = await response.json();
-
-          // Always update the secure meta-token with the fresh hash sent by the server
-          if (result.token) {
-            document.getElementById('csrf-meta').setAttribute('content', result.token);
+      try {
+        // Simple Fetch Configuration using standard DELETE verb headers
+        const response = await fetch(deleteUrl, {
+          method: 'DELETE',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest', // Tells CI4 this is an AJAX call
+            'X-CSRF-TOKEN': csrfToken           // Passes CSRF verification checks seamlessly
           }
+        });
 
-          if (response.ok && result.status === 'success') {
-            let cc = document.getElementById('comment-count');
-            cc.innerHTML = (cc.innerText - 1);
-            // Simple UI update: Remove the comment block container seamlessly
-            let comEle = selectedBtn.closest('.list-comment');
-            comEle.style.backgroundColor = '#ffe8e8';
-            setTimeout(() => {
-              comEle.remove();
-            }, 1000)
-          } else {
-            alert(result.message || 'Server rejected deletion request.');
-            selectedBtn.disabled = false;
-          }
+        // Read the JSON response from CodeIgniter
+        const result = await response.json();
 
-        } catch (error) {
-          console.error('Fetch execution crash:', error);
-          alert('Network communication error. Deletion cancelled.');
+        // Always update the secure meta-token with the fresh hash sent by the server
+        if (result.token) {
+          document.getElementById('csrf-meta').setAttribute('content', result.token);
+        }
+
+        if (response.ok && result.status === 'success') {
+          let cc = document.getElementById('comment-count');
+          cc.innerHTML = (cc.innerText - 1);
+          // Simple UI update: Remove the comment block container seamlessly
+          let comEle = selectedBtn.closest('.list-comment');
+          comEle.style.backgroundColor = '#ffe8e8';
+          setTimeout(() => {
+            comEle.remove();
+          }, 1000)
+        } else {
+          alert(result.message || 'Server rejected deletion request.');
           selectedBtn.disabled = false;
         }
+
+      } catch (error) {
+        console.error('Fetch execution crash:', error);
+        alert('Network communication error. Deletion cancelled.');
+        selectedBtn.disabled = false;
+      }
 
       // Hide the active confirmation modal programmatically
       $('#deleteConfirmModal').modal('hide');

@@ -27,7 +27,9 @@
             <!-- Single Comment -->
             <div class="d-flex align-items-center pb-2">
                 <!-- User Avatar Image -->
-                <img src="<?= base_url($comment->author_avatar) ?>" class="rounded-circle avatar-50 mr-2" alt="User">
+                <a href="<?= base_url("users/profile/$comment->author_username") ?>">
+                    <img src="<?= base_url($comment->author_avatar) ?>" class="rounded-circle avatar-50 mr-2" alt="User">
+                </a>
                 <!-- User Comment -->
                 <div class="comment-content">
                     <span class="font-weight-bold mr-2 text-dark"><?= "$comment->author_first_name $comment->author_last_name" ?>:</span>
