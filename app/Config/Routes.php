@@ -125,6 +125,7 @@ $routes->group('',['filter' => ['userfilter']], function ($routes) {
         // User Activity
         $routes->group('activity', function ($routes) {
             $routes->get('', [User\Activity::class, 'index']);
+            $routes->delete('comment/delete/(:num)', [[User\Comments::class,'delete'], '$1']);
             // User Comments
             $routes->presenter('comments', [
                 'namespace' => User::class,

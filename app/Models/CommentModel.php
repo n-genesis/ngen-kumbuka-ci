@@ -67,13 +67,23 @@ class CommentModel extends Model
     }
 
     public function getCommentsByUserId(int $userId) {
-        return $this->select('comments.*, notes.user_id as owner_id, users.username as author_username, user_details.avatar as author_avatar, user_details.first_name as author_first_name, user_details.last_name as author_last_name')
+        return $this->select('comments.*, notes.user_id as owner_id, notes.title as note_title, users.username as author_username, user_details.avatar as author_avatar, user_details.first_name as author_first_name, user_details.last_name as author_last_name')
         ->join('users', 'users.id = comments.user_id')
         ->join('user_details', 'user_details.user_id = users.id', 'left')
         ->join('notes','notes.id = comments.entity_id')
         ->where('notes.user_id',$userId)
         ->orderBy('comments.created_at', 'DESC')
         ->findAll();
+    }
+
+    public function getCommentById(int $commentId){
+        return $this->select('comments.*, notes.user_id as note_author_user_id')
+        ->join('notes','notes.id = comments.entity_id')
+        ->where('comments.id', $commentId)->first();
+    }
+
+    public function deleteComment(int $id){
+        return $this->delete($id, true);
     }
 
     /**

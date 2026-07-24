@@ -20,5 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <?= $this->renderSection('javascripts') ?>
     <?= $this->renderSection('styles') ?>
-    <?= $this->renderSection('csrf') ?>
+    <!-- <?= $this->renderSection('csrf') ?> -->
+     <!-- Global CSRF Token Reference Metatags (Place inside your main HTML layout head tag) -->
+    <meta name="X-CSRF-TOKEN" content="<?= csrf_hash() ?>" id="csrf-meta">
 </head>
